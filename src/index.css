@@ -2,8 +2,8 @@
 
 @import "./components/accordion/accordion.css";
 
-@import "./elements/button/button.css";
-@import "./elements/button/button-group.css";
+/* @import "./elements/button/button.css";
+@import "./elements/button/button-group.css"; */
 
 @custom-variant dark (&:is(.dark *));
 

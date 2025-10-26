@@ -1,12 +1,11 @@
-button:not(accordion *),
-input[type="button"]:not(accordion *) {
-  
+button:not([ng-accordion] *),
+input[type="button"]:not([ng-accordion] *) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
-  
+
   /* Base */
   @apply rounded-md
         text-sm font-medium transition-all
@@ -79,11 +78,13 @@ input[type="button"]:not(accordion *) {
     @apply h-9 px-4 py-2 gap-2 has-[>svg]:px-3;
   }
 
-  &[size="sm"],  &[size="icon-sm"] {
+  &[size="sm"],
+  &[size="icon-sm"] {
     @apply h-8 gap-1.5 px-3 has-[>svg]:px-2.5;
   }
 
-  &[size="lg"],  &[size="icon-lg"] {
+  &[size="lg"],
+  &[size="icon-lg"] {
     @apply h-10 px-6 has-[>svg]:px-3;
   }
 
