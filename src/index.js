@@ -1,16 +1,7 @@
 import { accordionDirective } from "./components/accordion/accordion.js";
+import { dropdownDirective } from "./components/dropdown/dropdown.js";
 
 window["angular"]
   .module("ui", [])
-  .controller(
-    "VersionController",
-    class VersionController {
-      static $inject = ["$scope"];
-      /** @param {ng.Scope} $scope */
-      constructor($scope) {
-        this.$scope = $scope;
-      }
-      version = angular.version;
-    },
-  )
-  .directive("ngAccordion", accordionDirective);
+  .directive("ngAccordion", accordionDirective)
+  .directive("ngDropdown", dropdownDirective);

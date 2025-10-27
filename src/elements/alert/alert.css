@@ -1,5 +1,4 @@
 /* Alert container */
 [role="alert"] {
-    @apply divide-y divide-gray-200 w-full;
+  @apply divide-y divide-gray-200 w-full;
 }
-  
