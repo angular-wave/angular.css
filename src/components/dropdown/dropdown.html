@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularTS</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.ico" />
+    <link rel="stylesheet" href="/docs/assets/angular.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@angular-wave/angular.ts/css/angular.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@angular-wave/angular.ts/dist/angular-ts.umd.min.js"></script>
+    <script type="module" src="../../index.js"></script>
+  </head>
+
+  <body ng-app="ui" ng-cloak>
+    <div class="flex w-full items-center justify-center">
+      <div ng-dropdown>
+        <button>
+          Options
+        </button>
+        <div role="menu">
+          <a href="#new"> New Task </a>
+          <a href="#edit" ng-click="toggle()"> Edit Task </a>
+          <a href="#delete"> Delete Task </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
