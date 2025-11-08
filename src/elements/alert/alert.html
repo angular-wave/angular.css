@@ -15,15 +15,9 @@
 
   <body ng-app="ui" ng-cloak>
     <div class="grid w-full max-w-xl items-start gap-4">
-      <div
-        data-slot="alert"
-        role="alert"
-        class="relative w-full rounded-lg border px-4 py-3 text-sm grid has-[&gt;svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[&gt;svg]:gap-x-3 gap-y-0.5 items-start [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:translate-y-0.5 [&amp;&gt;svg]:text-current bg-card text-card-foreground"
-      >
+      <div ng-alert>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -35,91 +29,28 @@
           <circle cx="12" cy="12" r="10"></circle>
           <path d="m9 12 2 2 4-4"></path>
         </svg>
-        <div
-          data-slot="alert-title"
-          class="col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight"
-        >
+
+        <div>
           Success! Your changes have been saved
         </div>
-        <div
-          data-slot="alert-description"
-          class="text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&amp;_p]:leading-relaxed"
-        >
-          This is an alert with icon, title and description.
+
+        <div>
+          This is an alert with icon, title, and description.
         </div>
       </div>
-      <div
-        data-slot="alert"
-        role="alert"
-        class="relative w-full rounded-lg border px-4 py-3 text-sm grid has-[&gt;svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[&gt;svg]:gap-x-3 gap-y-0.5 items-start [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:translate-y-0.5 [&amp;&gt;svg]:text-current bg-card text-card-foreground"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-popcorn"
-        >
-          <path
-            d="M18 8a2 2 0 0 0 0-4 2 2 0 0 0-4 0 2 2 0 0 0-4 0 2 2 0 0 0-4 0 2 2 0 0 0 0 4"
-          ></path>
-          <path d="M10 22 9 8"></path>
-          <path d="m14 22 1-14"></path>
-          <path
-            d="M20 8c.5 0 .9.4.8 1l-2.6 12c-.1.5-.7 1-1.2 1H7c-.6 0-1.1-.4-1.2-1L3.2 9c-.1-.6.3-1 .8-1Z"
-          ></path>
-        </svg>
-        <div
-          data-slot="alert-title"
-          class="col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight"
-        >
-          This Alert has a title and an icon. No description.
+
+      <div ng-alert>
+        <div>
+          Success! Your changes have been saved
         </div>
-      </div>
-      <div
-        data-slot="alert"
-        role="alert"
-        class="relative w-full rounded-lg border px-4 py-3 text-sm grid has-[&gt;svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[&gt;svg]:gap-x-3 gap-y-0.5 items-start [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:translate-y-0.5 text-destructive bg-card [&amp;&gt;svg]:text-current *:data-[slot=alert-description]:text-destructive/90"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-circle-alert"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" x2="12" y1="8" y2="12"></line>
-          <line x1="12" x2="12.01" y1="16" y2="16"></line>
-        </svg>
-        <div
-          data-slot="alert-title"
-          class="col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight"
-        >
-          Unable to process your payment.
-        </div>
-        <div
-          data-slot="alert-description"
-          class="text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&amp;_p]:leading-relaxed"
-        >
-          <p>Please verify your billing information and try again.</p>
-          <ul class="list-inside list-disc text-sm">
-            <li>Check your card details</li>
-            <li>Ensure sufficient funds</li>
-            <li>Verify billing address</li>
-          </ul>
+  
+        <div>
+          This is an alert with icon, title, and description.
         </div>
       </div>
     </div>
+
+    
+  </div>
   </body>
 </html>

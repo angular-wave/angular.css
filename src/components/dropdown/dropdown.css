@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     @apply relative whitespace-nowrap
-         gap-2 py-2 rounded-lg shadow-sm bg-white hover:bg-gray-50 
-         text-gray-800 border border-gray-200 hover:border-gray-200 px-4;
+         gap-2 py-2 rounded-lg shadow-sm !bg-white hover:bg-gray-50 
+         !text-gray-800 border border-gray-200 hover:border-gray-200 px-4;
   }
   & > [role="menu"] {
     @apply left-0 min-w-48 rounded-lg shadow-sm mt-2 z-10 bg-white p-1.5 outline-none border border-gray-200;

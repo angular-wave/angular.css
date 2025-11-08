@@ -1,5 +1,5 @@
-button:not([ng-accordion] *),
-input[type="button"]:not([ng-accordion] *) {
+button,
+input[type="button"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;

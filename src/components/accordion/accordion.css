@@ -6,9 +6,9 @@
 /* Accordion buttons */
 [ng-accordion] > * > * > button {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  @apply gap-4 py-4 text-left 
+  @apply gap-4 py-4 text-left w-full
     text-sm font-medium transition-all outline-none 
     hover:underline focus:outline-none focus-visible:ring-2 
     focus-visible:ring-ring focus-visible:ring-offset-2;
