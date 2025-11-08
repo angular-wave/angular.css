@@ -1,5 +1,5 @@
-button,
-input[type="button"] {
+button:not([ng-accordion] *),
+input[type="button"]:not([ng-accordion] *) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -9,8 +9,7 @@ input[type="button"] {
   /* Base */
   @apply rounded-md
         text-sm font-medium transition-all
-        disabled:pointer-events-none disabled:opacity-50
-        outline-none focus-visible:ring-[3px];
+        disabled:pointer-events-none disabled:opacity-50;
 
   /* Default variant */
   &:not([variant]) {
@@ -119,3 +118,17 @@ input[type="button"] {
     @apply border-error ring-error/20 dark:ring-error/40;
   }
 }
+
+/* [ng-accordion] button,
+[ng-accordion] input[type="button"],
+[ng-dropdown] button,
+[ng-dropdown] input[type="button"] {
+  all: unset;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+   border: inherit; 
+  color: inherit !important;
+  background-color: inherit !important;
+} */

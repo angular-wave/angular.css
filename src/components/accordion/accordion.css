@@ -5,6 +5,9 @@
 
 /* Accordion buttons */
 [ng-accordion] > * > * > button {
+  color: inherit !important;
+  background-color: inherit !important;
+  box-shadow: inherit !important;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

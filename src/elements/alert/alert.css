@@ -9,11 +9,11 @@
   &:has(> svg) {
     > :nth-child(2) {
       @apply col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight;
-    }        
+    }
 
     > :nth-child(3) {
       @apply text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed;
-    }        
+    }
   }
 
   &:not(:has(> svg)) {
