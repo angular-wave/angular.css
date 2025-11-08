@@ -16,13 +16,11 @@
   <body ng-app="ui" ng-cloak>
     <div class="flex w-full items-center justify-center">
       <div ng-dropdown>
-        <button>
-          Options
-        </button>
+        <button>Options</button>
         <div role="menu">
-          <a href="#new"> New Task </a>
+          <a href="#new" ng-click="toggle()"> New Task </a>
           <a href="#edit" ng-click="toggle()"> Edit Task </a>
-          <a href="#delete"> Delete Task </a>
+          <a href="#delete" ng-click="toggle()"> Delete Task </a>
         </div>
       </div>
     </div>
