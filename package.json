@@ -8,7 +8,7 @@
   "module": "dist/angular-css.esm.js",
   "browser": "dist/angular-css.umd.js",
   "types": "@types/interface.d.ts",
-  "style": "css/angular.css",
+  "style": "dist/angular.css",
   "repository": {
     "type": "git",
     "url": "https://github.com/Angular-Wave/angular.ts.git"
@@ -27,7 +27,7 @@
     "express": "node --watch ./utils/express.js",
     "build": "vite build",
     "css-dev": "npx @tailwindcss/cli -i ./src/index.css -o ./docs/assets/angular.css --watch",
-    "css-prod": "npx @tailwindcss/cli -i ./src/index.css -o ./css/angular.css --minify && cp ./css/angular.css ./docs/assets/angular.css",
+    "css-prod": "npx @tailwindcss/cli -i ./src/index.css -o ./dist/angular.css --minify && cp ./dist/angular.css ./docs/assets/angular.css",
     "playwright": "./node_modules/.bin/playwright test",
     "generate-docs": "node_modules/.bin/typedoc",
     "prepare": "husky"
