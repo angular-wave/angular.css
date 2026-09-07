@@ -6,14 +6,18 @@ passed package and clean-consumer checks.
 
 ## npm authentication and provenance
 
-The npm package uses the repository `NPM_TOKEN` secret for registry access. The
-release preflight verifies that credential with `npm whoami` before running the
-long release gate. The publishing job runs on a GitHub-hosted runner with
-`id-token: write` and npm 11.18.0 so npm can attach signed provenance.
+The npm package uses trusted publishing from the GitHub-hosted release runner.
+The npm trust relationship must identify organization `angular-wave`, repository
+`angular.css`, and workflow file `release.yml`, with direct `npm publish`
+permission. Do not configure an npm environment unless the publish job declares
+the same GitHub environment.
+
+The publishing job uses `id-token: write`, Node.js 24, and npm 11.18.0. npm
+exchanges the GitHub OIDC identity for a short-lived publishing credential and
+attaches signed provenance; no long-lived `NPM_TOKEN` secret is required.
 
 The public `repository.url` in `package.json` must continue to identify this
-repository. GitHub OIDC supplies the public package's provenance statement;
-`NPM_TOKEN` authorizes the registry write.
+repository exactly because npm validates it as part of trusted publishing.
 
 ## Prepare a release
 

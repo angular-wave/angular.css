@@ -20,26 +20,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  release-preflight:
-    name: Validate npm release credentials
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-          registry-url: https://registry.npmjs.org/
-          package-manager-cache: false
-
-      - name: Verify npm package access
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm whoami
-
   verify:
     name: Verify release commit
     if: github.event_name == 'push'
-    needs: release-preflight
     uses: ./.github/workflows/ci.yml
     permissions:
       contents: read
@@ -152,7 +135,6 @@ jobs:
       - name: Publish exact tarball to npm
         if: steps.registry.outputs.version_exists != 'true'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TAG: ${{ steps.release.outputs.npm_tag }}
           TARBALL: ${{ steps.package.outputs.tarball }}
         run: npm publish "./$TARBALL" --access public --tag "$NPM_TAG" --provenance
