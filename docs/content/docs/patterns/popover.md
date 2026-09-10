@@ -1,6 +1,6 @@
 ---
 title: popover
-category: 'overlay'
+category: "overlay"
 description: >
   Floating rich content panels
 ---
@@ -9,7 +9,7 @@ Connect a native button to semantic popover content with `popovertarget` and
 `popover`. The browser owns top-layer rendering, Escape, and light dismissal.
 
 ```html
-<span class="popover">
+<span>
   <button popovertarget="dimensions">Open</button>
   <aside id="dimensions" popover>Content</aside>
 </span>
@@ -31,7 +31,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.popover`
+- `span:has(> [popovertarget] ~ [popover])`
 
 ### Semantic structure
 
@@ -43,10 +43,10 @@ Connect a native button's `popovertarget` to one element with the matching `id` 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `align` | Authored | Cross-axis alignment: `start`, `center`, or `end`. |
-| `popover` | Authored | Authored HTML attribute or styling hook. |
-| `popovertarget` | Authored | Authored HTML attribute or styling hook. |
-| `side` | Authored | Physical placement: `left`, `top`, `bottom`, or `right`. |
+| `align` | Authored | Popover alignment: `start`, `center`, or `end`. |
+| `popover` | Authored | Native Popover API state and behavior on the surface. |
+| `popovertarget` | Authored | ID of the sibling popover controlled by the trigger. |
+| `side` | Authored | Preferred placement: `top`, `right`, `bottom`, or `left`. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

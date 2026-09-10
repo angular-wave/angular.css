@@ -1,7 +1,9 @@
 import type {} from "@angular-wave/angular.ts";
 
 import {
+  getDirection,
   isOwnedBy,
+  observeInheritedDirection,
   queryOwned,
   queryOwnedAll,
   setAttributeIfChanged,
@@ -18,7 +20,6 @@ import {
 
 let contextMenuIdCounter = 0;
 
-type Direction = "ltr" | "rtl";
 type MenuSide =
   | "bottom"
   | "inline-end"
@@ -30,7 +31,7 @@ type PhysicalSide = "bottom" | "left" | "right" | "top";
 type MenuAlign = "center" | "end" | "start";
 type AnchorPoint = { _x: number; _y: number };
 
-const rootSelector = ".context-menu, [ng-context-menu]";
+const rootSelector = "[ng-context-menu]";
 const triggerSelector = ":scope > :first-child:not(menu)";
 const contentSelector = ":scope > menu";
 const menuSurfaceSelector = "menu";
@@ -64,17 +65,12 @@ export function contextMenuDirective(): ng.Directive {
       );
       if (!trigger || !content) return;
 
-      const directionOwner = element.closest<HTMLElement>("[dir]") ?? element;
-      const getDirection = (): Direction =>
-        element.closest<HTMLElement>("[dir]")?.getAttribute("dir") === "rtl"
-          ? "rtl"
-          : "ltr";
       const getPhysicalSide = (side: MenuSide): PhysicalSide => {
         if (side === "inline-start") {
-          return getDirection() === "rtl" ? "right" : "left";
+          return getDirection(element) === "rtl" ? "right" : "left";
         }
         if (side === "inline-end") {
-          return getDirection() === "rtl" ? "left" : "right";
+          return getDirection(element) === "rtl" ? "left" : "right";
         }
         return side;
       };
@@ -169,7 +165,7 @@ export function contextMenuDirective(): ng.Directive {
       const keyboardAnchor = (): AnchorPoint => {
         const rect = trigger.getBoundingClientRect();
         return {
-          _x: getDirection() === "rtl" ? rect.right : rect.left,
+          _x: getDirection(element) === "rtl" ? rect.right : rect.left,
           _y: rect.bottom,
         };
       };
@@ -201,7 +197,7 @@ export function contextMenuDirective(): ng.Directive {
         } else {
           if (align === "center") left -= menuRect.width / 2;
           if (align === "end") left -= menuRect.width;
-          left += getDirection() === "rtl" ? -alignOffset : alignOffset;
+          left += getDirection(element) === "rtl" ? -alignOffset : alignOffset;
         }
 
         const fitted = fitViewportRect(
@@ -397,7 +393,7 @@ export function contextMenuDirective(): ng.Directive {
       const cleanupSubmenus = bindSemanticSubmenus(
         element,
         "context-menu",
-        getDirection,
+        () => getDirection(element),
       );
       const observer = new MutationObserver((records) => {
         if (records.some((record) => record.type === "childList")) {
@@ -445,12 +441,10 @@ export function contextMenuDirective(): ng.Directive {
         attributes: true,
         attributeFilter: ["align", "side"],
       });
-      const directionObserver =
-        directionOwner === element ? null : new MutationObserver(syncDirection);
-      directionObserver?.observe(directionOwner, {
-        attributes: true,
-        attributeFilter: ["dir"],
-      });
+      const directionObserver = observeInheritedDirection(
+        element,
+        syncDirection,
+      );
 
       syncDirection();
       syncSemantics();

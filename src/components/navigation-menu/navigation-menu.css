@@ -1,4 +1,4 @@
-:is(.navigation-menu, [ng-navigation-menu]) {
+[ng-navigation-menu] {
   position: relative;
   display: flex;
   max-width: max-content;
@@ -7,7 +7,7 @@
   justify-content: center;
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul {
+[ng-navigation-menu] > ul {
   display: flex;
   flex: 1;
   align-items: center;
@@ -18,11 +18,11 @@
   list-style: none;
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li {
+[ng-navigation-menu] > ul > li {
   position: relative;
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li > :is(button, a) {
+[ng-navigation-menu] > ul > li > :is(button, a) {
   display: inline-flex;
   width: max-content;
   height: var(--size-control-md);
@@ -47,7 +47,7 @@
     box-shadow var(--motion-duration-deliberate) var(--motion-easing-standard);
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li > button::after {
+[ng-navigation-menu] > ul > li > button::after {
   width: calc(var(--spacing) * 1.5);
   height: calc(var(--spacing) * 1.5);
   margin-inline-start: calc(var(--spacing) * 1);
@@ -59,14 +59,11 @@
     var(--motion-easing-standard);
 }
 
-:is(.navigation-menu, [ng-navigation-menu])
-  > ul
-  > li
-  > button[aria-expanded="true"]::after {
+[ng-navigation-menu] > ul > li > button[aria-expanded="true"]::after {
   transform: translateY(25%) rotate(225deg);
 }
 
-:is(.navigation-menu, [ng-navigation-menu])
+[ng-navigation-menu]
   > ul
   > li
   > :is(button, a):is(
@@ -78,23 +75,17 @@
   background: var(--muted);
 }
 
-:is(.navigation-menu, [ng-navigation-menu])
-  > ul
-  > li
-  > :is(button, a):focus-visible {
+[ng-navigation-menu] > ul > li > :is(button, a):focus-visible {
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--ring) 50%, transparent);
 }
 
-:is(.navigation-menu, [ng-navigation-menu])
-  > ul
-  > li
-  > button:is(:disabled, [aria-disabled="true"]) {
+[ng-navigation-menu] > ul > li > button:is(:disabled, [aria-disabled="true"]) {
   pointer-events: none;
   opacity: 0.5;
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li > section {
+[ng-navigation-menu] > ul > li > section {
   position: absolute;
   inset-block-start: calc(100% + var(--spacing) * 2);
   inset-inline-start: 0;
@@ -115,19 +106,19 @@
   transform: translateX(var(--navigation-menu-content-offset, 0));
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li > section:not([hidden]) {
+[ng-navigation-menu] > ul > li > section:not([hidden]) {
   display: block;
   animation: angularcss-surface-enter var(--motion-duration-default)
     var(--motion-easing-out);
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li > section ul {
+[ng-navigation-menu] > ul > li > section ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li > section a {
+[ng-navigation-menu] > ul > li > section a {
   display: flex;
   width: 100%;
   align-items: center;
@@ -145,7 +136,7 @@
     box-shadow var(--motion-duration-deliberate) var(--motion-easing-standard);
 }
 
-:is(.navigation-menu, [ng-navigation-menu])
+[ng-navigation-menu]
   > ul
   > li
   > section
@@ -153,25 +144,19 @@
   background: var(--muted);
 }
 
-:is(.navigation-menu, [ng-navigation-menu])
-  > ul
-  > li
-  > section
-  a:focus-visible {
+[ng-navigation-menu] > ul > li > section a:focus-visible {
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--ring) 50%, transparent);
 }
 
-:is(.navigation-menu, [ng-navigation-menu]) > ul > li > section a svg {
+[ng-navigation-menu] > ul > li > section a svg {
   width: calc(var(--spacing) * 4);
   height: calc(var(--spacing) * 4);
   flex: 0 0 auto;
   pointer-events: none;
 }
 
-:is(.navigation-menu, [ng-navigation-menu])
-  > ul
-  > li:has(> button[aria-expanded="true"])::after {
+[ng-navigation-menu] > ul > li:has(> button[aria-expanded="true"])::after {
   position: absolute;
   inset-block-start: calc(100% + var(--spacing) * 0.5);
   inset-inline-start: 50%;
@@ -185,21 +170,18 @@
   transform: translateX(-50%) rotate(45deg);
 }
 
-:is(.navigation-menu, [ng-navigation-menu])[align="end"] > ul > li > section {
+[ng-navigation-menu][align="end"] > ul > li > section {
   inset-inline: auto 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.navigation-menu, [ng-navigation-menu])
-    > ul
-    > li
-    > section:not([hidden]) {
+  [ng-navigation-menu] > ul > li > section:not([hidden]) {
     animation: none;
   }
 
-  :is(.navigation-menu, [ng-navigation-menu]) > ul > li > :is(button, a),
-  :is(.navigation-menu, [ng-navigation-menu]) > ul > li > section a,
-  :is(.navigation-menu, [ng-navigation-menu]) > ul > li > button::after {
+  [ng-navigation-menu] > ul > li > :is(button, a),
+  [ng-navigation-menu] > ul > li > section a,
+  [ng-navigation-menu] > ul > li > button::after {
     transition-duration: var(--motion-duration-instant);
   }
 }

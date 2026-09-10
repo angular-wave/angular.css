@@ -45,6 +45,14 @@ const entries = Object.fromEntries(
         "### CSS custom properties",
       ),
     );
+    const frameworkAttributes = attributes.filter(
+      (attribute) => attribute.startsWith("ng-") || attribute === "data-change",
+    );
+    if (frameworkAttributes.length > 0) {
+      throw new Error(
+        `${name}: AngularTS application directives must not be published as AngularCSS component attributes: ${frameworkAttributes.join(", ")}`,
+      );
+    }
     const cssCustomProperties = tableKeys(
       section(markdown, "### CSS custom properties", "### DOM events"),
     ).filter((value) => value.startsWith("--"));

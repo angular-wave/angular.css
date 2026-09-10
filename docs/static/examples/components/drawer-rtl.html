@@ -16,11 +16,10 @@
     ng-init="goal=350"
     data-example="drawer-rtl"
   >
-    <main class="drawer-demo visual-example">
+    <main class="visual-example">
       <section id="rtl-goal-drawer" class="drawer">
         <button
           variant="outline"
-          class="button"
           type="button"
           commandfor="rtl-goal-drawer-content"
           command="show-modal"
@@ -46,7 +45,6 @@
                   size="icon-sm"
                   aria-label="تقليل"
                   ng-click="goal=goal-10"
-                  class="button"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -67,7 +65,6 @@
                   size="icon-sm"
                   aria-label="زيادة"
                   ng-click="goal=goal+10"
-                  class="button"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -98,10 +95,9 @@
               </figure>
             </section>
             <footer>
-              <button class="button">إرسال</button>
+              <button>إرسال</button>
               <button
                 variant="outline"
-                class="button"
                 commandfor="rtl-goal-drawer-content"
                 command="close"
               >

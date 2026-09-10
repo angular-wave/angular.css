@@ -17,21 +17,26 @@
   >
     <main class="workflow-stack">
       <div class="workflow-row" aria-label="Button variants">
-        <button class="button">Button</button>
-        <button variant="secondary" class="button">Secondary</button>
-        <button variant="destructive" class="button">Destructive</button>
-        <button variant="outline" class="button">Outline</button>
-        <button variant="ghost" class="button">Ghost</button>
-        <button variant="link" class="button">Link</button>
+        <button>Button</button>
+        <button variant="secondary">Secondary</button>
+        <button variant="destructive">Destructive</button>
+        <button variant="outline">Outline</button>
+        <button variant="ghost">Ghost</button>
+        <button variant="link">Link</button>
+      </div>
+
+      <div class="workflow-row" aria-label="Status buttons">
+        <button variant="info">Information</button>
+        <button variant="success">Success</button>
+        <button variant="warning">Warning</button>
       </div>
 
       <div class="workflow-row workflow-sizes" aria-label="Button sizes">
-        <button size="xs" variant="outline" class="button">Extra Small</button>
+        <button size="xs" variant="outline">Extra Small</button>
         <button
           size="icon-xs"
           variant="outline"
           aria-label="Submit extra small"
-          class="button"
         >
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
@@ -43,13 +48,8 @@
             />
           </svg>
         </button>
-        <button size="sm" variant="outline" class="button">Small</button>
-        <button
-          size="icon-sm"
-          variant="outline"
-          aria-label="Submit small"
-          class="button"
-        >
+        <button size="sm" variant="outline">Small</button>
+        <button size="icon-sm" variant="outline" aria-label="Submit small">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
               d="M7 17 17 7M7 7h10v10"
@@ -60,13 +60,8 @@
             />
           </svg>
         </button>
-        <button variant="outline" class="button">Default</button>
-        <button
-          size="icon"
-          variant="outline"
-          aria-label="Submit default"
-          class="button"
-        >
+        <button variant="outline">Default</button>
+        <button size="icon" variant="outline" aria-label="Submit default">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
               d="M7 17 17 7M7 7h10v10"
@@ -77,13 +72,8 @@
             />
           </svg>
         </button>
-        <button size="lg" variant="outline" class="button">Large</button>
-        <button
-          size="icon-lg"
-          variant="outline"
-          aria-label="Submit large"
-          class="button"
-        >
+        <button size="lg" variant="outline">Large</button>
+        <button size="icon-lg" variant="outline" aria-label="Submit large">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
               d="M7 17 17 7M7 7h10v10"
@@ -97,10 +87,10 @@
       </div>
 
       <div class="workflow-row" aria-label="Rounded and icon buttons">
-        <a href="#login" variant="secondary" size="sm" class="button">Login</a>
-        <button type="submit" class="button-rounded button">Get Started</button>
+        <a href="#login" variant="secondary" size="sm">Login</a>
+        <button type="submit" class="button-rounded">Get Started</button>
         <button
-          class="button-rounded button"
+          class="button-rounded"
           variant="outline"
           size="icon"
           aria-label="Continue"
@@ -115,7 +105,7 @@
             />
           </svg>
         </button>
-        <button variant="outline" class="button">
+        <button variant="outline">
           <svg
             icon="inline-start"
             viewBox="0 0 24 24"
@@ -131,7 +121,7 @@
           </svg>
           New Branch
         </button>
-        <button variant="outline" class="button">
+        <button variant="outline">
           Fork
           <svg
             icon="inline-end"
@@ -150,7 +140,7 @@
       </div>
 
       <div class="workflow-row" aria-label="Loading buttons">
-        <button variant="outline" disabled class="button">
+        <button variant="outline" disabled>
           <svg
             icon="inline-start"
             aria-hidden="true"
@@ -167,7 +157,7 @@
           </svg>
           Generating
         </button>
-        <button variant="secondary" aria-disabled="true" class="button">
+        <button variant="secondary" aria-disabled="true">
           Downloading
           <svg
             icon="inline-end"
@@ -187,9 +177,9 @@
       </div>
 
       <div class="workflow-row" dir="rtl" aria-label="RTL buttons">
-        <button variant="outline" class="button">زر</button>
-        <button variant="destructive" class="button">حذف</button>
-        <button variant="outline" class="button">
+        <button variant="outline">زر</button>
+        <button variant="destructive">حذف</button>
+        <button variant="outline">
           إرسال
           <svg
             icon="inline-end"

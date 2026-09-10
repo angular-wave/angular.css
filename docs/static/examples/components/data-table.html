@@ -26,13 +26,12 @@
           <h2 id="orders-title">Orders</h2>
           <p>Recent customer orders</p>
         </div>
-        <form class="filter-bar" aria-label="Filter orders">
+        <form role="search" aria-label="Filter orders">
           <fieldset>
             <legend class="visually-hidden">Filters</legend>
             <label>
               <span class="visually-hidden">Search orders</span>
               <input
-                class="input"
                 type="search"
                 ng-model="query"
                 placeholder="Search orders"
@@ -42,15 +41,14 @@
         </form>
       </header>
       <aside
-        class="alert"
         variant="warning"
         aria-live="polite"
         ng-if="state.stale && !state.loading && !state.error"
+        role="alert"
       >
         <h3>Showing cached orders</h3>
         <p>The latest refresh did not complete. Values may be out of date.</p>
         <button
-          class="button"
           size="xs"
           variant="ghost"
           type="button"
@@ -60,15 +58,14 @@
         </button>
       </aside>
       <aside
-        class="alert"
         variant="destructive"
         aria-live="assertive"
         ng-if="state.error"
+        role="alert"
       >
         <h3>Orders could not be loaded</h3>
         <p>The service returned an error. Existing filters are preserved.</p>
         <button
-          class="button"
           size="xs"
           variant="outline"
           type="button"
@@ -84,11 +81,8 @@
           >
           selected
         </output>
-        <button class="button" size="sm" variant="outline" type="button">
-          Export
-        </button>
+        <button size="sm" variant="outline" type="button">Export</button>
         <button
-          class="button"
           size="sm"
           type="button"
           ng-disabled="!state.canArchive"
@@ -103,7 +97,7 @@
           <h3>Loading orders</h3>
           <p>Current filters and selection will be preserved.</p>
         </section>
-        <table class="table" ng-if="!state.loading && !state.error">
+        <table ng-if="!state.loading && !state.error">
           <caption>
             Orders currently available to your account.
           </caption>
@@ -111,7 +105,6 @@
             <tr>
               <th scope="col">
                 <input
-                  class="checkbox"
                   type="checkbox"
                   aria-label="Select all orders"
                   ng-model="state.selectAll"
@@ -120,7 +113,6 @@
               </th>
               <th scope="col">
                 <button
-                  class="button"
                   variant="ghost"
                   ng-click="order=order==='id' ? '-id' : 'id'"
                 >
@@ -129,7 +121,6 @@
               </th>
               <th scope="col">
                 <button
-                  class="button"
                   variant="ghost"
                   ng-click="order=order==='customer' ? '-customer' : 'customer'"
                 >
@@ -147,7 +138,6 @@
             >
               <td>
                 <input
-                  class="checkbox"
                   type="checkbox"
                   aria-label="Select {{ row.id }}"
                   ng-model="row.selected"

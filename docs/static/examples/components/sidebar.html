@@ -16,9 +16,8 @@
     ng-init="sidebarOpen=true; sidebarQuery=''"
     ng-keydown="($event.ctrlKey || $event.metaKey) && $event.key === 'b' && (sidebarOpen = !sidebarOpen)"
     data-example="sidebar-demo sidebar-controlled"
-    class="sidebar-example-body"
   >
-    <div class="sidebar-demo-shell visual-example">
+    <div class="visual-example">
       <aside
         id="app-sidebar"
         ng-sidebar
@@ -150,7 +149,6 @@
             aria-controls="app-sidebar"
             aria-keyshortcuts="Control+B Meta+B"
             ng-click="sidebarOpen=!sidebarOpen"
-            class="button"
           >
             <svg
               viewBox="0 0 24 24"

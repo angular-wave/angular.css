@@ -1,6 +1,6 @@
 ---
 title: description-list
-category: 'data display'
+category: "data display"
 description: >
   Semantic record details
 ---
@@ -25,11 +25,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `dl.description-list`
+- `dl:has(> div > dt):has(> div > dd)`
 
 ### Semantic structure
 
-Apply `.description-list` to a native `dl`. Wrap each related `dt` and `dd` pair in a direct `div` so rows adapt without extra part classes.
+Use a native `dl` and wrap each related `dt` and `dd` group in a direct `div` so rows adapt without any component or part classes.
 
 ## API
 
@@ -37,7 +37,7 @@ Apply `.description-list` to a native `dl`. Wrap each related `dt` and `dd` pair
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `orientation` | Authored | Layout direction: `horizontal` or `vertical`. |
+| `orientation` | Authored | Row layout: `horizontal` or `vertical`; omit to become vertical on narrow viewports. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

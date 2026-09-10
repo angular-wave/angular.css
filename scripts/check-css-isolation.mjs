@@ -3,21 +3,34 @@ import { readFileSync } from "node:fs";
 import selectorParser from "postcss-selector-parser";
 
 const cssFiles = ["dist/angular.css"];
-const reviewedNativeStyles = new Set(["select"]);
+const reviewedNativeStyles = new Set([
+  "button",
+  "hr",
+  "input",
+  "kbd",
+  "progress",
+  "select",
+  "table",
+  "textarea",
+]);
 const guardedElements = new Set([
   "audio",
   "body",
   "button",
   "canvas",
   "html",
+  "hr",
   "iframe",
   "img",
   "input",
+  "kbd",
   "menu",
   "object",
   "ol",
+  "progress",
   "select",
   "svg",
+  "table",
   "textarea",
   "ul",
   "video",
@@ -49,7 +62,10 @@ for (const file of cssFiles) {
           : selector.nodes.findIndex((node) => node.type === "combinator"),
       );
       const optedIn = compound.some(
-        (node) => node.type === "class" || node.type === "attribute",
+        (node) =>
+          node.type === "class" ||
+          node.type === "attribute" ||
+          (node.type === "pseudo" && node.value === ":has"),
       );
       if (!optedIn) {
         failures.push(`${file}: broad element selector "${selector}"`);

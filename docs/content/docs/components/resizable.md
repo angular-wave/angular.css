@@ -1,6 +1,6 @@
 ---
 title: resizable
-category: 'layout'
+category: "layout"
 description: >
   Pointer- and keyboard-resizable split panels powered by `--panel-size` CSS
   variables.
@@ -60,15 +60,15 @@ Alternate direct `.resizable-panel` and `.resizable-handle` children inside each
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-controls` | Output | ARIA relationship or state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-disabled` | Input | Semantic disabled state. |
-| `aria-orientation` | Input/output | ARIA relationship or state. |
-| `aria-valuemax` | Output | ARIA relationship or state. |
-| `aria-valuemin` | Output | ARIA relationship or state. |
-| `aria-valuenow` | Output | ARIA relationship or state. |
+| `aria-orientation` | Input/output | Interaction axis exposed to assistive technology. |
+| `aria-valuemax` | Output | Maximum value exposed by an adjustable control. |
+| `aria-valuemin` | Output | Minimum value exposed by an adjustable control. |
+| `aria-valuenow` | Output | Current value exposed by an adjustable control. |
 | `data-max-size` | Input | Largest panel flex size allowed during resizing. |
 | `data-min-size` | Input | Smallest panel flex size allowed during resizing. |
-| `data-resizing` | Output | Stable component state or styling hook. |
+| `data-resizing` | Output | Present while a pointer resize operation is active. |
 | `data-step` | Input | Panel flex-size increment used by keyboard resizing. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `orientation` | Input/output | Resize axis: `horizontal` or `vertical`. |

@@ -18,17 +18,17 @@
   >
     <main class="alert-dialog-workflows">
       <div class="alert-dialog-trigger-grid" aria-label="Alert dialog examples">
-        <section id="share-project-dialog" class="alert-dialog">
+        <section id="share-project-dialog">
           <button
             type="button"
             variant="outline"
-            class="button"
             commandfor="share-project-dialog-content"
             command="show-modal"
           >
             Share Project
           </button>
           <dialog
+            role="alertdialog"
             size="default"
             id="share-project-dialog-content"
             closedby="closerequest"
@@ -62,7 +62,6 @@
               <button
                 type="button"
                 variant="outline"
-                class="button"
                 commandfor="share-project-dialog-content"
                 command="close"
               >
@@ -70,7 +69,6 @@
               </button>
               <button
                 type="button"
-                class="button"
                 commandfor="share-project-dialog-content"
                 command="close"
               >
@@ -80,17 +78,17 @@
           </dialog>
         </section>
 
-        <section id="accessory-dialog" class="alert-dialog">
+        <section id="accessory-dialog">
           <button
             type="button"
             variant="outline"
-            class="button"
             commandfor="accessory-dialog-content"
             command="show-modal"
           >
             Show Small Dialog
           </button>
           <dialog
+            role="alertdialog"
             size="sm"
             id="accessory-dialog-content"
             closedby="closerequest"
@@ -108,7 +106,6 @@
               <button
                 type="button"
                 variant="outline"
-                class="button"
                 commandfor="accessory-dialog-content"
                 command="close"
               >
@@ -116,7 +113,6 @@
               </button>
               <button
                 type="button"
-                class="button"
                 commandfor="accessory-dialog-content"
                 command="close"
               >
@@ -126,17 +122,17 @@
           </dialog>
         </section>
 
-        <section id="accessory-media-dialog" class="alert-dialog">
+        <section id="accessory-media-dialog">
           <button
             type="button"
             variant="outline"
-            class="button"
             commandfor="accessory-media-dialog-content"
             command="show-modal"
           >
             Show Small Dialog With Media
           </button>
           <dialog
+            role="alertdialog"
             size="sm"
             id="accessory-media-dialog-content"
             closedby="closerequest"
@@ -167,7 +163,6 @@
               <button
                 type="button"
                 variant="outline"
-                class="button"
                 commandfor="accessory-media-dialog-content"
                 command="close"
               >
@@ -175,7 +170,6 @@
               </button>
               <button
                 type="button"
-                class="button"
                 commandfor="accessory-media-dialog-content"
                 command="close"
               >
@@ -185,17 +179,17 @@
           </dialog>
         </section>
 
-        <section id="delete-chat-dialog" class="alert-dialog">
+        <section id="delete-chat-dialog">
           <button
             type="button"
             variant="destructive"
-            class="button"
             commandfor="delete-chat-dialog-content"
             command="show-modal"
           >
             Delete Chat
           </button>
           <dialog
+            role="alertdialog"
             size="sm"
             id="delete-chat-dialog-content"
             closedby="closerequest"
@@ -224,7 +218,6 @@
               <button
                 type="button"
                 variant="outline"
-                class="button"
                 commandfor="delete-chat-dialog-content"
                 command="close"
               >
@@ -234,7 +227,6 @@
                 type="button"
                 variant="destructive"
                 ng-click="chatDeleted=true"
-                class="button"
                 commandfor="delete-chat-dialog-content"
                 command="close"
               >
@@ -245,17 +237,17 @@
         </section>
 
         <div class="alert-dialog-rtl-triggers" dir="rtl" lang="ar">
-          <section id="rtl-confirmation-dialog" class="alert-dialog">
+          <section id="rtl-confirmation-dialog">
             <button
               type="button"
               variant="outline"
-              class="button"
               commandfor="rtl-confirmation-dialog-content"
               command="show-modal"
             >
               إظهار الحوار
             </button>
             <dialog
+              role="alertdialog"
               size="default"
               id="rtl-confirmation-dialog-content"
               closedby="closerequest"
@@ -273,7 +265,6 @@
                 <button
                   type="button"
                   variant="outline"
-                  class="button"
                   commandfor="rtl-confirmation-dialog-content"
                   command="close"
                 >
@@ -281,7 +272,6 @@
                 </button>
                 <button
                   type="button"
-                  class="button"
                   commandfor="rtl-confirmation-dialog-content"
                   command="close"
                 >
@@ -291,17 +281,17 @@
             </dialog>
           </section>
 
-          <section id="rtl-accessory-dialog" class="alert-dialog">
+          <section id="rtl-accessory-dialog">
             <button
               type="button"
               variant="outline"
-              class="button"
               commandfor="rtl-accessory-dialog-content"
               command="show-modal"
             >
               إظهار الحوار (صغير)
             </button>
             <dialog
+              role="alertdialog"
               size="sm"
               id="rtl-accessory-dialog-content"
               closedby="closerequest"
@@ -329,7 +319,6 @@
                 <button
                   type="button"
                   variant="outline"
-                  class="button"
                   commandfor="rtl-accessory-dialog-content"
                   command="close"
                 >
@@ -337,7 +326,6 @@
                 </button>
                 <button
                   type="button"
-                  class="button"
                   commandfor="rtl-accessory-dialog-content"
                   command="close"
                 >

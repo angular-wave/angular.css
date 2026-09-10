@@ -15,18 +15,17 @@
     ng-app="datePickerDemo"
     ng-controller="DatePickerDemoController as picker"
     ng-cloak
-    class="date-picker-dropdown-body"
     data-example="data-picker-with-dropdowns"
   >
     <main class="date-picker-dropdown-demo visual-example">
       <div class="date-picker-dropdown-field field">
         <label for="date-picker-with-dropdowns">Date</label>
-        <span id="date-picker-dropdown-popover" class="popover">
+        <span id="date-picker-dropdown-popover">
           <button
             id="date-picker-with-dropdowns"
             type="button"
             variant="outline"
-            class="date-picker-trigger date-picker-trigger-between button"
+            class="date-picker-trigger date-picker-trigger-between"
             popovertarget="popover-date-picker-with-dropdowns-1-content"
           >
             <span
@@ -67,7 +66,6 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Previous dropdown month"
-                  class="button"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -85,7 +83,6 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Next dropdown month"
-                  class="button"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -106,7 +103,6 @@
                 variant="outline"
                 size="sm"
                 ng-click="picker.finishDropdown()"
-                class="button"
               >
                 Done
               </button>

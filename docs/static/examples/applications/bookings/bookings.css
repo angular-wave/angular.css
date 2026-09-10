@@ -222,9 +222,15 @@ button.booking-mobile-menu {
   padding: 9px 24px;
 }
 
-.booking-filterbar :is(.tabs, [ng-tabs]) {
+.booking-filterbar > nav {
   width: auto;
   gap: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- Status tabs override the shared native-button baseline. */
+.booking-filterbar > nav > button {
+  line-height: inherit;
+  white-space: normal;
 }
 
 .booking-result-count {
@@ -250,11 +256,17 @@ button.booking-mobile-menu {
 .booking-row-trigger {
   display: grid;
   width: 100%;
+  min-height: 0;
+  align-items: stretch;
+  justify-content: stretch;
   gap: 14px;
   border: 0;
   background: transparent;
   padding: 20px 28px;
   color: inherit;
+  font: inherit;
+  line-height: inherit;
+  white-space: normal;
   text-align: left;
   cursor: pointer;
 }
@@ -276,7 +288,7 @@ button.booking-mobile-menu {
   color: var(--muted-foreground);
 }
 
-:where(.booking-summary) > span:not(:is(.badge)),
+:where(.booking-summary) > span:not(.badge),
 .booking-meta > span {
   display: inline-flex;
   min-width: 0;
@@ -375,17 +387,17 @@ button.booking-mobile-menu {
   white-space: nowrap;
 }
 
-:is(.badge).booking-status-confirmed {
+.badge[status="Confirmed"] {
   background: var(--green-4);
   color: var(--green-11);
 }
 
-:is(.badge).booking-status-pending {
+.badge[status="Pending"] {
   background: var(--amber-4);
   color: var(--amber-11);
 }
 
-:is(.badge).booking-status-change-requested {
+.badge[status="Change Requested"] {
   background: var(--blue-4);
   color: var(--blue-11);
 }

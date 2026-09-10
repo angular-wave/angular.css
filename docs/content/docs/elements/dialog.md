@@ -1,6 +1,6 @@
 ---
 title: dialog
-category: 'overlay'
+category: "overlay"
 description: >
   Modal dialog structure
 ---
@@ -74,7 +74,7 @@ Use `.dialog` as a composition wrapper containing a native invoker button and `d
 | `command` | Authored | Native invoker action such as `show-modal` or `close`. |
 | `commandfor` | Authored | ID of the native dialog controlled by an invoker. |
 | `dir` | Authored | Text and interaction direction: `ltr` or `rtl`. |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
+| `size` | Authored | Dialog width: `wide`; omit for the default width. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

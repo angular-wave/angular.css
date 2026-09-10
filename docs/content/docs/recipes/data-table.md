@@ -1,6 +1,6 @@
 ---
 title: data-table
-category: 'data display'
+category: "data display"
 description: >
   Sortable and filterable semantic table composition
 ---
@@ -11,7 +11,7 @@ local bindings and the backend owns data operations.
 
 ## Example
 
-{{< example src="examples/components/data-table.html" title="Orders data table" height="520" >}}
+{{< example src="examples/components/data-table.html" title="Orders data table" height="520">}}
 
 ## Backend-driven states
 
@@ -47,7 +47,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Semantic structure
 
-Use `.data-table` on a section containing a semantic header, a `figure` with `table.table`, and an optional footer. Compose Filter Bar, Pagination, Checkbox, Button, Badge, Empty, Skeleton, and Progress without data-table part classes.
+Use `.data-table` on a section containing a semantic header, a `figure` with a native `table`, and an optional footer. Compose Filter Bar, Pagination, Checkbox, Button, Badge, Empty, Skeleton, and Progress without data-table part classes.
 
 ## API
 
@@ -55,8 +55,8 @@ Use `.data-table` on a section containing a semantic header, a `figure` with `ta
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-selected` | Authored | Selected item state. |
-| `aria-sort` | Authored | ARIA relationship or state. |
+| `aria-selected` | Authored | Selected row state. |
+| `aria-sort` | Authored | Column sort state: `ascending`, `descending`, `none`, or `other`. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

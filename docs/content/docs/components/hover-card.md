@@ -1,6 +1,6 @@
 ---
 title: hover-card
-category: 'overlay'
+category: "overlay"
 description: >
   Rich hover preview cards
 ---
@@ -55,9 +55,9 @@ A keyboard-focusable trigger and one preview content element are required. Title
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-controls` | Output | ARIA relationship or state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-hidden` | Output | ARIA relationship or state. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
 | `close-delay` | Input | Pointer close delay in milliseconds. |
 | `open` | Input | Initial or controlled open state. |
 | `open-delay` | Input | Pointer open delay in milliseconds. |

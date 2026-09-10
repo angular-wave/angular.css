@@ -16,13 +16,7 @@ Combine field, label, input, description, and AngularTS validation:
 ```html
 <div class="field">
   <label for="email">Email</label>
-  <input
-    id="email"
-    name="email"
-    ng-model="profile.email"
-    required
-    class="input"
-  />
+  <input id="email" name="email" ng-model="profile.email" required />
   <p>Used for account notices.</p>
   <p ng-if="profileForm.email.invalid" class="field-error">
     Enter a valid email.

@@ -130,7 +130,7 @@ test("keyboard and disabled-button wrapper references remain functional", async 
   const saveContent = save.locator("..").locator(":scope > :last-child");
   await save.focus();
   await expect(saveContent).toBeVisible();
-  await expect(saveContent.locator(".kbd")).toHaveText("S");
+  await expect(saveContent.locator("kbd")).toHaveText("S");
   await save.press("Escape");
   await expect(saveContent).toBeHidden();
 

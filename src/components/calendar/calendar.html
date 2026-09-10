@@ -34,10 +34,8 @@
             size="icon"
             variant="ghost"
             aria-label="Previous month"
-            class="button"
           >
             <svg
-              class="icon-sm"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -53,10 +51,8 @@
             size="icon"
             variant="ghost"
             aria-label="Next month"
-            class="button"
           >
             <svg
-              class="icon-sm"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -69,7 +65,9 @@
         </header>
         <div></div>
       </section>
-      <p class="output" aria-live="polite">Selected: {{ selectedDate }}</p>
+      <output class="output" aria-live="polite">
+        Selected: {{ selectedDate }}
+      </output>
     </div>
   </body>
 </html>

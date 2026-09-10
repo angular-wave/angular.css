@@ -6,7 +6,7 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngFileUpload",
   name: "file-upload",
-  selector: ".file-upload",
+  selector: 'section:has(> label > input[type="file"])',
 });
 
 test("file upload retains the native file input contract", async ({ page }) => {

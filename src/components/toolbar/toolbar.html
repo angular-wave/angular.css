@@ -11,23 +11,17 @@
     <script src="/docs/static/js/angular-css.umd.js"></script>
   </head>
   <body ng-app="angular.css" ng-cloak data-example="toolbar-demo">
-    <menu ng-toolbar class="visual-example" aria-label="Document actions">
-      <button class="button" size="icon-sm" variant="ghost" aria-label="Undo">
-        ↶
-      </button>
-      <button
-        class="button"
-        size="icon-sm"
-        variant="ghost"
-        aria-label="Redo"
-        disabled
-      >
-        ↷
-      </button>
-      <hr />
-      <button class="button" size="sm" variant="ghost">Copy</button>
-      <button class="button" size="sm" variant="ghost">Archive</button>
-      <button class="button" size="sm" variant="ghost">Export</button>
-    </menu>
+    <main class="visual-example">
+      <menu ng-toolbar aria-label="Document actions">
+        <button size="icon-sm" variant="ghost" aria-label="Undo">↶</button>
+        <button size="icon-sm" variant="ghost" aria-label="Redo" disabled>
+          ↷
+        </button>
+        <hr />
+        <button size="sm" variant="ghost">Copy</button>
+        <button size="sm" variant="ghost">Archive</button>
+        <button size="sm" variant="ghost">Export</button>
+      </menu>
+    </main>
   </body>
 </html>

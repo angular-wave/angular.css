@@ -16,17 +16,12 @@
     ng-init="mode=false"
     data-example="switch-demo"
   >
-    <div class="switch-demo visual-example">
-      <input
-        id="airplane-mode"
-        type="checkbox"
-        ng-model="mode"
-        class="switch"
-      />
+    <div class="visual-example">
+      <input role="switch" id="airplane-mode" type="checkbox" ng-model="mode" />
       <label for="airplane-mode">Airplane Mode</label>
-      <div class="output visually-hidden" aria-live="polite">
+      <output class="visually-hidden" aria-live="polite">
         Mode enabled: <span ng-bind="mode"></span>
-      </div>
+      </output>
     </div>
   </body>
 </html>

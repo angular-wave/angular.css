@@ -1,6 +1,6 @@
 ---
 title: menubar
-category: 'menu'
+category: "menu"
 description: >
   Keyboard-first top-level navigation with open/close menu behavior.
 ---
@@ -56,11 +56,11 @@ Each top-level section requires one native button trigger and one `menu`. The ro
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `aria-checked` | Input/output | ARIA relationship or state. |
-| `aria-controls` | Output | ARIA relationship or state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-haspopup` | Output | ARIA relationship or state. |
-| `aria-hidden` | Output | ARIA relationship or state. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
+| `aria-haspopup` | Output | Type of popup controlled by the trigger. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `open` | Input | Initial or controlled open state. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |

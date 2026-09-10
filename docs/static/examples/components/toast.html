@@ -15,14 +15,12 @@
     ng-cloak
     ng-init="canonical = { visible: false, status: 'Ready' }"
     data-example="toast-demo"
-    class="toast-example-body"
   >
-    <main class="toast-demo visual-example">
+    <main class="visual-example">
       <button
         type="button"
         variant="outline"
         ng-click="canonical.visible = true; canonical.status = 'Toast shown'"
-        class="button"
       >
         Show Toast
       </button>
@@ -39,7 +37,6 @@
           variant="outline"
           size="sm"
           ng-click="canonical.visible = false; canonical.status = 'Undo selected'"
-          class="button"
         >
           Undo
         </button>

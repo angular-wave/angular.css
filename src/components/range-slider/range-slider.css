@@ -42,11 +42,6 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  width: 100%;
-  height: calc(var(--spacing) * 5);
-  appearance: none;
-  border: 0;
-  background: transparent;
   pointer-events: none;
 }
 
@@ -56,34 +51,21 @@
 }
 
 [ng-range-slider] > input[type="range"]::-webkit-slider-runnable-track {
-  height: calc(var(--spacing) * 1);
   background: transparent;
 }
 
-[ng-range-slider] > input[type="range"]::-moz-range-track {
-  height: calc(var(--spacing) * 1);
+[ng-range-slider] > input[type="range"]::-moz-range-track,
+[ng-range-slider] > input[type="range"]::-moz-range-progress {
   background: transparent;
 }
 
 [ng-range-slider] > input[type="range"]::-webkit-slider-thumb {
-  width: calc(var(--spacing) * 3);
-  height: calc(var(--spacing) * 3);
-  margin-block-start: calc(var(--spacing) * -1);
-  appearance: none;
-  border: var(--border-width-default) solid var(--ring);
-  border-radius: var(--radius-full);
-  background: white;
   pointer-events: auto;
   transition: box-shadow var(--motion-duration-default)
     var(--motion-easing-standard);
 }
 
 [ng-range-slider] > input[type="range"]::-moz-range-thumb {
-  width: calc(var(--spacing) * 3);
-  height: calc(var(--spacing) * 3);
-  border: var(--border-width-default) solid var(--ring);
-  border-radius: var(--radius-full);
-  background: white;
   pointer-events: auto;
   transition: box-shadow var(--motion-duration-default)
     var(--motion-easing-standard);
@@ -125,11 +107,4 @@
   width: auto;
   height: calc(var(--range-end, 0%) - var(--range-start, 0%));
   transform: none;
-}
-
-[ng-range-slider][orientation="vertical"] > input[type="range"] {
-  width: calc(var(--spacing) * 5);
-  height: calc(var(--spacing) * 40);
-  direction: rtl;
-  writing-mode: vertical-lr;
 }

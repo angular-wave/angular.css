@@ -9,10 +9,10 @@ CSS variables and presentation contracts for configuring its functional
 baseline while each application owns its brand and product-specific design.
 
 ```html
-<button class="button" variant="outline">Save changes</button>
+<button variant="outline">Save changes</button>
 
 <label for="email">Email</label>
-<input id="email" class="input" type="email" ng-model="profile.email" />
+<input id="email" type="email" ng-model="profile.email" />
 ```
 
 The button and input are styling-only entries. They do not register AngularCSS

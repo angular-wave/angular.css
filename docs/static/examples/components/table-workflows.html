@@ -22,7 +22,7 @@
         aria-label="Recent invoices"
       >
         <figure>
-          <table class="table">
+          <table>
             <caption>
               A list of your recent invoices.
             </caption>
@@ -58,7 +58,7 @@
         aria-label="Product actions"
       >
         <figure>
-          <table class="table">
+          <table>
             <thead>
               <tr>
                 <th scope="col">Product</th>
@@ -71,13 +71,12 @@
                 <th scope="row">{{ product.name }}</th>
                 <td>{{ product.price }}</td>
                 <td class="text-right">
-                  <div ng-dropdown-menu class="table-action-menu dropdown-menu">
+                  <div ng-dropdown-menu class="table-action-menu">
                     <button
                       variant="ghost"
                       size="icon-xs"
                       type="button"
                       aria-label="Open menu for {{ product.name }}"
-                      class="button"
                     >
                       <svg viewBox="0 0 24 24" aria-hidden="true">
                         <circle cx="5" cy="12" r="1"></circle>
@@ -118,7 +117,7 @@
         lang="ar"
       >
         <figure>
-          <table class="table">
+          <table>
             <caption>
               قائمة بفواتيرك الأخيرة.
             </caption>
@@ -170,13 +169,12 @@
             ng-model="dataState.query"
             placeholder="Filter emails..."
             aria-label="Filter payment emails"
-            class="input"
           />
-          <div ng-dropdown-menu class="dropdown-menu">
-            <button variant="outline" type="button" class="button">
+          <div ng-dropdown-menu>
+            <button variant="outline" type="button">
               Columns <span aria-hidden="true">⌄</span>
             </button>
-            <menu class="data-table-column-menu">
+            <menu>
               <button
                 aria-checked="{{ dataState.showStatus }}"
                 ng-click="dataState.showStatus=!dataState.showStatus"
@@ -199,7 +197,7 @@
           </div>
         </div>
         <figure class="data-table-frame">
-          <table class="table">
+          <table>
             <thead>
               <tr>
                 <th scope="col" class="data-table-select">
@@ -208,7 +206,6 @@
                     ng-model="dataState.all"
                     ng-change="payments[0].selected=dataState.all;payments[1].selected=dataState.all;payments[2].selected=dataState.all;payments[3].selected=dataState.all;payments[4].selected=dataState.all"
                     aria-label="Select all payments"
-                    class="checkbox"
                   />
                 </th>
                 <th scope="col" ng-if="dataState.showStatus">Status</th>
@@ -217,7 +214,6 @@
                     variant="ghost"
                     type="button"
                     ng-click="dataState.order=dataState.order==='email' ? '-email' : 'email'"
-                    class="button"
                   >
                     Email <span aria-hidden="true">↕</span>
                   </button>
@@ -242,7 +238,6 @@
                     ng-model="payment.selected"
                     ng-change="dataState.selected=payment.selected ? 1 : 0"
                     aria-label="Select {{ payment.email }}"
-                    class="checkbox"
                   />
                 </td>
                 <td ng-if="dataState.showStatus" class="capitalize">
@@ -264,7 +259,6 @@
                     type="button"
                     ng-click="tableState.action='Open '+payment.id"
                     aria-label="Open menu for {{ payment.email }}"
-                    class="button"
                   >
                     •••
                   </button>
@@ -279,21 +273,9 @@
         <div class="data-table-footer">
           <p>{{ dataState.selected }} of 5 row(s) selected.</p>
           <div class="row">
-            <button
-              variant="outline"
-              size="sm"
-              type="button"
-              disabled
-              class="button"
-            >
+            <button variant="outline" size="sm" type="button" disabled>
               Previous</button
-            ><button
-              variant="outline"
-              size="sm"
-              type="button"
-              disabled
-              class="button"
-            >
+            ><button variant="outline" size="sm" type="button" disabled>
               Next
             </button>
           </div>
@@ -313,10 +295,9 @@
             ng-model="rtlDataState.query"
             placeholder="تصفية البريد الإلكتروني..."
             aria-label="تصفية البريد الإلكتروني"
-            class="input"
           />
-          <div ng-dropdown-menu class="dropdown-menu">
-            <button variant="outline" type="button" class="button">
+          <div ng-dropdown-menu>
+            <button variant="outline" type="button">
               الأعمدة <span aria-hidden="true">⌄</span>
             </button>
             <menu>
@@ -342,7 +323,7 @@
           </div>
         </div>
         <figure class="data-table-frame">
-          <table class="table">
+          <table>
             <thead>
               <tr>
                 <th scope="col" class="data-table-select">
@@ -350,7 +331,6 @@
                     type="checkbox"
                     ng-model="rtlDataState.all"
                     aria-label="تحديد الكل"
-                    class="checkbox"
                   />
                 </th>
                 <th scope="col" ng-if="rtlDataState.showStatus">الحالة</th>
@@ -359,7 +339,6 @@
                     variant="ghost"
                     type="button"
                     ng-click="rtlDataState.order=rtlDataState.order==='email' ? '-email' : 'email'"
-                    class="button"
                   >
                     البريد الإلكتروني <span aria-hidden="true">↕</span>
                   </button>
@@ -380,7 +359,6 @@
                     type="checkbox"
                     ng-model="payment.selected"
                     aria-label="تحديد {{ payment.email }}"
-                    class="checkbox"
                   />
                 </td>
                 <td ng-if="rtlDataState.showStatus">{{ payment.statusAr }}</td>
@@ -396,7 +374,6 @@
                     size="icon-xs"
                     type="button"
                     aria-label="فتح القائمة"
-                    class="button"
                   >
                     •••
                   </button>
@@ -414,21 +391,9 @@
         <div class="data-table-footer">
           <p>0 من 5 صف(وف) محدد.</p>
           <div class="row">
-            <button
-              variant="outline"
-              size="sm"
-              type="button"
-              disabled
-              class="button"
-            >
+            <button variant="outline" size="sm" type="button" disabled>
               السابق</button
-            ><button
-              variant="outline"
-              size="sm"
-              type="button"
-              disabled
-              class="button"
-            >
+            ><button variant="outline" size="sm" type="button" disabled>
               التالي
             </button>
           </div>

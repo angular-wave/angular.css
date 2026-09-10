@@ -1,6 +1,6 @@
 ---
 title: direction
-category: 'utility'
+category: "utility"
 description: >
   Direction and logical text helpers for mixed-locale interfaces.
 ---
@@ -8,7 +8,7 @@ description: >
 Use the native `dir` attribute and logical CSS properties on semantic blocks.
 
 ```html
-<section dir="rtl" class="direction">
+<section dir="rtl">
   <p align="start">Logical start aligns for right-to-left.</p>
 </section>
 ```
@@ -29,7 +29,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.direction`
+- `[dir]`
 
 ### Semantic structure
 
@@ -41,8 +41,8 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `align` | Authored | Cross-axis alignment: `start`, `center`, or `end`. |
-| `dir` | Authored | Text and interaction direction: `ltr` or `rtl`. |
+| `align` | Authored | Logical text alignment: `start` or `end`. |
+| `dir` | Authored | Native text direction: `ltr`, `rtl`, or `auto`. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

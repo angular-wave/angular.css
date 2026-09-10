@@ -1,6 +1,6 @@
 ---
 title: tooltip
-category: 'overlay'
+category: "overlay"
 description: >
   Contextual hover and focus labels
 ---
@@ -44,8 +44,8 @@ One trigger and one plain-text content element are required. Prefer a native but
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-describedby` | Output | ARIA relationship or state. |
-| `aria-hidden` | Output | ARIA relationship or state. |
+| `aria-describedby` | Output | ID of the element that supplies the accessible description. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
 | `open` | Input | Initial or controlled open state. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |
 | `side` | Input/output | Physical placement: `left`, `top`, `bottom`, or `right`. |

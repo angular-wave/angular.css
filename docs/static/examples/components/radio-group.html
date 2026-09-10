@@ -16,7 +16,7 @@
     ng-init="density='comfortable'"
     data-example="radio-group-demo"
   >
-    <fieldset class="radio-group-demo visual-example radio-group">
+    <fieldset class="visual-example">
       <legend class="visually-hidden">Density</legend>
 
       <div orientation="horizontal" class="field">
@@ -50,9 +50,9 @@
         <label for="density-compact">Compact</label>
       </div>
 
-      <div class="output visually-hidden" aria-live="polite">
+      <output class="visually-hidden" aria-live="polite">
         Selected: <span ng-bind="density"></span>
-      </div>
+      </output>
     </fieldset>
   </body>
 </html>

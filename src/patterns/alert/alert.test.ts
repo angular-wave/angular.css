@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngAlert",
   name: "alert",
-  selector: ".alert",
+  selector: '[role="alert"]',
 });

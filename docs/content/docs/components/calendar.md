@@ -1,6 +1,6 @@
 ---
 title: calendar
-category: 'date input'
+category: "date input"
 description: >
   Calendar date grid structure
 ---
@@ -30,7 +30,7 @@ application state remains responsible for the selected value.
 
 Use `data-week-start="0"` through `"6"` to choose the first weekday and
 `data-show-outside-days="false"` to hide outside dates. Set
-`--calendar-cell-size` from Tailwind or CSS to resize cells. Day cells support
+`--calendar-cell-size` in CSS to resize cells. Day cells support
 arrow keys, Home, End, Page Up, and Page Down. Month changes emit
 `angularcss:calendar-month-change`.
 
@@ -120,30 +120,30 @@ Use native elements for authored structure. Component classes are optional visua
 | `aria-current` | Input/output | Current item or date state. |
 | `aria-disabled` | Output | Semantic disabled state. |
 | `aria-label` | Input/output | Accessible name when visible text is insufficient. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
-| `aria-live` | Output | ARIA relationship or state. |
-| `aria-pressed` | Input/output | ARIA relationship or state. |
-| `data-booked` | Output | Stable component state or styling hook. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
+| `aria-live` | Output | Announcement priority for updates to a live region. |
+| `aria-pressed` | Input/output | Pressed state of a toggle control. |
+| `data-booked` | Output | Whether a generated calendar day is booked. |
 | `data-booked-dates` | Input | Comma-separated ISO dates styled as booked. |
-| `data-calendar-generated` | Input | Stable component state or styling hook. |
+| `data-calendar-generated` | Input | Enables generated month markup inside the authored Calendar shell. |
 | `data-calendar-preset` | Input | Generated calendar preset: `single`, `multiple`, or `range`. |
 | `data-caption-layout` | Input | Caption controls: `label` or `dropdown`. |
-| `data-columns` | Input | Stable component state or styling hook. |
+| `data-columns` | Input | Number of columns used for calendar grid keyboard movement; defaults to `7`. |
 | `data-disabled-after` | Input | Last selectable date as an ISO date. |
 | `data-disabled-before` | Input | First selectable date as an ISO date. |
 | `data-disabled-dates` | Input | Comma-separated ISO dates that cannot be selected. |
 | `data-end-year` | Input | Final year offered by a dropdown caption. |
 | `data-min-nights` | Input | Minimum number of nights accepted by range selection. |
 | `data-month` | Input/output | Displayed month in `YYYY-MM` form. |
-| `data-months` | Output | Stable component state or styling hook. |
+| `data-months` | Output | Number of month grids currently rendered. |
 | `data-number-of-months` | Input | Number of consecutive months to render. |
-| `data-outside` | Input/output | Stable component state or styling hook. |
-| `data-range-end` | Output | Stable component state or styling hook. |
-| `data-range-end-value` | Input/output | Stable component state or styling hook. |
-| `data-range-invalid` | Output | Stable component state or styling hook. |
-| `data-range-middle` | Output | Stable component state or styling hook. |
-| `data-range-start` | Output | Stable component state or styling hook. |
-| `data-range-start-value` | Input/output | Stable component state or styling hook. |
+| `data-outside` | Input/output | Whether a day belongs to an adjacent month. |
+| `data-range-end` | Output | Marks the final day in the selected range. |
+| `data-range-end-value` | Input/output | Selected range end as an ISO date. |
+| `data-range-invalid` | Output | Whether the pending range violates the minimum-night constraint. |
+| `data-range-middle` | Output | Marks a day between the selected range boundaries. |
+| `data-range-start` | Output | Marks the first day in the selected range. |
+| `data-range-start-value` | Input/output | Selected range start as an ISO date. |
 | `data-selection-mode` | Input | Selection behavior: `single`, `multiple`, or `range`. |
 | `data-show-outside-days` | Input | Shows dates from adjacent months when `true`. |
 | `data-show-week-numbers` | Input/output | Shows ISO-style week numbers when `true`. |
@@ -152,8 +152,8 @@ Use native elements for authored structure. Component classes are optional visua
 | `data-values` | Input/output | Comma-separated selected ISO dates for multiple selection. |
 | `data-week-start` | Input | First weekday as an integer from `0` (Sunday) to `6` (Saturday). |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
-| `lang` | Input | Authored option or semantic HTML attribute observed by the directive. |
-| `selected` | Output | Authored option or semantic HTML attribute observed by the directive. |
+| `lang` | Input | Language used for generated labels and localized text. |
+| `selected` | Output | Selected value reflected by the component. |
 | `tabindex` | Input/output | Keyboard focus order for composite descendants. |
 | `value` | Output | Native value or authored component value. |
 

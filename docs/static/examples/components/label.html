@@ -16,21 +16,16 @@
     ng-init="labelTerms=false;labelTermsRtl=false"
     data-example="label-demo label-rtl"
   >
-    <main class="label-workflows visual-example">
+    <main class="visual-example">
       <form class="label-control-contract" aria-label="Label state contract">
         <label for="email">Email</label>
-        <input id="email" placeholder="Email" class="input" />
+        <input id="email" placeholder="Email" />
         <label for="name">Name</label>
-        <input id="name" placeholder="Name" class="input" />
+        <input id="name" placeholder="Name" />
       </form>
 
       <section class="label-checkbox-demo" aria-label="Label checkbox">
-        <input
-          id="label-terms"
-          type="checkbox"
-          ng-model="labelTerms"
-          class="checkbox"
-        />
+        <input id="label-terms" type="checkbox" ng-model="labelTerms" />
         <label for="label-terms">Accept terms and conditions</label>
       </section>
 
@@ -40,12 +35,7 @@
         dir="rtl"
         lang="ar"
       >
-        <input
-          id="label-terms-rtl"
-          type="checkbox"
-          ng-model="labelTermsRtl"
-          class="checkbox"
-        />
+        <input id="label-terms-rtl" type="checkbox" ng-model="labelTermsRtl" />
         <label for="label-terms-rtl">قبول الشروط والأحكام</label>
       </section>
 

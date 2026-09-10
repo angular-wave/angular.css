@@ -1,25 +1,25 @@
 ---
 title: button-group
-category: 'action'
+category: "action"
 description: >
   Layout primitive for visually connected buttons and form controls.
 ---
 
-Use `fieldset.button-group` around related commands or form controls. Set
+Use `fieldset[role="group"]` around related commands or form controls. Set
 `orientation="vertical"` for stacked groups. Use Toggle Group when the controls
 represent one or more selectable values.
 
 ```html
-<fieldset class="button-group">
-  <button class="button">One</button>
-  <hr class="separator" />
-  <button class="button">Two</button>
+<fieldset role="group">
+  <button>One</button>
+  <hr />
+  <button>Two</button>
 </fieldset>
 ```
 
 ## Example
 
-{{< example src="examples/components/button-group.html" title="Button group examples" height="480" >}}
+{{< example src="examples/components/button-group.html" title="Button group examples" height="480">}}
 
 ## Composition Workflows
 
@@ -27,7 +27,7 @@ Button groups can connect nested groups, inputs, input groups, Select, Dropdown,
 and Popover triggers. Each composed component retains its own behavior and
 application state.
 
-{{< example src="examples/components/button-group-workflows.html" title="Button group composition workflows" height="1800" >}}
+{{< example src="examples/components/button-group-workflows.html" title="Button group composition workflows" height="1800">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -41,7 +41,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.button-group`
+- `[role="group"]`
 
 ### Semantic structure
 
@@ -53,8 +53,9 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-orientation` | Authored | ARIA relationship or state. |
-| `orientation` | Authored | Layout direction: `horizontal` or `vertical`. |
+| `aria-orientation` | Authored | Use `vertical` on a direct separator when it divides controls along the inline axis. |
+| `orientation` | Authored | Group layout: `vertical`; omit for the horizontal layout. |
+| `role` | Authored | Explicit semantic role when native HTML does not provide one. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

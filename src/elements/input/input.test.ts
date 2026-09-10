@@ -11,7 +11,7 @@ test("input artifact uses native state and AngularTS models without an AngularCS
     page.locator('script[src$="/js/angular-css.umd.js"]'),
   ).toHaveCount(1);
 
-  const inputs = page.locator("input.input");
+  const inputs = page.locator("input");
   await expect(inputs).toHaveCount(5);
   await expect(page.locator("[ng-input]")).toHaveCount(0);
   await expect(inputs.first()).not.toHaveAttribute("data-empty");
@@ -25,6 +25,7 @@ test("input artifact uses native state and AngularTS models without an AngularCS
   await expect(page.locator(".output")).toHaveText("Value: semantic");
 
   const compact = page.getByLabel("Content-sized");
+  await expect(compact).toHaveAttribute("size", "7");
   await expect(compact).toHaveCSS("field-sizing", "content");
   expect((await compact.boundingBox())!.width).toBeLessThan(
     (await search.boundingBox())!.width,
@@ -65,7 +66,7 @@ test("input workflows preserve native states, compositions, forms, and RTL", asy
   await page.goto("/docs/static/examples/components/input-workflows.html");
 
   await expect(page.locator("[data-example]")).toHaveCount(15);
-  const inputs = page.locator(".visual-example > input.input");
+  const inputs = page.locator(".visual-example > input");
   expect(
     await inputs.evaluateAll((elements) =>
       elements.map((element) => element.getBoundingClientRect().height),

@@ -11,31 +11,28 @@
     <script src="/docs/static/js/angular-css.umd.js"></script>
   </head>
   <body ng-app="angular.css" ng-cloak data-example="filter-bar-demo">
-    <form class="filter-bar visual-example" aria-label="Filter orders">
-      <fieldset>
-        <legend class="visually-hidden">Order filters</legend>
-        <label>
-          Search
-          <input
-            class="input"
-            type="search"
-            name="query"
-            placeholder="Order or customer"
-          />
-        </label>
-        <label>
-          Status
-          <select name="status">
-            <option value="">All statuses</option>
-            <option>Open</option>
-            <option>Complete</option>
-          </select>
-        </label>
-      </fieldset>
-      <menu>
-        <button class="button" variant="outline" type="reset">Reset</button>
-        <button class="button" type="submit">Apply</button>
-      </menu>
-    </form>
+    <main class="visual-example">
+      <form role="search" aria-label="Filter orders">
+        <fieldset>
+          <legend class="visually-hidden">Order filters</legend>
+          <label>
+            Search
+            <input type="search" name="query" placeholder="Order or customer" />
+          </label>
+          <label>
+            Status
+            <select name="status">
+              <option value="">All statuses</option>
+              <option>Open</option>
+              <option>Complete</option>
+            </select>
+          </label>
+        </fieldset>
+        <menu>
+          <button variant="outline" type="reset">Reset</button>
+          <button type="submit">Apply</button>
+        </menu>
+      </form>
+    </main>
   </body>
 </html>

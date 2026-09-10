@@ -84,7 +84,9 @@ test("AngularTS filtering, empty state, and keyboard selection remain functional
   await input.press("ArrowDown");
   await input.press("Enter");
   await expect(input).toHaveValue("SvelteKit");
-  await expect(page.locator(".output")).toContainText("Basic: SvelteKit");
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
+    "Basic: SvelteKit",
+  );
   await expect(content).toBeHidden();
 
   await input.fill("no-match");
@@ -147,7 +149,9 @@ test("clear, disabled, and invalid references mirror native and AngularTS state"
   await expect(clear.getByRole("combobox")).toHaveValue("Next.js");
   await clear.getByRole("button", { name: "Clear selection" }).click();
   await expect(clear.getByRole("combobox")).toHaveValue("");
-  await expect(page.locator(".output")).toContainText("Clear: none");
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
+    "Clear: none",
+  );
 
   const disabled = page.locator("#disabled-combobox");
   await expect(disabled.getByRole("combobox")).toBeDisabled();
@@ -256,7 +260,9 @@ test("custom and RTL references retain authored option content and logical multi
   const japan = custom.getByRole("option", { name: /Japan/ });
   await expect(custom.getByText("Asia (jp)", { exact: true })).toBeVisible();
   await japan.click();
-  await expect(page.locator(".output")).toContainText("Country: Japan");
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
+    "Country: Japan",
+  );
 
   const rtl = page.locator("#rtl-combobox");
   await expect(rtl).toHaveCSS("direction", "rtl");

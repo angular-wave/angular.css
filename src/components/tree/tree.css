@@ -1,6 +1,6 @@
-@scope ([ng-tree]) to ([ng-tree]) {
+@scope ([role="tree"]) to ([role="tree"]) {
   :scope,
-  :scope :is(ul, ol) {
+  :scope [role="group"] {
     display: grid;
     gap: calc(var(--spacing) * 0.5);
     margin: 0;
@@ -8,18 +8,18 @@
     list-style: none;
   }
 
-  :scope :is(ul, ol) {
+  :scope [role="group"] {
     margin-inline-start: calc(var(--spacing) * 5);
   }
 
-  li {
+  [role="treeitem"] {
     min-width: 0;
     border-radius: var(--radius-md);
     color: var(--foreground);
     outline: none;
   }
 
-  li > span {
+  [role="treeitem"] > span {
     display: flex;
     min-height: var(--size-control-sm);
     align-items: center;
@@ -30,7 +30,7 @@
     cursor: default;
   }
 
-  li:has(> :is(ul, ol)) > span::before {
+  [role="treeitem"]:has(> [role="group"]) > span::before {
     content: "";
     width: calc(var(--spacing) * 1.5);
     height: calc(var(--spacing) * 1.5);
@@ -42,39 +42,39 @@
       var(--motion-easing-standard);
   }
 
-  li[aria-expanded="false"] > span::before {
+  [role="treeitem"][aria-expanded="false"] > span::before {
     transform: rotate(-45deg);
   }
 
-  :scope:dir(rtl) li[aria-expanded="false"] > span::before {
+  :scope:dir(rtl) [role="treeitem"][aria-expanded="false"] > span::before {
     transform: rotate(135deg);
   }
 
-  li[aria-expanded="false"] > :is(ul, ol) {
+  [role="treeitem"][aria-expanded="false"] > [role="group"] {
     display: none;
   }
 
-  li:is(:hover, [aria-selected="true"]) > span {
+  [role="treeitem"]:is(:hover, [aria-selected="true"]) > span {
     background: var(--accent);
     color: var(--accent-foreground);
   }
 
-  li:focus-visible > span {
+  [role="treeitem"]:focus-visible > span {
     box-shadow: 0 0 0 var(--focus-ring-width) var(--ring);
   }
 
-  li[aria-disabled="true"] > span {
+  [role="treeitem"][aria-disabled="true"] > span {
     opacity: 0.5;
   }
 
-  li > span > small {
+  [role="treeitem"] > span > small {
     margin-inline-start: auto;
     color: var(--muted-foreground);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [ng-tree] li > span::before {
+  [role="tree"] [role="treeitem"] > span::before {
     transition-duration: var(--motion-duration-instant);
   }
 }

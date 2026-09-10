@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngAspectRatio",
   name: "aspect-ratio",
-  selector: ".aspect-ratio",
+  selector: "figure[ratio]",
 });

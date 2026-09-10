@@ -11,12 +11,12 @@
     <script src="../../js/angular-css.umd.js"></script>
   </head>
   <body ng-app="angular.css" ng-cloak data-example="card-demo">
-    <article class="example-card visual-example card">
+    <article class="visual-example card">
       <header>
         <h2>Login to your account</h2>
         <p>Enter your email below to login to your account</p>
         <menu>
-          <button variant="link" type="button" class="button">Sign Up</button>
+          <button variant="link" type="button">Sign Up</button>
         </menu>
       </header>
       <section>
@@ -28,7 +28,6 @@
               type="email"
               placeholder="m@example.com"
               required
-              class="input"
             />
           </div>
           <div class="card-field">
@@ -36,15 +35,13 @@
               <label for="card-password">Password</label>
               <a href="#forgot-password">Forgot your password?</a>
             </div>
-            <input id="card-password" type="password" required class="input" />
+            <input id="card-password" type="password" required />
           </div>
         </form>
       </section>
       <footer class="card-footer-stacked">
-        <button type="submit" form="login-form" class="button">Login</button>
-        <button variant="outline" type="button" class="button">
-          Login with Google
-        </button>
+        <button type="submit" form="login-form">Login</button>
+        <button variant="outline" type="button">Login with Google</button>
       </footer>
     </article>
   </body>

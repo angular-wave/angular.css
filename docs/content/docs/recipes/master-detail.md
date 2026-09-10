@@ -1,6 +1,6 @@
 ---
 title: master-detail
-category: 'layout'
+category: "layout"
 description: >
   Resizable record list and detail workspace
 ---
@@ -36,7 +36,7 @@ Apply `.master-detail` and `ng-resizable-panel-group` to the same root. Use two 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `orientation` | Authored | Layout direction: `horizontal` or `vertical`. |
+| `orientation` | Authored | Resizable panel axis: `horizontal` or `vertical`; the recipe stacks on narrow viewports. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

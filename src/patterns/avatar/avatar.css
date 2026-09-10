@@ -85,27 +85,6 @@
   background: var(--success);
 }
 
-.avatar-group > output > svg {
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
-}
-
-.avatar-group > output {
-  position: relative;
-  display: inline-flex;
-  width: calc(var(--spacing) * 8);
-  height: calc(var(--spacing) * 8);
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 var(--border-width-strong) var(--background);
-  border-radius: var(--radius-full);
-  background: var(--muted);
-  color: var(--muted-foreground);
-  font-size: var(--text-sm);
-  margin-inline-start: calc(var(--spacing) * -2);
-}
-
 .avatar[size="sm"] > output {
   width: calc(var(--spacing) * 2);
   height: calc(var(--spacing) * 2);
@@ -120,37 +99,60 @@
   height: calc(var(--spacing) * 3);
 }
 
-.avatar-group {
-  display: flex;
-  align-items: center;
-}
+@scope (:is(div, span):has(> .avatar + .avatar):has(> output)) {
+  :scope {
+    display: flex;
+    align-items: center;
+  }
 
-.avatar-group > .avatar {
-  box-shadow: 0 0 0 var(--border-width-strong) var(--background);
-  margin-inline-start: calc(var(--spacing) * -2);
-}
+  :scope > .avatar {
+    box-shadow: 0 0 0 var(--border-width-strong) var(--background);
+    margin-inline-start: calc(var(--spacing) * -2);
+  }
 
-.avatar-group > :first-child {
-  margin-inline-start: 0;
-}
+  :scope > :first-child {
+    margin-inline-start: 0;
+  }
 
-.avatar-group:has(> .avatar[size="sm"]) > output {
-  width: calc(var(--spacing) * 6);
-  height: calc(var(--spacing) * 6);
-  font-size: var(--text-xs);
-}
+  :scope > output {
+    position: relative;
+    display: inline-flex;
+    width: calc(var(--spacing) * 8);
+    height: calc(var(--spacing) * 8);
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 var(--border-width-strong) var(--background);
+    border-radius: var(--radius-full);
+    background: var(--muted);
+    color: var(--muted-foreground);
+    font-size: var(--text-sm);
+    margin-inline-start: calc(var(--spacing) * -2);
+  }
 
-.avatar-group:has(> .avatar[size="sm"]) > output > svg {
-  width: calc(var(--spacing) * 3);
-  height: calc(var(--spacing) * 3);
-}
+  :scope > output > svg {
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+  }
 
-.avatar-group:has(> .avatar[size="lg"]) > output {
-  width: calc(var(--spacing) * 10);
-  height: calc(var(--spacing) * 10);
-}
+  :scope:has(> .avatar[size="sm"]) > output {
+    width: calc(var(--spacing) * 6);
+    height: calc(var(--spacing) * 6);
+    font-size: var(--text-xs);
+  }
 
-.avatar-group:has(> .avatar[size="lg"]) > output > svg {
-  width: calc(var(--spacing) * 5);
-  height: calc(var(--spacing) * 5);
+  :scope:has(> .avatar[size="sm"]) > output > svg {
+    width: calc(var(--spacing) * 3);
+    height: calc(var(--spacing) * 3);
+  }
+
+  :scope:has(> .avatar[size="lg"]) > output {
+    width: calc(var(--spacing) * 10);
+    height: calc(var(--spacing) * 10);
+  }
+
+  :scope:has(> .avatar[size="lg"]) > output > svg {
+    width: calc(var(--spacing) * 5);
+    height: calc(var(--spacing) * 5);
+  }
 }

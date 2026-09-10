@@ -1,12 +1,17 @@
 .dialog,
 .drawer,
 .sheet,
-.alert-dialog {
+section:has(> dialog[role="alertdialog"]) {
   display: contents;
 }
 
-:is(.alert-dialog, .dialog, .drawer, .sheet) > dialog::backdrop {
-  background: color-mix(in srgb, black 10%, transparent);
+:is(
+  dialog[role="alertdialog"],
+  .dialog > dialog,
+  .drawer > dialog,
+  .sheet > dialog
+)::backdrop {
+  background: var(--overlay);
   backdrop-filter: blur(4px);
   opacity: 0;
   transition:
@@ -15,7 +20,12 @@
     opacity var(--motion-duration-default) var(--motion-easing-standard);
 }
 
-:is(.alert-dialog, .dialog, .drawer, .sheet) > dialog:open::backdrop {
+:is(
+    dialog[role="alertdialog"],
+    .dialog > dialog,
+    .drawer > dialog,
+    .sheet > dialog
+  ):open::backdrop {
   opacity: 1;
 
   @starting-style {
@@ -23,7 +33,12 @@
   }
 }
 
-:is(.alert-dialog, .dialog, .drawer, .sheet) > dialog {
+:is(
+  dialog[role="alertdialog"],
+  .dialog > dialog,
+  .drawer > dialog,
+  .sheet > dialog
+) {
   --modal-enter-x: 0;
   --modal-enter-y: calc(var(--spacing) * 1);
 
@@ -44,7 +59,7 @@
   background: var(--popover);
   color: var(--popover-foreground);
   font-size: var(--text-sm);
-  line-height: 1.4;
+  line-height: var(--leading-sm);
 }
 
 :is(.drawer, .sheet) > dialog {
@@ -58,11 +73,21 @@
   max-width: 24rem;
 }
 
-:is(.alert-dialog, .dialog, .drawer, .sheet) > dialog:not(:open) {
+:is(
+  dialog[role="alertdialog"],
+  .dialog > dialog,
+  .drawer > dialog,
+  .sheet > dialog
+):not(:open) {
   display: none;
 }
 
-:is(.alert-dialog, .dialog, .drawer, .sheet) > dialog:open {
+:is(
+  dialog[role="alertdialog"],
+  .dialog > dialog,
+  .drawer > dialog,
+  .sheet > dialog
+):open {
   opacity: 1;
   translate: 0 0;
 
@@ -92,14 +117,14 @@
   color: var(--foreground);
   font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
-  line-height: 1.2;
+  line-height: var(--leading-tight);
 }
 
 :is(.dialog, .drawer, .sheet) > dialog header > p {
   margin: 0;
   color: var(--muted-foreground);
   font-size: var(--text-sm);
-  line-height: 1.4;
+  line-height: var(--leading-sm);
 }
 
 :is(.dialog, .drawer, .sheet) > dialog > section,
@@ -116,8 +141,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.alert-dialog, .dialog, .drawer, .sheet) > dialog,
-  :is(.alert-dialog, .dialog, .drawer, .sheet) > dialog::backdrop {
+  :is(
+    dialog[role="alertdialog"],
+    .dialog > dialog,
+    .drawer > dialog,
+    .sheet > dialog
+  ),
+  :is(
+    dialog[role="alertdialog"],
+    .dialog > dialog,
+    .drawer > dialog,
+    .sheet > dialog
+  )::backdrop {
     transition: none;
   }
 }

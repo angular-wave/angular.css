@@ -10,8 +10,8 @@
   inset-block: auto 0;
   max-height: 80dvh;
   border-block-start: var(--border-width-default) solid var(--border);
-  border-start-start-radius: calc(var(--radius) + 2px);
-  border-start-end-radius: calc(var(--radius) + 2px);
+  border-start-start-radius: var(--radius-lg);
+  border-start-end-radius: var(--radius-lg);
 }
 
 .drawer > dialog[side="top"] {
@@ -21,8 +21,8 @@
   inset-block: 0 auto;
   max-height: 80dvh;
   border-block-end: var(--border-width-default) solid var(--border);
-  border-end-start-radius: calc(var(--radius) + 2px);
-  border-end-end-radius: calc(var(--radius) + 2px);
+  border-end-start-radius: var(--radius-lg);
+  border-end-end-radius: var(--radius-lg);
 }
 
 .drawer > dialog[side="left"] {
@@ -33,8 +33,8 @@
   right: auto;
   left: 0;
   border-inline-end: var(--border-width-default) solid var(--border);
-  border-start-end-radius: calc(var(--radius) + 2px);
-  border-end-end-radius: calc(var(--radius) + 2px);
+  border-start-end-radius: var(--radius-lg);
+  border-end-end-radius: var(--radius-lg);
 }
 
 .drawer > dialog[side="right"] {
@@ -45,8 +45,8 @@
   right: 0;
   left: auto;
   border-inline-start: var(--border-width-default) solid var(--border);
-  border-start-start-radius: calc(var(--radius) + 2px);
-  border-end-start-radius: calc(var(--radius) + 2px);
+  border-start-start-radius: var(--radius-lg);
+  border-end-start-radius: var(--radius-lg);
 }
 
 .drawer > dialog[size="half"] {

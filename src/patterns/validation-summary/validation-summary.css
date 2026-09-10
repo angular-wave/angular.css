@@ -1,4 +1,4 @@
-@scope (.validation-summary) to (.validation-summary) {
+@scope (aside[role="alert"]:has(> header + ul)) to (aside[role="alert"]) {
   :scope {
     display: grid;
     gap: calc(var(--spacing) * 2);

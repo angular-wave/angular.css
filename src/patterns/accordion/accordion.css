@@ -1,120 +1,97 @@
-.accordion {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
-
-.accordion > details:not(:last-child) {
-  border-block-end: var(--border-width-default) solid var(--border);
-}
-
-.accordion summary {
-  position: relative;
-  display: flex;
-  width: 100%;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: calc(var(--spacing) * 4);
-  border: var(--border-width-default) solid transparent;
-  border-radius: var(--radius-md);
-  padding-block: calc(var(--spacing) * 4);
-  background: transparent;
-  color: inherit;
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--leading-tight);
-  list-style: none;
-  text-align: start;
-  cursor: pointer;
-  outline: none;
-  transition:
-    border-color var(--motion-duration-default) var(--motion-easing-standard),
-    box-shadow var(--motion-duration-default) var(--motion-easing-standard),
-    color var(--motion-duration-default) var(--motion-easing-standard);
-}
-
-.accordion summary::-webkit-details-marker {
-  display: none;
-}
-
-.accordion summary::after {
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
-  flex: 0 0 auto;
-  border-inline-end: 1.5px solid currentcolor;
-  border-block-end: 1.5px solid currentcolor;
-  margin-inline-start: auto;
-  color: var(--muted-foreground);
-  content: "";
-  pointer-events: none;
-  transform: translateY(1px) rotate(45deg) scale(0.55);
-  transition:
-    transform var(--motion-duration-layout) var(--motion-easing-standard),
-    translate var(--motion-duration-fast) var(--motion-easing-out);
-}
-
-.accordion summary:active::after {
-  translate: 0 1px;
-}
-
-.accordion summary:hover {
-  text-decoration-line: underline;
-  text-underline-offset: var(--spacing);
-}
-
-.accordion summary:focus-visible {
-  border-color: var(--ring);
-  box-shadow: 0 0 0 var(--focus-ring-width)
-    color-mix(in srgb, var(--ring) 50%, transparent);
-}
-
-.accordion details:open > summary::after {
-  transform: translateY(4px) rotate(225deg) scale(0.55);
-}
-
-.accordion details[inert] > summary {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.accordion > details > :not(summary) {
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  padding-block-end: calc(var(--spacing) * 4);
-  color: var(--foreground);
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  text-wrap: balance;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @supports selector(details::details-content) {
-    .accordion > details::details-content {
-      block-size: 0;
-      overflow: clip;
-      opacity: 0;
-      transition:
-        block-size var(--motion-duration-deliberate) var(--motion-easing-out),
-        content-visibility var(--motion-duration-deliberate) allow-discrete,
-        opacity var(--motion-duration-default) var(--motion-easing-out);
-    }
-
-    .accordion > details:open::details-content {
-      block-size: auto;
-      opacity: 1;
-    }
-
-    @supports (interpolate-size: allow-keywords) {
-      .accordion > details {
-        interpolate-size: allow-keywords;
-      }
-    }
+@scope (section[aria-label]:has(> details)) to (section[aria-label]:has(> details)) {
+  :scope {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .accordion summary::after {
-    transition: none;
+  :scope > details:not(:last-child) {
+    border-block-end: var(--border-width-default) solid var(--border);
+  }
+
+  :scope summary {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: calc(var(--spacing) * 4);
+    border: var(--border-width-default) solid transparent;
+    border-radius: var(--radius-md);
+    padding-block: calc(var(--spacing) * 4);
+    background: transparent;
+    color: inherit;
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-tight);
+    list-style: none;
+    text-align: start;
+    cursor: pointer;
+    outline: none;
+    transition:
+      border-color var(--motion-duration-default) var(--motion-easing-standard),
+      box-shadow var(--motion-duration-default) var(--motion-easing-standard),
+      color var(--motion-duration-default) var(--motion-easing-standard);
+  }
+
+  :scope summary::-webkit-details-marker {
+    display: none;
+  }
+
+  :scope summary::after {
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+    flex: 0 0 auto;
+    border-inline-end: 1.5px solid currentcolor;
+    border-block-end: 1.5px solid currentcolor;
+    margin-inline-start: auto;
+    color: var(--muted-foreground);
+    content: "";
+    pointer-events: none;
+    transform: translateY(1px) rotate(45deg) scale(0.55);
+    transition:
+      transform var(--motion-duration-layout) var(--motion-easing-standard),
+      translate var(--motion-duration-fast) var(--motion-easing-out);
+  }
+
+  :scope summary:active::after {
+    translate: 0 1px;
+  }
+
+  :scope summary:hover {
+    text-decoration-line: underline;
+    text-underline-offset: var(--spacing);
+  }
+
+  :scope summary:focus-visible {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 var(--focus-ring-width)
+      color-mix(in srgb, var(--ring) 50%, transparent);
+  }
+
+  :scope details:open > summary::after {
+    transform: translateY(4px) rotate(225deg) scale(0.55);
+  }
+
+  :scope details[inert] > summary {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  :scope > details > :not(summary) {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    padding-block-end: calc(var(--spacing) * 4);
+    color: var(--foreground);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :scope summary::after {
+      transition: none;
+    }
   }
 }

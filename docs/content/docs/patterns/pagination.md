@@ -1,6 +1,6 @@
 ---
 title: pagination
-category: 'navigation'
+category: "navigation"
 description: >
   Page navigation links
 ---
@@ -45,7 +45,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Semantic structure
 
-Use a native `nav` containing a `ul` or `ol` with direct `li` children. Page, previous, and next controls remain native links. Ellipsis is optional. Compose rows-per-page controls beside Pagination with existing native form components; Pagination does not own that model.
+Apply `.pagination` to a native `nav` containing a `ul` or `ol` with direct `li` children. The class distinguishes Pagination from other navigation landmarks; page, previous, and next controls remain native links. Ellipsis is optional. Compose rows-per-page controls beside Pagination with existing native form components; Pagination does not own that model.
 
 ## API
 
@@ -56,6 +56,7 @@ Use a native `nav` containing a `ul` or `ol` with direct `li` children. Page, pr
 | `aria-current` | Authored | Current item or date state. |
 | `aria-disabled` | Authored | Semantic disabled state. |
 | `dir` | Authored | Text and interaction direction: `ltr` or `rtl`. |
+| `rel` | Authored | Use the `prev` or `next` link type for directional pagination controls. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

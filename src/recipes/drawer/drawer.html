@@ -16,13 +16,12 @@
     ng-init="goal=350; submittedGoal=350"
     data-example="drawer-demo"
   >
-    <main class="drawer-demo visual-example">
+    <main class="visual-example">
       <section id="goal-drawer" class="drawer">
         <button
           commandfor="goal-drawer-content"
           command="show-modal"
           variant="outline"
-          class="button"
         >
           Open Drawer
         </button>
@@ -46,7 +45,6 @@
                   aria-label="Decrease"
                   ng-disabled="goal <= 200"
                   ng-click="goal=goal-10"
-                  class="button"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -66,9 +64,8 @@
                   variant="outline"
                   size="icon-sm"
                   aria-label="Increase"
-                  ng-disabled="goal >= 400"
+                  ng-disabled="goal>= 400"
                   ng-click="goal=goal+10"
-                  class="button"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -103,7 +100,6 @@
                 commandfor="goal-drawer-content"
                 command="close"
                 ng-click="submittedGoal=goal"
-                class="button"
               >
                 Submit
               </button>
@@ -111,7 +107,6 @@
                 commandfor="goal-drawer-content"
                 command="close"
                 variant="outline"
-                class="button"
               >
                 Cancel
               </button>

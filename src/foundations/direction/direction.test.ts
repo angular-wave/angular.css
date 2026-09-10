@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "foundations",
   directive: "ngDirection",
   name: "direction",
-  selector: ".direction",
+  selector: '[dir="rtl"]',
 });

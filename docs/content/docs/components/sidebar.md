@@ -1,6 +1,6 @@
 ---
 title: sidebar
-category: 'navigation'
+category: "navigation"
 description: >
   Application sidebar layout with collapsible state
 ---
@@ -90,20 +90,17 @@ Place `aside[ng-sidebar]` beside `main` and connect native button triggers with 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-controls` | Output | ARIA relationship or state. |
-| `aria-current` | Output | Current item or date state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
+| `aria-current` | Input | Current item or date state. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-hidden` | Output | ARIA relationship or state. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
 | `collapsed` | Input/output | Current collapsed state. |
 | `collapsible` | Input/output | Collapse behavior: `offcanvas`, `icon`, or `none`. |
-| `data-variant` | Output | Stable component state or styling hook. |
-| `dir` | Output | Text and interaction direction: `ltr` or `rtl`. |
-| `ng-click` | Input | Authored option or semantic HTML attribute observed by the directive. |
+| `inert` | Output | Prevents interaction while the component is hidden. |
 | `responsive` | Input | Collapses an off-canvas sidebar below `48rem` and expands it above that breakpoint. |
 | `role` | Input/output | Explicit semantic role when native HTML does not provide one. |
 | `side` | Input/output | Physical placement: `left` or `right`. |
-| `type` | Input/output | Component or native behavior variant. |
 | `variant` | Input/output | Surface style: `sidebar`, `floating`, or `inset`. |
 
 `Input` attributes are read from authored HTML. `Output` attributes are maintained by AngularCSS for CSS and testing. `Input/output` attributes may be authored for a controlled initial state and are then synchronized by the directive.

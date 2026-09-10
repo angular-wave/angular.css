@@ -1,6 +1,6 @@
 ---
 title: item
-category: 'layout'
+category: "layout"
 description: >
   Flexible list item primitive
 ---
@@ -48,8 +48,8 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `size` | Authored | Item density: `xs` or `sm`; omit for the default size. |
+| `variant` | Authored | Item surface: `outline` or `muted`; direct figures additionally accept `icon` or `image`. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

@@ -1,6 +1,6 @@
 ---
 title: validation-summary
-category: 'form'
+category: "form"
 description: >
   Linked form validation messages
 ---
@@ -10,7 +10,7 @@ several errors. Each message links directly to its native form control.
 
 ## Example
 
-{{< example src="examples/components/validation-summary.html" title="Form validation summary" height="420" >}}
+{{< example src="examples/components/validation-summary.html" title="Form validation summary" height="420">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -24,11 +24,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.validation-summary`
+- `aside[role="alert"]:has(> header + ul)`
 
 ### Semantic structure
 
-Apply `.validation-summary` to a semantic `aside` containing a heading and a list of links to invalid controls. No part classes are required.
+Use `role="alert"` on a semantic `aside` containing a direct header followed by a list of links to invalid controls. No classes or part markers are required.
 
 ## API
 
@@ -36,7 +36,7 @@ Apply `.validation-summary` to a semantic `aside` containing a heading and a lis
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-live` | Authored | ARIA relationship or state. |
+| `role` | Authored | Explicit semantic role when native HTML does not provide one. |
 | `tabindex` | Authored | Keyboard focus order for composite descendants. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.

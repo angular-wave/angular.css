@@ -33,7 +33,7 @@ test("canonical accordion uses native exclusive disclosure", async ({
 }) => {
   await page.goto(canonicalUrl);
   await expectBuiltArtifactRuntime(page);
-  const root = page.locator(".accordion");
+  const root = page.locator("section[aria-label]:has(> details)");
   const items = root.locator(":scope > details");
   const triggers = root.locator(":scope > details > summary");
 
@@ -54,7 +54,7 @@ test("canonical accordion delegates keyboard behavior to summary", async ({
   page,
 }) => {
   await page.goto(canonicalUrl);
-  const root = page.locator(".accordion");
+  const root = page.locator("section[aria-label]:has(> details)");
   const items = root.locator(":scope > details");
   const triggers = root.locator(":scope > details > summary");
 
@@ -74,7 +74,9 @@ test("accordion disclosure motion preserves control size and respects reduced mo
     reducedMotion: "no-preference",
   });
   await animatedPage.goto(canonicalUrl);
-  const item = animatedPage.locator(".accordion > details").nth(1);
+  const item = animatedPage
+    .locator("section[aria-label]:has(> details) > details")
+    .nth(1);
   const trigger = item.locator("summary");
   const triggerBox = await trigger.boundingBox();
   if (!triggerBox) throw new Error("Accordion trigger is not rendered");
@@ -101,7 +103,9 @@ test("accordion disclosure motion preserves control size and respects reduced mo
 
   const reducedPage = await browser.newPage({ reducedMotion: "reduce" });
   await reducedPage.goto(canonicalUrl);
-  const reducedItem = reducedPage.locator(".accordion > details").nth(1);
+  const reducedItem = reducedPage
+    .locator("section[aria-label]:has(> details) > details")
+    .nth(1);
   const reducedDuration = await reducedItem.evaluate(
     (element) =>
       getComputedStyle(element, "::details-content").transitionDuration,
@@ -115,10 +119,10 @@ test("accordion workflow covers independent and inert disclosures", async ({
 }) => {
   await page.goto(statesUrl);
   await expectBuiltArtifactRuntime(page);
-  const multiple = page.locator('.accordion[aria-label="Settings questions"]');
+  const multiple = page.locator('section[aria-label="Settings questions"]');
   const multipleItems = multiple.locator(":scope > details");
   const disabled = page.locator(
-    '.accordion[aria-label="Feature availability questions"] details[inert]',
+    'section[aria-label="Feature availability questions"] details[inert]',
   );
 
   await multipleItems.nth(1).locator("summary").click();

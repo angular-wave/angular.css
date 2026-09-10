@@ -1,11 +1,11 @@
-@scope (figure:has(> table.table)) {
+@scope (figure:has(> table)) {
   :scope {
     container: angularcss-table / inline-size;
     width: 100%;
     overflow-x: auto;
   }
 
-  .table {
+  table {
     width: 100%;
     caption-side: bottom;
     border-collapse: collapse;

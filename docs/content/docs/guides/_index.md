@@ -1,8 +1,7 @@
 ---
 title: Guides
 weight: 20
-description:
-  Apply AngularCSS ownership, composition, accessibility, and testing
+description: Apply AngularCSS ownership, composition, accessibility, and testing
   conventions.
 ---
 

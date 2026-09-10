@@ -1,4 +1,4 @@
-.kbd {
+kbd {
   display: inline-flex;
   min-width: 1.5rem;
   align-items: center;
@@ -16,7 +16,7 @@
   user-select: none;
 }
 
-.kbd-group {
+span:has(> kbd + kbd) {
   display: inline-flex;
   align-items: center;
   gap: calc(var(--spacing) * 1);

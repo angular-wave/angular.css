@@ -16,13 +16,12 @@
     ng-init="profile={name:'Pedro Duarte',username:'@peduarte'}; savedName='Pedro Duarte'"
     data-example="sheet-demo"
   >
-    <main class="sheet-demo visual-example">
+    <main class="visual-example">
       <section id="profile-sheet" class="sheet">
         <button
           commandfor="profile-sheet-content"
           command="show-modal"
           variant="outline"
-          class="button"
         >
           Open
         </button>
@@ -43,20 +42,11 @@
             <section>
               <label
                 ><span>Name</span>
-                <input
-                  id="sheet-demo-name"
-                  ng-model="profile.name"
-                  autofocus
-                  class="input"
-                />
+                <input id="sheet-demo-name" ng-model="profile.name" autofocus />
               </label>
               <label
                 ><span>Username</span>
-                <input
-                  id="sheet-demo-username"
-                  ng-model="profile.username"
-                  class="input"
-                />
+                <input id="sheet-demo-username" ng-model="profile.username" />
               </label>
             </section>
             <footer>
@@ -65,7 +55,6 @@
                 commandfor="profile-sheet-content"
                 command="close"
                 ng-click="savedName=profile.name"
-                class="button"
               >
                 Save changes
               </button>
@@ -74,7 +63,6 @@
                 commandfor="profile-sheet-content"
                 command="close"
                 variant="outline"
-                class="button"
               >
                 Close
               </button>
@@ -86,7 +74,6 @@
             command="close"
             variant="ghost"
             size="icon-sm"
-            class="button"
           >
             <svg
               viewBox="0 0 24 24"
@@ -98,7 +85,7 @@
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
             </svg>
-            <span class="example-sr-only">Close sheet</span>
+            <span class="visually-hidden">Close sheet</span>
           </button>
         </dialog>
       </section>

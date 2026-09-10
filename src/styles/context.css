@@ -71,15 +71,21 @@
     display: revert;
   }
 
+  figure:has(> table),
   .scroll-area,
-  .data-table > figure,
-  figure:has(> table.table) {
+  .data-table > figure {
     max-width: none;
     max-height: none;
     overflow: visible;
   }
 
-  :is(.card, .alert, .empty, dialog, figure:has(> table.table)) {
+  :is(
+    .card,
+    [role="alert"]:not(aside[tabindex="-1"]:has(> header + ul)),
+    .empty,
+    dialog,
+    figure:has(> table)
+  ) {
     break-inside: avoid;
     box-shadow: none;
   }

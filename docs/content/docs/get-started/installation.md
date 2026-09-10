@@ -23,11 +23,11 @@ Native elements, patterns, foundations, and recipes need only the compiled
 AngularCSS stylesheet:
 
 ```css
-@import '@angular-wave/angular.css/dist/angular.css';
+@import "@angular-wave/angular.css/dist/angular.css";
 ```
 
 ```html
-<button class="button" variant="outline">Save</button>
+<button variant="outline">Save</button>
 ```
 
 These entries register no AngularCSS directive. Add AngularTS for application
@@ -41,18 +41,18 @@ registers its directives. Import the compiled stylesheet once in your
 application entrypoint:
 
 ```ts
-import { angular } from '@angular-wave/angular.ts';
-import '@angular-wave/angular.css';
-import '@angular-wave/angular.css/dist/angular.css';
+import { angular } from "@angular-wave/angular.ts";
+import "@angular-wave/angular.css";
+import "@angular-wave/angular.css/dist/angular.css";
 
-angular.createModule('app', ['angular.css']);
+angular.createModule("app", ["angular.css"]);
 ```
 
 Then attach your application module to an HTML root:
 
 ```html
 <main ng-app="app">
-  <button class="button">Save</button>
+  <button>Save</button>
 </main>
 ```
 
@@ -71,7 +71,7 @@ into their own static asset directory. Serve all three from the same origin:
 <script src="/vendor/angularcss/angular-css.umd.js"></script>
 
 <div ng-app="angular.css">
-  <button class="button">Save</button>
+  <button>Save</button>
 </div>
 ```
 
@@ -84,7 +84,7 @@ Load AngularCSS before application styles so your custom properties and rules
 can configure its defaults:
 
 ```css
-@import '@angular-wave/angular.css/dist/angular.css';
+@import "@angular-wave/angular.css/dist/angular.css";
 
 @layer components {
   :root {
@@ -92,7 +92,7 @@ can configure its defaults:
     --radius: 0.375rem;
   }
 
-  .button[variant='outline'] {
+  button[variant="outline"] {
     border-color: var(--border);
     background: transparent;
   }
@@ -100,7 +100,7 @@ can configure its defaults:
 ```
 
 The published CSS is compiled and has no framework dependency. See
-[Customization]({{< relref "/docs/get-started/customization" >}}) for the
+[Customization]({{< relref "/docs/get-started/customization">}}) for the
 complete CSS-variable and DTCG token contract.
 
 ## Verify the installation
@@ -108,12 +108,12 @@ complete CSS-variable and DTCG token contract.
 Render a button and inspect it in browser developer tools:
 
 ```html
-<button variant="secondary" class="button">Installed</button>
+<button variant="secondary">Installed</button>
 ```
 
-The element should retain its class and native attributes. If it remains
-unstyled, verify the CSS import. Behavioral components additionally require the
-AngularTS script order and the `angular.css` module dependency.
+The element should retain its native attributes. If it remains unstyled, verify
+the CSS import. Behavioral components additionally require the AngularTS script
+order and the `angular.css` module dependency.
 
 ## TypeScript
 
@@ -123,4 +123,4 @@ package's `types` field; no separate DefinitelyTyped package is needed.
 ## Next step
 
 [Build your first component]({{< relref
-"/docs/get-started/first-component" >}}) with semantic HTML and AngularTS state.
+"/docs/get-started/first-component">}}) with semantic HTML and AngularTS state.

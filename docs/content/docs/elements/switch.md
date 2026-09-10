@@ -1,27 +1,27 @@
 ---
 title: switch
-category: 'form'
+category: "form"
 description: >
   Toggleable control with semantic switch state attributes.
 ---
 
-Use `class="switch"` on a native checkbox. The browser and AngularTS own its
+Use `role="switch"` on a native checkbox. The browser and AngularTS own its
 checked state, validation, and form behavior.
 
 ```html
 <div orientation="horizontal" class="field">
-  <input id="airplane-mode" type="checkbox" class="switch" />
+  <input id="airplane-mode" type="checkbox" role="switch" />
   <label for="airplane-mode">Airplane mode</label>
 </div>
 ```
 
 ## Example
 
-{{< example src="examples/components/switch.html" title="Switch example" height="220" >}}
+{{< example src="examples/components/switch.html" title="Switch example" height="220">}}
 
 ## Reference Workflows
 
-{{< example src="examples/components/switch-workflows.html" title="Switch workflows" height="980" >}}
+{{< example src="examples/components/switch-workflows.html" title="Switch workflows" height="980">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -35,7 +35,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.switch`
+- `input[type="checkbox"][role="switch"]`
 
 ### Semantic structure
 
@@ -50,7 +50,8 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 | `checked` | Authored | Initial native checked state. |
 | `disabled` | Authored | Disables native or component interaction. |
 | `required` | Authored | Marks a native form value as required. |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
+| `role` | Authored | Explicit semantic role when native HTML does not provide one. |
+| `size` | Authored | Switch size: `sm`; omit for the default size. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

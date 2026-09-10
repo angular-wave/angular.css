@@ -25,7 +25,6 @@
                 id="field-username"
                 ng-model="fieldState.username"
                 placeholder="Max Leiter"
-                class="input"
               />
               <p>Choose a unique username for your account.</p>
             </div>
@@ -37,7 +36,6 @@
                 type="password"
                 ng-model="fieldState.password"
                 placeholder="••••••••"
-                class="input"
               />
             </div>
           </div>
@@ -54,7 +52,6 @@
                 ng-model="fieldState.feedback"
                 placeholder="Your feedback helps us improve..."
                 rows="4"
-                class="textarea"
               ></textarea>
               <p>Share your thoughts about our service.</p>
             </div>
@@ -88,7 +85,6 @@
                   id="field-hard-disks"
                   type="checkbox"
                   ng-model="fieldState.hardDisks"
-                  class="checkbox"
                 /><label for="field-hard-disks">Hard disks</label>
               </div>
               <div orientation="horizontal" class="field">
@@ -96,7 +92,6 @@
                   id="field-external-disks"
                   type="checkbox"
                   ng-model="fieldState.externalDisks"
-                  class="checkbox"
                 /><label for="field-external-disks">External disks</label>
               </div>
               <div orientation="horizontal" class="field">
@@ -104,7 +99,6 @@
                   id="field-cds"
                   type="checkbox"
                   ng-model="fieldState.cds"
-                  class="checkbox"
                 /><label for="field-cds">CDs, DVDs, and iPods</label>
               </div>
               <div orientation="horizontal" class="field">
@@ -112,19 +106,13 @@
                   id="field-servers"
                   type="checkbox"
                   ng-model="fieldState.servers"
-                  class="checkbox"
                 /><label for="field-servers">Connected servers</label>
               </div>
             </div>
           </fieldset>
-          <hr class="separator" />
+          <hr />
           <div orientation="horizontal" class="field">
-            <input
-              id="field-sync"
-              type="checkbox"
-              ng-model="fieldState.sync"
-              class="checkbox"
-            />
+            <input id="field-sync" type="checkbox" ng-model="fieldState.sync" />
             <section>
               <label for="field-sync"
                 >Sync Desktop &amp; Documents folders</label
@@ -139,16 +127,16 @@
         <div orientation="horizontal" class="field-switch-demo field">
           <label for="field-2fa">Multi-factor authentication</label
           ><input
+            role="switch"
             id="field-2fa"
             type="checkbox"
             ng-model="fieldState.twoFactor"
-            class="switch"
           />
         </div>
       </section>
 
       <section data-example="field-radio" class="field-workflow">
-        <fieldset class="field-set field-choice-list radio-group">
+        <fieldset class="field-set field-choice-list">
           <legend variant="label">Subscription Plan</legend>
           <p>Yearly and lifetime plans offer significant savings.</p>
 
@@ -217,7 +205,7 @@
 
       <section data-example="field-choice-card" class="field-workflow">
         <div class="field-group">
-          <fieldset class="field-set field-card-list radio-group">
+          <fieldset class="field-set field-card-list">
             <legend variant="label">Compute Environment</legend>
             <p>Select the compute environment for your cluster.</p>
 
@@ -263,7 +251,6 @@
                 id="field-street"
                 ng-model="fieldState.street"
                 placeholder="123 Main St"
-                class="input"
               />
             </div>
             <div class="field-two-column">
@@ -273,7 +260,6 @@
                   id="field-city"
                   ng-model="fieldState.city"
                   placeholder="New York"
-                  class="input"
                 />
               </div>
               <div class="field">
@@ -282,7 +268,6 @@
                   id="field-zip"
                   ng-model="fieldState.zip"
                   placeholder="90502"
-                  class="input"
                 />
               </div>
             </div>
@@ -303,11 +288,10 @@
                 type="checkbox"
                 ng-model="fieldState.push"
                 disabled
-                class="checkbox"
               /><label for="field-push">Push notifications</label>
             </div>
           </fieldset>
-          <hr class="separator" />
+          <hr />
           <fieldset class="field-set">
             <label>Tasks</label>
             <p>
@@ -320,7 +304,6 @@
                   id="field-push-tasks"
                   type="checkbox"
                   ng-model="fieldState.pushTasks"
-                  class="checkbox"
                 /><label for="field-push-tasks">Push notifications</label>
               </div>
               <div orientation="horizontal" class="field">
@@ -328,7 +311,6 @@
                   id="field-email-tasks"
                   type="checkbox"
                   ng-model="fieldState.emailTasks"
-                  class="checkbox"
                 /><label for="field-email-tasks">Email notifications</label>
               </div>
             </div>
@@ -357,16 +339,14 @@
                   ng-model="fieldState.profileName"
                   placeholder="Evil Rabbit"
                   required
-                  class="input"
                 />
               </div>
               <div orientation="responsive" class="field-form-actions field">
-                <button type="submit" class="button">Submit</button
+                <button type="submit">Submit</button
                 ><button
                   type="button"
                   variant="outline"
                   ng-click="fieldState.message='Cancelled'"
-                  class="button"
                 >
                   Cancel
                 </button>
@@ -392,7 +372,6 @@
                     id="field-card-name"
                     placeholder="Evil Rabbit"
                     required
-                    class="input"
                   />
                 </div>
                 <div class="field">
@@ -401,32 +380,26 @@
                     id="field-card-number"
                     placeholder="1234 5678 9012 3456"
                     required
-                    class="input"
                   />
                   <p>Enter your 16-digit card number</p>
                 </div>
                 <div class="field-three-column">
                   <div class="field">
                     <label for="field-month">Month</label
-                    ><input id="field-month" placeholder="MM" class="input" />
+                    ><input id="field-month" placeholder="MM" />
                   </div>
                   <div class="field">
                     <label for="field-year">Year</label
-                    ><input id="field-year" placeholder="YYYY" class="input" />
+                    ><input id="field-year" placeholder="YYYY" />
                   </div>
                   <div class="field">
                     <label for="field-cvv">CVV</label
-                    ><input
-                      id="field-cvv"
-                      placeholder="123"
-                      required
-                      class="input"
-                    />
+                    ><input id="field-cvv" placeholder="123" required />
                   </div>
                 </div>
               </div>
             </fieldset>
-            <hr class="separator" />
+            <hr />
             <fieldset class="field-set">
               <legend>Billing Address</legend>
               <p>The billing address associated with your payment method</p>
@@ -435,7 +408,6 @@
                   id="field-same-shipping"
                   type="checkbox"
                   ng-model="fieldState.sameAsShipping"
-                  class="checkbox"
                 /><label for="field-same-shipping"
                   >Same as shipping address</label
                 >
@@ -447,15 +419,12 @@
                 ><textarea
                   id="field-comments"
                   placeholder="Add any additional comments"
-                  class="textarea"
                 ></textarea>
               </div>
             </fieldset>
             <div orientation="horizontal" class="field-form-actions field">
-              <button type="submit" class="button">Submit</button
-              ><button type="button" variant="outline" class="button">
-                Cancel
-              </button>
+              <button type="submit">Submit</button
+              ><button type="button" variant="outline">Cancel</button>
             </div>
           </div>
         </form>
@@ -475,43 +444,35 @@
               <div class="field-group">
                 <div class="field">
                   <label for="field-card-name-rtl">الاسم على البطاقة</label
-                  ><input
-                    id="field-card-name-rtl"
-                    placeholder="Evil Rabbit"
-                    class="input"
-                  />
+                  ><input id="field-card-name-rtl" placeholder="Evil Rabbit" />
                 </div>
                 <div class="field">
                   <label for="field-card-number-rtl">رقم البطاقة</label
                   ><input
                     id="field-card-number-rtl"
                     placeholder="1234 5678 9012 3456"
-                    class="input"
                   />
                   <p>أدخل رقم البطاقة المكون من 16 رقمًا</p>
                 </div>
                 <div class="field-three-column">
                   <div class="field">
-                    <label>الشهر</label
-                    ><input placeholder="ش.ش" class="input" />
+                    <label>الشهر</label><input placeholder="ش.ش" />
                   </div>
                   <div class="field">
-                    <label>السنة</label
-                    ><input placeholder="YYYY" class="input" />
+                    <label>السنة</label><input placeholder="YYYY" />
                   </div>
                   <div class="field">
-                    <label>CVV</label><input placeholder="123" class="input" />
+                    <label>CVV</label><input placeholder="123" />
                   </div>
                 </div>
               </div>
             </fieldset>
-            <hr class="separator" />
+            <hr />
             <div orientation="horizontal" class="field">
               <input
                 id="field-same-shipping-rtl"
                 type="checkbox"
                 checked
-                class="checkbox"
               /><label for="field-same-shipping-rtl">نفس عنوان الشحن</label>
             </div>
             <div class="field">
@@ -519,14 +480,11 @@
               ><textarea
                 id="field-comments-rtl"
                 placeholder="أضف أي تعليقات إضافية"
-                class="textarea"
               ></textarea>
             </div>
             <div orientation="horizontal" class="field-form-actions field">
-              <button type="button" class="button">إرسال</button
-              ><button type="button" variant="outline" class="button">
-                إلغاء
-              </button>
+              <button type="button">إرسال</button
+              ><button type="button" variant="outline">إلغاء</button>
             </div>
           </div>
         </form>

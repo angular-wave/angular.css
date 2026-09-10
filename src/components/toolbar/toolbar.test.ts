@@ -34,14 +34,16 @@ test("toolbar follows authored orientation and inherited RTL direction", async (
   const copy = toolbar.getByRole("button", { name: "Copy" });
 
   await toolbar.evaluate((element) =>
-    element.setAttribute("orientation", "vertical"),
+    element.setAttribute("aria-orientation", "vertical"),
   );
   await expect(toolbar).toHaveAttribute("aria-orientation", "vertical");
   await undo.focus();
   await undo.press("ArrowDown");
   await expect(copy).toBeFocused();
 
-  await toolbar.evaluate((element) => element.removeAttribute("orientation"));
+  await toolbar.evaluate((element) =>
+    element.removeAttribute("aria-orientation"),
+  );
   await page
     .locator("body")
     .evaluate((element) => element.setAttribute("dir", "rtl"));

@@ -5,11 +5,15 @@
 @import "./styles/generated/tokens.css" layer(angularcss.tokens);
 @import "./styles/motion.css" layer(angularcss.components);
 @import "./styles/modal.css" layer(angularcss.components);
+@import "./styles/disclosure.css" layer(angularcss.components);
+@import "./elements/button/button.css" layer(angularcss.components);
 @import "./patterns/accordion/accordion.css" layer(angularcss.components);
+@import "./styles/menu.css" layer(angularcss.components);
 @import "./components/dropdown-menu/dropdown-menu.css"
   layer(angularcss.components);
 @import "./patterns/alert/alert.css" layer(angularcss.components);
 @import "./elements/input/input.css" layer(angularcss.components);
+@import "./styles/choice.css" layer(angularcss.components);
 @import "./elements/checkbox/checkbox.css" layer(angularcss.components);
 @import "./patterns/field/field.css" layer(angularcss.components);
 @import "./elements/label/label.css" layer(angularcss.components);
@@ -22,7 +26,6 @@
 @import "./components/range-slider/range-slider.css"
   layer(angularcss.components);
 @import "./elements/switch/switch.css" layer(angularcss.components);
-@import "./elements/button/button.css" layer(angularcss.components);
 @import "./patterns/button-group/button-group.css" layer(angularcss.components);
 @import "./recipes/alert-dialog/alert-dialog.css" layer(angularcss.components);
 @import "./patterns/aspect-ratio/aspect-ratio.css" layer(angularcss.components);
@@ -69,6 +72,7 @@
 @import "./components/tooltip/tooltip.css" layer(angularcss.components);
 @import "./components/toolbar/toolbar.css" layer(angularcss.components);
 @import "./components/tree/tree.css" layer(angularcss.components);
+@import "./styles/toggle.css" layer(angularcss.components);
 @import "./patterns/toggle/toggle.css" layer(angularcss.components);
 @import "./patterns/toggle-group/toggle-group.css" layer(angularcss.components);
 @import "./patterns/validation-summary/validation-summary.css"

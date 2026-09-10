@@ -6,7 +6,7 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngFilterBar",
   name: "filter-bar",
-  selector: ".filter-bar",
+  selector: 'form[role="search"]:has(> fieldset + menu)',
 });
 
 test("filter bar uses native form reset behavior", async ({ page }) => {

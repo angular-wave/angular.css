@@ -2,8 +2,7 @@
 title: Build Your First Component
 linkTitle: First component
 weight: 30
-description:
-  Build an interactive accordion and connect ordinary AngularTS state inside it.
+description: Build an interactive accordion and connect ordinary AngularTS state inside it.
 ---
 
 This page builds an accordion with native `details` and `summary`. The browser
@@ -13,16 +12,16 @@ owns disclosure; AngularTS owns the application value inside the panel.
 
 ```html
 <section ng-app="app">
-  <div class="accordion">
+  <section aria-label="Profile sections">
     <details name="profile-sections" open>
       <summary>Profile</summary>
       <div>
         <label for="display-name">Display name</label>
-        <input id="display-name" ng-model="profile.name" class="input" />
+        <input id="display-name" ng-model="profile.name" />
         <output>Preview: {{ profile.name || "Unnamed" }}</output>
       </div>
     </details>
-  </div>
+  </section>
 </section>
 ```
 
@@ -32,11 +31,11 @@ relationship and owns open state, focus, and keyboard activation.
 ## Create the application module
 
 ```ts
-import { angular } from '@angular-wave/angular.ts';
-import '@angular-wave/angular.css';
-import '@angular-wave/angular.css/dist/angular.css';
+import { angular } from "@angular-wave/angular.ts";
+import "@angular-wave/angular.css";
+import "@angular-wave/angular.css/dist/angular.css";
 
-angular.createModule('app', ['angular.css']);
+angular.createModule("app", ["angular.css"]);
 ```
 
 No controller is required for this example. `ng-model` creates the profile name
@@ -56,14 +55,14 @@ Add another sibling `details` with the same `name` to make the group exclusive.
 Omit `name` when several panels may remain open:
 
 ```html
-<div class="accordion">
+<section aria-label="Sections">
   <details>...</details>
   <details>...</details>
-</div>
+</section>
 ```
 
 ## Next step
 
 [Customize components]({{< relref
-"/docs/get-started/customization" >}}), then browse the [complete accordion
-reference]({{< relref "/docs/patterns/accordion" >}}).
+"/docs/get-started/customization">}}), then browse the [complete accordion
+reference]({{< relref "/docs/patterns/accordion">}}).

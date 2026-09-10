@@ -1,6 +1,11 @@
 import type {} from "@angular-wave/angular.ts";
 
-import { onDestroy, queryAll, setAttributeIfChanged } from "../../internal/dom";
+import {
+  onDestroy,
+  observeInheritedDirection,
+  queryAll,
+  setAttributeIfChanged,
+} from "../../internal/dom";
 
 const DEFAULT_MIN_SIZE = 0.25;
 const DEFAULT_MAX_SIZE = 4;
@@ -33,8 +38,6 @@ export function resizablePanelGroupDirective(): ng.Directive {
       const ownedHandleOrientations = new WeakSet<HTMLElement>();
       const cleanupHandles = new WeakMap<HTMLElement, () => void>();
       const knownHandles = new Set<HTMLElement>();
-      const directionOwner = element.closest<HTMLElement>("[dir]") ?? element;
-
       const panelSize = (panel: HTMLElement) =>
         Number(panel.style.getPropertyValue("--panel-size")) || 1;
       const getGroupOrientation = (): ResizableOrientation => {
@@ -274,12 +277,7 @@ export function resizablePanelGroupDirective(): ng.Directive {
         childList: true,
         subtree: true,
       });
-      const directionObserver =
-        directionOwner === element ? null : new MutationObserver(syncHandles);
-      directionObserver?.observe(directionOwner, {
-        attributes: true,
-        attributeFilter: ["dir"],
-      });
+      const directionObserver = observeInheritedDirection(element, syncHandles);
       syncHandles();
 
       onDestroy(scope, () => {

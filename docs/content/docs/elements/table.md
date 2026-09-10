@@ -1,15 +1,16 @@
 ---
 title: table
-category: 'data display'
+category: "data display"
 description: >
   Semantic data table
 ---
 
-Use native table elements with part classes for styling hooks.
+Use a native table inside a `figure`. AngularCSS styles its semantic table
+structure directly.
 
 ```html
 <figure>
-  <table class="table">
+  <table>
     <thead>
       <tr>
         <th scope="col">Invoice</th>
@@ -21,11 +22,11 @@ Use native table elements with part classes for styling hooks.
 
 ## Example
 
-{{< example src="examples/components/table.html" title="Table example" height="340" >}}
+{{< example src="examples/components/table.html" title="Table example" height="340">}}
 
 ## Workflows
 
-{{< example src="examples/components/table-workflows.html" title="Table workflows" height="2400" >}}
+{{< example src="examples/components/table-workflows.html" title="Table workflows" height="2400">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -39,7 +40,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.table`
+- `table`
 
 ### Semantic structure
 

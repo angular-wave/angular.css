@@ -507,9 +507,6 @@
           this.status = status;
           this.updateVisible();
       }
-      statusClass(status) {
-          return `booking-status-${status.toLocaleLowerCase().replaceAll(" ", "-")}`;
-      }
   }
   window.angular
       .createModule("bookingsDemo", ["angular.css"])

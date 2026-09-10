@@ -1,6 +1,7 @@
 import type {} from "@angular-wave/angular.ts";
 
 import {
+  getDirection,
   setAttributeIfChanged,
   isDisabled,
   nextIndex,
@@ -36,22 +37,15 @@ export function menubarDirective(): ng.Directive {
       const triggers: HTMLElement[] = [];
       const boundMenus = new WeakSet<HTMLElement>();
 
-      const getDirection = () =>
-        element.closest<HTMLElement>("[dir]")?.getAttribute("dir") === "rtl"
-          ? "rtl"
-          : "ltr";
-
       const getHorizontalDirection = (key: string): 1 | -1 =>
-        (key === "ArrowRight") === (getDirection() === "ltr") ? 1 : -1;
+        (key === "ArrowRight") === (getDirection(element) === "ltr") ? 1 : -1;
 
       const syncRootState = () => {
         const open = entries.some((entry) => entry._open);
         element.toggleAttribute("open", open);
       };
-      const cleanupSubmenus = bindSemanticSubmenus(
-        element,
-        "menubar",
-        getDirection,
+      const cleanupSubmenus = bindSemanticSubmenus(element, "menubar", () =>
+        getDirection(element),
       );
 
       const getAllContentItems = (content: HTMLElement): HTMLElement[] =>

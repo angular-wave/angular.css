@@ -1,6 +1,6 @@
 ---
 title: select
-category: 'form'
+category: "form"
 description: >
   Native select styling integrated with AngularTS models and form state.
 ---

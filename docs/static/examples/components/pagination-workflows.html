@@ -16,7 +16,7 @@
     ng-init="paginationWorkflow={showPage4:false,activePage:2,nextDisabled:false,rows:'25'}"
     data-example="pagination-icons-only pagination-rtl pagination-simple"
   >
-    <main class="component-state-workflows pagination-workflows visual-example">
+    <main class="visual-example">
       <section aria-labelledby="pagination-dynamic-heading">
         <header>
           <h2 id="pagination-dynamic-heading">Application state</h2>
@@ -26,7 +26,6 @@
               variant="outline"
               size="sm"
               ng-click="paginationWorkflow.showPage4=!paginationWorkflow.showPage4; paginationWorkflow.activePage=paginationWorkflow.showPage4 ? 4 : 2"
-              class="button"
             >
               {{ paginationWorkflow.showPage4 ? 'Remove page 4' : 'Add page 4'
               }}
@@ -36,7 +35,6 @@
               variant="outline"
               size="sm"
               ng-click="paginationWorkflow.nextDisabled=!paginationWorkflow.nextDisabled"
-              class="button"
             >
               {{ paginationWorkflow.nextDisabled ? 'Enable next' : 'Disable
               next' }}
@@ -130,10 +128,7 @@
         </nav>
       </section>
 
-      <section
-        class="pagination-compact-section"
-        aria-labelledby="pagination-icons-heading"
-      >
+      <section aria-labelledby="pagination-icons-heading">
         <header>
           <h2 id="pagination-icons-heading">Rows</h2>
         </header>
@@ -150,10 +145,7 @@
               <option value="100">100</option>
             </select>
           </label>
-          <nav
-            aria-label="Compact pagination"
-            class="pagination-compact pagination"
-          >
+          <nav aria-label="Compact pagination" class="pagination">
             <ul>
               <li>
                 <a

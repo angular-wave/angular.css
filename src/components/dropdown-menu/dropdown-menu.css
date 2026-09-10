@@ -1,10 +1,9 @@
-[ng-dropdown-menu],
-.dropdown-menu {
+[ng-dropdown-menu] {
   position: relative;
   display: inline-grid;
 }
 
-:is([ng-dropdown-menu], .dropdown-menu) > button:not(.button) {
+[ng-dropdown-menu] > button {
   display: inline-flex;
   min-height: var(--size-control-md);
   align-items: center;
@@ -19,23 +18,13 @@
   white-space: nowrap;
 }
 
-:is([ng-dropdown-menu], .dropdown-menu) menu {
-  position: absolute;
-  z-index: 50;
-  display: grid;
-  min-width: calc(var(--spacing) * 32);
+[ng-dropdown-menu] [role="menu"] {
   max-height: var(--dropdown-menu-available-height, none);
   overflow-y: auto;
-  gap: 0;
-  border: var(--border-width-default) solid var(--border);
-  border-radius: var(--radius);
-  background: var(--popover);
-  color: var(--popover-foreground);
-  padding: calc(var(--spacing) * 1);
   box-shadow: var(--shadow-md);
 }
 
-:is([ng-dropdown-menu], .dropdown-menu) > menu {
+[ng-dropdown-menu] > [role="menu"] {
   inset-block-start: calc(100% + var(--spacing) * 2);
   inset-inline-start: 0;
   opacity: 0;
@@ -47,137 +36,21 @@
     transform var(--motion-duration-default) var(--motion-easing-standard);
 }
 
-:is([ng-dropdown-menu], .dropdown-menu) > menu:where(:not([hidden])) {
+[ng-dropdown-menu] > [role="menu"]:where(:not([hidden])) {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0) scale(1);
 }
 
-:is([ng-dropdown-menu], .dropdown-menu) menu > :is(section, fieldset) {
-  display: grid;
-  gap: 0;
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu > :is(h1, h2, h3, h4, h5, h6) {
-  color: var(--muted-foreground);
-  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
-  font-size: var(--text-xs);
-  font-weight: var(--font-weight-medium);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu)
-  menu
-  :is(a, button, summary)[variant="destructive"] {
-  color: var(--error-foreground);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu)
-  menu
-  :is(a, button, summary)[variant="destructive"]:is(:hover, :focus-visible) {
-  background: color-mix(in srgb, var(--error) 10%, transparent);
-  color: var(--error-foreground);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu :is(a, button, summary) {
-  display: flex;
-  width: 100%;
-  min-height: var(--size-control-sm);
-  align-items: center;
-  gap: calc(var(--spacing) * 2);
-  border: 0;
-  border-radius: var(--radius-md);
-  background: transparent;
+[ng-dropdown-menu]
+  [role="menu"]
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]) {
+  justify-content: flex-start;
   color: var(--foreground);
-  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
-  font: inherit;
-  font-size: var(--text-sm);
-  text-align: start;
-  text-decoration: none;
-  cursor: default;
-}
-
-:is([ng-dropdown-menu], .dropdown-menu)
-  menu
-  :is(a, button, summary):is(:hover, :focus-visible, [aria-expanded="true"]) {
-  background: var(--accent);
-  color: var(--accent-foreground);
-  outline: none;
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu fieldset button[aria-checked],
-:is([ng-dropdown-menu], .dropdown-menu)
-  menu
-  button[aria-checked]:not(fieldset button) {
-  position: relative;
-  padding-inline-start: calc(var(--spacing) * 8);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu)
-  menu
-  fieldset
-  button[aria-checked="true"]::before {
-  position: absolute;
-  inset-inline-start: calc(var(--spacing) * 2.5);
-  content: "\2022";
-  font-size: var(--text-base);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu)
-  menu
-  button[aria-checked="true"]:not(fieldset button)::before {
-  position: absolute;
-  inset-inline-start: calc(var(--spacing) * 2.5);
-  content: "\2713";
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu hr {
-  height: var(--border-width-default);
-  margin-block: calc(var(--spacing) * 1);
-  margin-inline: calc(var(--spacing) * -1);
-  border: 0;
-  background: var(--border);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu kbd {
-  margin-inline-start: auto;
-  color: var(--muted-foreground);
-  font-family: inherit;
-  font-size: var(--text-xs);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu details {
-  position: relative;
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu details > summary {
-  list-style: none;
-}
-
-:is([ng-dropdown-menu], .dropdown-menu)
-  menu
-  details
-  > summary::-webkit-details-marker {
-  display: none;
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) menu details > summary::after {
-  margin-inline-start: auto;
-  content: ">";
-}
-
-:is([ng-dropdown-menu], .dropdown-menu) details > menu {
-  inset-block-start: calc(var(--spacing) * -1);
-  inset-inline-start: calc(100% + var(--spacing) * 1);
-  z-index: 51;
-  min-width: calc(var(--spacing) * 24);
-}
-
-:is([ng-dropdown-menu], .dropdown-menu):dir(rtl) details > menu {
-  inset-inline: auto calc(100% + var(--spacing) * 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is([ng-dropdown-menu], .dropdown-menu) > menu {
+  [ng-dropdown-menu] > [role="menu"] {
     transition-duration: var(--motion-duration-instant);
   }
 }

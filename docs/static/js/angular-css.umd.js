@@ -5,6 +5,25 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.angularCss = {}));
 })(this, (function (exports) { 'use strict';
 
+    function getDirection(element) {
+        return element.closest("[dir]")?.getAttribute("dir") === "rtl"
+            ? "rtl"
+            : "ltr";
+    }
+    function getDirectionOwner(element) {
+        return element.closest("[dir]") ?? element;
+    }
+    function observeInheritedDirection(element, callback) {
+        const owner = getDirectionOwner(element);
+        if (owner === element)
+            return null;
+        const observer = new MutationObserver(callback);
+        observer.observe(owner, {
+            attributes: true,
+            attributeFilter: ["dir"],
+        });
+        return observer;
+    }
     function query(root, selector, constructor) {
         const result = root.querySelector(selector);
         return constructor && !(result instanceof constructor) ? null : result;
@@ -255,9 +274,7 @@
             return false;
         }
         const hiddenAncestor = item.closest("[hidden]");
-        return ((!hiddenAncestor || hiddenAncestor === panel) &&
-            !item.hasAttribute("disabled") &&
-            item.getAttribute("aria-disabled") !== "true");
+        return (!hiddenAncestor || hiddenAncestor === panel) && !isDisabled(item);
     });
     function dropdownMenuDirective() {
         return {
@@ -266,15 +283,12 @@
                 const panel = element.querySelector(":scope > menu");
                 if (!button || !panel)
                     return;
-                const getDirection = () => element.closest("[dir]")?.getAttribute("dir") === "rtl"
-                    ? "rtl"
-                    : "ltr";
-                const cleanupSubmenus = bindSemanticSubmenus(element, "dropdown-menu", getDirection);
+                const cleanupSubmenus = bindSemanticSubmenus(element, "dropdown-menu", () => getDirection(element));
                 const panelId = panel.id || `menu-${String(dropdownIdCounter++)}`;
                 panel.id = panelId;
                 if (!button.id)
                     button.id = `dropdown-btn-${String(dropdownIdCounter++)}`;
-                button.setAttribute("aria-haspopup", "true");
+                button.setAttribute("aria-haspopup", "menu");
                 button.setAttribute("aria-expanded", "false");
                 button.setAttribute("aria-controls", panelId);
                 panel.setAttribute("role", "menu");
@@ -317,7 +331,7 @@
                         ? panel.offsetParent
                         : document.documentElement;
                     const containingRect = containingBlock.getBoundingClientRect();
-                    const direction = getDirection();
+                    const direction = getDirection(element);
                     const side = panel.getAttribute("side") ?? "bottom";
                     const align = panel.getAttribute("align") ?? "start";
                     const offset = Number(panel.getAttribute("side-offset") ?? 8) || 0;
@@ -448,7 +462,7 @@
                 const panelSizeObserver = new ResizeObserver(positionPanel);
                 panelSizeObserver.observe(panel);
                 const handleButtonClick = () => {
-                    if (button.disabled || button.getAttribute("aria-disabled") === "true")
+                    if (isDisabled(button))
                         return;
                     toggle();
                 };
@@ -458,9 +472,7 @@
                     const item = event.target.closest('a, button, [role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]');
                     if (!item || !panel.contains(item))
                         return;
-                    if (item.hasAttribute("disabled") ||
-                        item.getAttribute("aria-disabled") === "true" ||
-                        item.getAttribute("aria-haspopup") === "menu") {
+                    if (isDisabled(item) || item.getAttribute("aria-haspopup") === "menu") {
                         return;
                     }
                     event.preventDefault();
@@ -1264,9 +1276,6 @@
     function calendarDirective() {
         return {
             link(scope, element) {
-                const getDirection = () => element.closest("[dir]")?.getAttribute("dir") === "rtl"
-                    ? "rtl"
-                    : "ltr";
                 const getHeader = () => Array.from(element.children).find((child) => child instanceof HTMLElement && child.tagName === "HEADER");
                 const getTitle = () => getHeader()?.querySelector(":scope > :is(h1, h2, h3, h4, h5, h6)") ?? null;
                 const getGrid = () => Array.from(element.children).find((child) => child instanceof HTMLElement && child.tagName === "DIV");
@@ -1679,11 +1688,11 @@
                             return;
                         }
                         const direction = event.key === "ArrowRight"
-                            ? getDirection() === "rtl"
+                            ? getDirection(element) === "rtl"
                                 ? -1
                                 : 1
                             : event.key === "ArrowLeft"
-                                ? getDirection() === "rtl"
+                                ? getDirection(element) === "rtl"
                                     ? 1
                                     : -1
                                 : event.key === "ArrowDown"
@@ -3711,7 +3720,7 @@
     }
     Autoplay.globalOptions = undefined;
 
-    const ROOT_SELECTOR = ".carousel, [ng-carousel]";
+    const ROOT_SELECTOR = "[ng-carousel]";
     const hasEnabledAttribute = (element, name) => {
         const value = element.getAttribute(name);
         return value !== null && value !== "false";
@@ -3741,11 +3750,6 @@
                 const getOrientation = () => element.getAttribute("orientation") === "vertical"
                     ? "vertical"
                     : "horizontal";
-                const getDirection = () => {
-                    const direction = element.getAttribute("dir") ??
-                        element.closest("[dir]")?.getAttribute("dir");
-                    return direction === "rtl" ? "rtl" : "ltr";
-                };
                 const getOptions = () => {
                     const align = element.getAttribute("align");
                     const containScroll = element.getAttribute("contain-scroll");
@@ -3759,7 +3763,7 @@
                             : containScroll === "keepSnaps"
                                 ? "keepSnaps"
                                 : "trimSnaps",
-                        direction: getDirection(),
+                        direction: getDirection(element),
                         dragFree: hasEnabledAttribute(element, "drag-free"),
                         loop: hasEnabledAttribute(element, "loop"),
                         skipSnaps: hasEnabledAttribute(element, "skip-snaps"),
@@ -3783,7 +3787,6 @@
                 const api = EmblaCarousel(viewport, getOptions(), getPlugins());
                 let destroyed = false;
                 let reinitializeQueued = false;
-                const directionOwner = element.closest("[dir]") ?? element;
                 const syncStaticSemantics = () => {
                     const items = getItems();
                     const dots = getDots();
@@ -3930,13 +3933,7 @@
                     childList: true,
                     subtree: true,
                 });
-                const directionObserver = directionOwner === element
-                    ? null
-                    : new MutationObserver(queueReinitialize);
-                directionObserver?.observe(directionOwner, {
-                    attributes: true,
-                    attributeFilter: ["dir"],
-                });
+                const directionObserver = observeInheritedDirection(element, queueReinitialize);
                 syncStaticSemantics();
                 syncSelectedState();
                 requestAnimationFrame(() => {
@@ -3968,7 +3965,7 @@
         ":scope > aside > div > ul > li",
         ":scope > aside > div > section > ul > li",
     ].join(", ");
-    const rootSelector$2 = ".combobox, [ng-combobox]";
+    const rootSelector$2 = "[ng-combobox]";
     const separatorSelector$1 = ":scope > aside > div > section > hr";
     const triggerSelector$4 = ':scope button[value="toggle"]';
     function comboboxDirective() {
@@ -3978,7 +3975,6 @@
                 const content = queryOwned(element, rootSelector$2, contentSelector$4, HTMLElement);
                 if (!input || !content)
                     return;
-                const directionOwner = element.closest("[dir]") ?? element;
                 const contentId = content.id || `combobox-content-${String(comboboxIdCounter++)}`;
                 const inputId = input.id || `combobox-input-${String(comboboxIdCounter++)}`;
                 content.id = contentId;
@@ -4317,15 +4313,9 @@
                     characterData: true,
                     subtree: true,
                 });
-                const directionObserver = directionOwner === element
-                    ? null
-                    : new MutationObserver(() => {
-                        syncChrome();
-                        requestAnimationFrame(positionContent);
-                    });
-                directionObserver?.observe(directionOwner, {
-                    attributes: true,
-                    attributeFilter: ["dir"],
+                const directionObserver = observeInheritedDirection(element, () => {
+                    syncChrome();
+                    requestAnimationFrame(positionContent);
                 });
                 input.addEventListener("input", handleInput);
                 input.addEventListener("focus", handleFocus);
@@ -4374,7 +4364,7 @@
     ];
     const itemSelector$4 = itemSelectors.join(", ");
     const listSelector$2 = ":scope > :last-child";
-    const rootSelector$1 = ".command, [ng-command]";
+    const rootSelector$1 = "[ng-command]";
     const separatorSelector = ":scope > :last-child > hr";
     const shortcutSelector = itemSelectors
         .map((selector) => `${selector} > kbd`)
@@ -4559,7 +4549,7 @@
     }
 
     let contextMenuIdCounter = 0;
-    const rootSelector = ".context-menu, [ng-context-menu]";
+    const rootSelector = "[ng-context-menu]";
     const triggerSelector$3 = ":scope > :first-child:not(menu)";
     const contentSelector$3 = ":scope > menu";
     const menuSurfaceSelector = "menu";
@@ -4582,16 +4572,12 @@
                 const content = queryOwned(element, rootSelector, contentSelector$3, HTMLElement);
                 if (!trigger || !content)
                     return;
-                const directionOwner = element.closest("[dir]") ?? element;
-                const getDirection = () => element.closest("[dir]")?.getAttribute("dir") === "rtl"
-                    ? "rtl"
-                    : "ltr";
                 const getPhysicalSide = (side) => {
                     if (side === "inline-start") {
-                        return getDirection() === "rtl" ? "right" : "left";
+                        return getDirection(element) === "rtl" ? "right" : "left";
                     }
                     if (side === "inline-end") {
-                        return getDirection() === "rtl" ? "left" : "right";
+                        return getDirection(element) === "rtl" ? "left" : "right";
                     }
                     return side;
                 };
@@ -4659,7 +4645,7 @@
                 const keyboardAnchor = () => {
                     const rect = trigger.getBoundingClientRect();
                     return {
-                        _x: getDirection() === "rtl" ? rect.right : rect.left,
+                        _x: getDirection(element) === "rtl" ? rect.right : rect.left,
                         _y: rect.bottom,
                     };
                 };
@@ -4697,7 +4683,7 @@
                             left -= menuRect.width / 2;
                         if (align === "end")
                             left -= menuRect.width;
-                        left += getDirection() === "rtl" ? -alignOffset : alignOffset;
+                        left += getDirection(element) === "rtl" ? -alignOffset : alignOffset;
                     }
                     const fitted = fitViewportRect(left, top, menuRect.width, menuRect.height, margin);
                     content.style.setProperty("--context-menu-left", `${String(Math.round(fitted._left - rootRect.left + element.scrollLeft))}px`);
@@ -4852,7 +4838,7 @@
                         close(false);
                     }
                 };
-                const cleanupSubmenus = bindSemanticSubmenus(element, "context-menu", getDirection);
+                const cleanupSubmenus = bindSemanticSubmenus(element, "context-menu", () => getDirection(element));
                 const observer = new MutationObserver((records) => {
                     if (records.some((record) => record.type === "childList")) {
                         syncSemantics();
@@ -4886,11 +4872,7 @@
                     attributes: true,
                     attributeFilter: ["align", "side"],
                 });
-                const directionObserver = directionOwner === element ? null : new MutationObserver(syncDirection);
-                directionObserver?.observe(directionOwner, {
-                    attributes: true,
-                    attributeFilter: ["dir"],
-                });
+                const directionObserver = observeInheritedDirection(element, syncDirection);
                 syncDirection();
                 syncSemantics();
                 setOpen(open);
@@ -5078,15 +5060,12 @@
                 const entries = [];
                 const triggers = [];
                 const boundMenus = new WeakSet();
-                const getDirection = () => element.closest("[dir]")?.getAttribute("dir") === "rtl"
-                    ? "rtl"
-                    : "ltr";
-                const getHorizontalDirection = (key) => (key === "ArrowRight") === (getDirection() === "ltr") ? 1 : -1;
+                const getHorizontalDirection = (key) => (key === "ArrowRight") === (getDirection(element) === "ltr") ? 1 : -1;
                 const syncRootState = () => {
                     const open = entries.some((entry) => entry._open);
                     element.toggleAttribute("open", open);
                 };
-                const cleanupSubmenus = bindSemanticSubmenus(element, "menubar", getDirection);
+                const cleanupSubmenus = bindSemanticSubmenus(element, "menubar", () => getDirection(element));
                 const getAllContentItems = (content) => queryAll(content, itemSelector$2).filter((item) => {
                     const hiddenAncestor = item.closest("[hidden]");
                     return (item.closest("menu") === content &&
@@ -5446,10 +5425,7 @@
                 const topLevelControls = [];
                 const boundEntries = new Map();
                 let initialized = false;
-                const getDirection = () => element.closest("[dir]")?.getAttribute("dir") === "rtl"
-                    ? "rtl"
-                    : "ltr";
-                const getHorizontalDirection = (key) => (key === "ArrowRight") === (getDirection() === "ltr") ? 1 : -1;
+                const getHorizontalDirection = (key) => (key === "ArrowRight") === (getDirection(element) === "ltr") ? 1 : -1;
                 const syncRootState = () => {
                     const open = entries.some((entry) => entry._open);
                     element.toggleAttribute("open", open);
@@ -5539,7 +5515,6 @@
                     const contentId = content.id || `${triggerId}-content`;
                     trigger.id = triggerId;
                     content.id = contentId;
-                    setAttributeIfChanged(trigger, "aria-haspopup", "true");
                     setAttributeIfChanged(trigger, "aria-controls", contentId);
                     setAttributeIfChanged(content, "aria-labelledby", triggerId);
                     const entry = {
@@ -5822,7 +5797,6 @@
                 const ownedHandleOrientations = new WeakSet();
                 const cleanupHandles = new WeakMap();
                 const knownHandles = new Set();
-                const directionOwner = element.closest("[dir]") ?? element;
                 const panelSize = (panel) => Number(panel.style.getPropertyValue("--panel-size")) || 1;
                 const getGroupOrientation = () => {
                     const orientation = element.getAttribute("orientation");
@@ -5998,11 +5972,7 @@
                     childList: true,
                     subtree: true,
                 });
-                const directionObserver = directionOwner === element ? null : new MutationObserver(syncHandles);
-                directionObserver?.observe(directionOwner, {
-                    attributes: true,
-                    attributeFilter: ["dir"],
-                });
+                const directionObserver = observeInheritedDirection(element, syncHandles);
                 syncHandles();
                 onDestroy(scope, () => {
                     panelObserver.disconnect();
@@ -6580,21 +6550,15 @@
     function tabsDirective() {
         return {
             link(scope, element) {
-                const directionOwner = element.closest("[dir]") ?? element;
                 let triggers = [];
                 let contents = [];
                 let orientation = "horizontal";
                 let activeIndex = 0;
                 const cleanupTriggers = new WeakMap();
-                const isTriggerDisabled = (trigger) => trigger.hasAttribute("disabled") ||
-                    trigger.getAttribute("aria-disabled") === "true";
-                const getDirection = () => element.closest("[dir]")?.getAttribute("dir") === "rtl"
-                    ? "rtl"
-                    : "ltr";
-                const firstEnabledIndex = () => Math.max(0, triggers.findIndex((trigger) => !isTriggerDisabled(trigger)));
+                const firstEnabledIndex = () => Math.max(0, triggers.findIndex((trigger) => !isDisabled(trigger)));
                 const lastEnabledIndex = () => {
                     for (let index = triggers.length - 1; index >= 0; index -= 1) {
-                        if (!isTriggerDisabled(triggers[index]))
+                        if (!isDisabled(triggers[index]))
                             return index;
                     }
                     return 0;
@@ -6604,7 +6568,7 @@
                         return -1;
                     let next = nextIndex(index, triggers.length, direction);
                     let safety = 0;
-                    while (isTriggerDisabled(triggers[next]) && safety < triggers.length) {
+                    while (isDisabled(triggers[next]) && safety < triggers.length) {
                         next = nextIndex(next, triggers.length, direction);
                         safety += 1;
                     }
@@ -6617,7 +6581,7 @@
                     activeIndex = nextActiveIndex;
                     triggers.forEach((trigger, triggerIndex) => {
                         const selected = triggerIndex === nextActiveIndex;
-                        const disabled = isTriggerDisabled(trigger);
+                        const disabled = isDisabled(trigger);
                         setAttributeIfChanged(trigger, "aria-selected", String(selected));
                         setAttributeIfChanged(trigger, "tabindex", selected && !disabled ? "0" : "-1");
                         if (selected && focus)
@@ -6636,7 +6600,7 @@
                         return;
                     const handleClick = () => {
                         const index = triggers.indexOf(trigger);
-                        if (index >= 0 && !isTriggerDisabled(trigger))
+                        if (index >= 0 && !isDisabled(trigger))
                             activate(index);
                     };
                     const handleKeydown = (event) => {
@@ -6647,18 +6611,18 @@
                             event.key === " " ||
                             event.key === "Spacebar") {
                             event.preventDefault();
-                            if (!isTriggerDisabled(trigger))
+                            if (!isDisabled(trigger))
                                 activate(index, true);
                             return;
                         }
-                        if (isTriggerDisabled(trigger))
+                        if (isDisabled(trigger))
                             return;
                         const nextKey = orientation === "vertical" ? "ArrowDown" : "ArrowRight";
                         const previousKey = orientation === "vertical" ? "ArrowUp" : "ArrowLeft";
                         if (event.key === nextKey || event.key === previousKey) {
                             event.preventDefault();
                             let direction = event.key === nextKey ? 1 : -1;
-                            if (orientation !== "vertical" && getDirection() === "rtl") {
+                            if (orientation !== "vertical" && getDirection(element) === "rtl") {
                                 direction = direction === 1 ? -1 : 1;
                             }
                             const next = getNextEnabledIndex(index, direction);
@@ -6708,11 +6672,11 @@
                     });
                     if (!triggers.length)
                         return;
-                    const selectedIndex = triggers.findIndex((trigger) => !isTriggerDisabled(trigger) &&
+                    const selectedIndex = triggers.findIndex((trigger) => !isDisabled(trigger) &&
                         trigger.getAttribute("aria-selected") === "true");
                     const nextActiveIndex = selectedIndex >= 0
                         ? selectedIndex
-                        : triggers[activeIndex] && !isTriggerDisabled(triggers[activeIndex])
+                        : triggers[activeIndex] && !isDisabled(triggers[activeIndex])
                             ? activeIndex
                             : firstEnabledIndex();
                     activate(nextActiveIndex);
@@ -6732,11 +6696,7 @@
                     subtree: true,
                 });
                 sync();
-                const directionObserver = directionOwner === element ? null : new MutationObserver(sync);
-                directionObserver?.observe(directionOwner, {
-                    attributes: true,
-                    attributeFilter: ["dir"],
-                });
+                const directionObserver = observeInheritedDirection(element, sync);
                 onDestroy(scope, () => {
                     observer.disconnect();
                     directionObserver?.disconnect();
@@ -6792,12 +6752,8 @@
                     controlledOpen = nextOpen;
                     setOpen();
                 };
-                const openObserver = new MutationObserver((records) => {
-                    syncSide();
-                    if (records.some((record) => record.attributeName === "side"))
-                        syncSide();
-                });
-                openObserver.observe(content, {
+                const sideObserver = new MutationObserver(syncSide);
+                sideObserver.observe(content, {
                     attributes: true,
                     attributeFilter: ["side"],
                 });
@@ -6833,7 +6789,7 @@
                 trigger.addEventListener("blur", handleClose);
                 trigger.addEventListener("keydown", handleKeydown);
                 onDestroy(scope, () => {
-                    openObserver.disconnect();
+                    sideObserver.disconnect();
                     elementObserver.disconnect();
                     trigger.removeEventListener("mouseenter", handleOpen);
                     trigger.removeEventListener("mouseleave", handleClose);
@@ -6876,9 +6832,6 @@
                         next = authored ?? (enabled.length > 0 ? enabled[0] : null);
                     }
                     element.setAttribute("role", "toolbar");
-                    element.setAttribute("aria-orientation", element.getAttribute("orientation") === "vertical"
-                        ? "vertical"
-                        : "horizontal");
                     items.forEach((item) => {
                         item.tabIndex = item === next ? 0 : -1;
                     });
@@ -6910,7 +6863,7 @@
                         : null;
                     if (target?.parentElement !== element)
                         return;
-                    const vertical = element.getAttribute("orientation") === "vertical";
+                    const vertical = element.getAttribute("aria-orientation") === "vertical";
                     const rtl = getComputedStyle(element).direction === "rtl";
                     let delta = null;
                     if (vertical && event.key === "ArrowDown")
@@ -6942,7 +6895,7 @@
                         "dir",
                         "disabled",
                         "hidden",
-                        "orientation",
+                        "aria-orientation",
                     ],
                     attributes: true,
                     childList: true,

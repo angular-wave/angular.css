@@ -16,7 +16,7 @@
     ng-init="bookmark=false;bold=false;italic=true"
     data-example="toggle-demo toggle-outline toggle-sizes toggle-text"
   >
-    <main class="toggle-demo visual-example">
+    <main class="visual-example">
       <div class="row" aria-label="Bookmark toggle">
         <button
           variant="outline"
@@ -25,7 +25,6 @@
           aria-pressed="{{ bookmark }}"
           ng-click="bookmark = !bookmark"
           type="button"
-          class="toggle"
         >
           <svg
             viewBox="0 0 24 24"
@@ -46,7 +45,6 @@
           aria-pressed="{{ italic }}"
           ng-click="italic = !italic"
           type="button"
-          class="toggle"
         >
           <svg
             viewBox="0 0 24 24"
@@ -68,7 +66,6 @@
           aria-pressed="{{ italic }}"
           ng-click="italic = !italic"
           type="button"
-          class="toggle"
         >
           <svg
             viewBox="0 0 24 24"
@@ -87,7 +84,6 @@
           aria-pressed="{{ bold }}"
           ng-click="bold = !bold"
           type="button"
-          class="toggle"
         >
           <svg
             viewBox="0 0 24 24"
@@ -103,19 +99,21 @@
       </div>
 
       <div class="row" aria-label="Toggle sizes">
-        <button variant="outline" size="sm" type="button" class="toggle">
+        <button variant="outline" size="sm" type="button" aria-pressed="false">
           Small
         </button>
-        <button variant="outline" type="button" class="toggle">Default</button>
-        <button variant="outline" size="lg" type="button" class="toggle">
+        <button variant="outline" type="button" aria-pressed="false">
+          Default
+        </button>
+        <button variant="outline" size="lg" type="button" aria-pressed="false">
           Large
         </button>
       </div>
 
-      <div class="output">
+      <output class="output">
         Bookmark: {{ bookmark ? 'on' : 'off' }}, Bold: {{ bold ? 'on' : 'off'
         }}, Italic: {{ italic ? 'on' : 'off' }}
-      </div>
+      </output>
     </main>
   </body>
 </html>

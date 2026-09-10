@@ -16,7 +16,7 @@
     ng-init="advancedVisible = false; overviewDisabled = false"
     data-example="tabs-disabled tabs-icons tabs-line tabs-rtl tabs-vertical"
   >
-    <main class="component-state-workflows tabs-workflows visual-example">
+    <main class="tabs-workflows visual-example">
       <section aria-labelledby="tabs-dynamic-heading">
         <header>
           <h2 id="tabs-dynamic-heading">Dynamic sections</h2>
@@ -25,7 +25,6 @@
             variant="outline"
             size="sm"
             ng-click="advancedVisible = !advancedVisible"
-            class="button"
           >
             {{ advancedVisible ? 'Remove advanced' : 'Add advanced' }}
           </button>
@@ -50,7 +49,6 @@
             variant="outline"
             size="sm"
             ng-click="overviewDisabled = !overviewDisabled"
-            class="button"
           >
             {{ overviewDisabled ? 'Enable overview' : 'Disable overview' }}
           </button>

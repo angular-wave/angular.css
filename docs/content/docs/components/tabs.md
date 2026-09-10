@@ -1,6 +1,6 @@
 ---
 title: tabs
-category: 'navigation'
+category: "navigation"
 description: >
   Tabbed content sections
 ---
@@ -50,14 +50,12 @@ Use native elements for authored structure. Component classes are optional visua
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-controls` | Output | ARIA relationship or state. |
-| `aria-disabled` | Input | Semantic disabled state. |
-| `aria-hidden` | Output | ARIA relationship or state. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
-| `aria-orientation` | Input/output | ARIA relationship or state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
+| `aria-orientation` | Input/output | Interaction axis exposed to assistive technology. |
 | `aria-selected` | Input/output | Selected item state. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
-| `disabled` | Input | Disables native or component interaction. |
 | `orientation` | Input/output | Layout direction: `horizontal` or `vertical`. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |
 | `tabindex` | Output | Keyboard focus order for composite descendants. |

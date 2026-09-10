@@ -1,20 +1,21 @@
 ---
 title: accordion
-category: 'disclosure'
+category: "disclosure"
 description: >
   Expandable content sections
 ---
 
-Use `.accordion` around native `details` elements. Give sibling items the same
-`name` when opening one item should close the others.
+Use an accessibly named `section` around native `details` elements. Give
+sibling items the same `name` when opening one item should close the others.
+The semantic structure needs no component class.
 
 ```html
-<div class="accordion">
+<section aria-label="Sections">
   <details name="sections" open>
     <summary>Section 1</summary>
     <div>Content for section 1</div>
   </details>
-</div>
+</section>
 ```
 
 Omit `name` to allow more than one section to remain open.
@@ -43,11 +44,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.accordion`
+- `section[aria-label]:has(> details)`
 
 ### Semantic structure
 
-Use `.accordion` around direct `details` children. Each item requires a direct `summary` followed by authored content. Apply the same `name` to sibling details for exclusive disclosure.
+Use an accessibly named `section` around direct `details` children. Each item requires a direct `summary` followed by authored content. Apply the same `name` to sibling details for exclusive disclosure.
 
 ## API
 
@@ -55,7 +56,7 @@ Use `.accordion` around direct `details` children. Each item requires a direct `
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `inert` | Authored | Authored HTML attribute or styling hook. |
+| `inert` | Authored | Prevents interaction while the component is hidden. |
 | `name` | Authored | Authored HTML attribute or styling hook. |
 | `open` | Authored | Initial or controlled open state. |
 

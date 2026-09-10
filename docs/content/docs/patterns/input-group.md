@@ -1,6 +1,6 @@
 ---
 title: input-group
-category: 'form'
+category: "form"
 description: >
   Grouped input controls and addon content with shared focus/description wiring.
 ---
@@ -82,10 +82,10 @@ Use one native input, textarea, select, combobox, or spinbutton inside `.input-g
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `align` | Authored | Cross-axis alignment: `start`, `center`, or `end`. |
+| `align` | Authored | Direct addon placement: `inline-start`, `inline-end`, `block-start`, or `block-end`. |
 | `aria-invalid` | Authored | Validation state exposed to assistive technology and CSS. |
-| `border` | Authored | Authored HTML attribute or styling hook. |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
+| `border` | Authored | Use `true` on a direct block addon to draw its dividing border. |
+| `size` | Authored | Direct action size: `sm`, `icon-xs`, or `icon-sm`; omit for the compact addon action. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

@@ -1,4 +1,4 @@
-.progress-group {
+div:has(> label + output + progress) {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
@@ -8,17 +8,17 @@
   font-size: var(--text-sm);
 }
 
-.progress-group > label {
+div:has(> label + output + progress) > label {
   font-weight: var(--font-weight-medium);
 }
 
-.progress-group > output {
+div:has(> label + output + progress) > output {
   margin-inline-start: auto;
   color: var(--muted-foreground);
   font-variant-numeric: tabular-nums;
 }
 
-progress.progress {
+progress {
   width: 100%;
   height: calc(var(--spacing) * 1);
   overflow: hidden;
@@ -27,14 +27,14 @@ progress.progress {
   background: var(--muted);
 }
 
-progress.progress::-webkit-progress-bar {
+progress::-webkit-progress-bar {
   background: var(--muted);
 }
 
-progress.progress::-webkit-progress-value {
+progress::-webkit-progress-value {
   background: var(--primary);
 }
 
-progress.progress::-moz-progress-bar {
+progress::-moz-progress-bar {
   background: var(--primary);
 }

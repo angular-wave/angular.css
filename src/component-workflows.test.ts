@@ -35,6 +35,14 @@ test("button workflows preserve reference variants, sizes, loading, and RTL", as
   await expect(
     page.locator('[aria-label="Loading buttons"] .spinner'),
   ).toHaveCount(2);
+  const statusRow = page.getByLabel("Status buttons");
+  const statusButtons = statusRow.getByRole("button");
+  await expect(statusButtons).toHaveCount(3);
+  for (const variant of ["info", "success", "warning"]) {
+    await expect(statusRow.locator(`button[variant="${variant}"]`)).toHaveCount(
+      1,
+    );
+  }
   await expect(page.getByLabel("RTL buttons")).toHaveAttribute("dir", "rtl");
   await expect(page.getByRole("button", { name: "Get Started" })).toHaveCSS(
     "border-radius",
@@ -159,7 +167,9 @@ test("accordion state workflows preserve basic, disabled, and multiple behavior"
     "/docs/static/examples/components/accordion-state-workflows.html",
   );
 
-  const basicItem = page.locator(".accordion > details").first();
+  const basicItem = page
+    .locator("section[aria-label]:has(> details) > details")
+    .first();
   const basicTrigger = basicItem.locator("summary");
   await expect(basicItem).toHaveAttribute("open", "");
   await basicTrigger.click();
@@ -347,10 +357,11 @@ test("popover examples preserve Nova surfaces, alignment, mobile framing, and RT
   await page.setViewportSize({ height: 560, width: 900 });
   await page.goto("/docs/static/examples/components/popover.html");
   await page.getByRole("button", { name: "Open popover" }).click();
-  await expect(page.locator(".popover-demo")).toHaveScreenshot(
-    "popover-demo-open-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="popover-demo"] > .visual-example'),
+  ).toHaveScreenshot("popover-demo-open-desktop.png", {
+    animations: "disabled",
+  });
 
   await page.setViewportSize({ height: 760, width: 900 });
   await page.goto("/docs/static/examples/components/popover-workflows.html");
@@ -388,10 +399,11 @@ test("tooltip examples preserve Nova arrows, disabled wrappers, mobile sides, an
   await page.setViewportSize({ height: 360, width: 900 });
   await page.goto("/docs/static/examples/components/tooltip.html");
   await page.getByRole("button", { name: "Hover" }).hover();
-  await expect(page.locator(".tooltip-demo")).toHaveScreenshot(
-    "tooltip-demo-open-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="tooltip-demo"] > .visual-example'),
+  ).toHaveScreenshot("tooltip-demo-open-desktop.png", {
+    animations: "disabled",
+  });
 
   await page.setViewportSize({ height: 680, width: 900 });
   await page.goto("/docs/static/examples/components/tooltip-workflows.html");
@@ -432,10 +444,11 @@ test("menubar examples preserve compact surfaces, state items, submenus, mobile 
   await page.setViewportSize({ height: 420, width: 900 });
   await page.goto("/docs/static/examples/components/menubar.html");
   await page.getByRole("menuitem", { name: "File", exact: true }).click();
-  await expect(page.locator(".menubar-demo")).toHaveScreenshot(
-    "menubar-demo-open-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="menubar-demo"] > .visual-example'),
+  ).toHaveScreenshot("menubar-demo-open-desktop.png", {
+    animations: "disabled",
+  });
 
   await page.setViewportSize({ height: 1100, width: 900 });
   await page.goto("/docs/static/examples/components/menubar-workflows.html");
@@ -475,10 +488,11 @@ test("navigation menu examples preserve native navigation, flyouts, dynamic stat
   await page.setViewportSize({ height: 560, width: 900 });
   await page.goto("/docs/static/examples/components/navigation-menu.html");
   await page.getByRole("button", { name: "Getting started" }).click();
-  await expect(page.locator(".navigation-menu-demo")).toHaveScreenshot(
-    "navigation-menu-demo-open-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="navigation-menu-demo"] > main'),
+  ).toHaveScreenshot("navigation-menu-demo-open-desktop.png", {
+    animations: "disabled",
+  });
 
   await page.setViewportSize({ height: 760, width: 900 });
   await page.goto(
@@ -503,10 +517,11 @@ test("navigation menu examples preserve native navigation, flyouts, dynamic stat
   await page.setViewportSize({ height: 560, width: 900 });
   await page.goto("/docs/static/examples/components/navigation-menu-rtl.html");
   await page.getByRole("button", { name: "البدء" }).click();
-  await expect(page.locator(".navigation-menu-demo")).toHaveScreenshot(
-    "navigation-menu-rtl-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="navigation-menu-rtl"] > main'),
+  ).toHaveScreenshot("navigation-menu-rtl-desktop.png", {
+    animations: "disabled",
+  });
 });
 
 test("pagination examples preserve Nova sizing, native links, AngularTS state, compact composition, mobile framing, and RTL", async ({
@@ -514,10 +529,9 @@ test("pagination examples preserve Nova sizing, native links, AngularTS state, c
 }) => {
   await page.setViewportSize({ height: 240, width: 900 });
   await page.goto("/docs/static/examples/components/pagination.html");
-  await expect(page.locator(".pagination-demo")).toHaveScreenshot(
-    "pagination-demo-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="pagination-demo"] > .visual-example'),
+  ).toHaveScreenshot("pagination-demo-desktop.png", { animations: "disabled" });
 
   await page.setViewportSize({ height: 420, width: 900 });
   await page.goto("/docs/static/examples/components/pagination-workflows.html");
@@ -526,14 +540,14 @@ test("pagination examples preserve Nova sizing, native links, AngularTS state, c
   await page
     .getByRole("combobox", { name: "Rows per page" })
     .selectOption("50");
-  await expect(page.locator(".pagination-workflows")).toHaveScreenshot(
+  await expect(page.locator("main")).toHaveScreenshot(
     "pagination-workflows-desktop.png",
     { animations: "disabled" },
   );
 
   await page.setViewportSize({ height: 720, width: 390 });
   await page.reload();
-  await expect(page.locator(".pagination-workflows")).toHaveScreenshot(
+  await expect(page.locator("main")).toHaveScreenshot(
     "pagination-workflows-mobile.png",
     { animations: "disabled" },
   );
@@ -549,10 +563,9 @@ test("progress examples preserve Nova geometry, timed and controlled state, labe
     "66",
   );
   await page.waitForTimeout(200);
-  await expect(page.locator(".progress-demo")).toHaveScreenshot(
-    "progress-demo-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="progress-demo"] > .visual-example'),
+  ).toHaveScreenshot("progress-demo-desktop.png", { animations: "disabled" });
 
   await page.setViewportSize({ height: 420, width: 900 });
   await page.goto("/docs/static/examples/components/progress-workflows.html");
@@ -579,10 +592,9 @@ test("resizable examples preserve Nova nested, visible-handle, vertical, RTL, an
 }) => {
   await page.setViewportSize({ height: 260, width: 900 });
   await page.goto("/docs/static/examples/components/resizable.html");
-  await expect(page.locator(".resizable-demo")).toHaveScreenshot(
-    "resizable-demo-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="resizable-demo"] > .visual-example'),
+  ).toHaveScreenshot("resizable-demo-desktop.png", { animations: "disabled" });
 
   await page.setViewportSize({ height: 500, width: 900 });
   await page.goto("/docs/static/examples/components/resizable-workflows.html");
@@ -605,10 +617,11 @@ test("combobox examples preserve Nova search, grouped, multiple, state, mobile, 
   await page.setViewportSize({ height: 420, width: 900 });
   await page.goto("/docs/static/examples/components/combobox.html");
   await page.getByRole("combobox", { name: "Framework", exact: true }).focus();
-  await expect(page.locator(".combobox-demo")).toHaveScreenshot(
-    "combobox-demo-open-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="combobox-demo"] > .visual-example'),
+  ).toHaveScreenshot("combobox-demo-open-desktop.png", {
+    animations: "disabled",
+  });
 
   await page.setViewportSize({ height: 980, width: 900 });
   await page.goto("/docs/static/examples/components/combobox-workflows.html");
@@ -673,10 +686,9 @@ test("command examples preserve Nova standalone, dialog, scrollable, mobile, and
 }) => {
   await page.setViewportSize({ height: 520, width: 900 });
   await page.goto("/docs/static/examples/components/command.html");
-  await expect(page.locator(".command-demo")).toHaveScreenshot(
-    "command-demo-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="command-demo"] > .visual-example'),
+  ).toHaveScreenshot("command-demo-desktop.png", { animations: "disabled" });
 
   await page.setViewportSize({ height: 980, width: 1000 });
   await page.goto(
@@ -710,10 +722,9 @@ test("command examples preserve Nova standalone, dialog, scrollable, mobile, and
 
   await page.setViewportSize({ height: 520, width: 900 });
   await page.goto("/docs/static/examples/components/command-rtl.html");
-  await expect(page.locator(".command-rtl-demo")).toHaveScreenshot(
-    "command-rtl-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="command-rtl"] > .visual-example'),
+  ).toHaveScreenshot("command-rtl-desktop.png", { animations: "disabled" });
 });
 
 test("context menu examples preserve pointer, state, side, mobile, and RTL visuals", async ({
@@ -724,10 +735,11 @@ test("context menu examples preserve pointer, state, side, mobile, and RTL visua
   await page
     .locator("[ng-context-menu] > :first-child")
     .click({ button: "right", position: { x: 160, y: 40 } });
-  await expect(page.locator(".context-menu-demo")).toHaveScreenshot(
-    "context-menu-demo-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="context-menu-demo"] > .visual-example'),
+  ).toHaveScreenshot("context-menu-demo-desktop.png", {
+    animations: "disabled",
+  });
 
   await page.setViewportSize({ height: 920, width: 1000 });
   await page.goto(
@@ -759,10 +771,11 @@ test("context menu examples preserve pointer, state, side, mobile, and RTL visua
   await page
     .locator("[ng-context-menu] > :first-child")
     .click({ button: "right" });
-  await expect(page.locator(".context-menu-demo")).toHaveScreenshot(
-    "context-menu-demo-mobile.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="context-menu-demo"] > .visual-example'),
+  ).toHaveScreenshot("context-menu-demo-mobile.png", {
+    animations: "disabled",
+  });
 
   await page.setViewportSize({ height: 560, width: 900 });
   await page.goto("/docs/static/examples/components/context-menu-rtl.html");
@@ -770,10 +783,11 @@ test("context menu examples preserve pointer, state, side, mobile, and RTL visua
     .locator("[ng-context-menu] > :first-child")
     .first()
     .click({ button: "right" });
-  await expect(page.locator(".context-menu-rtl-demo")).toHaveScreenshot(
-    "context-menu-rtl-desktop.png",
-    { animations: "disabled" },
-  );
+  await expect(
+    page.locator('body[data-example~="context-menu-rtl"] > .visual-example'),
+  ).toHaveScreenshot("context-menu-rtl-desktop.png", {
+    animations: "disabled",
+  });
 });
 
 test("dialog examples preserve modal, close, scroll, mobile, and RTL visuals", async ({
@@ -974,26 +988,25 @@ test("alert workflows preserve action, color, destructive, and RTL compositions"
   await page.setViewportSize({ height: 760, width: 900 });
   await page.goto("/docs/static/examples/components/alert-workflows.html");
 
-  const alerts = page.locator(".alert");
+  const alerts = page.locator('[role="alert"]');
   await expect(alerts).toHaveCount(6);
   expect(
     await alerts.evaluateAll((items) =>
       items.map((item) => item.getAttribute("role")),
     ),
-  ).toEqual(Array(6).fill(null));
-  await expect(page.locator(".alert-action-demo")).toHaveAttribute(
-    "aria-live",
-    "polite",
-  );
+  ).toEqual(Array(6).fill("alert"));
+  await expect(
+    page.locator('[role="alert"][aria-live="polite"]'),
+  ).toHaveAttribute("aria-live", "polite");
   expect(
     await alerts.evaluateAll((items) =>
       items
-        .filter((item) => !item.classList.contains("alert-action-demo"))
+        .filter((item) => !item.hasAttribute("aria-live"))
         .map((item) => item.getAttribute("aria-live")),
     ),
   ).toEqual(Array(5).fill(null));
 
-  const warning = page.locator(".alert-warning-demo");
+  const warning = page.locator('[role="alert"][variant="warning"]');
   const warningColors = await warning.evaluate((element) => {
     const probe = document.createElement("span");
     probe.style.color = "var(--amber-12)";
@@ -1005,7 +1018,7 @@ test("alert workflows preserve action, color, destructive, and RTL compositions"
   });
   expect(warningColors.foreground).toBe(warningColors.token);
 
-  const destructive = page.locator(`.alert[variant="destructive"]`);
+  const destructive = page.locator(`[role="alert"][variant="destructive"]`);
   const destructiveColors = await destructive.evaluate((element) => {
     const probe = document.createElement("span");
     probe.style.color = "var(--error-foreground)";
@@ -1017,7 +1030,7 @@ test("alert workflows preserve action, color, destructive, and RTL compositions"
   });
   expect(destructiveColors.foreground).toBe(destructiveColors.token);
 
-  const rtlAlert = page.locator(".alert-rtl-demo .alert").first();
+  const rtlAlert = page.locator('.alert-rtl-demo [role="alert"]').first();
   const rtlBox = await rtlAlert.boundingBox();
   const rtlIconBox = await rtlAlert.locator(":scope > svg").boundingBox();
   expect(rtlBox).not.toBeNull();
@@ -1048,8 +1061,10 @@ test("alert dialog workflows preserve size, media, destructive, focus, and RTL b
   const media = (id: string) =>
     page.locator(`#${id} > dialog > header > figure`);
 
-  await expect(page.locator(".alert-dialog > dialog")).toHaveCount(6);
-  await expect(page.locator(".alert-dialog > dialog:visible")).toHaveCount(0);
+  await expect(
+    page.getByRole("alertdialog", { includeHidden: true }),
+  ).toHaveCount(6);
+  await expect(page.getByRole("alertdialog")).toHaveCount(0);
 
   const shareTrigger = page.getByRole("button", { name: "Share Project" });
   await shareTrigger.click();
@@ -1185,7 +1200,7 @@ test("aspect ratio workflows preserve portrait, square, and RTL geometry", async
     "منظر طبيعي جميل",
   );
   expect(
-    await page.locator(".aspect-ratio-image").evaluateAll((images) =>
+    await page.locator("figure[ratio] > img").evaluateAll((images) =>
       images.map((image) => ({
         objectFit: getComputedStyle(image).objectFit,
         position: getComputedStyle(image).position,
@@ -1272,7 +1287,7 @@ test("avatar workflows preserve badges, group counts, sizes, dropdown compositio
 
   await trigger.click();
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
-  const menu = page.locator(".avatar-dropdown-menu");
+  const menu = page.locator(".avatar-dropdown-stage").getByRole("menu");
   await expect(menu).toBeVisible();
   await expect(menu).toHaveCSS("width", "128px");
   await expect(page.locator(".avatar-dropdown-stage")).toHaveScreenshot(
@@ -1294,9 +1309,9 @@ test("breadcrumb workflows preserve separators, ellipsis, dropdown composition, 
   await page.setViewportSize({ height: 700, width: 900 });
   await page.goto("/docs/static/examples/components/breadcrumb-workflows.html");
 
-  const breadcrumbs = page.locator(".breadcrumb");
+  const breadcrumbs = page.locator('nav:has(> ol [aria-current="page"])');
   await expect(breadcrumbs).toHaveCount(5);
-  const pages = page.locator('.breadcrumb [aria-current="page"]');
+  const pages = breadcrumbs.locator('[aria-current="page"]');
   await expect(pages).toHaveCount(5);
   for (const currentPage of await pages.all()) {
     await expect(currentPage).toHaveAttribute("aria-current", "page");
@@ -1304,9 +1319,7 @@ test("breadcrumb workflows preserve separators, ellipsis, dropdown composition, 
     expect(await currentPage.getAttribute("role")).toBeNull();
   }
 
-  const cssSeparators = page.locator(
-    '.breadcrumb > ol > li[aria-hidden="true"]:empty',
-  );
+  const cssSeparators = page.locator('nav > ol > li[aria-hidden="true"]:empty');
   await expect(cssSeparators).toHaveCount(6);
   expect(
     await cssSeparators.evaluateAll((separators) =>
@@ -1317,7 +1330,7 @@ test("breadcrumb workflows preserve separators, ellipsis, dropdown composition, 
     ),
   ).toEqual(Array(6).fill({ height: 14, width: 14 }));
   await expect(
-    page.locator('.breadcrumb :is(button, li) > span[aria-hidden="true"]'),
+    breadcrumbs.locator(':is(button, li) > span[aria-hidden="true"]'),
   ).toHaveCount(2);
 
   const collapsedTrigger = page.getByRole("button", {
@@ -1326,12 +1339,14 @@ test("breadcrumb workflows preserve separators, ellipsis, dropdown composition, 
   await collapsedTrigger.click();
   await expect(collapsedTrigger).toHaveAttribute("aria-expanded", "true");
   await page.getByRole("menuitem", { name: "Themes" }).first().click();
-  await expect(page.locator(".breadcrumb-workflow-output").first()).toHaveText(
-    "Selected: Themes",
-  );
+  await expect(
+    page.locator('section[aria-labelledby="breadcrumb-demo-heading"] output'),
+  ).toHaveText("Selected: Themes");
   await expect(collapsedTrigger).toBeFocused();
 
-  const dropdownSection = page.locator(".breadcrumb-dropdown-example");
+  const dropdownSection = page.locator(
+    'section[aria-labelledby="breadcrumb-dropdown-heading"]',
+  );
   const dropdownTrigger = dropdownSection.getByRole("button", {
     name: "Components",
   });
@@ -1340,7 +1355,7 @@ test("breadcrumb workflows preserve separators, ellipsis, dropdown composition, 
   await page.keyboard.press("Escape");
   await expect(dropdownTrigger).toBeFocused();
 
-  const rtlSection = page.locator(".breadcrumb-rtl-example");
+  const rtlSection = page.locator('section[dir="rtl"]');
   await expect(rtlSection).toHaveAttribute("dir", "rtl");
   const rtlTrigger = rtlSection.getByRole("button", { name: "المكونات" });
   const [rtlTriggerBox, rtlIconBox] = await Promise.all([
@@ -1354,11 +1369,9 @@ test("breadcrumb workflows preserve separators, ellipsis, dropdown composition, 
   );
   await rtlTrigger.click();
   await rtlSection.getByRole("menuitem", { name: "السمات" }).click();
-  await expect(rtlSection.locator(".breadcrumb-workflow-output")).toHaveText(
-    "المحدد: السمات",
-  );
+  await expect(rtlSection.locator("output")).toHaveText("المحدد: السمات");
 
-  await expect(page.locator(".breadcrumb-workflows")).toHaveScreenshot(
+  await expect(page.locator("main")).toHaveScreenshot(
     "breadcrumb-workflows-desktop.png",
     { animations: "disabled" },
   );
@@ -1374,7 +1387,7 @@ test("button group workflows preserve command, form, overlay, nested, and RTL co
   );
 
   const toolbar = page.getByRole("group", { name: "Message actions" });
-  const nestedGroups = toolbar.locator(":scope > .button-group");
+  const nestedGroups = toolbar.locator(':scope > [role="group"]');
   await expect(nestedGroups).toHaveCount(3);
   await expect(toolbar).toHaveCSS("gap", "8px");
   const archive = toolbar.getByRole("button", { name: "Archive", exact: true });
@@ -1398,10 +1411,9 @@ test("button group workflows preserve command, form, overlay, nested, and RTL co
     name: "More follow actions",
   });
   await followMore.click();
-  await expect(
-    page.locator(".button-group-follow-menu").getByRole("menuitem"),
-  ).toHaveCount(7);
-  await expect(page.locator(".button-group-follow-menu")).toHaveScreenshot(
+  const followMenu = follow.getByRole("menu");
+  await expect(followMenu.getByRole("menuitem")).toHaveCount(7);
+  await expect(followMenu).toHaveScreenshot(
     "button-group-dropdown-open-desktop.png",
     {
       animations: "disabled",
@@ -1794,7 +1806,9 @@ test("checkbox workflows preserve reference states, grouping, and RTL layout", a
     "data-example",
     "checkbox-basic checkbox-description checkbox-disabled checkbox-group checkbox-invalid checkbox-rtl",
   );
-  const checkboxes = page.locator(".checkbox");
+  const checkboxes = page.locator(
+    'input[type="checkbox"]:not([role="switch"])',
+  );
   await expect(checkboxes).toHaveCount(12);
   await page.locator("#terms-checkbox-basic").check();
   await expect(page.getByRole("status")).toContainText("Basic true");
@@ -1810,7 +1824,9 @@ test("checkbox workflows preserve reference states, grouping, and RTL layout", a
   await expect(rtl).toHaveAttribute("dir", "rtl");
   const rtlField = rtl.locator(".field").first();
   const [controlBox, labelBox] = await Promise.all([
-    rtlField.locator(".checkbox").boundingBox(),
+    rtlField
+      .locator('input[type="checkbox"]:not([role="switch"])')
+      .boundingBox(),
     rtlField.locator("label").boundingBox(),
   ]);
   expect(controlBox).not.toBeNull();
@@ -1842,7 +1858,9 @@ test("checkbox table keeps selection and selected-row state synchronized", async
   await expect(rows.nth(0)).toHaveAttribute("aria-selected", "true");
 
   await selectAll.check();
-  await expect(rows.locator(".checkbox:checked")).toHaveCount(4);
+  await expect(
+    rows.locator('input[type="checkbox"]:not([role="switch"]):checked'),
+  ).toHaveCount(4);
   await page.getByLabel("Select Marcus Rodriguez").uncheck();
   await expect(selectAll).not.toBeChecked();
   await expect(rows.nth(1)).toHaveAttribute("aria-selected", "false");
@@ -1921,7 +1939,9 @@ test("switch workflows preserve native sizes, validation, choice cards, and RTL"
   const standard = page.locator("#switch-size-default");
   const disabled = page.locator("#switch-disabled-unchecked");
   const invalid = page.locator("#switch-terms");
-  const selectedChoice = page.locator(".switch-choice:has(.switch:checked)");
+  const selectedChoice = page.locator(
+    '.switch-choice:has([role="switch"]:checked)',
+  );
   const rtl = page.locator('[aria-label="RTL switch"]');
 
   const [smallBox, standardBox] = await Promise.all([
@@ -1961,8 +1981,10 @@ test("radio group workflows preserve model state, choice cards, fieldsets, valid
     "/docs/static/examples/components/radio-group-workflows.html",
   );
 
-  const groups = page.locator(".radio-group");
-  const checked = page.locator('.radio-group input[type="radio"]:checked');
+  const groups = page.locator(
+    'fieldset:has(input[type="radio"]):not(.toggle-group)',
+  );
+  const checked = groups.locator('input[type="radio"]:checked');
   const disabled = page.locator("#disabled-1");
   const invalid = page.locator('[name="notification"][aria-invalid="true"]');
   const rtl = page.locator('[aria-label="RTL density options"]');

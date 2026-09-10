@@ -1,21 +1,21 @@
 ---
 title: textarea
-category: 'form'
+category: "form"
 description: >
   Multi-line text control with state attributes for
   empty/required/disabled/error.
 ---
 
-Use `class="textarea"` on native textarea controls.
+Use native `textarea` controls; AngularCSS styles them directly.
 
 ```html
-<textarea placeholder="Add a message" class="textarea"></textarea>
-<textarea placeholder="Invalid" aria-invalid="true" class="textarea"></textarea>
+<textarea placeholder="Add a message"></textarea>
+<textarea placeholder="Invalid" aria-invalid="true"></textarea>
 ```
 
 ## Example
 
-{{< example src="examples/components/textarea.html" title="Textarea examples" height="240" >}}
+{{< example src="examples/components/textarea.html" title="Textarea examples" height="240">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -29,7 +29,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.textarea`
+- `textarea`
 
 ### Semantic structure
 

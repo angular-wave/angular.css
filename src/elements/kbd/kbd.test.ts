@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "elements",
   directive: "ngKbd",
   name: "kbd",
-  selector: ".kbd",
+  selector: "kbd",
 });

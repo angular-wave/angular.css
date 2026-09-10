@@ -1,0 +1,226 @@
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"]) [role="menu"] {
+  position: absolute;
+  z-index: 50;
+  display: grid;
+  width: var(--menu-width, auto);
+  min-width: var(--menu-width, calc(var(--spacing) * 32));
+  gap: 0;
+  border: var(--border-width-default) solid var(--border);
+  border-radius: var(--radius);
+  background: var(--popover);
+  color: var(--popover-foreground);
+  padding: calc(var(--spacing) * 1);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  > :is(section, fieldset, [role="group"]) {
+  display: grid;
+  gap: 0;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  > :is(h1, h2, h3, h4, h5, h6),
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  > :is(section, fieldset, [role="group"])
+  > :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--muted-foreground);
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]),
+[ng-command] > [role="listbox"] > [role="option"],
+[ng-command] > [role="listbox"] > [role="group"] > [role="option"] {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: var(--size-control-sm);
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]) {
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
+  font: inherit;
+  font-size: var(--text-sm);
+  text-align: start;
+  text-decoration: none;
+  outline: none;
+  cursor: default;
+  user-select: none;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):is(
+    :hover,
+    :focus-visible,
+    [aria-selected="true"],
+    [aria-expanded="true"]
+  ) {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):is(
+    :disabled,
+    [aria-disabled="true"]
+  ) {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is(
+    [role="menuitem"],
+    [role="menuitemcheckbox"],
+    [role="menuitemradio"]
+  )[variant="destructive"] {
+  color: var(--error-foreground);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is(
+    [role="menuitem"],
+    [role="menuitemcheckbox"],
+    [role="menuitemradio"]
+  )[variant="destructive"]:is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+  color: var(--error-foreground);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is([role="menuitemradio"], [role="menuitemcheckbox"]),
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is(
+    [role="menuitem"],
+    [role="menuitemcheckbox"],
+    [role="menuitemradio"]
+  )[inset] {
+  padding-inline-start: calc(var(--spacing) * 8);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  [role="menuitemradio"][aria-checked="true"]::before,
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  [role="menuitemcheckbox"][aria-checked="true"]::before {
+  position: absolute;
+  inset-inline-start: calc(var(--spacing) * 2.5);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  [role="menuitemradio"][aria-checked="true"]::before {
+  width: calc(var(--spacing) * 1.5);
+  height: calc(var(--spacing) * 1.5);
+  border-radius: var(--radius-full);
+  background: currentcolor;
+  content: "";
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  [role="menuitemcheckbox"][aria-checked="true"]::before {
+  content: "\2713";
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"])
+  > svg {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  flex: 0 0 auto;
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  hr {
+  height: var(--border-width-default);
+  margin-block: calc(var(--spacing) * 1);
+  margin-inline: calc(var(--spacing) * -1);
+  border: 0;
+  background: var(--border);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  kbd {
+  margin-inline-start: auto;
+  color: var(--muted-foreground);
+  font-family: inherit;
+  font-size: var(--text-xs);
+  letter-spacing: 0;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  details {
+  position: relative;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  details
+  > [role="menuitem"] {
+  list-style: none;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  details
+  > [role="menuitem"]::-webkit-details-marker {
+  display: none;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  [role="menu"]
+  details
+  > [role="menuitem"]::after {
+  display: inline-block;
+  margin-inline-start: auto;
+  content: "\203a";
+  font-size: var(--text-base);
+  line-height: var(--leading-none);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"]):dir(rtl)
+  details
+  > [role="menuitem"]::after {
+  transform: scaleX(-1);
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"])
+  details
+  > [role="menu"] {
+  inset-block-start: calc(var(--spacing) * -1);
+  inset-inline-start: calc(100% + var(--spacing) * 1);
+  z-index: 51;
+}
+
+:where([ng-context-menu], [ng-dropdown-menu], [role="menubar"]):dir(rtl)
+  details
+  > [role="menu"] {
+  inset-inline: auto calc(100% + var(--spacing) * 1);
+}

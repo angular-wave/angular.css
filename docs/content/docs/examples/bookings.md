@@ -1,7 +1,6 @@
 ---
 title: Bookings operations
-description:
-  An enterprise reservation workflow assembled from AngularCSS components.
+description: An enterprise reservation workflow assembled from AngularCSS components.
 ---
 
 This AngularTS application composes sidebar, input group, tabs, badge, avatar,

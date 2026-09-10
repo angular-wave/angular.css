@@ -6,7 +6,7 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngValidationSummary",
   name: "validation-summary",
-  selector: ".validation-summary",
+  selector: 'aside[role="alert"]:has(> header + ul)',
 });
 
 test("validation messages link directly to invalid controls", async ({

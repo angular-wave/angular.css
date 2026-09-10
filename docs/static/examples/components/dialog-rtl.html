@@ -16,11 +16,10 @@
     ng-init="profile={name:'محمد علي',username:'@mohamed'}"
     data-example="dialog-rtl"
   >
-    <main class="dialog-demo visual-example">
+    <main class="visual-example">
       <section id="rtl-profile-dialog" class="dialog">
         <button
           variant="outline"
-          class="button"
           type="button"
           commandfor="rtl-profile-dialog-content"
           command="show-modal"
@@ -42,38 +41,28 @@
           <section>
             <label for="rtl-name">
               <span>الاسم</span>
-              <input id="rtl-name" ng-model="profile.name" class="input" />
+              <input id="rtl-name" ng-model="profile.name" />
             </label>
             <label for="rtl-username">
               <span>اسم المستخدم</span>
-              <input
-                id="rtl-username"
-                ng-model="profile.username"
-                class="input"
-              />
+              <input id="rtl-username" ng-model="profile.username" />
             </label>
           </section>
           <footer>
             <button
               variant="outline"
-              class="button"
               commandfor="rtl-profile-dialog-content"
               command="close"
             >
               إلغاء
             </button>
-            <button
-              class="button"
-              commandfor="rtl-profile-dialog-content"
-              command="close"
-            >
+            <button commandfor="rtl-profile-dialog-content" command="close">
               حفظ التغييرات
             </button>
           </footer>
           <button
             variant="ghost"
             size="icon-sm"
-            class="button"
             commandfor="rtl-profile-dialog-content"
             command="close"
           >
@@ -87,7 +76,7 @@
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
             </svg>
-            <span class="example-sr-only">إغلاق</span>
+            <span class="visually-hidden">إغلاق</span>
           </button>
         </dialog>
       </section>

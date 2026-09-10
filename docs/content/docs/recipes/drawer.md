@@ -1,6 +1,6 @@
 ---
 title: drawer
-category: 'overlay'
+category: "overlay"
 description: >
   Bottom anchored drawer panels
 ---
@@ -69,8 +69,8 @@ Use `.drawer` as a wrapper containing a native invoker button and `dialog` with 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `dir` | Authored | Text and interaction direction: `ltr` or `rtl`. |
-| `side` | Authored | Physical placement: `left`, `top`, `bottom`, or `right`. |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
+| `side` | Authored | Dialog edge: `top`, `right`, `bottom`, or `left`. |
+| `size` | Authored | Use `half` for a half-height top or bottom drawer. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

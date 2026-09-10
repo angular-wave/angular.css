@@ -10,12 +10,7 @@
     <script src="../../js/angular-ts.umd.js"></script>
     <script src="../../js/angular-css.umd.js"></script>
   </head>
-  <body
-    ng-app="angular.css"
-    ng-cloak
-    class="disclosure-composition-body"
-    data-example="disclosure-file-tree"
-  >
+  <body ng-app="angular.css" ng-cloak data-example="disclosure-file-tree">
     <main aria-label="Disclosure file tree composition">
       <div size="sm" class="disclosure-file-card visual-example card">
         <header>
@@ -24,8 +19,12 @@
               <button aria-selected="true">Explorer</button>
               <button>Outline</button>
             </menu>
-            <section class="visually-hidden">Explorer file tree</section>
-            <section class="visually-hidden">No outline available</section>
+            <section>
+              <span class="visually-hidden">Explorer file tree</span>
+            </section>
+            <section>
+              <span class="visually-hidden">No outline available</span>
+            </section>
           </section>
         </header>
         <section>
@@ -62,7 +61,7 @@
                     ><span>ui</span>
                   </summary>
                   <div>
-                    <button variant="link" size="sm" class="button">
+                    <button variant="link" size="sm">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
                           d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -70,7 +69,7 @@
                         <path d="M14 2v6h6" /></svg
                       >button.tsx
                     </button>
-                    <button variant="link" size="sm" class="button">
+                    <button variant="link" size="sm">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
                           d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -78,7 +77,7 @@
                         <path d="M14 2v6h6" /></svg
                       >card.tsx
                     </button>
-                    <button variant="link" size="sm" class="button">
+                    <button variant="link" size="sm">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
                           d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -86,7 +85,7 @@
                         <path d="M14 2v6h6" /></svg
                       >dialog.tsx
                     </button>
-                    <button variant="link" size="sm" class="button">
+                    <button variant="link" size="sm">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
                           d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -94,7 +93,7 @@
                         <path d="M14 2v6h6" /></svg
                       >input.tsx
                     </button>
-                    <button variant="link" size="sm" class="button">
+                    <button variant="link" size="sm">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
                           d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -102,7 +101,7 @@
                         <path d="M14 2v6h6" /></svg
                       >select.tsx
                     </button>
-                    <button variant="link" size="sm" class="button">
+                    <button variant="link" size="sm">
                       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path
                           d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -112,7 +111,7 @@
                     </button>
                   </div>
                 </details>
-                <button variant="link" size="sm" class="button">
+                <button variant="link" size="sm">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
                       d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -120,7 +119,7 @@
                     <path d="M14 2v6h6" /></svg
                   >login-form.tsx
                 </button>
-                <button variant="link" size="sm" class="button">
+                <button variant="link" size="sm">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
                       d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"
@@ -146,9 +145,9 @@
                 ><span>lib</span>
               </summary>
               <div>
-                <button variant="link" size="sm" class="button">utils.ts</button
-                ><button variant="link" size="sm" class="button">cn.ts</button
-                ><button variant="link" size="sm" class="button">api.ts</button>
+                <button variant="link" size="sm">utils.ts</button
+                ><button variant="link" size="sm">cn.ts</button
+                ><button variant="link" size="sm">api.ts</button>
               </div>
             </details>
             <details class="disclosure">
@@ -167,13 +166,9 @@
                 ><span>hooks</span>
               </summary>
               <div>
-                <button variant="link" size="sm" class="button">
-                  use-media-query.ts</button
-                ><button variant="link" size="sm" class="button">
-                  use-debounce.ts</button
-                ><button variant="link" size="sm" class="button">
-                  use-local-storage.ts
-                </button>
+                <button variant="link" size="sm">use-media-query.ts</button
+                ><button variant="link" size="sm">use-debounce.ts</button
+                ><button variant="link" size="sm">use-local-storage.ts</button>
               </div>
             </details>
             <details class="disclosure">
@@ -192,11 +187,8 @@
                 ><span>types</span>
               </summary>
               <div>
-                <button variant="link" size="sm" class="button">
-                  index.d.ts</button
-                ><button variant="link" size="sm" class="button">
-                  api.d.ts
-                </button>
+                <button variant="link" size="sm">index.d.ts</button
+                ><button variant="link" size="sm">api.d.ts</button>
               </div>
             </details>
             <details class="disclosure">
@@ -215,24 +207,18 @@
                 ><span>public</span>
               </summary>
               <div>
-                <button variant="link" size="sm" class="button">
-                  favicon.ico</button
-                ><button variant="link" size="sm" class="button">
-                  logo.svg</button
-                ><button variant="link" size="sm" class="button">images</button>
+                <button variant="link" size="sm">favicon.ico</button
+                ><button variant="link" size="sm">logo.svg</button
+                ><button variant="link" size="sm">images</button>
               </div>
             </details>
-            <button variant="link" size="sm" class="button">app.tsx</button>
-            <button variant="link" size="sm" class="button">layout.tsx</button>
-            <button variant="link" size="sm" class="button">globals.css</button>
-            <button variant="link" size="sm" class="button">
-              package.json
-            </button>
-            <button variant="link" size="sm" class="button">
-              tsconfig.json
-            </button>
-            <button variant="link" size="sm" class="button">README.md</button>
-            <button variant="link" size="sm" class="button">.gitignore</button>
+            <button variant="link" size="sm">app.tsx</button>
+            <button variant="link" size="sm">layout.tsx</button>
+            <button variant="link" size="sm">globals.css</button>
+            <button variant="link" size="sm">package.json</button>
+            <button variant="link" size="sm">tsconfig.json</button>
+            <button variant="link" size="sm">README.md</button>
+            <button variant="link" size="sm">.gitignore</button>
           </div>
         </section>
       </div>

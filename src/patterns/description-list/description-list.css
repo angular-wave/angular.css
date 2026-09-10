@@ -1,4 +1,4 @@
-@scope (dl.description-list) to (.description-list) {
+@scope (dl:has(> div > dt):has(> div > dd)) to (dl:has(> div > dt):has(> div > dd)) {
   :scope {
     display: grid;
     grid-template-columns: minmax(8rem, 0.35fr) minmax(0, 1fr);

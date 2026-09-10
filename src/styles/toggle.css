@@ -1,0 +1,70 @@
+button[aria-pressed],
+.toggle-group > label {
+  display: inline-flex;
+  height: var(--size-control-md);
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--spacing) * 2);
+  border: var(--border-width-default) solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--foreground);
+  padding-inline: calc(var(--spacing) * 3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-default)
+      var(--motion-easing-standard),
+    border-color var(--motion-duration-default) var(--motion-easing-standard),
+    color var(--motion-duration-default) var(--motion-easing-standard),
+    transform var(--motion-duration-fast) var(--motion-easing-out);
+}
+
+button[aria-pressed]:hover,
+.toggle-group > label:where(:hover) {
+  background: var(--muted);
+}
+
+button[aria-pressed]:is(:disabled, [aria-disabled="true"]),
+.toggle-group > label:where(:has(input:disabled)) {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+button[aria-pressed="true"],
+.toggle-group > label:where(:has(input:checked)) {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+button[aria-pressed]:active:not(:disabled, [aria-disabled="true"]),
+.toggle-group > label:where(:active:not(:has(input:disabled))) {
+  transform: translateY(1px);
+}
+
+button[aria-pressed][size="sm"],
+.toggle-group[size="sm"] > label {
+  height: var(--size-control-sm);
+  padding-inline: calc(var(--spacing) * 2);
+}
+
+button[aria-pressed][size="lg"],
+.toggle-group[size="lg"] > label {
+  height: var(--size-control-lg);
+  padding-inline: calc(var(--spacing) * 4);
+}
+
+button[aria-pressed] > svg,
+.toggle-group > label > svg {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button[aria-pressed],
+  .toggle-group > label {
+    transition-duration: var(--motion-duration-instant);
+  }
+}

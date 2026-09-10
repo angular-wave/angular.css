@@ -16,7 +16,7 @@
     ng-init="rtlCommand={query:'',selected:''}; rtlSuggestions=[{label:'التقويم',disabled:false},{label:'البحث عن الرموز التعبيرية',disabled:false},{label:'الآلة الحاسبة',disabled:true}]; rtlSettings=[{label:'الملف الشخصي',shortcut:'⌘P'},{label:'الفوترة',shortcut:'⌘B'},{label:'الإعدادات',shortcut:'⌘S'}]"
     data-example="command-rtl"
   >
-    <main class="command-rtl-demo visual-example">
+    <main class="visual-example">
       <section
         id="rtl-command"
         ng-command
@@ -90,7 +90,7 @@
           </section>
         </div>
       </section>
-      <output class="output visually-hidden" aria-live="polite">
+      <output class="visually-hidden" aria-live="polite">
         المحدد: <span ng-bind="rtlCommand.selected || 'لا شيء'"></span>
       </output>
     </main>

@@ -1,141 +1,143 @@
-.popover {
-  display: inline-flex;
-  width: fit-content;
-}
+@scope (span:has(> [popovertarget] ~ [popover])) to (span:has(> [popovertarget] ~ [popover])) {
+  :scope {
+    display: inline-flex;
+    width: fit-content;
+  }
 
-.popover > button:first-child {
-  display: inline-flex;
-}
+  :scope > button:first-child {
+    display: inline-flex;
+  }
 
-.popover > [popover] {
-  position: fixed;
-  inset: auto;
-  z-index: 50;
-  width: 18rem;
-  margin: 0;
-  flex-direction: column;
-  gap: calc(var(--spacing) * 2.5);
-  border: 0;
-  border-radius: var(--radius);
-  background: var(--popover);
-  color: var(--popover-foreground);
-  padding: calc(var(--spacing) * 2.5);
-  font-size: var(--text-sm);
-  box-shadow:
-    0 0 0 var(--border-width-default)
-      color-mix(in srgb, var(--foreground) 10%, transparent),
-    var(--shadow-md);
-  outline: none;
-  opacity: 0;
-  transform: scale(0.98);
-  transition:
-    display var(--motion-duration-deliberate) allow-discrete,
-    overlay var(--motion-duration-deliberate) allow-discrete,
-    opacity var(--motion-duration-deliberate) var(--motion-easing-standard),
-    transform var(--motion-duration-deliberate) var(--motion-easing-standard);
-  position-try-fallbacks: flip-block, flip-inline;
-}
-
-.popover > [popover]:not(:popover-open) {
-  display: none;
-}
-
-.popover > [popover]:popover-open {
-  display: flex;
-  opacity: 1;
-  transform: scale(1);
-
-  @starting-style {
+  :scope > [popover] {
+    position: fixed;
+    inset: auto;
+    z-index: 50;
+    width: 18rem;
+    margin: 0;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2.5);
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--popover);
+    color: var(--popover-foreground);
+    padding: calc(var(--spacing) * 2.5);
+    font-size: var(--text-sm);
+    box-shadow:
+      0 0 0 var(--border-width-default)
+        color-mix(in srgb, var(--foreground) 10%, transparent),
+      var(--shadow-md);
+    outline: none;
     opacity: 0;
     transform: scale(0.98);
+    transition:
+      display var(--motion-duration-deliberate) allow-discrete,
+      overlay var(--motion-duration-deliberate) allow-discrete,
+      opacity var(--motion-duration-deliberate) var(--motion-easing-standard),
+      transform var(--motion-duration-deliberate) var(--motion-easing-standard);
+    position-try-fallbacks: flip-block, flip-inline;
   }
-}
 
-.popover > [popover]:dir(rtl) {
-  direction: rtl;
-}
-
-.popover > [popover][align] {
-  text-align: start;
-}
-
-.popover > [popover][side="bottom"][align="start"] {
-  position-area: block-end span-inline-end;
-}
-
-.popover > [popover][side="bottom"][align="center"] {
-  position-area: block-end center;
-}
-
-.popover > [popover][side="bottom"][align="end"] {
-  position-area: block-end span-inline-start;
-}
-
-.popover > [popover][side="top"][align="start"] {
-  position-area: block-start span-inline-end;
-}
-
-.popover > [popover][side="top"][align="center"] {
-  position-area: block-start center;
-}
-
-.popover > [popover][side="top"][align="end"] {
-  position-area: block-start span-inline-start;
-}
-
-.popover > [popover][side="left"][align="start"] {
-  position-area: left span-bottom;
-}
-
-.popover > [popover][side="left"][align="center"] {
-  position-area: left center;
-}
-
-.popover > [popover][side="left"][align="end"] {
-  position-area: left span-top;
-}
-
-.popover > [popover][side="right"][align="start"] {
-  position-area: right span-bottom;
-}
-
-.popover > [popover][side="right"][align="center"] {
-  position-area: right center;
-}
-
-.popover > [popover][side="right"][align="end"] {
-  position-area: right span-top;
-}
-
-.popover > [popover] > header {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--spacing) * 0.5);
-}
-
-.popover > [popover] > header > :is(h1, h2, h3) {
-  color: var(--foreground);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-}
-
-.popover > [popover] > header > p {
-  color: var(--muted-foreground);
-  font-size: var(--text-sm);
-  line-height: 1.45;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .popover > [popover] {
-    transition-duration: var(--motion-duration-instant);
+  :scope > [popover]:not(:popover-open) {
+    display: none;
   }
-}
 
-@media (width <= 30rem) {
-  .popover > [popover] {
-    max-width: calc(100vw - var(--spacing) * 4);
-    max-height: calc(100dvh - var(--spacing) * 4);
-    margin: calc(var(--spacing) * 2);
-    overflow: auto;
+  :scope > [popover]:popover-open {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+
+    @starting-style {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+  }
+
+  :scope > [popover]:dir(rtl) {
+    direction: rtl;
+  }
+
+  :scope > [popover][align] {
+    text-align: start;
+  }
+
+  :scope > [popover][side="bottom"][align="start"] {
+    position-area: block-end span-inline-end;
+  }
+
+  :scope > [popover][side="bottom"][align="center"] {
+    position-area: block-end center;
+  }
+
+  :scope > [popover][side="bottom"][align="end"] {
+    position-area: block-end span-inline-start;
+  }
+
+  :scope > [popover][side="top"][align="start"] {
+    position-area: block-start span-inline-end;
+  }
+
+  :scope > [popover][side="top"][align="center"] {
+    position-area: block-start center;
+  }
+
+  :scope > [popover][side="top"][align="end"] {
+    position-area: block-start span-inline-start;
+  }
+
+  :scope > [popover][side="left"][align="start"] {
+    position-area: left span-bottom;
+  }
+
+  :scope > [popover][side="left"][align="center"] {
+    position-area: left center;
+  }
+
+  :scope > [popover][side="left"][align="end"] {
+    position-area: left span-top;
+  }
+
+  :scope > [popover][side="right"][align="start"] {
+    position-area: right span-bottom;
+  }
+
+  :scope > [popover][side="right"][align="center"] {
+    position-area: right center;
+  }
+
+  :scope > [popover][side="right"][align="end"] {
+    position-area: right span-top;
+  }
+
+  :scope > [popover] > header {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 0.5);
+  }
+
+  :scope > [popover] > header > :is(h1, h2, h3) {
+    color: var(--foreground);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  :scope > [popover] > header > p {
+    color: var(--muted-foreground);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :scope > [popover] {
+      transition-duration: var(--motion-duration-instant);
+    }
+  }
+
+  @media (width <= 30rem) {
+    :scope > [popover] {
+      max-width: calc(100vw - var(--spacing) * 4);
+      max-height: calc(100dvh - var(--spacing) * 4);
+      margin: calc(var(--spacing) * 2);
+      overflow: auto;
+    }
   }
 }

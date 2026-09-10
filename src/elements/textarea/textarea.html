@@ -16,14 +16,13 @@
     ng-init="message='Ship semantic components';rtlMessage='';textareaAction='Ready'"
     data-example="textarea-button textarea-demo textarea-disabled textarea-field textarea-invalid textarea-rtl"
   >
-    <main class="textarea-workflows visual-example">
+    <main class="visual-example">
       <div class="field">
         <label for="docs-textarea-message">Message</label>
         <textarea
           id="docs-textarea-message"
           placeholder="Add a message"
           ng-model="message"
-          class="textarea"
         ></textarea>
         <p>Add context for your request.</p>
       </div>
@@ -34,7 +33,6 @@
           id="docs-textarea-disabled"
           placeholder="Disabled"
           disabled
-          class="textarea"
         ></textarea>
       </div>
 
@@ -44,7 +42,6 @@
           id="docs-textarea-invalid"
           placeholder="Invalid"
           aria-invalid="true"
-          class="textarea"
         ></textarea>
         <p class="field-error">A message is required.</p>
       </div>
@@ -54,13 +51,8 @@
         <textarea
           id="docs-textarea-reply"
           placeholder="Type your message here."
-          class="textarea"
         ></textarea>
-        <button
-          type="button"
-          ng-click="textareaAction='Message sent'"
-          class="button"
-        >
+        <button type="button" ng-click="textareaAction='Message sent'">
           Send message
         </button>
       </div>
@@ -71,7 +63,6 @@
           id="docs-textarea-rtl"
           ng-model="rtlMessage"
           placeholder="اكتب رسالتك هنا."
-          class="textarea"
         ></textarea>
         <p>سيتم إرسال رد إلى بريدك الإلكتروني.</p>
       </div>

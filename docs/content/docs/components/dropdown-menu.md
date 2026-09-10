@@ -63,14 +63,12 @@ Use native elements for authored structure. Component classes are optional visua
 | `align` | Input | Cross-axis alignment: `start`, `center`, or `end`. |
 | `align-offset` | Input | Additional alignment offset in CSS pixels. |
 | `aria-checked` | Input/output | ARIA relationship or state. |
-| `aria-controls` | Output | ARIA relationship or state. |
-| `aria-disabled` | Input | Semantic disabled state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-haspopup` | Input/output | ARIA relationship or state. |
-| `aria-hidden` | Output | ARIA relationship or state. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
+| `aria-haspopup` | Input/output | Type of popup controlled by the trigger. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
-| `disabled` | Input | Disables native or component interaction. |
 | `open` | Input | Initial or controlled open state. |
 | `role` | Input/output | Explicit semantic role when native HTML does not provide one. |
 | `side` | Input | Physical placement: `left`, `top`, `bottom`, or `right`. |

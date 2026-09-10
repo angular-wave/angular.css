@@ -79,7 +79,7 @@
   padding-block-start: calc(var(--spacing) * 3);
 }
 
-.input-group > :not(input, textarea, select) {
+.input-group > :not(input, textarea, select, button) {
   display: flex;
   min-height: 0;
   flex: 0 0 auto;
@@ -158,7 +158,7 @@
   min-height: var(--size-control-xs);
   height: var(--size-control-xs);
   gap: calc(var(--spacing) * 1);
-  border-radius: calc(var(--radius) - 3px);
+  border-radius: var(--radius-sm);
   padding-inline: calc(var(--spacing) * 1.5);
   font-size: var(--text-xs);
   box-shadow: none;

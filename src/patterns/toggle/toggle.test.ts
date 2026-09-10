@@ -8,7 +8,7 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngToggle",
   name: "toggle",
-  selector: ".toggle",
+  selector: "button[aria-pressed]",
 });
 
 test("toggle press moves without resizing and respects reduced motion", async ({
@@ -18,7 +18,7 @@ test("toggle press moves without resizing and respects reduced motion", async ({
     reducedMotion: "no-preference",
   });
   await animatedPage.goto(canonicalUrl);
-  const toggle = animatedPage.locator(".toggle").first();
+  const toggle = animatedPage.locator("button[aria-pressed]").first();
   const box = await toggle.boundingBox();
   if (!box) throw new Error("Toggle is not rendered");
 
@@ -31,7 +31,7 @@ test("toggle press moves without resizing and respects reduced motion", async ({
 
   const reducedPage = await browser.newPage({ reducedMotion: "reduce" });
   await reducedPage.goto(canonicalUrl);
-  await expect(reducedPage.locator(".toggle").first()).toHaveCSS(
+  await expect(reducedPage.locator("button[aria-pressed]").first()).toHaveCSS(
     "transition-duration",
     "0s",
   );

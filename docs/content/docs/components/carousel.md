@@ -1,6 +1,6 @@
 ---
 title: carousel
-category: 'media'
+category: "media"
 description: >
   Accessible drag and snap carousel powered by Embla
 ---
@@ -81,9 +81,9 @@ The content viewport and its direct track child are required. Items must be dire
 | `align` | Input | Cross-axis alignment: `start`, `center`, or `end`. |
 | `aria-current` | Output | Current item or date state. |
 | `aria-disabled` | Output | Semantic disabled state. |
-| `aria-hidden` | Output | ARIA relationship or state. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
 | `aria-label` | Input/output | Accessible name when visible text is insufficient. |
-| `aria-roledescription` | Output | ARIA relationship or state. |
+| `aria-roledescription` | Output | Human-readable description of the component role. |
 | `autoplay` | Input | Enables the locally bundled Embla autoplay plugin. |
 | `autoplay-delay` | Input | Autoplay delay in milliseconds. |
 | `contain-scroll` | Input | Embla scroll containment mode. |

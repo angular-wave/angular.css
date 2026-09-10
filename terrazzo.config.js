@@ -11,12 +11,11 @@ export default defineConfig({
       permutations: [
         {
           input: { "color-mode": "light" },
-          prepare: (contents) =>
-            `:root,\n.light,\n.light-theme {\n${contents}}\n`,
+          prepare: (contents) => `:root,\n.light {\n${contents}}\n`,
         },
         {
           input: { "color-mode": "dark" },
-          prepare: (contents) => `.dark,\n.dark-theme {\n${contents}}\n`,
+          prepare: (contents) => `.dark {\n${contents}}\n`,
         },
       ],
       transform: (token) =>

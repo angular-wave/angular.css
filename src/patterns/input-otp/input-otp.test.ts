@@ -14,7 +14,9 @@ test("input OTP uses one native autofill-compatible control", async ({
   await expect(input).toHaveAttribute("autocomplete", "one-time-code");
   await expect(input).toHaveAttribute("inputmode", "numeric");
   await expect(input).toHaveAttribute("maxlength", "6");
-  await expect(page.locator(".input-otp")).toHaveCount(1);
+  await expect(page.locator('input[autocomplete="one-time-code"]')).toHaveCount(
+    1,
+  );
 
   await input.fill("923456");
   await expect(page.getByRole("status")).toContainText("Code: 923456");

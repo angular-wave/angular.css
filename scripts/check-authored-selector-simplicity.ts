@@ -45,40 +45,65 @@ const componentPrefixes = [...componentNames].sort(
   (left, right) => right.length - left.length,
 );
 const rootAliases = new Set(["resizable-panel-group"]);
+const redundantRuntimeRootClasses = new Set(
+  Object.entries(catalogPolicy)
+    .filter(([, policy]) => policy.runtime)
+    .map(([name]) => (name === "resizable" ? "resizable-panel-group" : name)),
+);
 const redundantPartClasses = new Set([
   "accordion-content",
+  "accordion",
+  "accordion-demo",
   "accordion-item",
-  "alert-dialog-description",
+  "alert",
+  "alert-action",
+  "alert-action-demo",
+  "alert-demo",
+  "alert-description",
+  "alert-dialog",
   "alert-dialog-action",
   "alert-dialog-cancel",
   "alert-dialog-content",
+  "alert-dialog-demo",
+  "alert-dialog-description",
   "alert-dialog-footer",
   "alert-dialog-header",
   "alert-dialog-media",
   "alert-dialog-title",
   "alert-dialog-trigger",
-  "alert-description",
-  "alert-action",
   "alert-icon",
   "alert-title",
+  "alert-warning-demo",
+  "aspect-ratio-landscape",
+  "aspect-ratio",
+  "aspect-ratio-image",
   "avatar-badge",
+  "avatar-demo",
+  "avatar-dropdown-demo",
   "avatar-fallback",
+  "avatar-group",
   "avatar-group-count",
   "avatar-image",
-  "breadcrumb-item",
+  "breadcrumb-dropdown-example",
   "breadcrumb-ellipsis",
+  "breadcrumb-item",
   "breadcrumb-link",
   "breadcrumb-list",
+  "breadcrumb-menu-stage",
   "breadcrumb-page",
+  "breadcrumb-plain-trigger",
   "breadcrumb-separator",
+  "breadcrumb-workflow-output",
+  "breadcrumb-workflow-section",
+  "breadcrumb-workflow-wide",
+  "breadcrumb-workflows",
+  "button",
+  "button-group",
+  "button-group-canonical",
+  "button-group-canonical-row",
   "button-group-separator",
+  "button-group-size-stack",
   "button-group-text",
-  "card-action",
-  "card-content",
-  "card-description",
-  "card-footer",
-  "card-header",
-  "card-title",
   "calendar-day",
   "calendar-grid",
   "calendar-header",
@@ -95,20 +120,31 @@ const redundantPartClasses = new Set([
   "calendar-week-number-header",
   "calendar-weekday",
   "calendar-year-select",
+  "card-action",
+  "card-content",
+  "card-description",
+  "card-footer",
+  "card-header",
+  "card-title",
+  "carousel-canonical-stage",
   "carousel-content",
   "carousel-dot",
   "carousel-dots",
+  "carousel-example-body",
   "carousel-item",
   "carousel-next",
   "carousel-previous",
   "carousel-track",
+  "carousel-workflow-tall",
   "chart-axis",
   "chart-axis-item",
   "chart-bar",
   "chart-bar-group",
   "chart-bar-groups",
   "chart-bars",
+  "chart-basic-demo",
   "chart-description",
+  "chart-example-body",
   "chart-grid",
   "chart-header",
   "chart-legend",
@@ -123,6 +159,9 @@ const redundantPartClasses = new Set([
   "chart-tooltip-label",
   "chart-tooltip-name",
   "chart-tooltip-value",
+  "checkbox",
+  "checkbox-demo",
+  "checkbox-example-body",
   "combobox-chip",
   "combobox-chip-input",
   "combobox-chip-remove",
@@ -131,16 +170,21 @@ const redundantPartClasses = new Set([
   "combobox-collection",
   "combobox-content",
   "combobox-control",
+  "combobox-custom-composition",
+  "combobox-demo",
   "combobox-empty",
   "combobox-group",
   "combobox-group-label",
+  "combobox-groups-workflow",
   "combobox-input",
+  "combobox-input-group-workflow",
   "combobox-item",
   "combobox-label",
   "combobox-list",
   "combobox-separator",
   "combobox-trigger",
   "combobox-value",
+  "command-demo",
   "command-empty",
   "command-group",
   "command-group-heading",
@@ -151,46 +195,61 @@ const redundantPartClasses = new Set([
   "command-item",
   "command-item-icon",
   "command-list",
+  "command-rtl-demo",
   "command-separator",
   "command-shortcut",
+  "component-state-workflows",
   "context-menu-checkbox-item",
   "context-menu-content",
+  "context-menu-demo",
   "context-menu-group",
   "context-menu-item",
   "context-menu-label",
   "context-menu-radio-group",
   "context-menu-radio-item",
+  "context-menu-rtl-demo",
   "context-menu-separator",
   "context-menu-shortcut",
   "context-menu-sub",
   "context-menu-sub-content",
   "context-menu-sub-trigger",
   "context-menu-trigger",
-  "dialog-description",
+  "date-picker-dropdown-body",
+  "date-picker-workflow-time",
   "dialog-body",
   "dialog-close",
   "dialog-content",
+  "dialog-demo",
+  "dialog-description",
   "dialog-footer",
+  "dialog-form-row",
   "dialog-header",
+  "dialog-overlay-probe",
+  "dialog-profile-form",
   "dialog-title",
   "dialog-trigger",
-  "dialog-profile-form",
-  "dialog-form-row",
-  "drawer-description",
+  "description-list",
+  "direction",
+  "disclosure-composition-body",
+  "disclosure-example-body",
   "drawer-body",
   "drawer-close",
   "drawer-content",
+  "drawer-demo",
+  "drawer-description",
   "drawer-footer",
-  "drawer-handle",
-  "drawer-header",
-  "drawer-title",
-  "drawer-trigger",
   "drawer-goal-body",
   "drawer-goal-chart",
   "drawer-goal-chart-rtl",
   "drawer-goal-control",
   "drawer-goal-panel",
   "drawer-goal-value",
+  "drawer-handle",
+  "drawer-header",
+  "drawer-title",
+  "drawer-trigger",
+  "dropdown-demo",
+  "dropdown-example-body",
   "dropdown-menu-checkbox-item",
   "dropdown-menu-checkbox-item-indicator",
   "dropdown-menu-content",
@@ -207,34 +266,61 @@ const redundantPartClasses = new Set([
   "dropdown-menu-sub-trigger",
   "dropdown-menu-trigger",
   "empty-content",
+  "empty-demo",
   "empty-description",
   "empty-header",
   "empty-icon",
   "empty-media",
   "empty-title",
+  "example-card",
+  "example-sr-only",
   "field-content",
   "field-description",
   "field-label",
   "field-legend",
-  "field-title",
   "field-separator",
   "field-separator-content",
-  "item-actions",
-  "item-content",
-  "item-description",
-  "item-title",
-  "item-media",
-  "label",
-  "hover-card-description",
+  "field-title",
+  "file-upload",
+  "filter-bar",
   "hover-card-content",
+  "hover-card-demo",
+  "hover-card-description",
+  "hover-card-example-body",
   "hover-card-title",
   "hover-card-trigger",
+  "icon",
+  "icon-sm",
+  "icon-xs",
+  "input",
+  "input-fit",
   "input-group-addon",
   "input-group-button",
   "input-group-control",
+  "input-group-input",
   "input-group-text",
+  "input-group-workflow-body",
+  "input-otp",
+  "input-otp-composition-body",
+  "input-otp-example-body",
+  "input-otp-grouped",
+  "input-otp-large",
+  "item-actions",
+  "item-content",
+  "item-description",
+  "item-group",
+  "item-media",
+  "item-title",
+  "kbd",
+  "kbd-group",
+  "kbd-workflows",
+  "label",
+  "label-workflows",
+  "media-surface",
   "menubar-checkbox-item",
   "menubar-content",
+  "menubar-demo",
+  "menubar-example-body",
   "menubar-group",
   "menubar-item",
   "menubar-label",
@@ -247,28 +333,25 @@ const redundantPartClasses = new Set([
   "menubar-sub-content",
   "menubar-sub-trigger",
   "menubar-trigger",
-  "select",
-  "select-sm",
-  "select-icon",
-  "select-wrapper",
-  "navigation-menu-content",
-  "navigation-menu-indicator",
-  "navigation-menu-item",
-  "navigation-menu-link",
-  "navigation-menu-list",
-  "navigation-menu-trigger",
   "navigation-menu-components-item",
   "navigation-menu-components-list",
+  "navigation-menu-content",
   "navigation-menu-content-list",
+  "navigation-menu-demo",
+  "navigation-menu-example-body",
   "navigation-menu-icon-list",
+  "navigation-menu-indicator",
   "navigation-menu-intro-list",
+  "navigation-menu-item",
+  "navigation-menu-link",
   "navigation-menu-link-copy",
-  "popover-content",
-  "popover-trigger",
-  "popover-demo-content",
-  "popover-dimension-field",
-  "popover-dimension-fields",
+  "navigation-menu-list",
+  "navigation-menu-rtl-demo",
+  "navigation-menu-trigger",
+  "pagination-compact",
+  "pagination-compact-section",
   "pagination-content",
+  "pagination-demo",
   "pagination-ellipsis",
   "pagination-item",
   "pagination-link",
@@ -277,35 +360,60 @@ const redundantPartClasses = new Set([
   "pagination-previous",
   "pagination-previous-text",
   "pagination-sr-only",
+  "pagination-workflows",
+  "popover-alignment-section",
+  "popover-basic-stage",
+  "popover-content",
+  "popover",
+  "popover-demo",
+  "popover-demo-content",
   "popover-description",
+  "popover-dimension-field",
+  "popover-dimension-fields",
+  "popover-example-body",
   "popover-header",
+  "popover-side-stage-bottom",
+  "popover-side-stage-top",
+  "popover-state-section",
   "popover-title",
+  "popover-trigger",
+  "progress",
+  "progress-demo",
+  "progress-group",
   "progress-label",
   "progress-value",
+  "radio-group",
+  "radio-group-demo",
   "radio-group-item",
+  "resizable-demo",
   "resizable-handle",
   "resizable-handle-grip",
   "resizable-panel",
-  "table-body",
-  "table-caption",
-  "table-cell",
-  "table-footer",
-  "table-head",
-  "table-header",
-  "table-row",
-  "sheet-description",
+  "row-start",
+  "scroll-area-workflow-wide",
+  "select",
+  "select-demo",
+  "select-icon",
+  "select-sm",
+  "select-wrapper",
+  "separator",
+  "separator-workflows",
   "sheet-body",
   "sheet-close",
   "sheet-content",
+  "sheet-demo",
+  "sheet-description",
   "sheet-footer",
   "sheet-header",
-  "sheet-title",
-  "sheet-trigger",
   "sheet-profile-field",
   "sheet-profile-fields",
   "sheet-profile-form",
-  "sidebar-content",
+  "sheet-title",
+  "sheet-trigger",
   "sidebar-container",
+  "sidebar-content",
+  "sidebar-demo-shell",
+  "sidebar-example-body",
   "sidebar-footer",
   "sidebar-gap",
   "sidebar-group",
@@ -314,8 +422,8 @@ const redundantPartClasses = new Set([
   "sidebar-group-label",
   "sidebar-header",
   "sidebar-inner",
-  "sidebar-inset",
   "sidebar-input",
+  "sidebar-inset",
   "sidebar-layout",
   "sidebar-menu",
   "sidebar-menu-action",
@@ -330,25 +438,56 @@ const redundantPartClasses = new Set([
   "sidebar-separator",
   "sidebar-trigger",
   "sidebar-wrapper",
+  "skeleton-workflows",
+  "slider-demo",
+  "slider-example-body",
+  "slider-label-row",
   "slider-range",
   "slider-thumb",
   "slider-track",
-  "slider-label-row",
-  "toast-icon",
+  "spinner-demo",
+  "stepper",
+  "switch",
+  "switch-demo",
+  "table",
+  "table-body",
+  "table-caption",
+  "table-cell",
+  "table-container",
+  "table-footer",
+  "table-head",
+  "table-header",
+  "table-row",
   "tabs-content",
+  "tabs-demo-canonical",
   "tabs-list",
   "tabs-trigger",
-  "table-container",
+  "textarea",
+  "textarea-workflows",
   "toast",
   "toast-action",
   "toast-close",
   "toast-content",
+  "toast-demo",
   "toast-description",
+  "toast-example-body",
   "toast-icon",
   "toast-title",
+  "toggle",
+  "toggle-demo",
   "toggle-group-item",
   "tooltip-content",
+  "tooltip-demo",
+  "tooltip-example-body",
   "tooltip-trigger",
+  "typography-demo",
+  "validation-summary",
+]);
+const resultClasses = new Set([
+  "button-group-output",
+  "calendar-workflow-output",
+  "carousel-status",
+  "output",
 ]);
 const redundantPartClassAllowlist = new Map<string, Set<string>>();
 const write = process.argv.includes("--write");
@@ -538,7 +677,8 @@ const normalizeLabeledFieldsets = (source: string): string =>
   );
 
 const isRedundantPartClass = (className: string, path: string): boolean =>
-  redundantPartClasses.has(className) &&
+  (redundantPartClasses.has(className) ||
+    redundantRuntimeRootClasses.has(className)) &&
   !redundantPartClassAllowlist.get(className)?.has(path);
 
 const filesIn = (directory: string): string[] =>
@@ -819,7 +959,7 @@ for (const path of files) {
 
   if (source.includes(removedInputAttribute)) {
     failures.push(
-      `${displayPath}: removed input styling attribute; use .input`,
+      `${displayPath}: removed input styling attribute; use a native input`,
     );
   }
 
@@ -834,10 +974,54 @@ for (const path of files) {
         );
       }
     }
+
+    for (const selector of source.matchAll(/:is\((\.[a-z][a-z0-9-]*)\)/gi)) {
+      failures.push(
+        `${displayPath}: ${selector[0]} wraps one class without changing its selector; use ${selector[1]} directly`,
+      );
+    }
   }
 
   if ([".html", ".md"].includes(extname(path))) {
     for (const tag of source.match(/<[a-z][^>]*>/gis) ?? []) {
+      const role = tag.match(/\srole=(["'])(.*?)\1/is)?.[2];
+      const classValue = tag.match(/\sclass=(["'])(.*?)\1/is)?.[2];
+      const classNames = new Set(classValue?.split(/\s+/).filter(Boolean));
+      if (role && classValue?.trim()) {
+        failures.push(
+          `${displayPath}: role="${role}" identifies this element; remove its authored class and target the role`,
+        );
+      }
+
+      if (classNames.has("disclosure") && !/^<details\b/i.test(tag)) {
+        failures.push(
+          `${displayPath}: .disclosure must use the native details element`,
+        );
+      }
+
+      if (classNames.has("output") && classNames.has("visually-hidden")) {
+        failures.push(
+          `${displayPath}: visually hidden live output does not need the .output presentation class`,
+        );
+      }
+
+      if (
+        [...classNames].some((className) => /^lucide(?:-|$)/.test(className))
+      ) {
+        failures.push(
+          `${displayPath}: Lucide generator classes are redundant; target the semantic icon position`,
+        );
+      }
+
+      if (
+        !/^<output\b/i.test(tag) &&
+        [...classNames].some((className) => resultClasses.has(className))
+      ) {
+        failures.push(
+          `${displayPath}: calculated results must use the native output element`,
+        );
+      }
+
       for (const match of tag.matchAll(/\sdata-([a-z][a-z0-9-]*)/g)) {
         if (redundantPresentationDataAttributes.has(match[1])) {
           failures.push(
@@ -866,21 +1050,6 @@ for (const path of files) {
       );
     }
 
-    for (const tag of source.match(
-      /<[a-z][^>]*\srole=(["'])[^"']+\1[^>]*>/gis,
-    ) ?? []) {
-      const role = tag.match(/\srole=(["'])([^"']+)\1/i)?.[2];
-      const isChartImage =
-        role === "img" &&
-        /(?:^|\/)chart(?:[-./]|$)/.test(displayPath) &&
-        /\sdata-value=/.test(tag);
-      if (!isChartImage) {
-        failures.push(
-          `${displayPath}: authored roles are directive-owned (${role ?? "unknown"})`,
-        );
-      }
-    }
-
     const invalidCustomElement = source.match(
       /<\/?(?:fieldset-group|fieldset-otp)\b/i,
     );
@@ -903,11 +1072,11 @@ for (const path of files) {
     }
 
     const nestedRadioFieldset = source.match(
-      /<fieldset\b[^>]*>(?:(?!<\/?fieldset\b)[\s\S])*<fieldset\b(?=[^>]*\bclass=(["'])[^"']*\bradio-group\b[^"']*\1)[^>]*>/i,
+      /<fieldset\b[^>]*>(?:(?!<\/?fieldset\b)[\s\S])*<fieldset\b[^>]*>(?:(?!<\/?fieldset\b)[\s\S])*<input\b[^>]*\btype=(["'])radio\1/i,
     );
     if (nestedRadioFieldset) {
       failures.push(
-        `${displayPath}: put .radio-group on the labeled fieldset instead of nesting another fieldset`,
+        `${displayPath}: put the radio inputs in the labeled fieldset instead of nesting another fieldset`,
       );
     }
 
@@ -965,11 +1134,21 @@ for (const path of files) {
     }
 
     for (const tag of source.match(/<[a-z][^>]*>/gis) ?? []) {
+      const classNames = new Set(
+        (tag.match(/\bclass=(["'])(.*?)\1/is)?.[2] ?? "")
+          .split(/\s+/)
+          .filter(Boolean),
+      );
       for (const match of tag.matchAll(/\sng-([a-z][a-z0-9-]*)/g)) {
         const name = match[1];
+        if (componentNames.has(name) && classNames.has(name)) {
+          failures.push(
+            `${displayPath}: [ng-${name}] already identifies the component root; remove redundant .${name}`,
+          );
+        }
         if (elementNames.has(name)) {
           failures.push(
-            `${displayPath}: [ng-${name}] is styling-only; use native HTML and .${name}`,
+            `${displayPath}: [ng-${name}] is styling-only; use native HTML and the catalog root selector`,
           );
           continue;
         }
@@ -1008,15 +1187,11 @@ for (const path of files) {
   }
 
   if (extname(path) === ".css") {
-    if (/\[role(?:=|\])/i.test(source)) {
-      failures.push(`${displayPath}: CSS must not use roles as styling hooks`);
-    }
-
     for (const match of source.matchAll(/\[ng-([a-z][a-z0-9-]*)\]/g)) {
       const name = match[1];
       if (elementNames.has(name)) {
         failures.push(
-          `${displayPath}: CSS targets styling-only [ng-${name}]; use .${name}`,
+          `${displayPath}: CSS targets styling-only [ng-${name}]; use its native HTML selector`,
         );
         continue;
       }
@@ -1035,6 +1210,20 @@ for (const path of files) {
       }
     }
   }
+
+  if (extname(path) === ".ts") {
+    for (const className of redundantRuntimeRootClasses) {
+      const directiveName = className;
+      const selectorAlias = new RegExp(
+        "([\"'`])\\." + className + "(?=\\1|\\s*,)",
+      );
+      if (selectorAlias.test(source)) {
+        failures.push(
+          `${displayPath}: runtime selectors must use [ng-${directiveName}] without the redundant .${className} alias`,
+        );
+      }
+    }
+  }
 }
 
 if (failures.length > 0) {
@@ -1043,5 +1232,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Semantic authored-selector check passed: no slot attributes, authored roles, role selectors, or child component markers.",
+  "Semantic authored-selector check passed: no slot attributes, role-bearing classes, redundant presentation classes, or child component markers.",
 );

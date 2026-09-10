@@ -1,6 +1,6 @@
 ---
 title: navigation-menu
-category: 'navigation'
+category: "navigation"
 description: >
   Site navigation with optional flyout content
 ---
@@ -9,7 +9,7 @@ Navigation menu is exposed as semantic `nav` markup with list, item, trigger,
 link, and content parts.
 
 ```html
-<nav class="navigation-menu">
+<nav ng-navigation-menu>
   <ul>
     <li>
       <button>Components</button>
@@ -21,7 +21,7 @@ link, and content parts.
 
 ## Example
 
-{{< example src="examples/components/navigation-menu.html" title="Navigation menu example" height="620" >}}
+{{< example src="examples/components/navigation-menu.html" title="Navigation menu example" height="620">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -48,11 +48,10 @@ Use a native `nav` containing one direct list. Each list item may contain either
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `align` | Input | Cross-axis alignment: `start`, `center`, or `end`. |
-| `aria-controls` | Output | ARIA relationship or state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-haspopup` | Output | ARIA relationship or state. |
-| `aria-hidden` | Input/output | ARIA relationship or state. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
+| `aria-hidden` | Input/output | Whether generated or collapsed content is hidden from assistive technology. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `disabled` | Input | Disables native or component interaction. |
 | `open` | Input | Initial or controlled open state. |

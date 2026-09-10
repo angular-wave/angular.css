@@ -1,12 +1,13 @@
 ---
 title: breadcrumb
-category: 'navigation'
+category: "navigation"
 description: >
   Page location navigation
 ---
 
 Use a `.breadcrumb` navigation landmark with a native ordered list, links,
-separators, and `aria-current="page"` for the current location.
+separators, and `aria-current="page"` for the current location. The class
+distinguishes the trail from other navigation landmarks.
 
 ```html
 <nav aria-label="breadcrumb" class="breadcrumb">

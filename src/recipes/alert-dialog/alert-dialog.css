@@ -1,4 +1,4 @@
-.alert-dialog > dialog {
+dialog[role="alertdialog"] {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -8,7 +8,7 @@
   max-width: 20rem;
   gap: calc(var(--spacing) * 6);
   border: 0;
-  border-radius: calc(var(--radius) + 4px);
+  border-radius: var(--radius-xl);
   background: var(--popover);
   color: var(--popover-foreground);
   padding: calc(var(--spacing) * 6);
@@ -18,15 +18,15 @@
   transform: translate(-50%, -50%);
 }
 
-.alert-dialog > dialog:not([size="sm"]) {
+dialog[role="alertdialog"]:not([size="sm"]) {
   --alert-dialog-size: default;
 }
 
-.alert-dialog > dialog[size="sm"] {
+dialog[role="alertdialog"][size="sm"] {
   --alert-dialog-size: sm;
 }
 
-.alert-dialog > dialog > header {
+dialog[role="alertdialog"] > header {
   display: grid;
   grid-template-rows: auto 1fr;
   place-items: center;
@@ -34,12 +34,12 @@
   text-align: center;
 }
 
-.alert-dialog > dialog > header:has(> figure) {
+dialog[role="alertdialog"] > header:has(> figure) {
   grid-template-rows: auto auto 1fr;
   column-gap: calc(var(--spacing) * 6);
 }
 
-.alert-dialog > dialog > header > figure {
+dialog[role="alertdialog"] > header > figure {
   display: inline-flex;
   width: calc(var(--spacing) * 16);
   height: calc(var(--spacing) * 16);
@@ -51,74 +51,74 @@
   color: var(--foreground);
 }
 
-.alert-dialog > dialog > header > figure > svg {
+dialog[role="alertdialog"] > header > figure > svg {
   width: calc(var(--spacing) * 8);
   height: calc(var(--spacing) * 8);
 }
 
-.alert-dialog > dialog > footer {
+dialog[role="alertdialog"] > footer {
   display: flex;
   flex-direction: column-reverse;
   gap: calc(var(--spacing) * 2);
 }
 
-:is(.alert-dialog > dialog)[size="sm"] > footer {
+dialog[role="alertdialog"][size="sm"] > footer {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-:is(.alert-dialog > dialog)[size="sm"] > footer > button {
+dialog[role="alertdialog"][size="sm"] > footer > button {
   width: 100%;
 }
 
-.alert-dialog > dialog > header > :is(h1, h2, h3) {
+dialog[role="alertdialog"] > header > :is(h1, h2, h3) {
   color: inherit;
   font-size: var(--text-lg);
   font-weight: var(--font-weight-medium);
   line-height: var(--leading-normal);
 }
 
-.alert-dialog > dialog > header > p {
+dialog[role="alertdialog"] > header > p {
   color: var(--muted-foreground);
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
   text-wrap: balance;
 }
 
-.alert-dialog > dialog > header > p a {
+dialog[role="alertdialog"] > header > p a {
   color: inherit;
   text-decoration-line: underline;
   text-underline-offset: calc(var(--spacing) * 0.75);
 }
 
-.alert-dialog > dialog > header > p a:hover {
+dialog[role="alertdialog"] > header > p a:hover {
   color: var(--foreground);
 }
 
 @media (width >= 40rem) {
-  .alert-dialog > dialog:not([size="sm"]) {
+  dialog[role="alertdialog"]:not([size="sm"]) {
     max-width: 32rem;
   }
 
-  .alert-dialog > dialog:not([size="sm"]) > header {
+  dialog[role="alertdialog"]:not([size="sm"]) > header {
     place-items: start;
     text-align: start;
   }
 
-  .alert-dialog > dialog:not([size="sm"]) > header:has(> figure) {
+  dialog[role="alertdialog"]:not([size="sm"]) > header:has(> figure) {
     grid-template-columns: auto minmax(0, 1fr);
     grid-template-rows: auto 1fr;
   }
 
-  .alert-dialog > dialog:not([size="sm"]) > header > figure {
+  dialog[role="alertdialog"]:not([size="sm"]) > header > figure {
     grid-row: span 2;
   }
 
-  .alert-dialog > dialog:not([size="sm"]) > header > :is(h1, h2, h3, p) {
+  dialog[role="alertdialog"]:not([size="sm"]) > header > :is(h1, h2, h3, p) {
     grid-column-start: 2;
   }
 
-  .alert-dialog > dialog:not([size="sm"]) > footer {
+  dialog[role="alertdialog"]:not([size="sm"]) > footer {
     flex-direction: row;
     justify-content: flex-end;
   }

@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "elements",
   directive: "ngTextarea",
   name: "textarea",
-  selector: ".textarea",
+  selector: "textarea",
 });

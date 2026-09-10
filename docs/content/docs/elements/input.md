@@ -1,35 +1,33 @@
 ---
 title: input
-category: 'form'
+category: "form"
 description: >
-  Native form text entry with a styling-only AngularCSS hook.
+  Native form text entry styled directly by AngularCSS.
 ---
 
-Use `class="input"` as the opt-in styling hook. The browser and AngularTS own
-the value, events, validation, required state, disabled state, and form
-behavior; AngularCSS does not register an Input directive or mirror those
-values.
+Use a native `input`. AngularCSS styles data-entry input types directly, while
+the browser and AngularTS own values, events, validation, required state,
+disabled state, and form behavior.
 
 ```html
-<input placeholder="Jane Doe" class="input" />
-<input placeholder="Disabled" disabled class="input" />
+<input placeholder="Jane Doe" /> <input placeholder="Disabled" disabled />
 ```
 
-Add `input-fit` when a compact control should size to its content. The control
-retains a `max-width` of `100%` and falls back to its native intrinsic width in
-browsers without `field-sizing`.
+Use the native `size` attribute when a compact control should size to its
+content. The control retains a `max-width` of `100%`; browsers without
+`field-sizing` use the requested number of visible characters.
 
 ```html
-<input value="Compact" class="input input-fit" />
+<input value="Compact" size="7" />
 ```
 
 ## Example
 
-{{< example src="examples/components/input.html" title="Input examples" height="220" >}}
+{{< example src="examples/components/input.html" title="Input examples" height="220">}}
 
 ## Workflows
 
-{{< example src="examples/components/input-workflows.html" title="Input workflows" height="1900" >}}
+{{< example src="examples/components/input-workflows.html" title="Input workflows" height="1900">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -43,7 +41,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.input`
+- `input:not([type="button"], [type="checkbox"], [type="color"], [type="hidden"], [type="image"], [type="radio"], [type="range"], [type="reset"], [type="submit"])`
 
 ### Semantic structure
 
@@ -57,7 +55,8 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 | --- | --- | --- |
 | `aria-invalid` | Authored | Validation state exposed to assistive technology and CSS. |
 | `disabled` | Authored | Disables native or component interaction. |
-| `type` | Authored | Component or native behavior variant. |
+| `size` | Authored | Native number of visible characters; also enables content sizing when supported. |
+| `type` | Authored | Native input kind, such as `text`, `email`, `password`, `number`, `search`, `tel`, or `url`. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 
@@ -74,7 +73,7 @@ Native DOM events continue to work normally. AngularTS event directives such as
 
 ## Behavior
 
-Input is a styling-only native control selected by `.input`. AngularTS and the browser own value, events, model synchronization, validation, disabled and required state, and form submission. AngularCSS registers no input directive.
+Input is a native control styled directly by element and type. AngularTS and the browser own value, events, model synchronization, validation, disabled and required state, and form submission. AngularCSS registers no input directive.
 
 AngularCSS does not replace AngularTS interpolation, bindings, structural
 directives, form controllers, validation, or application state.

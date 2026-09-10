@@ -8,6 +8,7 @@ import { startOfMonth } from "date-fns/startOfMonth";
 import { startOfWeek } from "date-fns/startOfWeek";
 
 import {
+  getDirection,
   isDisabled,
   onDestroy,
   queryAll,
@@ -49,10 +50,6 @@ const parseDateList = (value: string | null) =>
 export function calendarDirective(): ng.Directive {
   return {
     link(scope: ng.Scope, element: HTMLElement) {
-      const getDirection = () =>
-        element.closest<HTMLElement>("[dir]")?.getAttribute("dir") === "rtl"
-          ? "rtl"
-          : "ltr";
       const getHeader = (): HTMLElement | undefined =>
         Array.from(element.children).find(
           (child): child is HTMLElement =>
@@ -604,11 +601,11 @@ export function calendarDirective(): ng.Directive {
 
           const direction =
             event.key === "ArrowRight"
-              ? getDirection() === "rtl"
+              ? getDirection(element) === "rtl"
                 ? -1
                 : 1
               : event.key === "ArrowLeft"
-                ? getDirection() === "rtl"
+                ? getDirection(element) === "rtl"
                   ? 1
                   : -1
                 : event.key === "ArrowDown"

@@ -2,6 +2,33 @@ type ElementConstructor<T extends Element> = abstract new (
   ...args: never[]
 ) => T;
 
+type TextDirection = "ltr" | "rtl";
+
+export function getDirection(element: Element): TextDirection {
+  return element.closest<HTMLElement>("[dir]")?.getAttribute("dir") === "rtl"
+    ? "rtl"
+    : "ltr";
+}
+
+function getDirectionOwner(element: HTMLElement): HTMLElement {
+  return element.closest<HTMLElement>("[dir]") ?? element;
+}
+
+export function observeInheritedDirection(
+  element: HTMLElement,
+  callback: MutationCallback,
+): MutationObserver | null {
+  const owner = getDirectionOwner(element);
+  if (owner === element) return null;
+
+  const observer = new MutationObserver(callback);
+  observer.observe(owner, {
+    attributes: true,
+    attributeFilter: ["dir"],
+  });
+  return observer;
+}
+
 export function query(root: ParentNode, selector: string): Element | null;
 export function query<T extends Element>(
   root: ParentNode,

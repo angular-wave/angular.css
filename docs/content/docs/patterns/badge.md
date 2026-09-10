@@ -1,6 +1,6 @@
 ---
 title: badge
-category: 'feedback'
+category: "feedback"
 description: >
   Inline status and metadata labels with semantic variants.
 ---
@@ -55,8 +55,8 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `icon` | Authored | Icon placement or icon-only styling hook. |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `icon` | Authored | Direct icon position: `inline-start` or `inline-end`. |
+| `variant` | Authored | Presentation: `default`, `secondary`, `destructive`, `outline`, `ghost`, or `custom`. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

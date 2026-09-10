@@ -1,21 +1,20 @@
-.carousel,
-[ng-carousel] {
+[aria-roledescription="carousel"] {
   position: relative;
   width: 100%;
 }
 
-:is(.carousel, [ng-carousel]) > :has(> :is(ul, ol)) {
+[aria-roledescription="carousel"] > :has(> :is(ul, ol)) {
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
 }
 
-:is(.carousel, [ng-carousel]) > :has(> :is(ul, ol)) > :is(ul, ol) {
+[aria-roledescription="carousel"] > :has(> :is(ul, ol)) > :is(ul, ol) {
   display: flex;
   margin-inline-start: calc(var(--carousel-gap, calc(var(--spacing) * 4)) * -1);
   backface-visibility: hidden;
 }
 
-:is(.carousel, [ng-carousel])[orientation="vertical"]
+[aria-roledescription="carousel"][orientation="vertical"]
   > :has(> :is(ul, ol))
   > :is(ul, ol) {
   flex-direction: column;
@@ -23,18 +22,19 @@
   margin-inline-start: 0;
 }
 
-:is(.carousel, [ng-carousel])[orientation="vertical"] > :has(> :is(ul, ol)) {
+[aria-roledescription="carousel"][orientation="vertical"]
+  > :has(> :is(ul, ol)) {
   touch-action: pan-x pinch-zoom;
 }
 
-:is(.carousel, [ng-carousel]) > :has(> :is(ul, ol)) > :is(ul, ol) > li {
+[aria-roledescription="carousel"] > :has(> :is(ul, ol)) > :is(ul, ol) > li {
   flex: 0 0 var(--carousel-item-size, 100%);
   min-width: 0;
   padding-inline-start: var(--carousel-gap, calc(var(--spacing) * 4));
   transform: translate3d(0, 0, 0);
 }
 
-:is(.carousel, [ng-carousel])[orientation="vertical"]
+[aria-roledescription="carousel"][orientation="vertical"]
   > :has(> :is(ul, ol))
   > :is(ul, ol)
   > li {
@@ -43,7 +43,7 @@
   padding-inline-start: 0;
 }
 
-:is(.carousel, [ng-carousel]) > :where(button) {
+[aria-roledescription="carousel"] > :where(button) {
   position: absolute;
   inset-block-start: 50%;
   z-index: 10;
@@ -52,36 +52,41 @@
   touch-action: manipulation;
 }
 
-:is(.carousel, [ng-carousel]) > :where(button:first-of-type) {
+[aria-roledescription="carousel"] > button > svg {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+
+[aria-roledescription="carousel"] > :where(button:first-of-type) {
   inset-inline-start: calc(var(--spacing) * -12);
 }
 
-:is(.carousel, [ng-carousel]) > :where(button:nth-of-type(2)) {
+[aria-roledescription="carousel"] > :where(button:nth-of-type(2)) {
   inset-inline-end: calc(var(--spacing) * -12);
 }
 
-:is(.carousel, [ng-carousel])[orientation="vertical"]
+[aria-roledescription="carousel"][orientation="vertical"]
   > :where(button:first-of-type) {
   inset-block-start: calc(var(--spacing) * -12);
   inset-inline-start: 50%;
   transform: translateX(-50%) rotate(90deg);
 }
 
-:is(.carousel, [ng-carousel])[orientation="vertical"]
+[aria-roledescription="carousel"][orientation="vertical"]
   > :where(button:nth-of-type(2)) {
   inset-block: auto calc(var(--spacing) * -12);
   inset-inline: 50% auto;
   transform: translateX(-50%) rotate(90deg);
 }
 
-:is(.carousel, [ng-carousel]) > nav {
+[aria-roledescription="carousel"] > nav {
   display: flex;
   justify-content: center;
   gap: calc(var(--spacing) * 2);
   margin-block-start: calc(var(--spacing) * 4);
 }
 
-:is(.carousel, [ng-carousel]) > nav > :where(button) {
+[aria-roledescription="carousel"] > nav > :where(button) {
   display: inline-flex;
   flex: 0 0 auto;
   width: calc(var(--spacing) * 2);
@@ -95,13 +100,13 @@
     opacity var(--motion-duration-default) var(--motion-easing-standard);
 }
 
-:is(.carousel, [ng-carousel]) > nav > button[aria-current="true"] {
+[aria-roledescription="carousel"] > nav > button[aria-current="true"] {
   background: var(--foreground);
   opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.carousel, [ng-carousel]) > nav > :where(button) {
+  [aria-roledescription="carousel"] > nav > :where(button) {
     transition-duration: var(--motion-duration-instant);
   }
 }

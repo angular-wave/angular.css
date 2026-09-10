@@ -1,6 +1,6 @@
 ---
 title: command
-category: 'command palette'
+category: "command palette"
 description: >
   Command palette layout
 ---
@@ -53,28 +53,28 @@ shortcuts such as Ctrl J remain AngularTS `ng-keydown` expressions.
 
 ## Example
 
-{{< example src="examples/components/command.html" title="Command example" height="390" >}}
+{{< example src="examples/components/command.html" title="Command example" height="390">}}
 
 ## Dialog Workflows
 
 Basic, grouped, shortcut-label, and application-owned Ctrl J dialog references
 are functional packaged examples.
 
-{{< example src="examples/components/command-dialog-workflows.html" title="Command dialog workflows" height="980" >}}
+{{< example src="examples/components/command-dialog-workflows.html" title="Command dialog workflows" height="980">}}
 
 ## Scrollable
 
 The full 23-item reference inventory demonstrates the 288px list constraint,
 keyboard scroll-to-active behavior, filtering, and selection.
 
-{{< example src="examples/components/command-scrollable.html" title="Scrollable command" height="700" >}}
+{{< example src="examples/components/command-scrollable.html" title="Scrollable command" height="700">}}
 
 ## RTL
 
 Logical icon, text, shortcut, active-item, and keyboard order are preserved in
 an Arabic command surface.
 
-{{< example src="examples/components/command-rtl.html" title="RTL command" height="520" >}}
+{{< example src="examples/components/command-rtl.html" title="RTL command" height="520">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -100,18 +100,18 @@ A command root requires one input and a result container. The root directive ins
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-activedescendant` | Output | ARIA relationship or state. |
-| `aria-autocomplete` | Input/output | ARIA relationship or state. |
-| `aria-controls` | Output | ARIA relationship or state. |
+| `aria-activedescendant` | Output | ID of the active option while focus remains on the composite control. |
+| `aria-autocomplete` | Input/output | How a text control presents completion suggestions. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-disabled` | Input/output | Semantic disabled state. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-hidden` | Input/output | ARIA relationship or state. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
-| `aria-orientation` | Output | ARIA relationship or state. |
+| `aria-hidden` | Input/output | Whether generated or collapsed content is hidden from assistive technology. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
+| `aria-orientation` | Output | Interaction axis exposed to assistive technology. |
 | `aria-selected` | Input/output | Selected item state. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `disabled` | Input | Disables native or component interaction. |
-| `hidden` | Input | Authored option or semantic HTML attribute observed by the directive. |
+| `hidden` | Input | Native visibility state observed when finding available items. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |
 | `tabindex` | Output | Keyboard focus order for composite descendants. |
 

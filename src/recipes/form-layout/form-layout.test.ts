@@ -14,7 +14,7 @@ test("form layout keeps AngularTS form validation authoritative", async ({
 }) => {
   await page.goto("/src/recipes/form-layout/form-layout.html");
   await page.getByRole("button", { name: "Create customer" }).click();
-  await expect(page.locator(".validation-summary")).toBeVisible();
+  await expect(page.getByRole("alert")).toBeVisible();
   await page.getByLabel("Customer name").fill("Analytical Engines Ltd");
   await page.getByRole("button", { name: "Create customer" }).click();
   await expect(page.getByText("Customer is ready to save.")).toBeVisible();

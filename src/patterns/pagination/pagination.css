@@ -1,118 +1,120 @@
-.pagination {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.pagination > ul {
-  display: flex;
-  align-items: center;
-  gap: calc(var(--spacing) * 0.5);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pagination > ul > li {
-  display: inline-flex;
-}
-
-.pagination > ul > li > :is(a, span) {
-  display: inline-flex;
-  width: calc(var(--spacing) * 8);
-  height: var(--size-control-sm);
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--spacing) * 1.5);
-  border: var(--border-width-default) solid transparent;
-  border-radius: var(--radius-md);
-  color: var(--foreground);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--leading-none);
-  white-space: nowrap;
-  text-decoration: none;
-  outline: none;
-  transition:
-    background-color var(--motion-duration-default)
-      var(--motion-easing-standard),
-    border-color var(--motion-duration-default) var(--motion-easing-standard),
-    box-shadow var(--motion-duration-default) var(--motion-easing-standard),
-    color var(--motion-duration-default) var(--motion-easing-standard),
-    transform var(--motion-duration-fast) var(--motion-easing-out);
-}
-
-.pagination a[rel] {
-  width: auto;
-  min-width: calc(var(--spacing) * 8);
-  padding-inline: calc(var(--spacing) * 2.5);
-}
-
-.pagination a[rel="prev"] {
-  padding-inline-start: calc(var(--spacing) * 1.5);
-}
-
-.pagination a[rel="next"] {
-  padding-inline-end: calc(var(--spacing) * 1.5);
-}
-
-.pagination a:hover {
-  background: var(--muted);
-}
-
-.pagination a:focus-visible {
-  border-color: var(--ring);
-  box-shadow: 0 0 0 var(--focus-ring-width)
-    color-mix(in srgb, var(--ring) 50%, transparent);
-}
-
-.pagination a:active:not([aria-disabled="true"]) {
-  transform: translateY(1px);
-}
-
-.pagination a[aria-current="page"] {
-  border-color: var(--border);
-  background: var(--background);
-}
-
-.pagination a[rel][aria-disabled="true"] {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.pagination > ul > li > span {
-  color: var(--muted-foreground);
-  pointer-events: none;
-}
-
-.pagination > ul > li > :is(a, span) > svg {
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
-  flex-shrink: 0;
-  pointer-events: none;
-}
-
-.pagination[dir="rtl"] a[rel] > svg[icon] {
-  transform: rotate(180deg);
-}
-
-.pagination > ul > li > span > span {
-  position: absolute;
-  width: var(--border-width-default);
-  height: var(--border-width-default);
-  overflow: hidden;
-  white-space: nowrap;
-  clip-path: inset(50%);
-}
-
-@media (width <= 40rem) {
-  .pagination a[rel] > span {
-    display: none;
+@scope (.pagination) to (.pagination) {
+  :scope {
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .pagination a {
-    transition-duration: var(--motion-duration-instant);
+  :scope > :is(ul, ol) {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 0.5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  :scope > :is(ul, ol) > li {
+    display: inline-flex;
+  }
+
+  :scope > :is(ul, ol) > li > :is(a, span) {
+    display: inline-flex;
+    width: calc(var(--spacing) * 8);
+    height: var(--size-control-sm);
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 1.5);
+    border: var(--border-width-default) solid transparent;
+    border-radius: var(--radius-md);
+    color: var(--foreground);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-none);
+    white-space: nowrap;
+    text-decoration: none;
+    outline: none;
+    transition:
+      background-color var(--motion-duration-default)
+        var(--motion-easing-standard),
+      border-color var(--motion-duration-default) var(--motion-easing-standard),
+      box-shadow var(--motion-duration-default) var(--motion-easing-standard),
+      color var(--motion-duration-default) var(--motion-easing-standard),
+      transform var(--motion-duration-fast) var(--motion-easing-out);
+  }
+
+  :scope a[rel] {
+    width: auto;
+    min-width: calc(var(--spacing) * 8);
+    padding-inline: calc(var(--spacing) * 2.5);
+  }
+
+  :scope a[rel~="prev"] {
+    padding-inline-start: calc(var(--spacing) * 1.5);
+  }
+
+  :scope a[rel~="next"] {
+    padding-inline-end: calc(var(--spacing) * 1.5);
+  }
+
+  :scope a:hover {
+    background: var(--muted);
+  }
+
+  :scope a:focus-visible {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 var(--focus-ring-width)
+      color-mix(in srgb, var(--ring) 50%, transparent);
+  }
+
+  :scope a:active:not([aria-disabled="true"]) {
+    transform: translateY(1px);
+  }
+
+  :scope a[aria-current="page"] {
+    border-color: var(--border);
+    background: var(--background);
+  }
+
+  :scope a[rel][aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  :scope > :is(ul, ol) > li > span {
+    color: var(--muted-foreground);
+    pointer-events: none;
+  }
+
+  :scope > :is(ul, ol) > li > :is(a, span) > svg {
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  :scope[dir="rtl"] a[rel] > svg[icon] {
+    transform: rotate(180deg);
+  }
+
+  :scope > :is(ul, ol) > li > span > span {
+    position: absolute;
+    width: var(--border-width-default);
+    height: var(--border-width-default);
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  @media (width <= 40rem) {
+    :scope a[rel] > span {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :scope a {
+      transition-duration: var(--motion-duration-instant);
+    }
   }
 }

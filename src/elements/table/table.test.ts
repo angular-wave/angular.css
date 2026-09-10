@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "elements",
   directive: "ngTable",
   name: "table",
-  selector: ".table",
+  selector: "table",
 });

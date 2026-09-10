@@ -1,15 +1,14 @@
-.tooltip,
 [ng-tooltip] {
   position: relative;
   display: inline-flex;
   width: fit-content;
 }
 
-:is(.tooltip, [ng-tooltip]) > :first-child {
+[ng-tooltip] > :first-child {
   display: inline-flex;
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child {
+[ng-tooltip] > [role="tooltip"] {
   position: absolute;
   z-index: 50;
   display: inline-flex;
@@ -22,7 +21,7 @@
   color: var(--primary-foreground);
   padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3);
   font-size: var(--text-xs);
-  line-height: 1.35;
+  line-height: var(--leading-snug);
   opacity: 0;
   pointer-events: none;
   transform: translate(var(--tooltip-x, 0), var(--tooltip-y, 0))
@@ -33,17 +32,17 @@
     transform var(--motion-duration-deliberate) var(--motion-easing-standard);
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child:dir(rtl) {
+[ng-tooltip] > [role="tooltip"]:dir(rtl) {
   direction: rtl;
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child:not([hidden]) {
+[ng-tooltip] > [role="tooltip"]:not([hidden]) {
   opacity: 1;
   transform: translate(var(--tooltip-x, 0), var(--tooltip-y, 0)) translate(0, 0)
     scale(1);
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="top"] {
+[ng-tooltip] > [role="tooltip"][side="top"] {
   bottom: 100%;
   left: 50%;
 
@@ -53,7 +52,7 @@
   transform-origin: bottom;
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="bottom"] {
+[ng-tooltip] > [role="tooltip"][side="bottom"] {
   top: 100%;
   left: 50%;
 
@@ -63,7 +62,7 @@
   transform-origin: top;
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="left"] {
+[ng-tooltip] > [role="tooltip"][side="left"] {
   top: 50%;
   right: 100%;
 
@@ -74,7 +73,7 @@
   transform-origin: right;
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="right"] {
+[ng-tooltip] > [role="tooltip"][side="right"] {
   top: 50%;
   left: 100%;
 
@@ -85,42 +84,42 @@
   transform-origin: left;
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child::after {
+[ng-tooltip] > [role="tooltip"]::after {
   position: absolute;
   width: calc(var(--spacing) * 2.5);
   height: calc(var(--spacing) * 2.5);
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   background: inherit;
   content: "";
   transform: rotate(45deg);
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="top"]::after {
+[ng-tooltip] > [role="tooltip"][side="top"]::after {
   bottom: calc(var(--spacing) * -1);
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="bottom"]::after {
+[ng-tooltip] > [role="tooltip"][side="bottom"]::after {
   top: calc(var(--spacing) * -1);
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="left"]::after {
+[ng-tooltip] > [role="tooltip"][side="left"]::after {
   top: 50%;
   right: calc(var(--spacing) * -1);
   transform: translateY(-50%) rotate(45deg);
 }
 
-:is(.tooltip, [ng-tooltip]) > :last-child[side="right"]::after {
+[ng-tooltip] > [role="tooltip"][side="right"]::after {
   top: 50%;
   left: calc(var(--spacing) * -1);
   transform: translateY(-50%) rotate(45deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.tooltip, [ng-tooltip]) > :last-child {
+  [ng-tooltip] > [role="tooltip"] {
     transition-duration: var(--motion-duration-instant);
   }
 }

@@ -291,13 +291,17 @@ test("published checkbox pages cover every reference workflow with functional HT
 }) => {
   await page.goto("/docs/static/examples/components/checkbox.html");
   const terms = page.locator("#terms-checkbox");
-  await expect(page.locator(".checkbox")).toHaveCount(4);
+  await expect(
+    page.locator('input[type="checkbox"]:not([role="switch"])'),
+  ).toHaveCount(4);
   await terms.check();
   await expect(terms).toBeChecked();
   await expect(page.getByRole("status")).toContainText("Terms accepted");
 
   await page.goto("/docs/static/examples/components/checkbox-workflows.html");
-  await expect(page.locator(".checkbox")).toHaveCount(12);
+  await expect(
+    page.locator('input[type="checkbox"]:not([role="switch"])'),
+  ).toHaveCount(12);
   await expect(page.locator("#terms-checkbox-desc")).toBeChecked();
   await expect(page.locator("#toggle-checkbox-disabled")).toBeDisabled();
   await expect(page.locator("#terms-checkbox-invalid")).toHaveAttribute(
@@ -313,7 +317,9 @@ test("published checkbox pages cover every reference workflow with functional HT
   const table = page.getByRole("table", { name: "Team members" });
   await expect(table.locator("tbody tr")).toHaveCount(4);
   await page.getByRole("checkbox", { name: "Select all rows" }).check();
-  await expect(table.locator("tbody .checkbox:checked")).toHaveCount(4);
+  await expect(
+    table.locator('tbody input[type="checkbox"]:not([role="switch"]):checked'),
+  ).toHaveCount(4);
   await page.getByLabel("Select Marcus Rodriguez").uncheck();
   await expect(
     page.getByRole("checkbox", { name: "Select all rows" }),
@@ -392,7 +398,9 @@ test("published date-picker workflows retain AngularTS model ownership", async (
   await expect(time).toHaveValue("14:45:00");
 
   const rtlCalendar = page
-    .locator('.popover > [popover][aria-label="اختر تاريخًا"]')
+    .locator(
+      'span:has(> [popovertarget] ~ [popover]) > [popover][aria-label="اختر تاريخًا"]',
+    )
     .locator("[ng-calendar]");
   await expect(rtlCalendar).toHaveCSS("direction", "rtl");
 });
@@ -562,11 +570,11 @@ test("form examples preserve AngularTS ng-model ownership", async ({
 
   await page.goto("/docs/static/examples/components/switch.html");
   const mode = page.locator("#airplane-mode");
-  await expect(page.locator(".output").first()).toContainText(
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
     "Mode enabled: false",
   );
   await mode.check();
-  await expect(page.locator(".output").first()).toContainText(
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
     "Mode enabled: true",
   );
   await expect(mode).toBeChecked();
@@ -582,7 +590,7 @@ test("form examples preserve AngularTS ng-model ownership", async ({
   await page.goto("/docs/static/examples/components/radio-group.html");
   const compact = page.locator("#density-compact");
   await compact.check();
-  await expect(page.locator(".output").first()).toContainText(
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
     "Selected: compact",
   );
   await expect(compact).toBeChecked();

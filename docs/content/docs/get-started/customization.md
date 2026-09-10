@@ -22,7 +22,7 @@ layer order: `base`, `angularcss.tokens`, `angularcss.components`, `components`,
 and `utilities`.
 
 ```css
-@import '@angular-wave/angular.css/angular.css';
+@import "@angular-wave/angular.css/angular.css";
 
 @layer components {
   :root {
@@ -144,7 +144,7 @@ let scrollable tables and data regions expand. Mark application-only controls
 with `data-print="exclude"`; mark print-only content with `data-print="only"`.
 
 ```html
-<button class="button" data-print="exclude">Edit</button>
+<button data-print="exclude">Edit</button>
 <p data-print="only">Generated from the current customer record.</p>
 ```
 
@@ -152,12 +152,12 @@ These attributes express document intent in HTML and work across components.
 
 ## Dark contexts
 
-Add `dark` or `dark-theme` to any ancestor. AngularCSS provides dark defaults
-for the same semantic variables:
+Add `dark` to any ancestor. AngularCSS provides dark defaults for the same
+semantic variables:
 
 ```html
 <section class="dark">
-  <button class="button">Continue</button>
+  <button>Continue</button>
 </section>
 ```
 
@@ -183,7 +183,7 @@ documented component state for customization beyond the shared variables:
   max-width: 48rem;
 }
 
-[ng-tabs] > menu > button[aria-selected='true'] {
+[ng-tabs] > menu > button[aria-selected="true"] {
   border-color: var(--primary);
 }
 ```
@@ -207,5 +207,5 @@ and motion. Keep focused elements visible, preserve keyboard focus, retain
 usable contrast and pointer targets, and keep visual order aligned with DOM
 order.
 
-Use the [component catalog]({{< relref "/docs/components" >}}) to find each
+Use the [component catalog]({{< relref "/docs/components">}}) to find each
 component's selectors, states, custom properties, and live source.

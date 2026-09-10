@@ -79,7 +79,7 @@
         </div>
       </section>
 
-      <section class="combobox-workflow combobox-groups-workflow">
+      <section class="combobox-workflow">
         <div
           id="groups-combobox"
           ng-combobox
@@ -121,7 +121,7 @@
         </div>
       </section>
 
-      <section class="combobox-workflow combobox-input-group-workflow">
+      <section class="combobox-workflow">
         <div
           id="input-group-combobox"
           ng-combobox
@@ -210,7 +210,6 @@
             type="button"
             variant="outline"
             aria-label="Country"
-            class="button"
             value="toggle"
           >
             <span ng-bind="popup.selected"></span>
@@ -239,7 +238,7 @@
         </div>
       </section>
 
-      <output class="output visually-hidden" aria-live="polite">
+      <output class="visually-hidden" aria-live="polite">
         Clear: <span ng-bind="clearState.selected || 'none'"></span>. Grouped:
         <span ng-bind="grouped.selected || 'none'"></span>. Popup:
         <span ng-bind="popup.selected"></span>.

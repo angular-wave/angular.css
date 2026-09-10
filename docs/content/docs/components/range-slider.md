@@ -1,6 +1,6 @@
 ---
 title: range-slider
-category: 'form'
+category: "form"
 description: >
   Multiple native range inputs coordinated on one shared track.
 ---
@@ -14,8 +14,20 @@ behavior. Use the Range element for a single value.
 <fieldset>
   <legend>Price range</legend>
   <div ng-range-slider min="0" max="100">
-    <input aria-label="Minimum price" type="range" min="0" max="100" value="25" />
-    <input aria-label="Maximum price" type="range" min="0" max="100" value="75" />
+    <input
+      aria-label="Minimum price"
+      type="range"
+      min="0"
+      max="100"
+      value="25"
+    />
+    <input
+      aria-label="Maximum price"
+      type="range"
+      min="0"
+      max="100"
+      value="75"
+    />
   </div>
 </fieldset>
 ```
@@ -57,7 +69,7 @@ Apply `ng-range-slider` to one container with two or more direct native `input[t
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-orientation` | Output | ARIA relationship or state. |
+| `aria-orientation` | Output | Interaction axis exposed to assistive technology. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `max` | Input | Maximum native or component value. |
 | `min` | Input | Minimum native or component value. |

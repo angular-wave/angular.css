@@ -24,7 +24,7 @@ const itemSelectors = [
 ] as const;
 const itemSelector = itemSelectors.join(", ");
 const listSelector = ":scope > :last-child";
-const rootSelector = ".command, [ng-command]";
+const rootSelector = "[ng-command]";
 const separatorSelector = ":scope > :last-child > hr";
 const shortcutSelector = itemSelectors
   .map((selector) => `${selector} > kbd`)

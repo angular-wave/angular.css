@@ -6,7 +6,7 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngDescriptionList",
   name: "description-list",
-  selector: ".description-list",
+  selector: "dl:has(> div > dt):has(> div > dd)",
 });
 
 test("description list preserves native terms and descriptions", async ({
@@ -22,7 +22,7 @@ test("description list stacks terms and values in a narrow container", async ({
 }) => {
   await page.setViewportSize({ width: 420, height: 700 });
   await page.goto("/src/patterns/description-list/description-list.html");
-  const row = page.locator(".description-list > div").first();
+  const row = page.locator("dl:has(> div > dt):has(> div > dd) > div").first();
   const term = row.locator("dt");
   const description = row.locator("dd");
 

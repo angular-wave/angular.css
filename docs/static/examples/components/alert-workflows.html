@@ -17,7 +17,7 @@
     data-example="alert-action alert-basic alert-colors alert-destructive alert-rtl"
   >
     <main class="alert-workflow-grid">
-      <section class="alert">
+      <section role="alert">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
           <circle
             cx="12"
@@ -41,7 +41,7 @@
         </p>
       </section>
 
-      <section class="alert-action-demo alert" aria-live="polite">
+      <section aria-live="polite" role="alert">
         <h2>Dark mode is now available</h2>
         <p>Enable it under your profile settings to get started.</p>
         <button
@@ -49,13 +49,12 @@
           type="button"
           ng-click="darkModeEnabled=true"
           ng-disabled="darkModeEnabled"
-          class="button"
         >
           {{ darkModeEnabled ? 'Enabled' : 'Enable' }}
         </button>
       </section>
 
-      <section variant="warning" class="alert-warning-demo alert">
+      <section variant="warning" role="alert">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
           <path
             d="M10.3 2.9 1.8 17a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 2.9a2 2 0 0 0-3.4 0Z"
@@ -76,7 +75,7 @@
         </p>
       </section>
 
-      <section variant="destructive" class="alert">
+      <section variant="destructive" role="alert">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
           <circle
             cx="12"
@@ -105,7 +104,7 @@
         lang="ar"
         aria-label="التنبيهات"
       >
-        <section class="alert">
+        <section role="alert">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
             <circle
               cx="12"
@@ -125,7 +124,7 @@
           <h2>تم الدفع بنجاح</h2>
           <p>تمت معالجة دفعتك وإرسال إيصال إلى عنوان بريدك الإلكتروني.</p>
         </section>
-        <section class="alert">
+        <section role="alert">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
             <circle
               cx="12"

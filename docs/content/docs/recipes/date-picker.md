@@ -1,6 +1,6 @@
 ---
 title: date-picker
-category: 'date input'
+category: "date input"
 description: >
   Calendar and native popover composition
 ---
@@ -37,7 +37,7 @@ Use `.date-picker` around a visible label and the existing Popover and Calendar 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-invalid` | Authored | Validation state exposed to assistive technology and CSS. |
+| `aria-invalid` | Authored | Validation state on the Date Picker root, reflected on its trigger border. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

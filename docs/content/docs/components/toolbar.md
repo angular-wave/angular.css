@@ -1,6 +1,6 @@
 ---
 title: toolbar
-category: 'action'
+category: "action"
 description: >
   Keyboard-navigable groups of actions
 ---
@@ -11,7 +11,7 @@ activation and command ownership.
 
 ## Example
 
-{{< example src="examples/components/toolbar.html" title="Document action toolbar" height="260" >}}
+{{< example src="examples/components/toolbar.html" title="Document action toolbar" height="260">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -29,7 +29,7 @@ This component's root directive is `[ng-toolbar]`. Importing the package registe
 
 ### Semantic structure
 
-Apply `ng-toolbar` to a semantic `menu` or container with an accessible name. Author direct native buttons or links and optional direct separators; no child directives or toolbar part classes are required.
+Apply `ng-toolbar` to a semantic `menu` or container with an accessible name. Use `aria-orientation="vertical"` for a vertical toolbar. Author direct native buttons or links and optional direct separators; no child directives or toolbar part classes are required.
 
 ## API
 
@@ -39,10 +39,10 @@ Apply `ng-toolbar` to a semantic `menu` or container with an accessible name. Au
 | --- | --- | --- |
 | `aria-disabled` | Input/output | Semantic disabled state. |
 | `aria-label` | Input | Accessible name when visible text is insufficient. |
-| `aria-orientation` | Output | ARIA relationship or state. |
+| `aria-orientation` | Input/output | Interaction axis exposed to assistive technology. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `disabled` | Input | Disables native or component interaction. |
-| `hidden` | Input | Authored option or semantic HTML attribute observed by the directive. |
+| `hidden` | Input | Native visibility state observed when finding available items. |
 | `orientation` | Input | Layout direction: `horizontal` or `vertical`. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |
 | `tabindex` | Input/output | Keyboard focus order for composite descendants. |

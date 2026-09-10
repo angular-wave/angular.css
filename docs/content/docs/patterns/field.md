@@ -1,6 +1,6 @@
 ---
 title: field
-category: 'form'
+category: "form"
 description: >
   Group labels, helper text, and errors with semantic field wrapper selectors.
 ---
@@ -10,31 +10,31 @@ Use the field wrapper and field parts to define standard form structure.
 ```html
 <div class="field">
   <label for="email">Email</label>
-  <input id="email" type="email" placeholder="Email" class="input" />
+  <input id="email" type="email" placeholder="Email" />
   <p>Use your work email.</p>
 </div>
 
 <div class="field">
   <label for="invalid-email">Email</label>
-  <input id="invalid-email" aria-invalid="true" class="input" />
+  <input id="invalid-email" aria-invalid="true" />
   <p class="field-error">Enter a valid email.</p>
 </div>
 ```
 
 ## Example
 
-{{< example src="examples/components/field.html" title="Field example" height="300" >}}
+{{< example src="examples/components/field.html" title="Field example" height="300">}}
 
 ## Workflows
 
-{{< example src="examples/components/field-workflows.html" title="Field workflows" height="2500" >}}
+{{< example src="examples/components/field-workflows.html" title="Field workflows" height="2500">}}
 
 ## Validation States
 
 Fields derive presentation from native validity and `aria-invalid`; AngularTS
 structural directives may insert or remove controls and descriptions.
 
-{{< example src="examples/components/field-state-workflows.html" title="Field validation and conditional controls" height="760" >}}
+{{< example src="examples/components/field-state-workflows.html" title="Field validation and conditional controls" height="760">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -61,8 +61,8 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `aria-invalid` | Authored | Validation state exposed to assistive technology and CSS. |
-| `orientation` | Authored | Layout direction: `horizontal` or `vertical`. |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `orientation` | Authored | Field layout: `horizontal` or `responsive`; omit for the vertical layout. |
+| `variant` | Authored | Compact `label` typography when authored on a fieldset legend. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

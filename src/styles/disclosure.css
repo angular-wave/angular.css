@@ -1,0 +1,30 @@
+@media (prefers-reduced-motion: no-preference) {
+  @supports selector(details::details-content) {
+    :is(
+      section[aria-label]:has(> details) > details,
+      details.disclosure
+    )::details-content {
+      block-size: 0;
+      overflow: clip;
+      opacity: 0;
+      transition:
+        block-size var(--motion-duration-deliberate) var(--motion-easing-out),
+        content-visibility var(--motion-duration-deliberate) allow-discrete,
+        opacity var(--motion-duration-default) var(--motion-easing-out);
+    }
+
+    :is(
+        section[aria-label]:has(> details) > details,
+        details.disclosure
+      ):open::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+
+    @supports (interpolate-size: allow-keywords) {
+      :is(section[aria-label]:has(> details) > details, details.disclosure) {
+        interpolate-size: allow-keywords;
+      }
+    }
+  }
+}

@@ -17,26 +17,25 @@
     ng-cloak
     data-example="progress-demo progress-label"
   >
-    <main class="progress-demo visual-example">
+    <main class="visual-example">
       <section aria-labelledby="progress-timed-title">
-        <h2 id="progress-timed-title" class="example-sr-only">
+        <h2 id="progress-timed-title" class="visually-hidden">
           Loading progress
         </h2>
         <progress
           value="{{ demoValue }}"
           max="100"
           aria-labelledby="progress-timed-title"
-          class="progress-demo-timed progress"
+          class="progress-demo-timed"
         ></progress>
       </section>
 
       <section>
-        <div class="progress-demo-labeled progress-group">
+        <div class="progress-demo-labeled">
           <label id="upload-progress-label"> Upload progress </label>
           <output for="upload-progress">56%</output>
           <progress
             id="upload-progress"
-            class="progress"
             value="56"
             max="100"
             aria-labelledby="upload-progress-label"

@@ -13,6 +13,7 @@ test("canonical dropdown exposes semantic state and closes from selection or Esc
   const trigger = page.getByRole("button", { name: "Options" });
   const menu = root.locator(":scope > menu");
 
+  await expect(trigger).toHaveAttribute("aria-haspopup", "menu");
   await expect(trigger).toHaveAttribute("aria-expanded", "false");
   await expect(menu).toBeHidden();
   await expect(menu).toHaveAttribute(

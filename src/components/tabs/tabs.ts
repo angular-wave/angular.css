@@ -1,6 +1,9 @@
 import type {} from "@angular-wave/angular.ts";
 
 import {
+  getDirection,
+  isDisabled,
+  observeInheritedDirection,
   setAttributeIfChanged,
   nextIndex,
   onDestroy,
@@ -16,30 +19,21 @@ const listSelector = ":scope > menu";
 export function tabsDirective(): ng.Directive {
   return {
     link(scope: ng.Scope, element: HTMLElement) {
-      const directionOwner = element.closest<HTMLElement>("[dir]") ?? element;
       let triggers: HTMLElement[] = [];
       let contents: HTMLElement[] = [];
       let orientation = "horizontal";
       let activeIndex = 0;
       const cleanupTriggers = new WeakMap<HTMLElement, () => void>();
 
-      const isTriggerDisabled = (trigger: HTMLElement) =>
-        trigger.hasAttribute("disabled") ||
-        trigger.getAttribute("aria-disabled") === "true";
-      const getDirection = () =>
-        element.closest<HTMLElement>("[dir]")?.getAttribute("dir") === "rtl"
-          ? "rtl"
-          : "ltr";
-
       const firstEnabledIndex = () =>
         Math.max(
           0,
-          triggers.findIndex((trigger) => !isTriggerDisabled(trigger)),
+          triggers.findIndex((trigger) => !isDisabled(trigger)),
         );
 
       const lastEnabledIndex = () => {
         for (let index = triggers.length - 1; index >= 0; index -= 1) {
-          if (!isTriggerDisabled(triggers[index])) return index;
+          if (!isDisabled(triggers[index])) return index;
         }
         return 0;
       };
@@ -48,7 +42,7 @@ export function tabsDirective(): ng.Directive {
         if (!triggers.length) return -1;
         let next = nextIndex(index, triggers.length, direction);
         let safety = 0;
-        while (isTriggerDisabled(triggers[next]) && safety < triggers.length) {
+        while (isDisabled(triggers[next]) && safety < triggers.length) {
           next = nextIndex(next, triggers.length, direction);
           safety += 1;
         }
@@ -61,7 +55,7 @@ export function tabsDirective(): ng.Directive {
         activeIndex = nextActiveIndex;
         triggers.forEach((trigger, triggerIndex) => {
           const selected = triggerIndex === nextActiveIndex;
-          const disabled = isTriggerDisabled(trigger);
+          const disabled = isDisabled(trigger);
           setAttributeIfChanged(trigger, "aria-selected", String(selected));
           setAttributeIfChanged(
             trigger,
@@ -85,7 +79,7 @@ export function tabsDirective(): ng.Directive {
 
         const handleClick = () => {
           const index = triggers.indexOf(trigger);
-          if (index >= 0 && !isTriggerDisabled(trigger)) activate(index);
+          if (index >= 0 && !isDisabled(trigger)) activate(index);
         };
         const handleKeydown = (event: KeyboardEvent) => {
           const index = triggers.indexOf(trigger);
@@ -97,11 +91,11 @@ export function tabsDirective(): ng.Directive {
             event.key === "Spacebar"
           ) {
             event.preventDefault();
-            if (!isTriggerDisabled(trigger)) activate(index, true);
+            if (!isDisabled(trigger)) activate(index, true);
             return;
           }
 
-          if (isTriggerDisabled(trigger)) return;
+          if (isDisabled(trigger)) return;
 
           const nextKey =
             orientation === "vertical" ? "ArrowDown" : "ArrowRight";
@@ -111,7 +105,7 @@ export function tabsDirective(): ng.Directive {
           if (event.key === nextKey || event.key === previousKey) {
             event.preventDefault();
             let direction: 1 | -1 = event.key === nextKey ? 1 : -1;
-            if (orientation !== "vertical" && getDirection() === "rtl") {
+            if (orientation !== "vertical" && getDirection(element) === "rtl") {
               direction = direction === 1 ? -1 : 1;
             }
             const next = getNextEnabledIndex(index, direction);
@@ -172,13 +166,13 @@ export function tabsDirective(): ng.Directive {
 
         const selectedIndex = triggers.findIndex(
           (trigger) =>
-            !isTriggerDisabled(trigger) &&
+            !isDisabled(trigger) &&
             trigger.getAttribute("aria-selected") === "true",
         );
         const nextActiveIndex =
           selectedIndex >= 0
             ? selectedIndex
-            : triggers[activeIndex] && !isTriggerDisabled(triggers[activeIndex])
+            : triggers[activeIndex] && !isDisabled(triggers[activeIndex])
               ? activeIndex
               : firstEnabledIndex();
         activate(nextActiveIndex);
@@ -201,12 +195,7 @@ export function tabsDirective(): ng.Directive {
 
       sync();
 
-      const directionObserver =
-        directionOwner === element ? null : new MutationObserver(sync);
-      directionObserver?.observe(directionOwner, {
-        attributes: true,
-        attributeFilter: ["dir"],
-      });
+      const directionObserver = observeInheritedDirection(element, sync);
 
       onDestroy(scope, () => {
         observer.disconnect();

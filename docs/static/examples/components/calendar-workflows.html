@@ -39,10 +39,8 @@
               size="icon"
               variant="ghost"
               aria-label="Previous basic month"
-              class="button"
             >
               <svg
-                class="icon-sm"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -58,10 +56,8 @@
               size="icon"
               variant="ghost"
               aria-label="Next basic month"
-              class="button"
             >
               <svg
-                class="icon-sm"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -74,9 +70,9 @@
           </header>
           <div></div>
         </section>
-        <p class="calendar-workflow-output" aria-live="polite">
+        <output class="calendar-workflow-output" aria-live="polite">
           Selected: {{ calendar.basic || 'None' }}
-        </p>
+        </output>
       </section>
 
       <section
@@ -100,10 +96,8 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Previous availability month"
-                  class="button"
                 >
                   <svg
-                    class="icon-sm"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -119,10 +113,8 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Next availability month"
-                  class="button"
                 >
                   <svg
-                    class="icon-sm"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -137,9 +129,9 @@
             </section>
           </section>
         </article>
-        <p class="calendar-workflow-output" aria-live="polite">
+        <output class="calendar-workflow-output" aria-live="polite">
           Available date: {{ calendar.booked }}
-        </p>
+        </output>
       </section>
 
       <section
@@ -164,10 +156,8 @@
               size="icon"
               variant="ghost"
               aria-label="Previous caption month"
-              class="button"
             >
               <svg
-                class="icon-sm"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -183,10 +173,8 @@
               size="icon"
               variant="ghost"
               aria-label="Next caption month"
-              class="button"
             >
               <svg
-                class="icon-sm"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -199,9 +187,9 @@
           </header>
           <div></div>
         </section>
-        <p class="calendar-workflow-output" aria-live="polite">
+        <output class="calendar-workflow-output" aria-live="polite">
           Selected: {{ calendar.caption }}
-        </p>
+        </output>
       </section>
 
       <section
@@ -225,10 +213,8 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Previous multiple month"
-                  class="button"
                 >
                   <svg
-                    class="icon-sm"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -244,10 +230,8 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Next multiple month"
-                  class="button"
                 >
                   <svg
-                    class="icon-sm"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -262,9 +246,9 @@
             </section>
           </section>
         </article>
-        <p class="calendar-workflow-output" aria-live="polite">
+        <output class="calendar-workflow-output" aria-live="polite">
           Selected dates: {{ calendar.multiple || 'None' }}
-        </p>
+        </output>
       </section>
 
       <section
@@ -289,10 +273,8 @@
               size="icon"
               variant="ghost"
               aria-label="Previous range month"
-              class="button"
             >
               <svg
-                class="icon-sm"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -308,10 +290,8 @@
               size="icon"
               variant="ghost"
               aria-label="Next range month"
-              class="button"
             >
               <svg
-                class="icon-sm"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -324,10 +304,10 @@
           </header>
           <div></div>
         </section>
-        <p class="calendar-workflow-output" aria-live="polite">
+        <output class="calendar-workflow-output" aria-live="polite">
           Range: {{ calendar.rangeStart || 'None' }} to {{ calendar.rangeEnd ||
           'None' }}
-        </p>
+        </output>
       </section>
 
       <section
@@ -351,10 +331,8 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Previous week-number month"
-                  class="button"
                 >
                   <svg
-                    class="icon-sm"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -370,10 +348,8 @@
                   size="icon"
                   variant="ghost"
                   aria-label="Next week-number month"
-                  class="button"
                 >
                   <svg
-                    class="icon-sm"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -388,9 +364,9 @@
             </section>
           </section>
         </article>
-        <p class="calendar-workflow-output" aria-live="polite">
+        <output class="calendar-workflow-output" aria-live="polite">
           Selected: {{ calendar.week }}
-        </p>
+        </output>
       </section>
     </main>
   </body>

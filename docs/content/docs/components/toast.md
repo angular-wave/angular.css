@@ -1,6 +1,6 @@
 ---
 title: toast
-category: 'feedback'
+category: "feedback"
 description: >
   Notification toaster with close actions and toast variants.
 ---
@@ -61,14 +61,14 @@ Use native elements for authored structure. Component classes are optional visua
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-atomic` | Input/output | ARIA relationship or state. |
-| `aria-describedby` | Input/output | ARIA relationship or state. |
+| `aria-atomic` | Input/output | Whether an assistive technology announces the entire updated region. |
+| `aria-describedby` | Input/output | ID of the element that supplies the accessible description. |
 | `aria-label` | Input/output | Accessible name when visible text is insufficient. |
-| `aria-labelledby` | Input/output | ARIA relationship or state. |
-| `aria-live` | Input/output | ARIA relationship or state. |
-| `position` | Input/output | Placement token used by the component surface. |
+| `aria-labelledby` | Input/output | ID of the element that supplies the accessible name. |
+| `aria-live` | Input/output | Announcement priority for updates to a live region. |
+| `position` | Input/output | Viewport placement: `top-left`, `top-center`, `top-right`, `bottom-left`, `bottom-center`, or `bottom-right`. |
 | `role` | Input/output | Explicit semantic role when native HTML does not provide one. |
-| `type` | Input/output | Component or native behavior variant. |
+| `type` | Input/output | Toast state: `default`, `error`, `info`, `loading`, `success`, or `warning`. |
 
 `Input` attributes are read from authored HTML. `Output` attributes are maintained by AngularCSS for CSS and testing. `Input/output` attributes may be authored for a controlled initial state and are then synchronized by the directive.
 

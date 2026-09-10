@@ -1,15 +1,14 @@
-.hover-card,
 [ng-hover-card] {
   position: relative;
   display: inline-flex;
   width: fit-content;
 }
 
-:is(.hover-card, [ng-hover-card]) > :is(a, button) {
+[ng-hover-card] > :is(a, button) {
   display: inline-flex;
 }
 
-:is(.hover-card, [ng-hover-card]) > :is(aside, article, section):last-child {
+[ng-hover-card] > :is(aside, article, section):last-child {
   position: absolute;
   z-index: 50;
   display: grid;
@@ -34,8 +33,7 @@
     transform var(--motion-duration-deliberate) var(--motion-easing-standard);
 }
 
-:is(.hover-card, [ng-hover-card])
-  > :is(aside, article, section):last-child[side="bottom"] {
+[ng-hover-card] > :is(aside, article, section):last-child[side="bottom"] {
   inset-block-start: calc(100% + var(--spacing));
   left: 50%;
 
@@ -44,8 +42,7 @@
   --hover-card-motion-y: -2px;
 }
 
-:is(.hover-card, [ng-hover-card])
-  > :is(aside, article, section):last-child[side="top"] {
+[ng-hover-card] > :is(aside, article, section):last-child[side="top"] {
   inset-block-end: calc(100% + var(--spacing));
   left: 50%;
 
@@ -54,8 +51,7 @@
   --hover-card-motion-y: 2px;
 }
 
-:is(.hover-card, [ng-hover-card])
-  > :is(aside, article, section):last-child[side="left"] {
+[ng-hover-card] > :is(aside, article, section):last-child[side="left"] {
   inset-block-start: 50%;
   right: calc(100% + var(--spacing));
 
@@ -65,8 +61,7 @@
   --hover-card-motion-y: 0;
 }
 
-:is(.hover-card, [ng-hover-card])
-  > :is(aside, article, section):last-child[side="right"] {
+[ng-hover-card] > :is(aside, article, section):last-child[side="right"] {
   inset-block-start: 50%;
   left: calc(100% + var(--spacing));
 
@@ -76,36 +71,29 @@
   --hover-card-motion-y: 0;
 }
 
-:is(.hover-card, [ng-hover-card]):hover
-  > :is(aside, article, section):last-child,
-:is(.hover-card, [ng-hover-card]):focus-within
-  > :is(aside, article, section):last-child,
-:is(.hover-card, [ng-hover-card])
-  > :is(aside, article, section):last-child:not([hidden]) {
+[ng-hover-card]:hover > :is(aside, article, section):last-child,
+[ng-hover-card]:focus-within > :is(aside, article, section):last-child,
+[ng-hover-card] > :is(aside, article, section):last-child:not([hidden]) {
   opacity: 1;
   pointer-events: auto;
   transform: translate(var(--hover-card-x, 0), var(--hover-card-y, 0))
     translate(0, 0) scale(1);
 }
 
-:is(.hover-card, [ng-hover-card])
-  > :is(aside, article, section):last-child
-  > :is(h1, h2, h3) {
+[ng-hover-card] > :is(aside, article, section):last-child > :is(h1, h2, h3) {
   color: var(--foreground);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-semibold);
 }
 
-:is(.hover-card, [ng-hover-card])
-  > :is(aside, article, section):last-child
-  > p {
+[ng-hover-card] > :is(aside, article, section):last-child > p {
   color: var(--muted-foreground);
   font-size: var(--text-sm);
-  line-height: 1.45;
+  line-height: var(--leading-sm);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.hover-card, [ng-hover-card]) > :is(aside, article, section):last-child {
+  [ng-hover-card] > :is(aside, article, section):last-child {
     transition-duration: var(--motion-duration-instant);
   }
 }

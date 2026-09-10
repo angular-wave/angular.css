@@ -1,5 +1,4 @@
-.menubar,
-[ng-menubar] {
+[role="menubar"] {
   display: flex;
   width: fit-content;
   height: var(--size-control-md);
@@ -12,11 +11,11 @@
   padding: calc(var(--spacing) * 0.75);
 }
 
-:is(.menubar, [ng-menubar]) > section {
+[role="menubar"] > section {
   position: relative;
 }
 
-:is(.menubar, [ng-menubar]) > section > button {
+[role="menubar"] > section > [role="menuitem"] {
   display: inline-flex;
   min-height: calc(var(--spacing) * 7);
   align-items: center;
@@ -33,175 +32,95 @@
   user-select: none;
 }
 
-:is(.menubar, [ng-menubar])
+[role="menubar"]
   > section
-  > button:is(:hover, :focus-visible, [aria-expanded="true"]) {
+  > [role="menuitem"]:is(:hover, :focus-visible, [aria-expanded="true"]) {
   background: var(--accent);
   color: var(--accent-foreground);
 }
 
-:is(.menubar, [ng-menubar])
+[role="menubar"]
   > section
-  > button:is(:disabled, [aria-disabled="true"]) {
+  > [role="menuitem"]:is(:disabled, [aria-disabled="true"]) {
   pointer-events: none;
   opacity: 0.5;
 }
 
-:is(.menubar, [ng-menubar]) menu {
-  position: absolute;
-  z-index: 50;
-  display: grid;
+[role="menubar"] [role="menu"] {
   min-width: 9rem;
-  gap: 0;
   overflow: hidden;
   border: 0;
-  border-radius: var(--radius);
-  background: var(--popover);
-  color: var(--popover-foreground);
-  padding: calc(var(--spacing) * 1);
   box-shadow:
     0 0 0 var(--border-width-default)
       color-mix(in srgb, var(--foreground) 10%, transparent),
     var(--shadow-md);
 }
 
-:is(.menubar, [ng-menubar]) menu:where(:not([hidden])) {
+[role="menubar"] [role="menu"]:where(:not([hidden])) {
   animation: angularcss-surface-enter var(--motion-duration-default)
     var(--motion-easing-out);
 }
 
-:is(.menubar, [ng-menubar]) > section > menu {
+[role="menubar"] > section > [role="menu"] {
   inset-block-start: calc(100% + var(--spacing) * 2);
   inset-inline-start: calc(var(--spacing) * -1);
 }
 
-:is(.menubar, [ng-menubar]) menu > :is(section, fieldset) {
-  display: grid;
-  gap: 0;
-}
-
-:is(.menubar, [ng-menubar]) menu :is(a, button, summary) {
-  position: relative;
-  display: flex;
-  width: 100%;
+[role="menubar"]
+  [role="menu"]
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]) {
   min-height: calc(var(--spacing) * 7);
-  align-items: center;
   gap: calc(var(--spacing) * 1.5);
-  border: 0;
   border-radius: var(--radius-sm);
-  background: transparent;
   color: inherit;
   padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
-  font: inherit;
-  font-size: var(--text-sm);
-  text-align: start;
-  text-decoration: none;
-  cursor: default;
-  outline: none;
-  user-select: none;
 }
 
-:is(.menubar, [ng-menubar])
-  menu
-  :is(a, button, summary):is(
-    :hover,
-    :focus-visible,
-    [aria-selected="true"],
-    [aria-expanded="true"]
-  ) {
-  background: var(--accent);
-  color: var(--accent-foreground);
-}
-
-:is(.menubar, [ng-menubar])
-  menu
-  :is(a, button, summary):is(:disabled, [aria-disabled="true"]) {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-:is(.menubar, [ng-menubar]) menu fieldset button[aria-checked],
-:is(.menubar, [ng-menubar]) menu button[aria-checked]:not(fieldset button) {
+[role="menubar"]
+  [role="menu"]
+  :is([role="menuitemradio"], [role="menuitemcheckbox"]),
+[role="menubar"]
+  [role="menu"]
+  :is(
+    [role="menuitem"],
+    [role="menuitemcheckbox"],
+    [role="menuitemradio"]
+  )[inset] {
   padding-inline-start: calc(var(--spacing) * 7);
 }
 
-:is(.menubar, [ng-menubar]) menu fieldset button[aria-checked="true"]::before {
-  position: absolute;
+[role="menubar"]
+  [role="menu"]
+  :is(
+    [role="menuitemradio"][aria-checked="true"],
+    [role="menuitemcheckbox"][aria-checked="true"]
+  )::before {
   inset-inline-start: calc(var(--spacing) * 1.5);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+[role="menubar"]
+  [role="menu"]
+  [role="menuitemradio"][aria-checked="true"]::before {
   content: "\2022";
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
 }
 
-:is(.menubar, [ng-menubar])
-  menu
-  button[aria-checked="true"]:not(fieldset button)::before {
-  position: absolute;
-  inset-inline-start: calc(var(--spacing) * 1.5);
-  content: "\2713";
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
+[role="menubar"] [role="menu"] hr {
+  margin-inline: 0;
 }
 
-:is(.menubar, [ng-menubar]) menu :is(a, button, summary)[inset] {
-  padding-inline-start: calc(var(--spacing) * 7);
-}
-
-:is(.menubar, [ng-menubar]) menu :is(a, button, summary) > svg {
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
-  flex-shrink: 0;
-  pointer-events: none;
-}
-
-:is(.menubar, [ng-menubar]) menu hr {
-  height: var(--border-width-default);
-  margin-block: calc(var(--spacing) * 1);
-  border: 0;
-  background: var(--border);
-}
-
-:is(.menubar, [ng-menubar]) menu > :is(h1, h2, h3, h4, h5, h6),
-:is(.menubar, [ng-menubar]) menu > section > :is(h1, h2, h3, h4, h5, h6) {
+[role="menubar"] [role="menu"] > :is(h1, h2, h3, h4, h5, h6),
+[role="menubar"]
+  [role="menu"]
+  > :is(section, fieldset, [role="group"])
+  > :is(h1, h2, h3, h4, h5, h6) {
+  color: inherit;
   padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
   font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
 }
 
-:is(.menubar, [ng-menubar]) menu kbd {
-  margin-inline-start: auto;
-  color: var(--muted-foreground);
-  font-family: inherit;
-  font-size: var(--text-xs);
-}
-
-:is(.menubar, [ng-menubar]) menu details {
-  position: relative;
-}
-
-:is(.menubar, [ng-menubar]) menu details > summary {
-  list-style: none;
-}
-
-:is(.menubar, [ng-menubar]) menu details > summary::-webkit-details-marker {
-  display: none;
-}
-
-:is(.menubar, [ng-menubar]) menu details > summary::after {
-  margin-inline-start: auto;
-  content: "\203a";
-  font-size: var(--text-base);
-  line-height: var(--leading-none);
-}
-
-:is(.menubar, [ng-menubar]):dir(rtl) details > summary::after {
-  transform: rotate(180deg);
-}
-
-:is(.menubar, [ng-menubar]) details > menu {
-  inset-block-start: calc(var(--spacing) * -1);
-  inset-inline-start: calc(100% + var(--spacing) * 1);
-  z-index: 51;
+[role="menubar"] details > [role="menu"] {
   min-width: 8rem;
   box-shadow:
     0 0 0 var(--border-width-default)
@@ -209,8 +128,15 @@
     var(--shadow-lg);
 }
 
+@media (width <= 24rem) {
+  [role="menubar"] {
+    height: auto;
+    flex-wrap: wrap;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  :is(.menubar, [ng-menubar]) menu:where(:not([hidden])) {
+  [role="menubar"] [role="menu"]:where(:not([hidden])) {
     animation: none;
   }
 }

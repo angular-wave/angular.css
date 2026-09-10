@@ -1,6 +1,6 @@
 ---
 title: skeleton
-category: 'feedback'
+category: "feedback"
 description: >
   Loading placeholder primitive
 ---

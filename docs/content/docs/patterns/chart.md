@@ -1,6 +1,6 @@
 ---
 title: chart
-category: 'data display'
+category: "data display"
 description: >
   HTML-first chart container, legend, axis, and tooltip primitives
 ---
@@ -32,7 +32,7 @@ AngularCSS does not implement a chart engine. Plotting, scales, data,
 formatting, hover selection, and active-series state remain with authored HTML,
 the application's selected chart library, and AngularTS. This keeps Chart from
 covering AngularTS application behavior while providing stable semantic and
-Tailwind hooks.
+customization hooks.
 
 ## Example
 
@@ -70,9 +70,9 @@ Apply `.chart` to an accessible `figure`. Compose its optional title, plot, grid
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `data-color` | Authored | Stable component state or styling hook. |
-| `data-value` | Authored | Stable component state or styling hook. |
-| `indicator` | Authored | Authored chart indicator presentation. |
+| `data-color` | Authored | Series color key used by the example or application to set `--chart-color`. |
+| `data-value` | Authored | Authored bar height as a percentage when `--value` is not set. |
+| `indicator` | Authored | Legend indicator: `line` or `dashed`; omit for a solid mark. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

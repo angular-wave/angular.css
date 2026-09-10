@@ -22,7 +22,6 @@
               aria-describedby="demo-profile-name-description"
               placeholder="Jane Doe"
               ng-model="name"
-              class="input"
             />
             <p id="demo-profile-name-description">
               Use your public display name.
@@ -37,7 +36,6 @@
               required
               aria-describedby="demo-profile-email-error"
               ng-model="email"
-              class="input"
             />
             <p
               id="demo-profile-email-error"
@@ -49,10 +47,10 @@
           </div>
         </div>
       </fieldset>
-      <div class="output">
+      <output class="output">
         Preview: <span ng-bind="name"></span>
         <span ng-bind="email ? '(' + email + ')' : '(email required)'"></span>
-      </div>
+      </output>
     </form>
   </body>
 </html>

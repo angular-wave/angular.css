@@ -1,6 +1,6 @@
 ---
 title: tree
-category: 'navigation'
+category: "navigation"
 description: >
   Hierarchical navigation and selection
 ---
@@ -40,13 +40,12 @@ Apply `ng-tree` to a native `ul` or `ol`. Each direct or nested `li` contains on
 | `aria-disabled` | Input/output | Semantic disabled state. |
 | `aria-expanded` | Input/output | Open or expanded state exposed to assistive technology. |
 | `aria-label` | Input | Accessible name when visible text is insufficient. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
 | `aria-multiselectable` | Input | Set to `true` to allow Ctrl or Command click selection of several items. |
 | `aria-selected` | Input/output | Selected item state. |
 | `data-value` | Input | Application value included in `angularcss:tree-select`. |
 | `disabled` | Input | Disables native or component interaction. |
-| `hidden` | Input | Authored option or semantic HTML attribute observed by the directive. |
-| `id` | Output | Authored option or semantic HTML attribute observed by the directive. |
+| `hidden` | Input | Native visibility state observed when finding available items. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |
 | `tabindex` | Input/output | Keyboard focus order for composite descendants. |
 

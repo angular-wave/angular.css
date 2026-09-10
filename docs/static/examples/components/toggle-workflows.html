@@ -23,14 +23,18 @@
       >
         <h2 id="toggle-disabled-heading">Disabled</h2>
         <div class="row">
-          <button type="button" ng-disabled="disabledState" class="toggle">
+          <button
+            type="button"
+            ng-disabled="disabledState"
+            aria-pressed="false"
+          >
             Disabled
           </button>
           <button
             type="button"
             variant="outline"
             ng-disabled="disabledState"
-            class="toggle"
+            aria-pressed="false"
           >
             Disabled
           </button>
@@ -40,7 +44,6 @@
           variant="outline"
           size="sm"
           ng-click="disabledState = !disabledState"
-          class="button"
         >
           {{ disabledState ? 'Enable toggles' : 'Disable toggles' }}
         </button>
@@ -60,7 +63,6 @@
           aria-label="تبديل الإشارة المرجعية"
           aria-pressed="{{ rtlBookmark }}"
           ng-click="rtlBookmark = !rtlBookmark"
-          class="toggle"
         >
           <svg
             viewBox="0 0 24 24"

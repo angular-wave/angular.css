@@ -1,4 +1,4 @@
-.input-otp {
+input[autocomplete="one-time-code"] {
   --otp-cell-size: calc(var(--spacing) * 8);
 
   width: calc(var(--otp-cell-size) * 6);
@@ -23,29 +23,29 @@
     box-shadow var(--motion-duration-deliberate) var(--motion-easing-standard);
 }
 
-.input-otp[size="4"] {
+input[autocomplete="one-time-code"][size="4"] {
   width: calc(var(--otp-cell-size) * 4);
 }
 
-.input-otp:focus-visible {
+input[autocomplete="one-time-code"]:focus-visible {
   border-color: var(--ring);
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--ring) 50%, transparent);
 }
 
-.input-otp:user-invalid,
-.input-otp[aria-invalid="true"] {
+input[autocomplete="one-time-code"]:user-invalid,
+input[autocomplete="one-time-code"][aria-invalid="true"] {
   border-color: var(--error);
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--error) 20%, transparent);
 }
 
-.input-otp:disabled {
+input[autocomplete="one-time-code"]:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-.input-otp-grouped {
+input[autocomplete="one-time-code"][group="3"] {
   background-image:
     linear-gradient(
       to right,
@@ -58,17 +58,4 @@
       transparent 0 calc(var(--otp-cell-size) - 1px),
       var(--input) calc(var(--otp-cell-size) - 1px) var(--otp-cell-size)
     );
-}
-
-.input-otp-large {
-  --otp-cell-size: calc(var(--spacing) * 11);
-
-  height: calc(var(--spacing) * 12);
-  font-size: var(--text-lg);
-}
-
-@media (width <= 30rem) {
-  .input-otp-large {
-    --otp-cell-size: calc(var(--spacing) * 9);
-  }
 }

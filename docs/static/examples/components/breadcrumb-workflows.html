@@ -16,11 +16,8 @@
     ng-init="breadcrumbSelection = 'None'; rtlBreadcrumbSelection = 'لا شيء'"
     data-example="breadcrumb-demo breadcrumb-dropdown breadcrumb-ellipsis breadcrumb-rtl breadcrumb-separator"
   >
-    <main class="breadcrumb-workflows">
-      <section
-        class="breadcrumb-workflow-section"
-        aria-labelledby="breadcrumb-separator-heading"
-      >
+    <main>
+      <section aria-labelledby="breadcrumb-separator-heading">
         <h2 id="breadcrumb-separator-heading">Custom separator</h2>
         <nav aria-label="Custom separator breadcrumb" class="breadcrumb">
           <ol>
@@ -47,10 +44,7 @@
         </nav>
       </section>
 
-      <section
-        class="breadcrumb-workflow-section"
-        aria-labelledby="breadcrumb-ellipsis-heading"
-      >
+      <section aria-labelledby="breadcrumb-ellipsis-heading">
         <h2 id="breadcrumb-ellipsis-heading">Ellipsis</h2>
         <nav aria-label="Ellipsis breadcrumb" class="breadcrumb">
           <ol>
@@ -73,10 +67,7 @@
         </nav>
       </section>
 
-      <section
-        class="breadcrumb-workflow-section breadcrumb-menu-stage"
-        aria-labelledby="breadcrumb-demo-heading"
-      >
+      <section aria-labelledby="breadcrumb-demo-heading">
         <h2 id="breadcrumb-demo-heading">Collapsed trail</h2>
         <nav aria-label="Collapsed breadcrumb" class="breadcrumb">
           <ol>
@@ -85,13 +76,12 @@
             </li>
             <li aria-hidden="true"></li>
             <li>
-              <span ng-dropdown-menu class="dropdown-menu">
+              <span ng-dropdown-menu>
                 <button
                   type="button"
                   variant="ghost"
                   size="icon-sm"
                   aria-label="Toggle breadcrumb menu"
-                  class="button"
                 >
                   <span aria-hidden="true">...</span>
                 </button>
@@ -120,15 +110,10 @@
             </li>
           </ol>
         </nav>
-        <output class="breadcrumb-workflow-output">
-          Selected: {{ breadcrumbSelection }}
-        </output>
+        <output> Selected: {{ breadcrumbSelection }} </output>
       </section>
 
-      <section
-        class="breadcrumb-workflow-section breadcrumb-menu-stage breadcrumb-dropdown-example"
-        aria-labelledby="breadcrumb-dropdown-heading"
-      >
+      <section aria-labelledby="breadcrumb-dropdown-heading">
         <h2 id="breadcrumb-dropdown-heading">Dropdown</h2>
         <nav aria-label="Dropdown breadcrumb" class="breadcrumb">
           <ol>
@@ -141,8 +126,8 @@
               </svg>
             </li>
             <li>
-              <span ng-dropdown-menu class="dropdown-menu">
-                <button type="button" class="breadcrumb-plain-trigger">
+              <span ng-dropdown-menu>
+                <button type="button">
                   Components
                   <svg
                     icon="inline-end"
@@ -176,12 +161,7 @@
         </nav>
       </section>
 
-      <section
-        class="breadcrumb-workflow-section breadcrumb-menu-stage breadcrumb-workflow-wide breadcrumb-rtl-example"
-        aria-labelledby="breadcrumb-rtl-heading"
-        dir="rtl"
-        lang="ar"
-      >
+      <section aria-labelledby="breadcrumb-rtl-heading" dir="rtl" lang="ar">
         <h2 id="breadcrumb-rtl-heading">اتجاه من اليمين إلى اليسار</h2>
         <nav aria-label="مسار التنقل" class="breadcrumb">
           <ol>
@@ -194,8 +174,8 @@
               </svg>
             </li>
             <li>
-              <span ng-dropdown-menu class="dropdown-menu">
-                <button type="button" class="breadcrumb-plain-trigger">
+              <span ng-dropdown-menu>
+                <button type="button">
                   المكونات
                   <svg
                     icon="inline-end"
@@ -233,9 +213,7 @@
             </li>
           </ol>
         </nav>
-        <output class="breadcrumb-workflow-output">
-          المحدد: {{ rtlBreadcrumbSelection }}
-        </output>
+        <output> المحدد: {{ rtlBreadcrumbSelection }} </output>
       </section>
     </main>
   </body>

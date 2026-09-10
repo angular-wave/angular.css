@@ -16,7 +16,7 @@
     ng-init="commandState={query:'',selected:''}; suggestions=[{label:'Calendar',icon:'calendar',disabled:false},{label:'Search Emoji',icon:'smile',disabled:false},{label:'Calculator',icon:'calculator',disabled:true}]; settings=[{label:'Profile',shortcut:'⌘P',icon:'user'},{label:'Billing',shortcut:'⌘B',icon:'credit-card'},{label:'Settings',shortcut:'⌘S',icon:'settings'}]"
     data-example="command-demo"
   >
-    <main class="command-demo visual-example">
+    <main class="visual-example">
       <section
         id="command-demo"
         ng-command
@@ -96,7 +96,7 @@
           </section>
         </div>
       </section>
-      <output class="output visually-hidden" aria-live="polite">
+      <output class="visually-hidden" aria-live="polite">
         Selected:
         <span ng-bind="commandState.selected || 'None'"></span>
       </output>

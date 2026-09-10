@@ -6,7 +6,7 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngStepper",
   name: "stepper",
-  selector: ".stepper",
+  selector: 'nav:has([aria-current="step"])',
 });
 
 test("stepper exposes the current workflow step", async ({ page }) => {

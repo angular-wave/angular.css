@@ -13,7 +13,6 @@
   <body
     ng-app="angular.css"
     ng-cloak
-    class="input-otp-composition-body"
     ng-init="verify=''; submitted=false; resends=0"
     data-example="input-otp-form"
   >
@@ -37,14 +36,13 @@
               size="xs"
               type="button"
               ng-click="resends=resends+1"
-              class="button"
             >
               Resend Code
             </button>
           </div>
           <input
             id="verify-otp"
-            class="input-otp input-otp-grouped input-otp-large"
+            group="3"
             name="verification-code"
             inputmode="numeric"
             autocomplete="one-time-code"
@@ -62,9 +60,7 @@
       </section>
       <footer class="input-otp-form-footer">
         <div class="field">
-          <button type="submit" class="input-otp-verify-button button">
-            Verify
-          </button>
+          <button type="submit" class="input-otp-verify-button">Verify</button>
           <p class="input-otp-support">
             Having trouble signing in? <a href="#">Contact support</a>
           </p>

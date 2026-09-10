@@ -1,4 +1,3 @@
-.combobox,
 [ng-combobox] {
   position: relative;
   display: grid;
@@ -7,8 +6,8 @@
   gap: calc(var(--spacing) * 2);
 }
 
-:is(.combobox, [ng-combobox]) > header,
-:is(.combobox, [ng-combobox]) > aside > header {
+[ng-combobox] > header,
+[ng-combobox] > [role="listbox"] > header {
   display: flex;
   width: 100%;
   height: var(--size-control-md);
@@ -21,7 +20,7 @@
     box-shadow var(--motion-duration-default) var(--motion-easing-standard);
 }
 
-:is(.combobox, [ng-combobox]) > aside > header {
+[ng-combobox] > [role="listbox"] > header {
   width: auto;
   margin: calc(var(--spacing) * 1);
   margin-block-end: 0;
@@ -30,24 +29,24 @@
   box-shadow: none;
 }
 
-:is(.combobox, [ng-combobox]) :is(header, fieldset):focus-within {
+[ng-combobox] :is(header, fieldset):focus-within {
   border-color: var(--ring);
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--ring) 50%, transparent);
 }
 
-:is(.combobox, [ng-combobox]):has(input:is(:invalid, [aria-invalid="true"]))
+[ng-combobox]:has([role="combobox"]:is(:invalid, [aria-invalid="true"]))
   > :is(header, fieldset) {
   border-color: var(--error);
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--error) 20%, transparent);
 }
 
-:is(.combobox, [ng-combobox]) > header:has(input:disabled) {
+[ng-combobox] > header:has([role="combobox"]:disabled) {
   opacity: 0.5;
 }
 
-:is(.combobox, [ng-combobox]) :is(header, fieldset) > input {
+[ng-combobox] :is(header, fieldset) > [role="combobox"] {
   width: 100%;
   min-width: 0;
   height: 100%;
@@ -59,16 +58,16 @@
   padding-inline: calc(var(--spacing) * 2.5);
   font: inherit;
   font-size: var(--text-sm);
-  line-height: 1.25rem;
+  line-height: var(--leading-sm);
   outline: none;
   box-shadow: none;
 }
 
-:is(.combobox, [ng-combobox]) :is(header, fieldset) > input::placeholder {
+[ng-combobox] :is(header, fieldset) > [role="combobox"]::placeholder {
   color: var(--muted-foreground);
 }
 
-:is(.combobox, [ng-combobox]) button:is([value="toggle"], [value="clear"]) {
+[ng-combobox] button:is([value="toggle"], [value="clear"]) {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -76,7 +75,7 @@
   gap: calc(var(--spacing) * 2);
 }
 
-:is(.combobox, [ng-combobox])
+[ng-combobox]
   :is(header, fieldset)
   > button:is([value="toggle"], [value="clear"]) {
   width: calc(var(--spacing) * 7);
@@ -90,7 +89,7 @@
   box-shadow: none;
 }
 
-:is(.combobox, [ng-combobox]) button[value="toggle"]::after {
+[ng-combobox] button[value="toggle"]::after {
   width: calc(var(--spacing) * 2);
   height: calc(var(--spacing) * 2);
   border-right: 1.5px solid currentcolor;
@@ -99,10 +98,8 @@
   transform: translateY(-25%) rotate(45deg);
 }
 
-:is(.combobox, [ng-combobox])
-  button:is([value="clear"], [value="remove"])::before,
-:is(.combobox, [ng-combobox])
-  button:is([value="clear"], [value="remove"])::after {
+[ng-combobox] button:is([value="clear"], [value="remove"])::before,
+[ng-combobox] button:is([value="clear"], [value="remove"])::after {
   position: absolute;
   width: calc(var(--spacing) * 2.5);
   height: var(--border-width-default);
@@ -111,12 +108,11 @@
   transform: rotate(45deg);
 }
 
-:is(.combobox, [ng-combobox])
-  button:is([value="clear"], [value="remove"])::after {
+[ng-combobox] button:is([value="clear"], [value="remove"])::after {
   transform: rotate(-45deg);
 }
 
-:is(.combobox, [ng-combobox]) > aside {
+[ng-combobox] > [role="listbox"] {
   position: absolute;
   z-index: 50;
   inset-block-start: var(
@@ -141,20 +137,20 @@
   isolation: isolate;
 }
 
-:is(.combobox, [ng-combobox]) > aside:where(:not([hidden])) {
+[ng-combobox] > [role="listbox"]:where(:not([hidden])) {
   animation: angularcss-surface-enter var(--motion-duration-default)
     var(--motion-easing-out);
 }
 
-:is(.combobox, [ng-combobox]):has(> fieldset) > aside {
+[ng-combobox]:has(> fieldset) > [role="listbox"] {
   min-width: var(--combobox-anchor-width, 100%);
 }
 
-:is(.combobox, [ng-combobox]) > aside:dir(rtl) {
+[ng-combobox] > [role="listbox"]:dir(rtl) {
   direction: rtl;
 }
 
-:is(.combobox, [ng-combobox]) > aside > div {
+[ng-combobox] > [role="listbox"] > div {
   display: grid;
   max-height: min(15.75rem, calc(100vh - 2.75rem));
   overflow-y: auto;
@@ -164,37 +160,40 @@
   scrollbar-width: none;
 }
 
-:is(.combobox, [ng-combobox]) > aside > div::-webkit-scrollbar {
+[ng-combobox] > [role="listbox"] > div::-webkit-scrollbar {
   display: none;
 }
 
-:is(.combobox, [ng-combobox]) > aside:has(> p:not([hidden])) > div {
+[ng-combobox] > [role="listbox"]:has(> [role="status"]:not([hidden])) > div {
   padding: 0;
 }
 
-:is(.combobox, [ng-combobox]) > aside > div > :is(ul, section),
-:is(.combobox, [ng-combobox]) > aside > div > section > ul {
+[ng-combobox] > [role="listbox"] > div > :is(ul, [role="group"]),
+[ng-combobox] > [role="listbox"] > div > [role="group"] > ul {
   display: grid;
 }
 
-:is(.combobox, [ng-combobox]) > aside > div > section:not(:has(> ul > li)) {
+[ng-combobox]
+  > [role="listbox"]
+  > div
+  > [role="group"]:not(:has([role="option"])) {
   display: none;
 }
 
-:is(.combobox, [ng-combobox])
-  > aside
+[ng-combobox]
+  > [role="listbox"]
   > div
-  > section
+  > [role="group"]
   > :is(h1, h2, h3, h4, h5, h6) {
   color: var(--muted-foreground);
   padding-block: calc(var(--spacing) * 1.5);
   padding-inline: calc(var(--spacing) * 2);
   font-size: var(--text-xs);
   font-weight: var(--font-weight-normal);
-  line-height: 1rem;
+  line-height: var(--leading-snug);
 }
 
-:is(.combobox, [ng-combobox]) > aside > div :is(ul > li) {
+[ng-combobox] > [role="listbox"] > div [role="option"] {
   position: relative;
   display: flex;
   width: 100%;
@@ -209,7 +208,7 @@
   padding-inline: calc(var(--spacing) * 1.5) calc(var(--spacing) * 8);
   font: inherit;
   font-size: var(--text-sm);
-  line-height: 1.25rem;
+  line-height: var(--leading-sm);
   text-align: start;
   outline: none;
   box-shadow: none;
@@ -217,27 +216,27 @@
   user-select: none;
 }
 
-:is(.combobox, [ng-combobox]) > aside > div :is(ul > li)[aria-disabled="true"] {
+[ng-combobox] > [role="listbox"] > div [role="option"][aria-disabled="true"] {
   opacity: 0.5;
   pointer-events: none;
 }
 
-:is(.combobox, [ng-combobox])
-  > aside
+[ng-combobox]
+  > [role="listbox"]
   > div
-  :is(ul > li):not([aria-disabled="true"]):hover,
-:is(.combobox, [ng-combobox])
-  > aside
+  [role="option"]:not([aria-disabled="true"]):hover,
+[ng-combobox]
+  > [role="listbox"]
   > div
-  :is(ul > li)[data-highlighted="true"] {
+  [role="option"][data-highlighted="true"] {
   background: var(--accent);
   color: var(--accent-foreground);
 }
 
-:is(.combobox, [ng-combobox])
-  > aside
+[ng-combobox]
+  > [role="listbox"]
   > div
-  :is(ul > li)[aria-selected="true"]::after {
+  [role="option"][aria-selected="true"]::after {
   position: absolute;
   inset-inline-end: calc(var(--spacing) * 2.5);
   width: calc(var(--spacing) * 2.5);
@@ -248,7 +247,7 @@
   transform: translateY(-15%) rotate(-45deg);
 }
 
-:is(.combobox, [ng-combobox]) > aside > p {
+[ng-combobox] > [role="listbox"] > [role="status"] {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -258,18 +257,18 @@
   text-align: center;
 }
 
-:is(.combobox, [ng-combobox]) > aside > p[hidden] {
+[ng-combobox] > [role="listbox"] > [role="status"][hidden] {
   display: none;
 }
 
-:is(.combobox, [ng-combobox]) > aside > div > section > hr {
+[ng-combobox] > [role="listbox"] > div > [role="group"] > hr {
   height: var(--border-width-default);
   margin: calc(var(--spacing) * 1) calc(var(--spacing) * -1);
   border: 0;
   background: var(--border);
 }
 
-:is(.combobox, [ng-combobox]) > fieldset {
+[ng-combobox] > fieldset {
   display: flex;
   width: 100%;
   min-width: 0;
@@ -287,28 +286,28 @@
     box-shadow var(--motion-duration-default) var(--motion-easing-standard);
 }
 
-:is(.combobox, [ng-combobox]) > fieldset:has(> span) {
+[ng-combobox] > fieldset:has(> span) {
   padding-inline-start: calc(var(--spacing) * 1);
 }
 
-:is(.combobox, [ng-combobox]) > fieldset > span {
+[ng-combobox] > fieldset > span {
   display: inline-flex;
   width: fit-content;
   height: calc(var(--spacing) * 6);
   align-items: center;
   justify-content: center;
   gap: calc(var(--spacing) * 1);
-  border-radius: calc(var(--radius) - 6px);
+  border-radius: var(--radius-sm);
   background: var(--muted);
   color: var(--foreground);
   padding-inline: calc(var(--spacing) * 1.5);
   font-size: var(--text-xs);
   font-weight: var(--font-weight-medium);
-  line-height: 1rem;
+  line-height: var(--leading-snug);
   white-space: nowrap;
 }
 
-:is(.combobox, [ng-combobox]) > button[value="toggle"] > span {
+[ng-combobox] > button[value="toggle"] > span {
   min-width: 0;
   flex: 1;
   overflow: hidden;
@@ -317,18 +316,18 @@
   white-space: nowrap;
 }
 
-:is(.combobox, [ng-combobox]) > fieldset > span.ng-enter {
+[ng-combobox] > fieldset > span.ng-enter {
   animation: angularcss-structural-enter var(--motion-duration-default)
     var(--motion-easing-out);
 }
 
-:is(.combobox, [ng-combobox]) > fieldset > span.ng-leave-active {
+[ng-combobox] > fieldset > span.ng-leave-active {
   opacity: 0;
   transition: opacity var(--motion-duration-default)
     var(--motion-easing-standard);
 }
 
-:is(.combobox, [ng-combobox]) > fieldset > span > button[value="remove"] {
+[ng-combobox] > fieldset > span > button[value="remove"] {
   position: relative;
   display: inline-grid;
   width: calc(var(--spacing) * 6);
@@ -336,7 +335,7 @@
   place-items: center;
   margin-inline-end: calc(var(--spacing) * -2);
   border: 0;
-  border-radius: calc(var(--radius) - 6px);
+  border-radius: var(--radius-sm);
   background: transparent;
   color: inherit;
   padding: 0;
@@ -344,11 +343,11 @@
   box-shadow: none;
 }
 
-:is(.combobox, [ng-combobox]) > fieldset > span > button[value="remove"]:hover {
+[ng-combobox] > fieldset > span > button[value="remove"]:hover {
   opacity: 1;
 }
 
-:is(.combobox, [ng-combobox]) > fieldset > input {
+[ng-combobox] > fieldset > [role="combobox"] {
   min-width: 4rem;
   height: 1.25rem;
   flex: 1 1 4rem;
@@ -356,12 +355,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.combobox, [ng-combobox]) > aside:where(:not([hidden])),
-  :is(.combobox, [ng-combobox]) > fieldset > span.ng-enter {
+  [ng-combobox] > [role="listbox"]:where(:not([hidden])),
+  [ng-combobox] > fieldset > span.ng-enter {
     animation: none;
   }
 
-  :is(.combobox, [ng-combobox]) > fieldset > span.ng-leave-active {
+  [ng-combobox] > fieldset > span.ng-leave-active {
     transition: none;
   }
 }

@@ -22,8 +22,7 @@
         <p>Fields marked as required must be completed.</p>
       </header>
       <aside
-        class="validation-summary"
-        aria-live="assertive"
+        role="alert"
         ng-if="customerForm.submitted && customerForm.invalid"
       >
         <header><h3>Check the customer details</h3></header>
@@ -37,7 +36,6 @@
           <label for="form-layout-name">Customer name</label>
           <input
             id="form-layout-name"
-            class="input"
             name="customerName"
             required
             ng-model="customer.name"
@@ -47,7 +45,6 @@
           <label for="form-layout-email">Email</label>
           <input
             id="form-layout-email"
-            class="input"
             type="email"
             name="email"
             ng-model="customer.email"
@@ -69,15 +66,14 @@
           <label for="form-layout-reference">Reference</label>
           <input
             id="form-layout-reference"
-            class="input"
             name="reference"
             ng-model="customer.reference"
           />
         </div>
       </fieldset>
       <footer>
-        <button class="button" variant="outline" type="reset">Cancel</button>
-        <button class="button" type="submit">Create customer</button>
+        <button variant="outline" type="reset">Cancel</button>
+        <button type="submit">Create customer</button>
       </footer>
       <output aria-live="polite" ng-if="saved"
         >Customer is ready to save.</output

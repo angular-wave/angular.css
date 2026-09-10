@@ -21,7 +21,6 @@
         <section id="responsive-profile-dialog" class="dialog">
           <button
             variant="outline"
-            class="button"
             type="button"
             commandfor="responsive-profile-dialog-content"
             command="show-modal"
@@ -48,20 +47,14 @@
                   id="desktop-email"
                   type="email"
                   ng-model="profile.email"
-                  class="input"
                 />
               </div>
               <div class="drawer-profile-field">
                 <label for="desktop-username">Username</label>
-                <input
-                  id="desktop-username"
-                  ng-model="profile.username"
-                  class="input"
-                />
+                <input id="desktop-username" ng-model="profile.username" />
               </div>
               <button
                 type="button"
-                class="button"
                 commandfor="responsive-profile-dialog-content"
                 command="close"
               >
@@ -76,7 +69,6 @@
         <section id="responsive-profile-drawer" class="drawer">
           <button
             variant="outline"
-            class="button"
             type="button"
             commandfor="responsive-profile-drawer-content"
             command="show-modal"
@@ -103,22 +95,16 @@
                   id="mobile-email"
                   type="email"
                   ng-model="profile.email"
-                  class="input"
                 />
               </div>
               <div class="drawer-profile-field">
                 <label for="mobile-username">Username</label>
-                <input
-                  id="mobile-username"
-                  ng-model="profile.username"
-                  class="input"
-                />
+                <input id="mobile-username" ng-model="profile.username" />
               </div>
               <button
                 type="button"
                 commandfor="responsive-profile-drawer-content"
                 command="close"
-                class="button"
               >
                 Save changes
               </button>
@@ -126,7 +112,6 @@
             <footer>
               <button
                 variant="outline"
-                class="button"
                 commandfor="responsive-profile-drawer-content"
                 command="close"
               >

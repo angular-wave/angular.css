@@ -22,24 +22,22 @@
         aria-labelledby="button-group-toolbar-heading"
       >
         <h2 id="button-group-toolbar-heading">Toolbar</h2>
-        <fieldset aria-label="Message actions" class="button-group">
-          <div class="button-group">
+        <fieldset aria-label="Message actions" role="group">
+          <div role="group">
             <button
               type="button"
               variant="outline"
               size="icon"
               aria-label="Go Back"
-              class="button"
             >
               ←
             </button>
           </div>
-          <div class="button-group">
+          <div role="group">
             <button
               type="button"
               variant="outline"
               ng-click="toolbarAction = 'Archive'"
-              class="button"
             >
               Archive
             </button>
@@ -47,31 +45,28 @@
               type="button"
               variant="outline"
               ng-click="toolbarAction = 'Report'"
-              class="button"
             >
               Report
             </button>
           </div>
-          <div class="button-group">
+          <div role="group">
             <button
               type="button"
               variant="outline"
               ng-click="toolbarAction = 'Snooze'"
-              class="button"
             >
               Snooze
             </button>
-            <span ng-dropdown-menu class="dropdown-menu">
+            <span ng-dropdown-menu>
               <button
                 type="button"
                 variant="outline"
                 size="icon"
                 aria-label="More Options"
-                class="button"
               >
                 •••
               </button>
-              <menu class="button-group-toolbar-menu">
+              <menu align="end" style="--menu-width: 10rem">
                 <section>
                   <button ng-click="toolbarAction = 'Mark as Read'">
                     Mark as Read
@@ -100,16 +95,15 @@
         aria-labelledby="button-group-dropdown-heading"
       >
         <h2 id="button-group-dropdown-heading">Split dropdown</h2>
-        <fieldset aria-label="Follow actions" class="button-group">
-          <button type="button" variant="outline" class="button">Follow</button>
-          <span ng-dropdown-menu class="dropdown-menu">
+        <fieldset aria-label="Follow actions" role="group">
+          <button type="button" variant="outline">Follow</button>
+          <span ng-dropdown-menu>
             <button
               type="button"
               variant="outline"
               aria-label="More follow actions"
-              class="button"
             ></button>
-            <menu class="button-group-follow-menu">
+            <menu align="end" style="--menu-width: 11rem">
               <section>
                 <button>Mute Conversation</button>
                 <button>Mark as Read</button>
@@ -130,24 +124,24 @@
         aria-labelledby="button-group-input-heading"
       >
         <h2 id="button-group-input-heading">Search input</h2>
-        <div class="button-group">
+        <div role="group">
           <input
             ng-model="searchTerm"
             placeholder="Search..."
             aria-label="Search query"
-            class="input"
           />
           <button
             type="button"
             variant="outline"
             aria-label="Search"
             ng-click="toolbarAction = searchTerm || 'Search'"
-            class="button"
           >
             ⌕
           </button>
         </div>
-        <p class="button-group-output">Query: {{ searchTerm || 'Empty' }}</p>
+        <output class="button-group-output">
+          Query: {{ searchTerm || 'Empty' }}
+        </output>
       </section>
 
       <section
@@ -155,25 +149,20 @@
         aria-labelledby="button-group-nested-heading"
       >
         <h2 id="button-group-nested-heading">Nested input group</h2>
-        <div class="button-group-pill button-group">
-          <div class="button-group">
+        <div role="group" style="--radius-md: var(--radius-full)">
+          <div role="group">
             <button
               type="button"
               variant="outline"
               size="icon"
               aria-label="Add attachment"
-              class="button"
             >
               +
             </button>
           </div>
-          <div class="button-group">
+          <div role="group">
             <div class="input-group">
-              <input
-                placeholder="Send a message..."
-                aria-label="Message"
-                class="input"
-              />
+              <input placeholder="Send a message..." aria-label="Message" />
               <span align="inline-end">⌁</span>
             </div>
           </div>
@@ -185,25 +174,23 @@
         aria-labelledby="button-group-voice-heading"
       >
         <h2 id="button-group-voice-heading">Voice mode</h2>
-        <div class="button-group-pill button-group">
-          <div class="button-group">
+        <div role="group" style="--radius-md: var(--radius-full)">
+          <div role="group">
             <button
               type="button"
               variant="outline"
               size="icon"
               aria-label="Add message item"
-              class="button"
             >
               +
             </button>
           </div>
-          <div class="button-group">
+          <div role="group">
             <div class="input-group">
               <input
                 placeholder="{{ voiceEnabled ? 'Record and send audio...' : 'Send a message...' }}"
                 ng-disabled="voiceEnabled"
                 aria-label="Voice message"
-                class="input"
               />
               <span align="inline-end">
                 <button
@@ -226,17 +213,14 @@
         aria-labelledby="button-group-popover-heading"
       >
         <h2 id="button-group-popover-heading">Popover</h2>
-        <div class="button-group">
-          <button type="button" variant="outline" class="button">
-            ◇ Copilot
-          </button>
-          <span class="popover">
+        <div role="group">
+          <button type="button" variant="outline">◇ Copilot</button>
+          <span>
             <button
               type="button"
               variant="outline"
               size="icon"
               aria-label="Open Popover"
-              class="button"
               popovertarget="popover-button-group-workflows-1-content"
             >
               ⌄
@@ -256,11 +240,7 @@
               <label class="visually-hidden" for="copilot-task"
                 >Task Description</label
               >
-              <textarea
-                id="copilot-task"
-                placeholder="I need to..."
-                class="textarea"
-              ></textarea>
+              <textarea id="copilot-task" placeholder="I need to..."></textarea>
               <p class="muted">Copilot will open a pull request for review.</p>
             </aside>
           </span>
@@ -272,8 +252,8 @@
         aria-labelledby="button-group-select-heading"
       >
         <h2 id="button-group-select-heading">Currency select</h2>
-        <div class="button-group">
-          <div class="button-group">
+        <div role="group">
+          <div role="group">
             <select aria-label="Currency" ng-model="currency">
               <option value="$">$ US Dollar</option>
               <option value="€">€ Euro</option>
@@ -283,16 +263,14 @@
               placeholder="10.00"
               inputmode="numeric"
               aria-label="Amount"
-              class="input"
             />
           </div>
-          <div class="button-group">
+          <div role="group">
             <button
               type="button"
               variant="outline"
               size="icon"
               aria-label="Send"
-              class="button"
             >
               →
             </button>
@@ -307,30 +285,23 @@
         lang="ar"
       >
         <h2 id="button-group-rtl-heading">اتجاه من اليمين إلى اليسار</h2>
-        <fieldset aria-label="إجراءات الرسالة" class="button-group">
-          <div class="button-group">
-            <button type="button" variant="outline" class="button">
-              أرشفة
-            </button>
-            <button type="button" variant="outline" class="button">
-              تقرير
-            </button>
+        <fieldset aria-label="إجراءات الرسالة" role="group">
+          <div role="group">
+            <button type="button" variant="outline">أرشفة</button>
+            <button type="button" variant="outline">تقرير</button>
           </div>
-          <div class="button-group">
-            <button type="button" variant="outline" class="button">
-              تأجيل
-            </button>
-            <span ng-dropdown-menu class="dropdown-menu">
+          <div role="group">
+            <button type="button" variant="outline">تأجيل</button>
+            <span ng-dropdown-menu>
               <button
                 type="button"
                 variant="outline"
                 size="icon"
                 aria-label="المزيد من الخيارات"
-                class="button"
               >
                 •••
               </button>
-              <menu class="button-group-toolbar-menu">
+              <menu align="end" style="--menu-width: 10rem">
                 <button ng-click="rtlAction = 'وضع علامة كمقروء'">
                   وضع علامة كمقروء
                 </button>

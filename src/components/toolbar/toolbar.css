@@ -1,4 +1,4 @@
-@scope ([ng-toolbar]) to ([ng-toolbar]) {
+@scope ([role="toolbar"]) to ([role="toolbar"]) {
   :scope {
     display: flex;
     width: fit-content;
@@ -14,7 +14,7 @@
     color: var(--foreground);
   }
 
-  :scope[orientation="vertical"] {
+  :scope[aria-orientation="vertical"] {
     width: fit-content;
     flex-direction: column;
     align-items: stretch;
@@ -26,7 +26,7 @@
     margin: 0 calc(var(--spacing) * 1);
   }
 
-  :scope[orientation="vertical"] > hr {
+  :scope[aria-orientation="vertical"] > hr {
     width: auto;
     height: var(--border-width-default);
     margin: calc(var(--spacing) * 1) 0;

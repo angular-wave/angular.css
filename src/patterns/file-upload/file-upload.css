@@ -1,4 +1,4 @@
-@scope (.file-upload) to (.file-upload) {
+@scope (section:has(> label > input[type="file"])) to (section:has(> label > input[type="file"])) {
   :scope {
     display: grid;
     gap: calc(var(--spacing) * 3);
@@ -100,7 +100,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .file-upload > label {
+  section:has(> label > input[type="file"]) > label {
     transition-duration: var(--motion-duration-instant);
   }
 }

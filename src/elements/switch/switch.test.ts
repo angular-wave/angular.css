@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "elements",
   directive: "ngSwitchControl",
   name: "switch",
-  selector: ".switch",
+  selector: 'input[type="checkbox"][role="switch"]',
 });

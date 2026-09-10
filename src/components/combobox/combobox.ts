@@ -2,6 +2,7 @@ import type {} from "@angular-wave/angular.ts";
 
 import {
   isOwnedBy,
+  observeInheritedDirection,
   queryOwned,
   queryOwnedAll,
   setAttributeIfChanged,
@@ -25,7 +26,7 @@ const itemSelector = [
   ":scope > aside > div > ul > li",
   ":scope > aside > div > section > ul > li",
 ].join(", ");
-const rootSelector = ".combobox, [ng-combobox]";
+const rootSelector = "[ng-combobox]";
 const separatorSelector = ":scope > aside > div > section > hr";
 const triggerSelector = ':scope button[value="toggle"]';
 
@@ -46,7 +47,6 @@ export function comboboxDirective(): ng.Directive {
       );
       if (!input || !content) return;
 
-      const directionOwner = element.closest<HTMLElement>("[dir]") ?? element;
       const contentId =
         content.id || `combobox-content-${String(comboboxIdCounter++)}`;
       const inputId =
@@ -488,16 +488,9 @@ export function comboboxDirective(): ng.Directive {
         characterData: true,
         subtree: true,
       });
-      const directionObserver =
-        directionOwner === element
-          ? null
-          : new MutationObserver(() => {
-              syncChrome();
-              requestAnimationFrame(positionContent);
-            });
-      directionObserver?.observe(directionOwner, {
-        attributes: true,
-        attributeFilter: ["dir"],
+      const directionObserver = observeInheritedDirection(element, () => {
+        syncChrome();
+        requestAnimationFrame(positionContent);
       });
 
       input.addEventListener("input", handleInput);

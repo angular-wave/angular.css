@@ -1,28 +1,30 @@
 ---
 title: button
-category: 'action'
+category: "action"
 description: >
   Action controls with `variant` and `size` styling hooks.
 ---
 
-Use `class="button"` directly on native buttons, button inputs, or links and set
-`variant`/`size` attributes for variants and spacing.
+Native `button` elements and button-type inputs are styled directly. Set
+`variant`/`size` attributes for variants and spacing. A link may opt into the
+same presentation with a `variant` attribute when it navigates to another
+location.
 
 ```html
 <div class="row">
-  <button class="button">Default</button>
-  <button variant="outline" class="button">Outline</button>
-  <button size="sm" class="button">Small</button>
+  <button>Default</button>
+  <button variant="outline">Outline</button>
+  <button size="sm">Small</button>
 </div>
 ```
 
 ## Example
 
-{{< example src="examples/components/button.html" title="Button examples" height="260" >}}
+{{< example src="examples/components/button.html" title="Button examples" height="260">}}
 
 ## Variant workflows
 
-{{< example src="examples/components/button-workflows.html" title="Button variants, sizes, loading, and RTL" height="480" >}}
+{{< example src="examples/components/button-workflows.html" title="Button variants, sizes, loading, and RTL" height="480">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -36,7 +38,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.button`
+- `button`
 
 ### Semantic structure
 
@@ -49,11 +51,11 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `aria-disabled` | Authored | Semantic disabled state. |
-| `aria-haspopup` | Authored | ARIA relationship or state. |
+| `aria-haspopup` | Authored | Type of popup controlled by the trigger. |
 | `aria-invalid` | Authored | Validation state exposed to assistive technology and CSS. |
 | `icon` | Authored | Icon position: `inline-start` or `inline-end`. |
 | `size` | Authored | Size: `xs`, `sm`, `default`, `lg`, `icon-xs`, `icon-sm`, `icon`, or `icon-lg`. |
-| `variant` | Authored | Style: `default`, `secondary`, `outline`, `ghost`, `link`, `destructive`, `info`, `success`, `warning`, or `error`. |
+| `variant` | Authored | Style: `default`, `secondary`, `outline`, `ghost`, `link`, `destructive`, `info`, `success`, or `warning`. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

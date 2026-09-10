@@ -1,4 +1,4 @@
-@scope (nav.stepper) to (.stepper) {
+@scope (nav:has([aria-current="step"])) to (nav:has([aria-current="step"])) {
   :scope {
     container: angularcss-stepper / inline-size;
     color: var(--foreground);

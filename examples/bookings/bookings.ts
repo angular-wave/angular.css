@@ -241,10 +241,6 @@ class BookingsController {
     this.status = status;
     this.updateVisible();
   }
-
-  statusClass(status: BookingStatus): string {
-    return `booking-status-${status.toLocaleLowerCase().replaceAll(" ", "-")}`;
-  }
 }
 
 window.angular

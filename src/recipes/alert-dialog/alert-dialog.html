@@ -15,20 +15,17 @@
     ng-cloak
     data-example="alert-dialog-basic alert-dialog-demo"
   >
-    <section
-      id="confirmation-dialog"
-      class="alert-dialog-demo visual-example alert-dialog"
-    >
+    <section id="confirmation-dialog" class="visual-example">
       <button
         type="button"
         commandfor="confirmation-dialog-content"
         command="show-modal"
         variant="outline"
-        class="button"
       >
         Show Dialog
       </button>
       <dialog
+        role="alertdialog"
         id="confirmation-dialog-content"
         closedby="closerequest"
         aria-labelledby="confirmation-dialog-title"
@@ -48,7 +45,6 @@
             commandfor="confirmation-dialog-content"
             command="close"
             variant="outline"
-            class="button"
           >
             Cancel
           </button>
@@ -56,7 +52,6 @@
             type="button"
             commandfor="confirmation-dialog-content"
             command="close"
-            class="button"
           >
             Continue
           </button>

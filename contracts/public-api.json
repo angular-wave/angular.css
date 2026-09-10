@@ -103,16 +103,19 @@
       "--motion-easing-standard",
       "--muted",
       "--muted-foreground",
+      "--overlay",
       "--popover",
       "--popover-foreground",
       "--primary",
       "--primary-foreground",
       "--radius",
+      "--radius-2xl",
       "--radius-full",
       "--radius-lg",
       "--radius-md",
       "--radius-sm",
       "--radius-xl",
+      "--radius-xs",
       "--red-1",
       "--red-10",
       "--red-11",
@@ -222,11 +225,14 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".accordion"
+        "section[aria-label]:has(> details)"
       ]
     },
     "alert": {
       "attributes": [
+        "aria-atomic",
+        "aria-live",
+        "role",
         "variant"
       ],
       "category": "patterns",
@@ -234,11 +240,12 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".alert"
+        "[role=\"alert\"]"
       ]
     },
     "alert-dialog": {
       "attributes": [
+        "role",
         "size"
       ],
       "category": "recipes",
@@ -246,7 +253,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".alert-dialog"
+        "dialog[role=\"alertdialog\"]"
       ]
     },
     "application-shell": {
@@ -270,7 +277,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".aspect-ratio"
+        "figure[ratio]"
       ]
     },
     "avatar": {
@@ -326,20 +333,21 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".button"
+        "button"
       ]
     },
     "button-group": {
       "attributes": [
         "aria-orientation",
-        "orientation"
+        "orientation",
+        "role"
       ],
       "category": "patterns",
       "cssCustomProperties": [],
       "events": [],
       "runtime": false,
       "selectors": [
-        ".button-group"
+        "[role=\"group\"]"
       ]
     },
     "calendar": {
@@ -475,7 +483,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".checkbox"
+        "input[type=\"checkbox\"]:not([role=\"switch\"])"
       ]
     },
     "combobox": {
@@ -504,8 +512,7 @@
         "required",
         "role",
         "side",
-        "tabindex",
-        "type"
+        "tabindex"
       ],
       "category": "components",
       "cssCustomProperties": [
@@ -616,7 +623,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        "dl.description-list"
+        "dl:has(> div > dt):has(> div > dd)"
       ]
     },
     "dialog": {
@@ -645,7 +652,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".direction"
+        "[dir]"
       ]
     },
     "disclosure": {
@@ -680,13 +687,11 @@
         "align-offset",
         "aria-checked",
         "aria-controls",
-        "aria-disabled",
         "aria-expanded",
         "aria-haspopup",
         "aria-hidden",
         "aria-labelledby",
         "dir",
-        "disabled",
         "open",
         "role",
         "side",
@@ -741,17 +746,19 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".file-upload"
+        "section:has(> label > input[type=\"file\"])"
       ]
     },
     "filter-bar": {
-      "attributes": [],
+      "attributes": [
+        "role"
+      ],
       "category": "patterns",
       "cssCustomProperties": [],
       "events": [],
       "runtime": false,
       "selectors": [
-        "form.filter-bar"
+        "form[role=\"search\"]:has(> fieldset + menu)"
       ]
     },
     "form-layout": {
@@ -788,6 +795,7 @@
       "attributes": [
         "aria-invalid",
         "disabled",
+        "size",
         "type"
       ],
       "category": "elements",
@@ -795,7 +803,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".input"
+        "input:not([type=\"button\"], [type=\"checkbox\"], [type=\"color\"], [type=\"hidden\"], [type=\"image\"], [type=\"radio\"], [type=\"range\"], [type=\"reset\"], [type=\"submit\"])"
       ]
     },
     "input-group": {
@@ -816,6 +824,7 @@
     "input-otp": {
       "attributes": [
         "aria-invalid",
+        "group",
         "maxlength",
         "pattern",
         "size"
@@ -827,7 +836,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".input-otp"
+        "input[autocomplete=\"one-time-code\"]"
       ]
     },
     "item": {
@@ -850,7 +859,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".kbd"
+        "kbd"
       ]
     },
     "label": {
@@ -903,7 +912,6 @@
         "align",
         "aria-controls",
         "aria-expanded",
-        "aria-haspopup",
         "aria-hidden",
         "aria-labelledby",
         "dir",
@@ -925,7 +933,8 @@
       "attributes": [
         "aria-current",
         "aria-disabled",
-        "dir"
+        "dir",
+        "rel"
       ],
       "category": "patterns",
       "cssCustomProperties": [],
@@ -947,7 +956,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".popover"
+        "span:has(> [popovertarget] ~ [popover])"
       ]
     },
     "progress": {
@@ -961,7 +970,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".progress"
+        "progress"
       ]
     },
     "radio-group": {
@@ -979,7 +988,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".radio-group"
+        "fieldset:has(input[type=\"radio\"]):not(.toggle-group)"
       ]
     },
     "range": {
@@ -1085,7 +1094,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".separator"
+        "hr"
       ]
     },
     "sheet": {
@@ -1112,13 +1121,10 @@
         "aria-labelledby",
         "collapsed",
         "collapsible",
-        "data-variant",
-        "dir",
-        "ng-click",
+        "inert",
         "responsive",
         "role",
         "side",
-        "type",
         "variant"
       ],
       "category": "components",
@@ -1160,7 +1166,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        "nav.stepper"
+        "nav:has([aria-current=\"step\"])"
       ]
     },
     "switch": {
@@ -1168,6 +1174,7 @@
         "checked",
         "disabled",
         "required",
+        "role",
         "size"
       ],
       "category": "elements",
@@ -1175,7 +1182,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".switch"
+        "input[type=\"checkbox\"][role=\"switch\"]"
       ]
     },
     "table": {
@@ -1187,19 +1194,17 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".table"
+        "table"
       ]
     },
     "tabs": {
       "attributes": [
         "aria-controls",
-        "aria-disabled",
         "aria-hidden",
         "aria-labelledby",
         "aria-orientation",
         "aria-selected",
         "dir",
-        "disabled",
         "orientation",
         "role",
         "tabindex"
@@ -1223,7 +1228,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".textarea"
+        "textarea"
       ]
     },
     "toast": {
@@ -1257,7 +1262,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".toggle"
+        "button[aria-pressed]"
       ]
     },
     "toggle-group": {
@@ -1324,7 +1329,6 @@
         "data-value",
         "disabled",
         "hidden",
-        "id",
         "role",
         "tabindex"
       ],
@@ -1340,7 +1344,7 @@
     },
     "validation-summary": {
       "attributes": [
-        "aria-live",
+        "role",
         "tabindex"
       ],
       "category": "patterns",
@@ -1348,7 +1352,7 @@
       "events": [],
       "runtime": false,
       "selectors": [
-        ".validation-summary"
+        "aside[role=\"alert\"]:has(> header + ul)"
       ]
     }
   },

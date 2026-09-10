@@ -42,6 +42,9 @@ test("canonical navigation preserves native landmark, list, button, and link sem
   );
   await expect(nav.getByRole("menuitem")).toHaveCount(0);
   await expect(nav.getByRole("menu")).toHaveCount(0);
+  await expect(
+    nav.locator(":scope > ul > li > button[aria-haspopup]"),
+  ).toHaveCount(0);
 
   for (const content of await contents.all()) {
     await expect(content).toBeHidden();

@@ -84,7 +84,9 @@ test("AngularTS filtering owns result and empty state while Command follows the 
   await input.fill("settings");
   await expect(root.getByRole("option")).toHaveCount(1);
   await input.press("Enter");
-  await expect(page.locator(".output")).toContainText("Selected: Settings");
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
+    "Selected: Settings",
+  );
 });
 
 test("keyboard and pointer navigation preserve active descendant and disabled skipping", async ({
@@ -225,7 +227,9 @@ test("RTL artifact keeps logical icon, text, shortcut, and keyboard order", asyn
   await expect(root.getByRole("option")).toHaveCount(6);
   await input.press("End");
   await input.press("Enter");
-  await expect(page.locator(".output")).toContainText("الإعدادات");
+  await expect(page.locator('output[aria-live="polite"]')).toContainText(
+    "الإعدادات",
+  );
 
   const item = root.getByRole("option", { name: /الملف الشخصي/ });
   const itemBox = await item.boundingBox();

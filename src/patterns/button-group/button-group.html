@@ -14,17 +14,16 @@
     ng-app="angular.css"
     ng-cloak
     ng-init="buttonGroupAction = 'None'"
-    data-example="button-group-orientation separator button-group-size button-group-split"
+    data-example="button-group-demo button-group-orientation separator button-group-size button-group-split"
   >
-    <main class="button-group-canonical visual-example">
-      <div class="button-group-size-stack" aria-label="Button group sizes">
-        <div aria-label="State ownership" class="button-group">
+    <main class="visual-example">
+      <section aria-label="Button group sizes">
+        <div aria-label="State ownership" role="group">
           <button
             id="button-group-unmanaged"
             type="button"
             variant="outline"
             size="sm"
-            class="button"
           >
             Small
           </button>
@@ -34,19 +33,15 @@
             variant="outline"
             size="sm"
             aria-pressed="true"
-            class="button"
           >
             Button
           </button>
-          <button type="button" variant="outline" size="sm" class="button">
-            Group
-          </button>
+          <button type="button" variant="outline" size="sm">Group</button>
           <button
             type="button"
             variant="outline"
             size="icon-sm"
             aria-label="Add small"
-            class="button"
           >
             <svg
               viewBox="0 0 24 24"
@@ -59,18 +54,15 @@
             </svg>
           </button>
         </div>
-        <div class="button-group">
-          <button type="button" variant="outline" class="button">
-            Default
-          </button>
-          <button type="button" variant="outline" class="button">Button</button>
-          <button type="button" variant="outline" class="button">Group</button>
+        <div role="group">
+          <button type="button" variant="outline">Default</button>
+          <button type="button" variant="outline">Button</button>
+          <button type="button" variant="outline">Group</button>
           <button
             type="button"
             variant="outline"
             size="icon"
             aria-label="Add default"
-            class="button"
           >
             <svg
               viewBox="0 0 24 24"
@@ -83,22 +75,15 @@
             </svg>
           </button>
         </div>
-        <div class="button-group">
-          <button type="button" variant="outline" size="lg" class="button">
-            Large
-          </button>
-          <button type="button" variant="outline" size="lg" class="button">
-            Button
-          </button>
-          <button type="button" variant="outline" size="lg" class="button">
-            Group
-          </button>
+        <div role="group">
+          <button type="button" variant="outline" size="lg">Large</button>
+          <button type="button" variant="outline" size="lg">Button</button>
+          <button type="button" variant="outline" size="lg">Group</button>
           <button
             type="button"
             variant="outline"
             size="icon-lg"
             aria-label="Add large"
-            class="button"
           >
             <svg
               viewBox="0 0 24 24"
@@ -111,19 +96,14 @@
             </svg>
           </button>
         </div>
-      </div>
+      </section>
 
-      <fieldset
-        orientation="vertical"
-        aria-label="Media controls"
-        class="button-group"
-      >
+      <fieldset orientation="vertical" aria-label="Media controls" role="group">
         <button
           type="button"
           variant="outline"
           size="icon"
           aria-label="Increase"
-          class="button"
         >
           <svg
             viewBox="0 0 24 24"
@@ -135,13 +115,12 @@
             <path d="M5 12h14M12 5v14" />
           </svg>
         </button>
-        <hr class="separator" />
+        <hr />
         <button
           type="button"
           variant="outline"
           size="icon"
           aria-label="Decrease"
-          class="button"
         >
           <svg
             viewBox="0 0 24 24"
@@ -155,45 +134,41 @@
         </button>
       </fieldset>
 
-      <div class="button-group-canonical-row">
-        <div class="button-group">
+      <section aria-label="Button group compositions">
+        <div role="group">
           <button
             type="button"
             variant="secondary"
             size="sm"
             ng-click="buttonGroupAction = 'Copy'"
-            class="button"
           >
             Copy
           </button>
-          <hr class="separator" aria-orientation="vertical" />
+          <hr aria-orientation="vertical" />
           <button
             type="button"
             variant="secondary"
             size="sm"
             ng-click="buttonGroupAction = 'Paste'"
-            class="button"
           >
             Paste
           </button>
         </div>
-        <div class="button-group">
+        <div role="group">
           <button
             type="button"
             variant="secondary"
             ng-click="buttonGroupAction = 'Button'"
-            class="button"
           >
             Button
           </button>
-          <hr class="separator" aria-orientation="vertical" />
+          <hr aria-orientation="vertical" />
           <button
             type="button"
             variant="secondary"
             size="icon"
             aria-label="Add item"
             ng-click="buttonGroupAction = 'Add'"
-            class="button"
           >
             <svg
               viewBox="0 0 24 24"
@@ -206,7 +181,7 @@
             </svg>
           </button>
         </div>
-      </div>
+      </section>
       <output class="output">Action: {{ buttonGroupAction }}</output>
     </main>
   </body>

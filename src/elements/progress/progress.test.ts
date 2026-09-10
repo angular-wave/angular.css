@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "elements",
   directive: "ngProgress",
   name: "progress",
-  selector: ".progress",
+  selector: "progress",
 });

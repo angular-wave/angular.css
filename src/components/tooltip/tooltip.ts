@@ -57,12 +57,8 @@ export function tooltipDirective(): ng.Directive {
         controlledOpen = nextOpen;
         setOpen();
       };
-      const openObserver = new MutationObserver((records) => {
-        syncSide();
-        if (records.some((record) => record.attributeName === "side"))
-          syncSide();
-      });
-      openObserver.observe(content, {
+      const sideObserver = new MutationObserver(syncSide);
+      sideObserver.observe(content, {
         attributes: true,
         attributeFilter: ["side"],
       });
@@ -100,7 +96,7 @@ export function tooltipDirective(): ng.Directive {
       trigger.addEventListener("keydown", handleKeydown);
 
       onDestroy(scope, () => {
-        openObserver.disconnect();
+        sideObserver.disconnect();
         elementObserver.disconnect();
         trigger.removeEventListener("mouseenter", handleOpen);
         trigger.removeEventListener("mouseleave", handleClose);

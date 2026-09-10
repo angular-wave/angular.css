@@ -1,6 +1,7 @@
 import type {} from "@angular-wave/angular.ts";
 
 import {
+  getDirection,
   setAttributeIfChanged,
   isDisabled,
   nextIndex,
@@ -45,13 +46,8 @@ export function navigationMenuDirective(): ng.Directive {
       const boundEntries = new Map<HTMLElement, NavigationMenuEntry>();
       let initialized = false;
 
-      const getDirection = () =>
-        element.closest<HTMLElement>("[dir]")?.getAttribute("dir") === "rtl"
-          ? "rtl"
-          : "ltr";
-
       const getHorizontalDirection = (key: string): 1 | -1 =>
-        (key === "ArrowRight") === (getDirection() === "ltr") ? 1 : -1;
+        (key === "ArrowRight") === (getDirection(element) === "ltr") ? 1 : -1;
 
       const syncRootState = () => {
         const open = entries.some((entry) => entry._open);
@@ -175,7 +171,6 @@ export function navigationMenuDirective(): ng.Directive {
         const contentId = content.id || `${triggerId}-content`;
         trigger.id = triggerId;
         content.id = contentId;
-        setAttributeIfChanged(trigger, "aria-haspopup", "true");
         setAttributeIfChanged(trigger, "aria-controls", contentId);
         setAttributeIfChanged(content, "aria-labelledby", triggerId);
 

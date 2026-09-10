@@ -16,13 +16,12 @@
     ng-init="profile={name:'Pedro Duarte',username:'@peduarte'}; savedName='Pedro Duarte'"
     data-example="dialog-demo"
   >
-    <main class="dialog-demo visual-example">
+    <main class="visual-example">
       <section id="profile-dialog" class="dialog">
         <button
           commandfor="profile-dialog-content"
           command="show-modal"
           variant="outline"
-          class="button"
         >
           Edit profile
         </button>
@@ -41,15 +40,11 @@
           <form method="dialog">
             <label for="dialog-name">
               <span>Name</span>
-              <input id="dialog-name" ng-model="profile.name" class="input" />
+              <input id="dialog-name" ng-model="profile.name" />
             </label>
             <label for="dialog-username">
               <span>Username</span>
-              <input
-                id="dialog-username"
-                ng-model="profile.username"
-                class="input"
-              />
+              <input id="dialog-username" ng-model="profile.username" />
             </label>
             <footer>
               <button
@@ -57,7 +52,6 @@
                 commandfor="profile-dialog-content"
                 command="close"
                 variant="outline"
-                class="button"
               >
                 Cancel
               </button>
@@ -66,7 +60,6 @@
                 commandfor="profile-dialog-content"
                 command="close"
                 ng-click="savedName=profile.name"
-                class="button"
               >
                 Save changes
               </button>
@@ -78,7 +71,6 @@
             command="close"
             variant="ghost"
             size="icon-sm"
-            class="button"
           >
             <svg
               viewBox="0 0 24 24"
@@ -90,7 +82,7 @@
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
             </svg>
-            <span class="example-sr-only">Close</span>
+            <span class="visually-hidden">Close</span>
           </button>
         </dialog>
       </section>

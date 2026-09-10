@@ -76,7 +76,7 @@
   }
 
   :scope > figure th > button {
-    min-height: calc(var(--spacing) * 7);
+    min-height: var(--size-control-md);
     margin-inline: calc(var(--spacing) * -2);
   }
 

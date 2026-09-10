@@ -18,7 +18,7 @@
   >
     <main class="checkbox-table-demo" aria-label="Checkbox table composition">
       <figure>
-        <table aria-label="Team members" class="table">
+        <table aria-label="Team members">
           <thead>
             <tr>
               <th scope="col" class="checkbox-table-select">
@@ -29,7 +29,6 @@
                   ng-model="selection.allRows"
                   ng-change="rows[0].selected=selection.allRows;rows[1].selected=selection.allRows;rows[2].selected=selection.allRows;rows[3].selected=selection.allRows"
                   aria-label="Select all rows"
-                  class="checkbox"
                 />
               </th>
               <th scope="col">Name</th>
@@ -47,7 +46,6 @@
                   ng-model="row.selected"
                   ng-change="selection.allRows=rows[0].selected && rows[1].selected && rows[2].selected && rows[3].selected"
                   aria-label="Select {{ row.name }}"
-                  class="checkbox"
                 />
               </td>
               <td class="checkbox-table-name">{{ row.name }}</td>

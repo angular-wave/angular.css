@@ -52,10 +52,7 @@
         aria-labelledby="avatar-count-heading"
       >
         <h2 id="avatar-count-heading">Group count icon</h2>
-        <div
-          class="avatar-grayscale avatar-group"
-          aria-label="Avatar group count icon"
-        >
+        <div class="avatar-grayscale" aria-label="Avatar group count icon">
           <span class="avatar">
             <img src="../../images/avatars/01.png" alt="@angularcss" />
             <span>CN</span>
@@ -113,12 +110,12 @@
         aria-labelledby="avatar-menu-heading"
       >
         <h2 id="avatar-menu-heading">Dropdown</h2>
-        <div ng-dropdown-menu class="avatar-dropdown-demo dropdown-menu">
+        <div ng-dropdown-menu>
           <button
             type="button"
             variant="ghost"
             size="icon"
-            class="avatar-dropdown-trigger button"
+            class="avatar-dropdown-trigger"
             aria-label="Open user menu"
           >
             <span class="avatar">
@@ -126,7 +123,7 @@
               <span>CN</span>
             </span>
           </button>
-          <menu class="avatar-dropdown-menu">
+          <menu style="--menu-width: 8rem">
             <section>
               <button ng-click="avatarAction = 'Profile'">Profile</button>
               <button ng-click="avatarAction = 'Billing'">Billing</button>
@@ -169,7 +166,7 @@
             <span>ER</span>
             <output variant="success"></output>
           </span>
-          <span class="avatar-grayscale avatar-group">
+          <span class="avatar-grayscale">
             <span class="avatar">
               <img src="../../images/avatars/01.png" alt="@angularcss" />
               <span>CN</span>

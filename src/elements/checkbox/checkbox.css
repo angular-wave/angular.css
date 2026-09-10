@@ -1,13 +1,6 @@
-input[type="checkbox"].checkbox {
-  appearance: none;
-  position: relative;
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
-  flex-shrink: 0;
-  border: var(--border-width-default) solid var(--input);
+input[type="checkbox"]:not([role="switch"]) {
   border-radius: var(--radius-sm);
   background: var(--background);
-  outline: none;
   transition:
     background-color var(--motion-duration-default)
       var(--motion-easing-standard),
@@ -15,51 +8,17 @@ input[type="checkbox"].checkbox {
     color var(--motion-duration-default) var(--motion-easing-standard),
     box-shadow var(--motion-duration-default) var(--motion-easing-standard);
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  &:focus-visible {
-    border-color: var(--ring);
-    box-shadow: 0 0 0 var(--focus-ring-width)
-      color-mix(in srgb, var(--ring) 50%, transparent);
-  }
-
-  &[aria-invalid="true"] {
-    border-color: var(--error);
-    box-shadow: 0 0 0 var(--focus-ring-width)
-      color-mix(in srgb, var(--error) 20%, transparent);
-  }
-
   &::after {
-    content: "";
     pointer-events: none;
-    position: absolute;
-    inset-block-start: 50%;
-    inset-inline-start: 50%;
     width: calc(var(--spacing) * 1.5);
     height: calc(var(--spacing) * 2.5);
     transform: translate(-50%, -60%) rotate(45deg);
     border: solid var(--primary-foreground);
     border-width: 0 var(--border-width-strong) var(--border-width-strong) 0;
-    opacity: 0;
-    transition: opacity var(--motion-duration-default)
-      var(--motion-easing-standard);
-  }
-
-  &:checked,
-  &:indeterminate {
-    border-color: var(--primary);
-    background: var(--primary);
   }
 
   &:checked {
     color: var(--primary-foreground);
-
-    &::after {
-      opacity: 1;
-    }
   }
 
   &:indeterminate::after {
@@ -68,18 +27,5 @@ input[type="checkbox"].checkbox {
     transform: translate(-50%, -50%);
     border-width: 0 0 var(--border-width-strong);
     opacity: 1;
-  }
-}
-
-.dark input[type="checkbox"].checkbox[aria-invalid="true"],
-.dark-theme input[type="checkbox"].checkbox[aria-invalid="true"] {
-  box-shadow: 0 0 0 var(--focus-ring-width)
-    color-mix(in srgb, var(--error) 40%, transparent);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  input[type="checkbox"].checkbox,
-  input[type="checkbox"].checkbox::after {
-    transition-duration: var(--motion-duration-instant);
   }
 }

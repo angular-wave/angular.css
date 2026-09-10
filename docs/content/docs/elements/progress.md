@@ -1,6 +1,6 @@
 ---
 title: progress
-category: 'feedback'
+category: "feedback"
 description: >
   Task completion indicator
 ---
@@ -9,11 +9,10 @@ Use native `progress`. Compose its label and value with native `label` and
 `output` elements when needed.
 
 ```html
-<div class="progress-group">
+<div>
   <label id="upload-progress-label">Upload progress</label>
   <output>56%</output>
   <progress
-    class="progress"
     value="56"
     max="100"
     aria-labelledby="upload-progress-label"
@@ -23,11 +22,11 @@ Use native `progress`. Compose its label and value with native `label` and
 
 ## Example
 
-{{< example src="examples/components/progress.html" title="Progress example" height="190" >}}
+{{< example src="examples/components/progress.html" title="Progress example" height="190">}}
 
 ## Controlled and RTL
 
-{{< example src="examples/components/progress-workflows.html" title="Progress workflows" height="300" >}}
+{{< example src="examples/components/progress-workflows.html" title="Progress workflows" height="300">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -41,11 +40,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.progress`
+- `progress`
 
 ### Semantic structure
 
-Use a native `progress.progress` element. For a visible label and value, compose it with native `label` and `output` elements inside `.progress-group`.
+Use a native `progress` element. For a visible label and value, place direct native `label`, `output`, and `progress` children in one `div`; AngularCSS recognizes that semantic structure without another class.
 
 ## API
 

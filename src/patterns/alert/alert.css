@@ -1,103 +1,105 @@
-.alert {
-  position: relative;
-  display: grid;
-  width: 100%;
-  gap: calc(var(--spacing) * 0.5);
-  border: var(--border-width-default) solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
-  color: var(--card-foreground);
-  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  text-align: start;
-}
+@scope ([role="alert"]:not(aside[tabindex="-1"]:has(> header + ul))) to ([role="alert"]) {
+  :scope {
+    position: relative;
+    display: grid;
+    width: 100%;
+    gap: calc(var(--spacing) * 0.5);
+    border: var(--border-width-default) solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--card-foreground);
+    padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    text-align: start;
+  }
 
-.alert:has(> svg) {
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: calc(var(--spacing) * 2.5);
-}
+  :scope:has(> svg) {
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: calc(var(--spacing) * 2.5);
+  }
 
-.alert > svg {
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
-  grid-row: span 2;
-  color: currentcolor;
-  transform: translateY(2px);
-}
+  :scope > svg {
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+    grid-row: span 2;
+    color: currentcolor;
+    transform: translateY(2px);
+  }
 
-.alert:has(> svg) > :is(h1, h2, h3, h4, h5, h6, p) {
-  grid-column-start: 2;
-}
+  :scope:has(> svg) > :is(h1, h2, h3, h4, h5, h6, p) {
+    grid-column-start: 2;
+  }
 
-.alert:has(> button) {
-  padding-inline-end: calc(var(--spacing) * 18);
-}
+  :scope:has(> button) {
+    padding-inline-end: calc(var(--spacing) * 18);
+  }
 
-.alert[variant="destructive"] {
-  color: var(--error-foreground);
-}
+  :scope[variant="destructive"] {
+    color: var(--error-foreground);
+  }
 
-.alert[variant="info"] {
-  border-color: color-mix(in srgb, var(--info) 45%, var(--border));
-  color: var(--info-foreground);
-}
+  :scope[variant="info"] {
+    border-color: color-mix(in srgb, var(--info) 45%, var(--border));
+    color: var(--info-foreground);
+  }
 
-.alert[variant="success"] {
-  border-color: color-mix(in srgb, var(--success) 45%, var(--border));
-  color: var(--success-foreground);
-}
+  :scope[variant="success"] {
+    border-color: color-mix(in srgb, var(--success) 45%, var(--border));
+    color: var(--success-foreground);
+  }
 
-.alert[variant="warning"] {
-  border-color: color-mix(in srgb, var(--warning) 55%, var(--border));
-  color: var(--warning-foreground);
-}
+  :scope[variant="warning"] {
+    border-color: color-mix(in srgb, var(--warning) 55%, var(--border));
+    color: var(--warning-foreground);
+  }
 
-.alert > :is(h1, h2, h3, h4, h5, h6) {
-  min-width: 0;
-  font-weight: var(--font-weight-medium);
-}
+  :scope > :is(h1, h2, h3, h4, h5, h6) {
+    min-width: 0;
+    font-weight: var(--font-weight-medium);
+  }
 
-.alert > :is(h1, h2, h3, h4, h5, h6, p) a {
-  color: inherit;
-  text-decoration-line: underline;
-  text-underline-offset: calc(var(--spacing) * 0.75);
-}
+  :scope > :is(h1, h2, h3, h4, h5, h6, p) a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-underline-offset: calc(var(--spacing) * 0.75);
+  }
 
-.alert > :is(h1, h2, h3, h4, h5, h6, p) a:hover {
-  color: var(--foreground);
-}
+  :scope > :is(h1, h2, h3, h4, h5, h6, p) a:hover {
+    color: var(--foreground);
+  }
 
-.alert > p {
-  min-width: 0;
-  color: var(--muted-foreground);
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  text-wrap: balance;
-}
+  :scope > p {
+    min-width: 0;
+    color: var(--muted-foreground);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    text-wrap: balance;
+  }
 
-.alert[variant="destructive"] > p {
-  color: var(--error-foreground);
-}
+  :scope[variant="destructive"] > p {
+    color: var(--error-foreground);
+  }
 
-.alert[variant="info"] > p {
-  color: var(--info-foreground);
-}
+  :scope[variant="info"] > p {
+    color: var(--info-foreground);
+  }
 
-.alert[variant="success"] > p {
-  color: var(--success-foreground);
-}
+  :scope[variant="success"] > p {
+    color: var(--success-foreground);
+  }
 
-.alert[variant="warning"] > p {
-  color: var(--warning-foreground);
-}
+  :scope[variant="warning"] > p {
+    color: var(--warning-foreground);
+  }
 
-.alert > p:not(:last-child) {
-  margin-block-end: calc(var(--spacing) * 4);
-}
+  :scope > p:not(:last-child) {
+    margin-block-end: calc(var(--spacing) * 4);
+  }
 
-.alert > button {
-  position: absolute;
-  inset-block-start: calc(var(--spacing) * 2.5);
-  inset-inline-end: calc(var(--spacing) * 3);
+  :scope > button {
+    position: absolute;
+    inset-block-start: calc(var(--spacing) * 2.5);
+    inset-inline-end: calc(var(--spacing) * 3);
+  }
 }

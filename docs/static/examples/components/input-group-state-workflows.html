@@ -28,7 +28,6 @@
           <input
             aria-label="Invoice total"
             aria-describedby="external-help currency-code"
-            class="input"
           />
           <span id="currency-code">USD</span>
           <span align="inline-end" aria-hidden="true"> .00 </span>
@@ -41,14 +40,8 @@
       >
         <h2 id="button-group-title">Action button</h2>
         <div id="button-group" class="input-group">
-          <input
-            aria-label="Documentation search"
-            ng-model="query"
-            class="input"
-          />
-          <button type="button" ng-click="query=''" class="button">
-            Clear
-          </button>
+          <input aria-label="Documentation search" ng-model="query" />
+          <button type="button" ng-click="query=''">Clear</button>
         </div>
       </section>
 
@@ -61,7 +54,6 @@
           <input
             ng-attr-aria-label="{{ showCurrency ? 'Budget in USD' : 'Budget' }}"
             aria-describedby="budget-help"
-            class="input"
           />
           <span ng-if="showCurrency" id="dynamic-addon"> USD </span>
         </div>
@@ -71,7 +63,6 @@
           type="button"
           ng-click="showCurrency=true"
           ng-disabled="showCurrency"
-          class="button"
         >
           Add currency
         </button>
@@ -83,11 +74,7 @@
       >
         <h2 id="hidden-group-title">Hidden addon</h2>
         <div id="hidden-group" class="input-group">
-          <input
-            aria-label="Price"
-            aria-describedby="price-help"
-            class="input"
-          />
+          <input aria-label="Price" aria-describedby="price-help" />
           <span id="addon-price" ng-attr-aria-hidden="{{ priceHidden }}">
             USD
           </span>
@@ -97,7 +84,6 @@
           variant="outline"
           type="button"
           ng-click="priceHidden=!priceHidden"
-          class="button"
         >
           Toggle currency description
         </button>

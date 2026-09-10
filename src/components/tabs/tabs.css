@@ -1,4 +1,3 @@
-.tabs,
 [ng-tabs] {
   display: flex;
   width: 100%;
@@ -6,13 +5,15 @@
   gap: calc(var(--spacing) * 3);
 }
 
-.tabs[orientation="vertical"],
 [ng-tabs][orientation="vertical"] {
   flex-direction: row;
   align-items: flex-start;
 }
 
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs) {
+:is(
+  [ng-tabs] > [role="tablist"],
+  nav[variant="line"]:has(> button[aria-pressed])
+) {
   display: inline-flex;
   flex-direction: row;
   width: fit-content;
@@ -22,89 +23,90 @@
   background: var(--muted);
   color: var(--muted-foreground);
   padding: calc(var(--spacing) * 1);
+
+  &[variant="line"] {
+    gap: calc(var(--spacing) * 1);
+    background: transparent;
+    padding: 0;
+  }
+
+  > :is([role="tab"], button[aria-pressed]) {
+    position: relative;
+    display: inline-flex;
+    min-width: 0;
+    min-height: var(--size-control-sm);
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 2);
+    border: var(--border-width-default) solid transparent;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--muted-foreground);
+    padding-inline: calc(var(--spacing) * 3);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition:
+      background-color var(--motion-duration-default)
+        var(--motion-easing-standard),
+      color var(--motion-duration-default) var(--motion-easing-standard);
+
+    &:focus-visible {
+      outline: var(--focus-ring-width) solid var(--ring);
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &:hover {
+      color: var(--foreground);
+    }
+
+    &:is([aria-selected="true"], [aria-pressed="true"]) {
+      background: var(--background);
+      color: var(--foreground);
+    }
+
+    > svg {
+      width: calc(var(--spacing) * 4);
+      height: calc(var(--spacing) * 4);
+    }
+  }
+
+  &[variant="line"]
+    > :is([role="tab"], button[aria-pressed]):is(
+      [aria-selected="true"],
+      [aria-pressed="true"]
+    ) {
+    background: transparent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset-inline: calc(var(--spacing) * 2);
+      bottom: calc(var(--spacing) * -1);
+      height: var(--border-width-strong);
+      background: var(--foreground);
+    }
+  }
 }
 
-:is(.tabs, [ng-tabs])[orientation="vertical"] > menu {
+[ng-tabs][orientation="vertical"] > [role="tablist"] {
   flex-direction: column;
 }
 
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs)[variant="line"] {
-  gap: calc(var(--spacing) * 1);
-  background: transparent;
-  padding: 0;
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs) > button {
-  position: relative;
-  display: inline-flex;
-  min-height: var(--size-control-sm);
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--spacing) * 2);
-  border: var(--border-width-default) solid transparent;
-  border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--muted-foreground);
-  padding-inline: calc(var(--spacing) * 3);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition:
-    background-color var(--motion-duration-default)
-      var(--motion-easing-standard),
-    color var(--motion-duration-default) var(--motion-easing-standard);
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs)
-  > button:focus-visible {
-  outline: var(--focus-ring-width) solid var(--ring);
-  outline-offset: var(--focus-ring-offset);
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs)
-  > button:is(:disabled, [aria-disabled="true"]) {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs) > button:hover {
-  color: var(--foreground);
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs)
-  > button:is([aria-selected="true"], [aria-pressed="true"]) {
-  background: var(--background);
-  color: var(--foreground);
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs)[variant="line"]
-  > button:is([aria-selected="true"], [aria-pressed="true"]) {
-  background: transparent;
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs)[variant="line"]
-  > button:is([aria-selected="true"], [aria-pressed="true"])::after {
-  content: "";
-  position: absolute;
-  inset-inline: calc(var(--spacing) * 2);
-  bottom: calc(var(--spacing) * -1);
-  height: var(--border-width-strong);
-  background: var(--foreground);
-}
-
-:is(.tabs, [ng-tabs]) > :is(article, section) {
+[ng-tabs] > [role="tabpanel"] {
   flex: 1 1 auto;
   outline: none;
 }
 
-:is(.tabs, [ng-tabs]) > :is(article, section):not([hidden]) {
+[ng-tabs] > [role="tabpanel"]:not([hidden]) {
   animation: angularcss-tabs-panel-enter var(--motion-duration-default)
     var(--motion-easing-out);
-}
-
-:is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs) > button > svg {
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
 }
 
 @keyframes angularcss-tabs-panel-enter {
@@ -114,11 +116,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.tabs > menu, [ng-tabs] > menu, nav.tabs, menu.tabs) > button {
+  :is(
+      [ng-tabs] > [role="tablist"],
+      nav[variant="line"]:has(> button[aria-pressed])
+    )
+    > :is([role="tab"], button[aria-pressed]) {
     transition-duration: var(--motion-duration-instant);
   }
 
-  :is(.tabs, [ng-tabs]) > :is(article, section):not([hidden]) {
+  [ng-tabs] > [role="tabpanel"]:not([hidden]) {
     animation: none;
   }
 }

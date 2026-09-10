@@ -1,6 +1,6 @@
 ---
 title: disclosure
-category: 'disclosure'
+category: "disclosure"
 description: >
   HTML-first disclosure state and trigger/panel relationships
 ---

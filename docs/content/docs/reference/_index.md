@@ -17,7 +17,7 @@ import {
   angularCssDirectives,
   angularCssModuleName,
   registerAngularCss,
-} from '@angular-wave/angular.css';
+} from "@angular-wave/angular.css";
 ```
 
 ## `angularCssModuleName`
@@ -28,7 +28,7 @@ The AngularTS module name registered by AngularCSS. Add it as an application
 module dependency:
 
 ```ts
-angular.createModule('app', [angularCssModuleName]);
+angular.createModule("app", [angularCssModuleName]);
 ```
 
 ## `angular`
@@ -73,7 +73,7 @@ It also augments `HTMLElementEventMap`, so TypeScript infers event details from
 ordinary DOM listeners:
 
 ```ts
-calendar.addEventListener('angularcss:calendar-select', (event) => {
+calendar.addEventListener("angularcss:calendar-select", (event) => {
   console.log(event.detail.value, event.detail.selectionMode);
 });
 ```

@@ -1,8 +1,7 @@
 ---
 title: Components
 weight: 50
-description:
-  Focused AngularCSS runtime components for coordinated interaction.
+description: Focused AngularCSS runtime components for coordinated interaction.
 ---
 
 Components are the small runtime layer used only when native HTML cannot

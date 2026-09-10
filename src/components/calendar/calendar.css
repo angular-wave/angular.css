@@ -1,4 +1,3 @@
-.calendar,
 [ng-calendar] {
   --calendar-cell-size: calc(var(--spacing) * 7);
 
@@ -11,7 +10,7 @@
   color: var(--foreground);
 }
 
-:is(.calendar, [ng-calendar]) > header {
+[ng-calendar] > header {
   display: grid;
   grid-template-columns:
     var(--calendar-cell-size) minmax(0, 1fr)
@@ -21,7 +20,7 @@
   width: 100%;
 }
 
-:is(.calendar, [ng-calendar]) > header > :is(h1, h2, h3, h4, h5, h6) {
+[ng-calendar] > header > :is(h1, h2, h3, h4, h5, h6) {
   display: flex;
   grid-column: 2;
   min-width: 0;
@@ -34,13 +33,11 @@
   white-space: nowrap;
 }
 
-:is(.calendar, [ng-calendar])
-  > header
-  > :is(h1, h2, h3, h4, h5, h6):has(select) {
+[ng-calendar] > header > :is(h1, h2, h3, h4, h5, h6):has(select) {
   gap: calc(var(--spacing) * 1.5);
 }
 
-:is(.calendar, [ng-calendar]) > header select {
+[ng-calendar] > header select {
   min-width: 0;
   height: var(--calendar-cell-size);
   padding-inline: calc(var(--spacing) * 1.5);
@@ -51,88 +48,88 @@
   font-size: var(--text-sm);
 }
 
-:is(.calendar, [ng-calendar]) > header > button {
-  width: var(--calendar-cell-size);
-  min-width: var(--calendar-cell-size);
-  height: var(--calendar-cell-size);
-  min-height: var(--calendar-cell-size);
+[ng-calendar] > header > button {
+  width: var(--size-control-md);
+  min-width: var(--size-control-md);
+  height: var(--size-control-md);
+  min-height: var(--size-control-md);
   padding: 0;
 }
 
-:is(.calendar, [ng-calendar]) > header > button:last-of-type {
+[ng-calendar] > header > button > svg {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+
+[ng-calendar] > header > button:last-of-type {
   grid-column: 3;
 }
 
-:is(.calendar, [ng-calendar]) > div {
+[ng-calendar] > div {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, var(--calendar-cell-size)));
   gap: calc(var(--spacing) * 2) 0;
 }
 
-:is(.calendar, [ng-calendar]) > div[data-show-week-numbers="true"] {
+[ng-calendar] > div[data-show-week-numbers="true"] {
   grid-template-columns: repeat(8, minmax(0, var(--calendar-cell-size)));
 }
 
-:is(.calendar, [ng-calendar]) > div[data-months]:not([data-months="1"]) {
+[ng-calendar] > div[data-months]:not([data-months="1"]) {
   display: flex;
   width: max-content;
   align-items: flex-start;
   gap: calc(var(--spacing) * 6);
 }
 
-:is(.calendar, [ng-calendar]) > div > section {
+[ng-calendar] > div > section {
   display: grid;
   width: calc(var(--calendar-cell-size) * 7);
   gap: calc(var(--spacing) * 2);
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  > section:has(> div[data-show-week-numbers="true"]) {
+[ng-calendar] > div > section:has(> div[data-show-week-numbers="true"]) {
   width: calc(var(--calendar-cell-size) * 8);
 }
 
-:is(.calendar, [ng-calendar]) > div > section > :is(h1, h2, h3, h4, h5, h6) {
+[ng-calendar] > div > section > :is(h1, h2, h3, h4, h5, h6) {
   text-align: center;
   font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
 }
 
-:is(.calendar, [ng-calendar]) > div > section > div {
+[ng-calendar] > div > section > div {
   display: grid;
   width: max-content;
   grid-template-columns: repeat(7, var(--calendar-cell-size));
   gap: calc(var(--spacing) * 2) 0;
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  > section
-  > div[data-show-week-numbers="true"] {
+[ng-calendar] > div > section > div[data-show-week-numbers="true"] {
   grid-template-columns: repeat(8, var(--calendar-cell-size));
 }
 
-:is(.calendar, [ng-calendar]):dir(rtl) > div,
-:is(.calendar, [ng-calendar]):dir(rtl) > div > section > div {
+[ng-calendar]:dir(rtl) > div,
+[ng-calendar]:dir(rtl) > div > section > div {
   direction: rtl;
 }
 
-:is(.calendar, [ng-calendar]):dir(rtl) > header > button svg {
+[ng-calendar]:dir(rtl) > header > button svg {
   transform: rotate(180deg);
 }
 
-:is(.calendar, [ng-calendar]) > div > :is(abbr, data),
-:is(.calendar, [ng-calendar]) > div > section > div > :is(abbr, data) {
+[ng-calendar] > div > :is(abbr, data),
+[ng-calendar] > div > section > div > :is(abbr, data) {
   display: grid;
   place-items: center;
   height: var(--calendar-cell-size);
   color: var(--muted-foreground);
-  font-size: 0.8rem;
+  font-size: var(--text-xs);
   font-weight: var(--font-weight-normal);
   text-decoration: none;
 }
 
-:is(.calendar, [ng-calendar]) > div button:is([value], [data-value]) {
+[ng-calendar] > div button:is([value], [data-value]) {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -141,6 +138,7 @@
   width: var(--calendar-cell-size);
   min-width: var(--calendar-cell-size);
   height: var(--calendar-cell-size);
+  min-height: var(--calendar-cell-size);
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
@@ -157,7 +155,7 @@
     transform var(--motion-duration-fast) var(--motion-easing-out);
 }
 
-:is(.calendar, [ng-calendar])
+[ng-calendar]
   > div
   button:is([value], [data-value]):where(
     :active:not(:disabled, [aria-disabled="true"])
@@ -165,7 +163,7 @@
   transform: translateY(1px);
 }
 
-:is(.calendar, [ng-calendar])
+[ng-calendar]
   > div
   button:is([value], [data-value]):where(
     :hover:not(:disabled, [aria-disabled="true"])
@@ -174,45 +172,35 @@
   color: var(--accent-foreground);
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value])
-  > span
-  > span {
+[ng-calendar] > div button:is([value], [data-value]) > span > span {
   font-size: var(--text-xs);
   opacity: 0.7;
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value]):focus-visible {
+[ng-calendar] > div button:is([value], [data-value]):focus-visible {
   position: relative;
   z-index: 1;
   outline: var(--focus-ring-width) solid var(--ring);
   outline-offset: var(--focus-ring-offset);
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value])[data-outside="true"] {
+[ng-calendar] > div button:is([value], [data-value])[data-outside="true"] {
   color: var(--muted-foreground);
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value])[aria-pressed="true"] {
+[ng-calendar] > div button:is([value], [data-value])[aria-pressed="true"] {
   background: var(--primary);
   color: var(--primary-foreground);
 }
 
-:is(.calendar, [ng-calendar])
+[ng-calendar]
   > div
   button:is([value], [data-value]):is([aria-disabled="true"], :disabled) {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-:is(.calendar, [ng-calendar])
+[ng-calendar]
   > div
   button:is([value], [data-value])[aria-current="date"]:not(
     [aria-pressed="true"]
@@ -221,35 +209,27 @@
   color: var(--foreground);
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value])[data-range-middle="true"] {
+[ng-calendar] > div button:is([value], [data-value])[data-range-middle="true"] {
   border-radius: 0;
   background: var(--accent);
   color: var(--accent-foreground);
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value])[data-range-start="true"] {
+[ng-calendar] > div button:is([value], [data-value])[data-range-start="true"] {
   border-start-end-radius: 0;
   border-end-end-radius: 0;
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value])[data-range-end="true"] {
+[ng-calendar] > div button:is([value], [data-value])[data-range-end="true"] {
   border-start-start-radius: 0;
   border-end-start-radius: 0;
 }
 
-:is(.calendar, [ng-calendar])
-  > div
-  button:is([value], [data-value])[data-booked="true"] {
+[ng-calendar] > div button:is([value], [data-value])[data-booked="true"] {
   text-decoration: line-through;
 }
 
-:is(.calendar, [ng-calendar])[data-range-invalid="true"] {
+[ng-calendar][data-range-invalid="true"] {
   outline: 2px solid color-mix(in srgb, var(--error) 45%, transparent);
   outline-offset: calc(var(--spacing) * 1);
 }
@@ -259,13 +239,13 @@
 }
 
 @media (width <= 48rem) {
-  :is(.calendar, [ng-calendar]) > div[data-months]:not([data-months="1"]) {
+  [ng-calendar] > div[data-months]:not([data-months="1"]) {
     flex-direction: column;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.calendar, [ng-calendar]) > div button:is([value], [data-value]) {
+  [ng-calendar] > div button:is([value], [data-value]) {
     transition-duration: var(--motion-duration-instant);
   }
 }

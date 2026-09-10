@@ -16,7 +16,7 @@
     ng-init="frameworks=['Next.js','SvelteKit','Nuxt.js','Remix','Astro']; basic={query:'',selected:''}; automatic={query:'',selected:''}"
     data-example="combobox-auto-highlight combobox-basic combobox-demo"
   >
-    <main class="combobox-demo visual-example">
+    <main class="visual-example">
       <div
         id="basic-combobox"
         ng-combobox
@@ -82,7 +82,7 @@
         </aside>
       </div>
 
-      <output class="output visually-hidden" aria-live="polite">
+      <output class="visually-hidden" aria-live="polite">
         Basic: <span ng-bind="basic.selected || 'none'"></span>. Automatic:
         <span ng-bind="automatic.selected || 'none'"></span>.
       </output>

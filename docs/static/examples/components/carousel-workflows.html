@@ -73,10 +73,8 @@
             variant="outline"
             type="button"
             aria-label="Previous API slide"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-left"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -91,10 +89,8 @@
             variant="outline"
             type="button"
             aria-label="Next API slide"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-right"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -105,9 +101,9 @@
             </svg>
           </button>
         </section>
-        <p class="carousel-status" aria-live="polite">
+        <output class="carousel-status" aria-live="polite">
           Slide {{ apiState.index + 1 }} of {{ apiState.count }}
-        </p>
+        </output>
       </section>
 
       <section
@@ -175,10 +171,8 @@
             variant="outline"
             type="button"
             aria-label="Previous group"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-left"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -193,10 +187,8 @@
             variant="outline"
             type="button"
             aria-label="Next group"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-right"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -210,7 +202,7 @@
       </section>
 
       <section
-        class="carousel-workflow carousel-workflow-tall"
+        class="carousel-workflow"
         aria-labelledby="carousel-orientation-heading"
       >
         <h2 id="carousel-orientation-heading">Vertical orientation</h2>
@@ -275,10 +267,8 @@
             variant="outline"
             type="button"
             aria-label="Previous vertical slide"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-left"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -293,10 +283,8 @@
             variant="outline"
             type="button"
             aria-label="Next vertical slide"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-right"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -377,10 +365,8 @@
             variant="outline"
             type="button"
             aria-label="Previous autoplay slide"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-left"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -395,10 +381,8 @@
             variant="outline"
             type="button"
             aria-label="Next autoplay slide"
-            class="button"
           >
             <svg
-              class="icon-sm lucide lucide-chevron-right"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -409,10 +393,10 @@
             </svg>
           </button>
         </section>
-        <p class="carousel-status" aria-live="polite">
+        <output class="carousel-status" aria-live="polite">
           Autoplay slide {{ autoplayState.index + 1 }} of {{ autoplayState.count
           }}
-        </p>
+        </output>
       </section>
     </main>
   </body>

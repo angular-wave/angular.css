@@ -14,7 +14,7 @@
     ng-app="angular.css"
     ng-cloak
     ng-init="query=''; message=''; copyStatus='Ready'; cardStatus=''; username='angularcss'"
-    class="input-group-workflow-body"
+    data-example="input-group-workflows"
   >
     <svg class="example-icon-definitions" aria-hidden="true">
       <defs>
@@ -70,12 +70,12 @@
         <div class="field-group">
           <div class="field">
             <label for="ig-default">Default</label>
-            <input id="ig-default" placeholder="Placeholder" class="input" />
+            <input id="ig-default" placeholder="Placeholder" />
           </div>
           <div class="field">
             <label for="ig-basic">Input group</label>
             <div class="input-group">
-              <input id="ig-basic" placeholder="Placeholder" class="input" />
+              <input id="ig-basic" placeholder="Placeholder" />
             </div>
           </div>
           <div class="field">
@@ -85,7 +85,6 @@
                 id="ig-disabled"
                 placeholder="This field is disabled"
                 disabled
-                class="input"
               />
             </div>
           </div>
@@ -96,7 +95,6 @@
                 id="ig-invalid"
                 placeholder="This field is invalid"
                 aria-invalid="true"
-                class="input"
               />
             </div>
           </div>
@@ -114,7 +112,6 @@
             ng-model="query"
             placeholder="Search..."
             aria-label="Search documentation"
-            class="input"
           />
           <div align="inline-start">
             <svg aria-hidden="true"><use href="#ig-search"></use></svg>
@@ -126,23 +123,18 @@
             type="password"
             placeholder="Enter password"
             aria-label="Password"
-            class="input"
           />
           <div align="inline-end">
             <svg aria-hidden="true"><use href="#ig-eye-off"></use></svg>
           </div>
         </div>
         <div class="input-group">
-          <input
-            id="ig-command-search"
-            placeholder="Search commands..."
-            class="input"
-          />
+          <input id="ig-command-search" placeholder="Search commands..." />
           <label for="ig-command-search">
             <svg aria-hidden="true"><use href="#ig-search"></use></svg>
           </label>
           <div align="inline-end">
-            <kbd class="kbd">⌘K</kbd>
+            <kbd>⌘K</kbd>
           </div>
         </div>
         <output class="input-group-output">
@@ -161,18 +153,13 @@
             type="email"
             placeholder="Enter your email"
             aria-label="Email with icon"
-            class="input"
           />
           <div>
             <svg aria-hidden="true"><use href="#ig-mail"></use></svg>
           </div>
         </div>
         <div class="input-group">
-          <input
-            placeholder="Card number"
-            aria-label="Verified card number"
-            class="input"
-          />
+          <input placeholder="Card number" aria-label="Verified card number" />
           <div>
             <svg aria-hidden="true"><use href="#ig-card"></use></svg>
           </div>
@@ -181,11 +168,7 @@
           </div>
         </div>
         <div class="input-group">
-          <input
-            placeholder="Favorite card"
-            aria-label="Favorite card"
-            class="input"
-          />
+          <input placeholder="Favorite card" aria-label="Favorite card" />
           <div align="inline-end">
             <svg aria-hidden="true"><use href="#ig-star"></use></svg>
             <svg aria-hidden="true"><use href="#ig-info"></use></svg>
@@ -203,12 +186,7 @@
           <div>
             <span>$</span>
           </div>
-          <input
-            inputmode="decimal"
-            placeholder="0.00"
-            aria-label="Amount"
-            class="input"
-          />
+          <input inputmode="decimal" placeholder="0.00" aria-label="Amount" />
           <div align="inline-end">
             <span>USD</span>
           </div>
@@ -217,7 +195,7 @@
           <div>
             <span>https://</span>
           </div>
-          <input placeholder="example.com" aria-label="Website" class="input" />
+          <input placeholder="example.com" aria-label="Website" />
           <div align="inline-end">
             <span>.com</span>
           </div>
@@ -226,7 +204,6 @@
           <input
             placeholder="Enter your username"
             aria-label="Company username"
-            class="input"
           />
           <div align="inline-end">
             <span>@company.com</span>
@@ -244,7 +221,7 @@
           <div class="field">
             <label for="ig-addon-start">Inline start and end</label>
             <div class="input-group">
-              <input id="ig-addon-start" class="input" />
+              <input id="ig-addon-start" />
               <div>
                 <svg aria-hidden="true"><use href="#ig-search"></use></svg>
               </div>
@@ -256,7 +233,7 @@
           <div class="field">
             <label for="ig-addon-header">Block start</label>
             <div class="input-group">
-              <input id="ig-addon-header" class="input" />
+              <input id="ig-addon-header" />
               <div align="block-start">
                 <span>First name</span>
                 <svg class="input-group-push-end" aria-hidden="true">
@@ -268,7 +245,7 @@
           <div class="field">
             <label for="ig-addon-footer">Block end</label>
             <div class="input-group">
-              <input id="ig-addon-footer" class="input" />
+              <input id="ig-addon-footer" />
               <div align="block-end">
                 <span>20/240 characters</span>
                 <svg class="input-group-push-end" aria-hidden="true">
@@ -283,7 +260,7 @@
               <div>
                 <label for="ig-addon-optional">Label</label>
               </div>
-              <input id="ig-addon-optional" class="input" />
+              <input id="ig-addon-optional" />
               <div align="inline-end">
                 <span>(optional)</span>
               </div>
@@ -299,18 +276,14 @@
       >
         <h2 id="input-group-kbd-title">Keyboard hints</h2>
         <div class="input-group">
-          <input
-            placeholder="Search for apps..."
-            aria-label="Search apps"
-            class="input"
-          />
+          <input placeholder="Search for apps..." aria-label="Search apps" />
           <div align="inline-end">Ask AI</div>
           <div align="inline-end">
-            <kbd class="kbd">Tab</kbd>
+            <kbd>Tab</kbd>
           </div>
         </div>
         <div class="input-group">
-          <input ng-model="username" aria-label="Username" class="input" />
+          <input ng-model="username" aria-label="Username" />
           <div align="inline-end">
             <span class="input-group-valid-icon"
               ><svg aria-hidden="true"><use href="#ig-check"></use></svg
@@ -319,12 +292,7 @@
         </div>
         <p class="input-group-success">This username is available.</p>
         <div class="input-group">
-          <input
-            value="angularcss"
-            aria-label="Loading username"
-            disabled
-            class="input"
-          />
+          <input value="angularcss" aria-label="Loading username" disabled />
           <div align="inline-end">
             <output size="sm" aria-label="Loading" class="spinner"></output>
           </div>
@@ -338,17 +306,13 @@
       >
         <h2 id="input-group-label-title">Labels in addons</h2>
         <div class="input-group">
-          <input id="ig-email-name" placeholder="angularcss" class="input" />
+          <input id="ig-email-name" placeholder="angularcss" />
           <div>
             <label for="ig-email-name">@</label>
           </div>
         </div>
         <div class="input-group">
-          <input
-            id="ig-email-address"
-            placeholder="team@angularcss.dev"
-            class="input"
-          />
+          <input id="ig-email-address" placeholder="team@angularcss.dev" />
           <div align="block-start">
             <label for="ig-email-address">Email</label>
             <span ng-tooltip class="input-group-push-end">
@@ -357,7 +321,6 @@
                 variant="ghost"
                 type="button"
                 aria-label="Email help"
-                class="button"
               >
                 <svg aria-hidden="true"><use href="#ig-info"></use></svg>
               </button>
@@ -373,10 +336,10 @@
         aria-labelledby="input-group-button-group-title"
       >
         <h2 id="input-group-button-group-title">Button group</h2>
-        <div class="button-group">
+        <div role="group">
           <label for="ig-url">https://</label>
           <div class="input-group">
-            <input id="ig-url" aria-label="URL" class="input" />
+            <input id="ig-url" aria-label="URL" />
             <div align="inline-end">
               <svg aria-hidden="true"><use href="#ig-link"></use></svg>
             </div>
@@ -404,7 +367,6 @@
                     id="ig-card-email"
                     type="email"
                     placeholder="you@example.com"
-                    class="input"
                   />
                   <div align="inline-end">
                     <svg aria-hidden="true"><use href="#ig-mail"></use></svg>
@@ -417,11 +379,7 @@
                   <div>
                     <span>https://</span>
                   </div>
-                  <input
-                    id="ig-card-site"
-                    placeholder="example.com"
-                    class="input"
-                  />
+                  <input id="ig-card-site" placeholder="example.com" />
                   <div align="inline-end">
                     <svg aria-hidden="true"><use href="#ig-link"></use></svg>
                   </div>
@@ -434,15 +392,10 @@
               variant="outline"
               type="button"
               ng-click="cardStatus='Cancelled'"
-              class="button"
             >
               Cancel
             </button>
-            <button
-              type="button"
-              ng-click="cardStatus='Submitted'"
-              class="button"
-            >
+            <button type="button" ng-click="cardStatus='Submitted'">
               Submit
             </button>
             <output class="input-group-output">{{ cardStatus }}</output>

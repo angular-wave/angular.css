@@ -13,7 +13,7 @@
   <body ng-app="angular.css" ng-cloak ng-init="itemState={message:'Ready'}">
     <main class="item-workflow-grid" aria-label="Item workflows">
       <section data-example="item-demo" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li variant="outline" class="item">
             <section>
               <h3>Basic Item</h3>
@@ -25,7 +25,6 @@
                 size="sm"
                 type="button"
                 ng-click="itemState.message='Basic action'"
-                class="button"
               >
                 Action
               </button>
@@ -47,7 +46,7 @@
       </section>
 
       <section data-example="item-avatar" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li variant="outline" class="item">
             <figure>
               <span class="item-avatar-large avatar"
@@ -64,7 +63,6 @@
                 size="icon-sm"
                 type="button"
                 aria-label="Invite Evil Rabbit"
-                class="button"
               >
                 +
               </button>
@@ -92,7 +90,6 @@
                 size="sm"
                 type="button"
                 ng-click="itemState.message='Invite opened'"
-                class="button"
               >
                 Invite
               </button>
@@ -115,15 +112,13 @@
             <p>New login detected from unknown device.</p>
           </section>
           <menu>
-            <button variant="outline" size="sm" type="button" class="button">
-              Review
-            </button>
+            <button variant="outline" size="sm" type="button">Review</button>
           </menu>
         </article>
       </section>
 
       <section data-example="item-image" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li variant="outline" href="#midnight" class="item">
             <figure variant="image">
               <img
@@ -173,8 +168,8 @@
         data-example="item-dropdown"
         class="item-workflow item-dropdown-workflow"
       >
-        <div ng-dropdown-menu class="dropdown-menu">
-          <button variant="outline" type="button" class="button">
+        <div ng-dropdown-menu>
+          <button variant="outline" type="button">
             Select <span aria-hidden="true">⌄</span>
           </button>
           <menu>
@@ -222,7 +217,7 @@
       </section>
 
       <section data-example="item-group" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li variant="outline" class="item">
             <figure>
               <span class="avatar"
@@ -239,7 +234,6 @@
                 size="icon-sm"
                 type="button"
                 aria-label="Invite Jordan Lee"
-                class="button"
               >
                 +
               </button>
@@ -261,7 +255,6 @@
                 size="icon-sm"
                 type="button"
                 aria-label="Invite maxleiter"
-                class="button"
               >
                 +
               </button>
@@ -283,7 +276,6 @@
                 size="icon-sm"
                 type="button"
                 aria-label="Invite evilrabbit"
-                class="button"
               >
                 +
               </button>
@@ -296,7 +288,7 @@
         data-example="item-header"
         class="item-workflow item-workflow-wide"
       >
-        <ul class="item-header-grid item-group">
+        <ul class="item-header-grid">
           <li variant="outline" class="item">
             <header class="item-header">
               <img src="../../images/avatars/01.png" alt="v0-1.5-sm" />
@@ -328,7 +320,7 @@
       </section>
 
       <section data-example="item-link" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li href="#documentation" class="item">
             <section>
               <h3>Visit our documentation</h3>
@@ -347,7 +339,7 @@
       </section>
 
       <section data-example="item-size" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li variant="outline" class="item">
             <figure variant="icon">□</figure>
             <section>
@@ -373,7 +365,7 @@
       </section>
 
       <section data-example="item-variant" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li class="item">
             <figure variant="icon">□</figure>
             <section>
@@ -399,23 +391,21 @@
       </section>
 
       <section data-example="muted-item-group" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li variant="muted" ng-repeat="number in [1,2,3]" class="item">
             <section>
               <h3>Item {{ number }}</h3>
               <p>Item in muted group.</p>
             </section>
             <menu>
-              <button variant="outline" size="sm" type="button" class="button">
-                Action
-              </button>
+              <button variant="outline" size="sm" type="button">Action</button>
             </menu>
           </li>
         </ul>
       </section>
 
       <section data-example="outline-item-group" class="item-workflow">
-        <ul class="item-group">
+        <ul>
           <li variant="outline" ng-repeat="number in [1,2,3]" class="item">
             <figure variant="icon">□</figure>
             <section>
@@ -430,7 +420,7 @@
         data-example="file-upload-list"
         class="item-workflow item-workflow-wide"
       >
-        <ul class="item-group">
+        <ul>
           <li
             size="xs"
             class="file-upload-item item"
@@ -452,7 +442,6 @@
                 value="{{ file.progress }}"
                 max="100"
                 aria-label="Upload progress for {{ file.name }}"
-                class="progress"
               ></progress>
             </section>
             <menu class="file-upload-time">{{ file.time }}</menu>
@@ -466,16 +455,14 @@
         dir="rtl"
         lang="ar"
       >
-        <ul class="item-group">
+        <ul>
           <li variant="outline" class="item">
             <section>
               <h3>عنصر أساسي</h3>
               <p>عنصر بسيط يحتوي على عنوان ووصف.</p>
             </section>
             <menu>
-              <button variant="outline" size="sm" type="button" class="button">
-                إجراء
-              </button>
+              <button variant="outline" size="sm" type="button">إجراء</button>
             </menu>
           </li>
           <li variant="outline" size="sm" href="#verified-rtl" class="item">

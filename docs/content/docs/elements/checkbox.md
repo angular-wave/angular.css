@@ -1,22 +1,17 @@
 ---
 title: checkbox
-category: 'form'
+category: "form"
 description: >
   Native checkbox control styled from native state.
 ---
 
-Use `class="checkbox"` on a native checkbox input. Native input state and
-AngularTS `ng-model` remain the source of truth.
+Use a native checkbox input. AngularCSS styles it directly; native input state
+and AngularTS `ng-model` remain the source of truth. Use `role="switch"` only
+when the checkbox needs switch semantics and presentation.
 
 ```html
 <div orientation="horizontal" class="field">
-  <input
-    id="terms"
-    name="terms"
-    type="checkbox"
-    ng-model="terms"
-    class="checkbox"
-  />
+  <input id="terms" name="terms" type="checkbox" ng-model="terms" />
   <label for="terms"> Accept terms </label>
 </div>
 ```
@@ -28,15 +23,15 @@ model.
 
 ## Example
 
-{{< example src="examples/components/checkbox.html" title="Checkbox example" height="420" >}}
+{{< example src="examples/components/checkbox.html" title="Checkbox example" height="420">}}
 
 ## States, group, and RTL
 
-{{< example src="examples/components/checkbox-workflows.html" title="Checkbox reference workflows" height="1200" >}}
+{{< example src="examples/components/checkbox-workflows.html" title="Checkbox reference workflows" height="1200">}}
 
 ## Table selection
 
-{{< example src="examples/components/checkbox-compositions.html" title="Checkbox table composition" height="420" >}}
+{{< example src="examples/components/checkbox-compositions.html" title="Checkbox table composition" height="420">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -50,7 +45,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.checkbox`
+- `input[type="checkbox"]:not([role="switch"])`
 
 ### Semantic structure
 

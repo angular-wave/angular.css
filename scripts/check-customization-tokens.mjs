@@ -57,6 +57,12 @@ if (generatedAfter !== generatedBefore) {
   );
 }
 
+if (/\.(?:dark|light)-theme\b/.test(generatedBefore)) {
+  throw new Error(
+    "Generated customization CSS must expose only the concise .light and .dark context selectors",
+  );
+}
+
 for (const variable of [
   "--background",
   "--spacing",
@@ -64,6 +70,7 @@ for (const variable of [
   "--leading-sm",
   "--shadow-md",
   "--radius",
+  "--overlay",
   "--size-control-md",
   "--focus-ring-width",
   "--motion-duration-default",
@@ -77,6 +84,9 @@ const authoredSources = cssFiles(resolve(repository, "src")).filter(
   (filename) =>
     filename !== resolve(repository, "src/preflight.css") &&
     !filename.startsWith(resolve(repository, "src/styles/generated")),
+);
+const componentSources = authoredSources.filter(
+  (filename) => filename !== resolve(repository, "src/styles/context.css"),
 );
 const tailwindPattern = /@(?:apply|custom-variant|theme)\b|tailwindcss|--tw-/;
 const coupledSources = authoredSources.filter((filename) =>
@@ -93,8 +103,24 @@ if (coupledSources.length > 0) {
 
 const driftPatterns = [
   {
+    description: "hard-coded font size",
+    pattern: /font-size:\s*(?:\d*\.)?\d+(?:px|rem)\b/,
+  },
+  {
+    description: "hard-coded line height",
+    pattern: /line-height:\s*(?:\d*\.)?\d+(?:px|rem)?\b/,
+  },
+  {
+    description: "hard-coded elevation shadow",
+    pattern: /box-shadow:\s*0\s+(?!0\b)-?\d+(?:\.\d+)?px\b/,
+  },
+  {
     description: "derived radius instead of a radius token",
-    pattern: /calc\(var\(--radius\) - [24]px\)/,
+    pattern: /calc\(var\(--radius\)\s*[-+*/]/,
+  },
+  {
+    description: "hard-coded nonzero radius",
+    pattern: /border-radius:\s*(?:\d*\.)?\d+(?:px|rem)\b/,
   },
   {
     description: "hard-coded fully rounded radius",
@@ -125,6 +151,19 @@ const customizationDrift = authoredSources.flatMap((filename) => {
         `${filename.slice(repository.length + 1)}: ${description}`,
     );
 });
+
+const hardCodedColors = componentSources.filter((filename) =>
+  /(?:background(?:-color)?|border(?:-color)?|color):\s*(?:#[0-9a-f]{3,8}\b|(?:rgb|hsl)a?\(|(?:black|white)\b)/i.test(
+    readFileSync(filename, "utf8"),
+  ),
+);
+if (hardCodedColors.length > 0) {
+  throw new Error(
+    `CSS source bypasses shared color tokens:\n${hardCodedColors
+      .map((filename) => `- ${filename.slice(repository.length + 1)}`)
+      .join("\n")}`,
+  );
+}
 
 if (customizationDrift.length > 0) {
   throw new Error(

@@ -1,8 +1,7 @@
 ---
 title: Testing
 weight: 40
-description:
-  Run static quality gates, component browser tests, and the complete
+description: Run static quality gates, component browser tests, and the complete
   documentation example suite.
 ---
 

@@ -1,4 +1,4 @@
-textarea.textarea {
+textarea {
   field-sizing: content;
   display: flex;
   width: 100%;
@@ -41,14 +41,13 @@ textarea.textarea {
   }
 }
 
-.dark textarea.textarea[aria-invalid="true"],
-.dark-theme textarea.textarea[aria-invalid="true"] {
+.dark textarea[aria-invalid="true"] {
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--error) 40%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  textarea.textarea {
+  textarea {
     transition-duration: var(--motion-duration-instant);
   }
 }

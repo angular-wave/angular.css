@@ -40,7 +40,7 @@
     padding: 0;
   }
 
-  :scope > :is(.sidebar, [ng-sidebar]) {
+  :scope > [ng-sidebar] {
     grid-column: 1;
     grid-row: 2;
     min-height: 0;
@@ -68,7 +68,7 @@
       display: none;
     }
 
-    :scope > :is(.sidebar, [ng-sidebar]) {
+    :scope > [ng-sidebar] {
       position: fixed;
       z-index: 10;
       inset-block: calc(var(--spacing) * 14) 0;

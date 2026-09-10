@@ -1,6 +1,12 @@
 import type {} from "@angular-wave/angular.ts";
 
-import { fitViewportRect, onDestroy, setOpenState } from "../../internal/dom";
+import {
+  fitViewportRect,
+  getDirection,
+  isDisabled,
+  onDestroy,
+  setOpenState,
+} from "../../internal/dom";
 import {
   bindSemanticSubmenus,
   getSemanticMenuItemRole,
@@ -27,11 +33,7 @@ const queryMenuItems = (panel: HTMLElement): HTMLElement[] =>
       return false;
     }
     const hiddenAncestor = item.closest<HTMLElement>("[hidden]");
-    return (
-      (!hiddenAncestor || hiddenAncestor === panel) &&
-      !item.hasAttribute("disabled") &&
-      item.getAttribute("aria-disabled") !== "true"
-    );
+    return (!hiddenAncestor || hiddenAncestor === panel) && !isDisabled(item);
   });
 
 export function dropdownMenuDirective(): ng.Directive {
@@ -43,20 +45,16 @@ export function dropdownMenuDirective(): ng.Directive {
 
       if (!button || !panel) return;
 
-      const getDirection = () =>
-        element.closest<HTMLElement>("[dir]")?.getAttribute("dir") === "rtl"
-          ? "rtl"
-          : "ltr";
       const cleanupSubmenus = bindSemanticSubmenus(
         element,
         "dropdown-menu",
-        getDirection,
+        () => getDirection(element),
       );
 
       const panelId = panel.id || `menu-${String(dropdownIdCounter++)}`;
       panel.id = panelId;
       if (!button.id) button.id = `dropdown-btn-${String(dropdownIdCounter++)}`;
-      button.setAttribute("aria-haspopup", "true");
+      button.setAttribute("aria-haspopup", "menu");
       button.setAttribute("aria-expanded", "false");
       button.setAttribute("aria-controls", panelId);
       panel.setAttribute("role", "menu");
@@ -107,7 +105,7 @@ export function dropdownMenuDirective(): ng.Directive {
             ? panel.offsetParent
             : document.documentElement;
         const containingRect = containingBlock.getBoundingClientRect();
-        const direction = getDirection();
+        const direction = getDirection(element);
         const side = panel.getAttribute("side") ?? "bottom";
         const align = panel.getAttribute("align") ?? "start";
         const offset = Number(panel.getAttribute("side-offset") ?? 8) || 0;
@@ -279,8 +277,7 @@ export function dropdownMenuDirective(): ng.Directive {
       panelSizeObserver.observe(panel);
 
       const handleButtonClick = () => {
-        if (button.disabled || button.getAttribute("aria-disabled") === "true")
-          return;
+        if (isDisabled(button)) return;
         toggle();
       };
 
@@ -292,11 +289,7 @@ export function dropdownMenuDirective(): ng.Directive {
         );
 
         if (!item || !panel.contains(item)) return;
-        if (
-          item.hasAttribute("disabled") ||
-          item.getAttribute("aria-disabled") === "true" ||
-          item.getAttribute("aria-haspopup") === "menu"
-        ) {
+        if (isDisabled(item) || item.getAttribute("aria-haspopup") === "menu") {
           return;
         }
 

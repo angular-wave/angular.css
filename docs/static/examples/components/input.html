@@ -13,35 +13,24 @@
   <body ng-app="angular.css" ng-cloak ng-init="search=''; status=''">
     <div class="stack">
       <label for="docs-input-search">Search</label>
-      <input
-        id="docs-input-search"
-        placeholder="Search"
-        ng-model="search"
-        class="input"
-      />
-      <div class="output">Value: {{ search ? search : "empty" }}</div>
+      <input id="docs-input-search" placeholder="Search" ng-model="search" />
+      <output class="output"> Value: {{ search ? search : "empty" }} </output>
 
       <label for="docs-input-compact">Content-sized</label>
-      <input id="docs-input-compact" value="Compact" class="input input-fit" />
+      <input id="docs-input-compact" value="Compact" size="7" />
 
       <label for="docs-input-disabled">Disabled</label>
-      <input
-        id="docs-input-disabled"
-        placeholder="Disabled"
-        disabled
-        class="input"
-      />
+      <input id="docs-input-disabled" placeholder="Disabled" disabled />
 
       <label for="docs-input-invalid">Invalid</label>
       <input
         id="docs-input-invalid"
         placeholder="Invalid"
         aria-invalid="true"
-        class="input"
       />
 
       <label for="docs-input-file">File</label>
-      <input id="docs-input-file" type="file" class="input" />
+      <input id="docs-input-file" type="file" />
     </div>
   </body>
 </html>

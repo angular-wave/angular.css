@@ -1,6 +1,6 @@
 ---
 title: alert-dialog
-category: 'overlay'
+category: "overlay"
 description: >
   Confirmation dialog structure
 ---
@@ -9,11 +9,11 @@ Use alert dialog parts for destructive or confirmation flows that need a clear
 action and cancel target.
 
 ```html
-<section class="alert-dialog">
+<section>
   <button commandfor="delete-dialog" command="show-modal">
     Delete project
   </button>
-  <dialog id="delete-dialog" closedby="closerequest">
+  <dialog id="delete-dialog" role="alertdialog" closedby="closerequest">
     <h2>Delete project?</h2>
   </dialog>
 </section>
@@ -21,11 +21,11 @@ action and cancel target.
 
 ## Example
 
-{{< example src="examples/components/alert-dialog.html" title="Alert dialog example" height="420" >}}
+{{< example src="examples/components/alert-dialog.html" title="Alert dialog example" height="420">}}
 
 ## Sizes And Composition
 
-{{< example src="examples/components/alert-dialog-workflows.html" title="Alert dialog sizes and composition" height="480" >}}
+{{< example src="examples/components/alert-dialog-workflows.html" title="Alert dialog sizes and composition" height="480">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -39,11 +39,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.alert-dialog`
+- `dialog[role="alertdialog"]`
 
 ### Semantic structure
 
-Use `.alert-dialog` as a composition wrapper containing a native invoker button and `dialog`. Close controls use `command=close`; semantic headers, figures, and footers need no anatomy classes or nested AngularCSS attributes.
+Use a native `dialog` with `role="alertdialog"` beside its invoker button. Close controls use `command=close`; semantic headers, figures, and footers need no anatomy classes or nested AngularCSS attributes.
 
 ## API
 
@@ -51,7 +51,8 @@ Use `.alert-dialog` as a composition wrapper containing a native invoker button 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
+| `role` | Authored | Explicit semantic role when native HTML does not provide one. |
+| `size` | Authored | Compact action layout: `sm`; omit for the default dialog layout. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

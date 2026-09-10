@@ -16,9 +16,7 @@
     ng-init="fontWeight='normal'; pageDirection='rtl'; bold=true; italic=true"
     data-example="toggle-group-demo toggle-group-disabled toggle-group-font-weight-selector toggle-group-outline toggle-group-rtl toggle-group-sizes toggle-group-spacing toggle-group-vertical"
   >
-    <main
-      class="component-state-workflows toggle-group-workflows visual-example"
-    >
+    <main class="toggle-group-workflows visual-example">
       <section aria-labelledby="toggle-format-heading">
         <header><h2 id="toggle-format-heading">Formatting</h2></header>
         <fieldset
@@ -176,7 +174,6 @@
             type="button"
             variant="outline"
             size="sm"
-            class="button"
             ng-click="pageDirection = pageDirection === 'rtl' ? 'ltr' : 'rtl'"
           >
             Change direction

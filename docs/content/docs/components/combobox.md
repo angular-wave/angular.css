@@ -1,6 +1,6 @@
 ---
 title: combobox
-category: 'form overlay'
+category: "form overlay"
 description: >
   Search input with selectable options
 ---
@@ -102,32 +102,31 @@ A combobox root requires one input and one options surface. The root directive i
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-activedescendant` | Output | ARIA relationship or state. |
-| `aria-autocomplete` | Input/output | ARIA relationship or state. |
-| `aria-controls` | Output | ARIA relationship or state. |
+| `aria-activedescendant` | Output | ID of the active option while focus remains on the composite control. |
+| `aria-autocomplete` | Input/output | How a text control presents completion suggestions. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-disabled` | Input/output | Semantic disabled state. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-haspopup` | Output | ARIA relationship or state. |
-| `aria-hidden` | Input/output | ARIA relationship or state. |
+| `aria-haspopup` | Output | Type of popup controlled by the trigger. |
+| `aria-hidden` | Input/output | Whether generated or collapsed content is hidden from assistive technology. |
 | `aria-invalid` | Input | Validation state exposed to assistive technology and CSS. |
 | `aria-label` | Input/output | Accessible name when visible text is insufficient. |
-| `aria-labelledby` | Output | ARIA relationship or state. |
-| `aria-multiselectable` | Output | ARIA relationship or state. |
-| `aria-orientation` | Output | ARIA relationship or state. |
+| `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
+| `aria-multiselectable` | Output | Whether the composite allows multiple selected items. |
+| `aria-orientation` | Output | Interaction axis exposed to assistive technology. |
 | `aria-selected` | Input/output | Selected item state. |
 | `auto-highlight` | Input | Highlights the first enabled result when the popup opens or filters change. |
-| `data-highlighted` | Output | Stable component state or styling hook. |
-| `data-value` | Input | Stable component state or styling hook. |
+| `data-highlighted` | Output | Current option highlighted for keyboard selection. |
+| `data-value` | Input | Application value reported when the corresponding option is selected. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `disabled` | Input | Disables native or component interaction. |
-| `hidden` | Input | Authored option or semantic HTML attribute observed by the directive. |
+| `hidden` | Input | Native visibility state observed when finding available items. |
 | `multiple` | Input | Keeps the popup open and reports selections for an application-owned collection. |
 | `open` | Input/output | Initial or externally synchronized disclosure state. |
 | `required` | Input | Marks a native form value as required. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |
 | `side` | Output | Physical placement: `left`, `top`, `bottom`, or `right`. |
 | `tabindex` | Output | Keyboard focus order for composite descendants. |
-| `type` | Input | Component or native behavior variant. |
 
 `Input` attributes are read from authored HTML. `Output` attributes are maintained by AngularCSS for CSS and testing. `Input/output` attributes may be authored for a controlled initial state and are then synchronized by the directive.
 

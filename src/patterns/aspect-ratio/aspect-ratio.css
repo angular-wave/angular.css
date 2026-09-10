@@ -1,18 +1,26 @@
-.aspect-ratio {
+figure[ratio] {
   position: relative;
   width: 100%;
   overflow: hidden;
   aspect-ratio: var(--ratio, 16 / 9);
 }
 
-:is(.aspect-ratio)[ratio="1 / 1"] {
+figure[ratio="1 / 1"] {
   --ratio: 1 / 1;
 }
 
-:is(.aspect-ratio)[ratio="9 / 16"] {
+figure[ratio="9 / 16"] {
   --ratio: 9 / 16;
 }
 
-:is(.aspect-ratio)[ratio="16 / 9"] {
+figure[ratio="16 / 9"] {
   --ratio: 16 / 9;
+}
+
+figure[ratio] > :is(img, video, iframe) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

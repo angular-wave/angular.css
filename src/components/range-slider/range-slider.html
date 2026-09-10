@@ -10,8 +10,13 @@
     <script src="/docs/static/js/angular-ts.umd.js"></script>
     <script src="/docs/static/js/angular-css.umd.js"></script>
   </head>
-  <body ng-app="angular.css" ng-cloak ng-init="minimum = 25; maximum = 75">
-    <main class="slider-demo visual-example">
+  <body
+    ng-app="angular.css"
+    ng-cloak
+    ng-init="minimum = 25; maximum = 75"
+    data-example="slider-demo"
+  >
+    <main class="visual-example">
       <header>
         <label id="price-range-label">Price range</label>
         <output>{{ minimum }}-{{ maximum }}</output>

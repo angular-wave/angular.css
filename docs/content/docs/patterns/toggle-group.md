@@ -1,6 +1,6 @@
 ---
 title: toggle-group
-category: 'action'
+category: "action"
 description: >
   Native radio or checkbox groups with a toggle-button presentation.
 ---
@@ -54,10 +54,10 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `orientation` | Authored | Layout direction: `horizontal` or `vertical`. |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
-| `spacing` | Authored | Spacing token for grouped controls. |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `orientation` | Authored | Group layout: `vertical`; omit for the horizontal layout. |
+| `size` | Authored | Control size: `sm` or `lg`; omit for the default size. |
+| `spacing` | Authored | Gap in spacing units: `1` or `2`; omit to join controls. |
+| `variant` | Authored | Control presentation: `outline`; omit for the default style. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

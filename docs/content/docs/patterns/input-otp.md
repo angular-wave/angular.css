@@ -1,6 +1,6 @@
 ---
 title: input-otp
-category: 'form'
+category: "form"
 description: >
   A native one-time-code input with a segmented visual treatment.
 ---
@@ -11,7 +11,6 @@ Use one native input. The browser owns editing, paste, autofill, and validation.
 <label for="code">One-time code</label>
 <input
   id="code"
-  class="input-otp"
   autocomplete="one-time-code"
   inputmode="numeric"
   pattern="[0-9]{6}"
@@ -22,7 +21,7 @@ Use one native input. The browser owns editing, paste, autofill, and validation.
 
 ## Example
 
-{{< example src="examples/components/input-otp.html" title="Input OTP example" height="220" >}}
+{{< example src="examples/components/input-otp.html" title="Input OTP example" height="220">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -36,11 +35,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.input-otp`
+- `input[autocomplete="one-time-code"]`
 
 ### Semantic structure
 
-Use semantic HTML with the root styling selector above. Native elements provide the structure; the stylesheet supplies presentation.
+Use one native `input` with `autocomplete="one-time-code"`. The standard autocomplete purpose identifies the segmented one-time-code presentation; input mode, length, and pattern remain native attributes.
 
 ## API
 
@@ -49,9 +48,10 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `aria-invalid` | Authored | Validation state exposed to assistive technology and CSS. |
+| `group` | Authored | Optional visual grouping size. Use `3` to separate a six-character code into two groups. |
 | `maxlength` | Authored | Maximum native text length. |
 | `pattern` | Authored | Native regular-expression validation constraint. |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
+| `size` | Authored | Native visible-character count; AngularCSS supports four or six code cells. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 
@@ -59,7 +59,7 @@ Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS d
 
 | Variable | Purpose |
 | --- | --- |
-| `--otp-cell-size` | Width of one visual code cell; defaults to ten spacing units. |
+| `--otp-cell-size` | Width of one visual code cell; defaults to eight spacing units. |
 
 ### DOM events
 

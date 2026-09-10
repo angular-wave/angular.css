@@ -1,23 +1,22 @@
 ---
 title: kbd
-category: 'text'
+category: "text"
 description: >
   Keyboard shortcut hint
 ---
 
-Use native `kbd` elements with `class="kbd"`. Group shortcuts with
-`class="kbd-group"`.
+Use native `kbd` elements. Place related keys next to each other in a `span`.
 
 ```html
-<span class="kbd-group">
-  <kbd class="kbd">Ctrl</kbd>
-  <kbd class="kbd">K</kbd>
+<span>
+  <kbd>Ctrl</kbd>
+  <kbd>K</kbd>
 </span>
 ```
 
 ## Example
 
-{{< example src="examples/components/kbd.html" title="Kbd example" height="150" >}}
+{{< example src="examples/components/kbd.html" title="Kbd example" height="150">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -31,7 +30,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.kbd`
+- `kbd`
 
 ### Semantic structure
 

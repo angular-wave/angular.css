@@ -1,6 +1,6 @@
 ---
 title: spinner
-category: 'feedback'
+category: "feedback"
 description: >
   Loading status indicator
 ---
@@ -46,7 +46,7 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
+| `size` | Authored | Spinner size: `sm` or `lg`; omit for the default size. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

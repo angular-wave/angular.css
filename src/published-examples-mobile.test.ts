@@ -64,10 +64,26 @@ for (const example of examples) {
               (typeof element.className === "string" && element.className) ||
               element.tagName.toLowerCase(),
           }));
+        const roleClasses = Array.from(
+          document.querySelectorAll<HTMLElement>("[role][class]"),
+        )
+          .map((element) => ({
+            classes: Array.from(element.classList).filter(
+              (className) => !className.startsWith("ng-"),
+            ),
+            role: element.getAttribute("role") ?? "",
+            tag: element.tagName.toLowerCase(),
+          }))
+          .filter(({ classes }) => classes.length > 0)
+          .map(
+            ({ classes, role, tag }) =>
+              `${tag}[role="${role}"].${classes.join(".")}`,
+          );
 
         return {
           clipped,
           documentWidth: document.documentElement.scrollWidth,
+          roleClasses,
           viewportWidth,
         };
       });
@@ -79,6 +95,10 @@ for (const example of examples) {
       expect(
         metrics.clipped,
         `${example} visible content clipped at ${width}px`,
+      ).toEqual([]);
+      expect(
+        metrics.roleClasses,
+        `${example} role-bearing elements must not need authored classes at ${width}px`,
       ).toEqual([]);
     }
   });

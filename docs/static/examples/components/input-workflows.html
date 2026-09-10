@@ -21,7 +21,6 @@
           ng-model="inputState.basic"
           placeholder="Enter text"
           aria-label="Basic input"
-          class="input"
         />
       </section>
 
@@ -33,7 +32,6 @@
             type="password"
             ng-model="inputState.apiKey"
             placeholder="sk-..."
-            class="input"
           />
           <p>Your API key is encrypted and stored securely.</p>
         </div>
@@ -47,7 +45,6 @@
             type="email"
             placeholder="Email"
             disabled
-            class="input"
           />
           <p>This field is currently disabled.</p>
         </div>
@@ -60,7 +57,6 @@
             id="input-invalid-workflow"
             placeholder="Error"
             aria-invalid="true"
-            class="input"
           />
           <p>This field contains validation errors.</p>
         </div>
@@ -76,7 +72,6 @@
             ng-model="inputState.required"
             placeholder="This field is required"
             required
-            class="input"
           />
           <p>This field must be filled out.</p>
         </div>
@@ -85,7 +80,7 @@
       <section data-example="input-file" class="input-workflow">
         <div class="field">
           <label for="input-picture">Picture</label>
-          <input id="input-picture" type="file" class="input" />
+          <input id="input-picture" type="file" />
           <p>Select a picture to upload.</p>
         </div>
       </section>
@@ -97,7 +92,6 @@
             id="input-field-username"
             ng-model="inputState.username"
             placeholder="Enter your username"
-            class="input"
           />
           <p>Choose a unique username for your account.</p>
         </div>
@@ -115,7 +109,6 @@
             id="input-webhook"
             type="url"
             placeholder="https://api.example.com/webhook"
-            class="input"
           />
         </div>
       </section>
@@ -131,7 +124,6 @@
               id="input-first-name"
               ng-model="inputState.firstName"
               placeholder="Jordan"
-              class="input"
             />
           </div>
           <div class="field">
@@ -140,7 +132,6 @@
               id="input-last-name"
               ng-model="inputState.lastName"
               placeholder="Lee"
-              class="input"
             />
           </div>
         </div>
@@ -156,12 +147,10 @@
             ng-model="inputState.search"
             placeholder="Search..."
             aria-label="Inline search"
-            class="input"
           />
           <button
             type="button"
             ng-click="inputState.message='Search '+inputState.search"
-            class="button"
           >
             Search
           </button>
@@ -171,16 +160,14 @@
       <section data-example="input-button-group" class="input-workflow">
         <div class="field">
           <label for="input-button-group-workflow">Search</label>
-          <div class="button-group">
+          <div role="group">
             <input
               id="input-button-group-workflow"
               placeholder="Type to search..."
-              class="input"
             /><button
               variant="outline"
               type="button"
               ng-click="inputState.message='Button group search'"
-              class="button"
             >
               Search
             </button>
@@ -196,7 +183,6 @@
               id="input-group-url"
               ng-model="inputState.website"
               placeholder="example.com"
-              class="input"
             />
             <div>https://</div>
             <div align="inline-end" aria-label="Website URL information">ⓘ</div>
@@ -216,7 +202,6 @@
               id="fieldgroup-name"
               ng-model="inputState.name"
               placeholder="Jordan Lee"
-              class="input"
             />
           </div>
           <div class="field">
@@ -226,7 +211,6 @@
               type="email"
               ng-model="inputState.email"
               placeholder="name@example.com"
-              class="input"
             />
             <p>We'll send updates to this address.</p>
           </div>
@@ -235,10 +219,9 @@
               type="reset"
               variant="outline"
               ng-click="inputState.name='';inputState.email=''"
-              class="button"
             >
               Reset</button
-            ><button type="submit" class="button">Submit</button>
+            ><button type="submit">Submit</button>
           </div>
         </div>
       </form>
@@ -256,7 +239,6 @@
               ng-model="inputState.formName"
               placeholder="Evil Rabbit"
               required
-              class="input"
             />
           </div>
           <div class="field">
@@ -266,7 +248,6 @@
               type="email"
               ng-model="inputState.formEmail"
               placeholder="john@example.com"
-              class="input"
             />
             <p>We'll never share your email with anyone.</p>
           </div>
@@ -278,7 +259,6 @@
                 type="tel"
                 ng-model="inputState.phone"
                 placeholder="+1 (555) 123-4567"
-                class="input"
               />
             </div>
             <div class="field">
@@ -296,7 +276,6 @@
               id="form-address"
               ng-model="inputState.address"
               placeholder="123 Main St"
-              class="input"
             />
           </div>
           <div orientation="horizontal" class="input-form-actions field">
@@ -304,10 +283,9 @@
               type="button"
               variant="outline"
               ng-click="inputState.message='Cancelled'"
-              class="button"
             >
               Cancel</button
-            ><button type="submit" class="button">Submit</button>
+            ><button type="submit">Submit</button>
           </div>
         </div>
       </form>
@@ -325,7 +303,6 @@
             type="password"
             dir="rtl"
             placeholder="sk-..."
-            class="input"
           />
           <p>مفتاح API الخاص بك مشفر ومخزن بأمان.</p>
         </div>

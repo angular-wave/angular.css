@@ -1,6 +1,11 @@
 import { expect, test, type Page } from "@playwright/test";
 
-import { catalogNames, catalogPolicy } from "../scripts/component-policy";
+import { catalogReferenceApi } from "../scripts/catalog-api";
+import {
+  catalogNames,
+  catalogPolicy,
+  type CatalogEntryName,
+} from "../scripts/component-policy";
 
 type Contract = (page: Page) => Promise<void>;
 
@@ -9,8 +14,10 @@ const elementNames = new Set<string>(
   catalogNames.filter((name) => !catalogPolicy[name].runtime),
 );
 
-const slot = (page: Page, name: string) =>
-  page.locator(`.${name}, [ng-${name}]`);
+const slot = (page: Page, name: CatalogEntryName) =>
+  page.locator(
+    catalogReferenceApi[name]?.rootSelector ?? `.${name}, [ng-${name}]`,
+  );
 
 const assertBuiltArtifactContract = async (
   page: Page,
@@ -29,24 +36,23 @@ const assertBuiltArtifactContract = async (
   expect(sourceRequests).toEqual([]);
 };
 
-const assertVisualContract = async (page: Page, component: string) => {
-  const semanticRootSelectors = new Map([
-    ["label", "label"],
-    ["range", 'input[type="range"]'],
-    ["select", "select"],
-  ]);
+const assertVisualContract = async (
+  page: Page,
+  component: CatalogEntryName,
+) => {
   const rootSelector =
-    semanticRootSelectors.get(component) ??
     (elementNames.has(component)
-      ? `.${component}`
-      : component === "resizable"
-        ? "[ng-resizable-panel-group]"
-        : component === "toast"
-          ? "[ng-toast]"
-          : `[ng-${component}]`);
+      ? (catalogReferenceApi[component]?.rootSelector ?? `.${component}`)
+      : undefined) ??
+    (component === "resizable"
+      ? "[ng-resizable-panel-group]"
+      : component === "toast"
+        ? "[ng-toast]"
+        : `[ng-${component}]`);
   const result = await page.evaluate(
     ({ rootSelector }) => {
       const root = document.querySelector<HTMLElement>(rootSelector);
+      if (root instanceof HTMLDialogElement && !root.open) root.showModal();
       const angularSheet = Array.from(document.styleSheets).find((sheet) =>
         sheet.href?.endsWith("/css/angular.css"),
       );
@@ -75,6 +81,21 @@ const assertVisualContract = async (page: Page, component: string) => {
               ?.getBoundingClientRect();
       const bodyStyle = getComputedStyle(document.body);
       const rootStyle = root ? getComputedStyle(root) : null;
+      const roleClasses = Array.from(
+        document.querySelectorAll<HTMLElement>("[role][class]"),
+      )
+        .map((element) => ({
+          classes: Array.from(element.classList).filter(
+            (className) => !className.startsWith("ng-"),
+          ),
+          role: element.getAttribute("role") ?? "",
+          tag: element.tagName.toLowerCase(),
+        }))
+        .filter(({ classes }) => classes.length > 0)
+        .map(
+          ({ classes, role, tag }) =>
+            `${tag}[role="${role}"].${classes.join(".")}`,
+        );
       const clipped = Array.from(
         document.body.querySelectorAll<HTMLElement>("*"),
       )
@@ -124,6 +145,7 @@ const assertVisualContract = async (page: Page, component: string) => {
         componentRuleApplied: Boolean(
           root && angularSheet && matchesRule(angularSheet.cssRules),
         ),
+        roleClasses,
         rootBox: renderedBox
           ? { height: renderedBox.height, width: renderedBox.width }
           : null,
@@ -136,6 +158,10 @@ const assertVisualContract = async (page: Page, component: string) => {
   expect(result.angularSheetLoaded).toBe(true);
   expect(result.bodyFontSize).toBe("14px");
   expect(result.componentRuleApplied).toBe(true);
+  expect(
+    result.roleClasses,
+    `${component} role-bearing elements must not need authored classes`,
+  ).toEqual([]);
   expect(result.rootBox, `${component} root must render`).not.toBeNull();
   expect(result.rootBox!.width, `${component} root width`).toBeGreaterThan(0);
   expect(result.rootBox!.height, `${component} root height`).toBeGreaterThan(0);
@@ -148,7 +174,7 @@ const assertVisualContract = async (page: Page, component: string) => {
 
 const contracts: Record<string, Contract> = {
   accordion: async (page) => {
-    const root = page.locator(".accordion");
+    const root = page.locator("section[aria-label]:has(> details)");
     const firstItem = root.locator("details").first();
     const trigger = firstItem.locator("summary");
     await expect(root).toBeVisible();
@@ -163,22 +189,22 @@ const contracts: Record<string, Contract> = {
     ).toBeVisible();
   },
   alert: async (page) => {
-    await expect(page.locator(".alert")).toHaveCount(2);
+    await expect(page.locator('[role="alert"]')).toHaveCount(2);
     expect(
       await page
-        .locator(".alert")
+        .locator('[role="alert"]')
         .evaluateAll((alerts) =>
           alerts.map((alert) => alert.getAttribute("role")),
         ),
-    ).toEqual([null, null]);
-    await expect(page.locator(".alert > h2")).toHaveCount(2);
-    await expect(page.locator(".alert > p")).toHaveCount(2);
-    await expect(page.locator(".alert > svg")).toHaveCount(2);
+    ).toEqual(["alert", "alert"]);
+    await expect(page.locator('[role="alert"] > h2')).toHaveCount(2);
+    await expect(page.locator('[role="alert"] > p')).toHaveCount(2);
+    await expect(page.locator('[role="alert"] > svg')).toHaveCount(2);
   },
   "alert-dialog": async (page) => {
-    const root = page.locator(".alert-dialog");
+    const content = page.getByRole("alertdialog", { includeHidden: true });
+    const root = content.locator("..");
     const trigger = root.locator(":scope > button:first-child");
-    const content = root.locator(":scope > dialog");
     await expect(trigger).toBeVisible();
     await expect(content).toBeHidden();
     await expect(trigger).toHaveAttribute(
@@ -199,7 +225,7 @@ const contracts: Record<string, Contract> = {
     await expect(content).toBeHidden();
     await expect(trigger).toBeFocused();
     await trigger.click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("alertdialog")).toBeVisible();
     await page.getByRole("button", { name: "Continue" }).click();
     await expect(content).toBeHidden();
   },
@@ -216,7 +242,9 @@ const contracts: Record<string, Contract> = {
     await expect(page.locator('.avatar[aria-label="Jane Doe"]')).toContainText(
       "JD",
     );
-    await expect(page.locator(".avatar-group > output")).toBeVisible();
+    await expect(
+      page.locator(":is(div, span):has(> .avatar + .avatar) > output"),
+    ).toBeVisible();
     expect(
       await avatars.evaluateAll((items) =>
         items.map((item) => getComputedStyle(item).width),
@@ -251,7 +279,7 @@ const contracts: Record<string, Contract> = {
       /breadcrumb/i,
     );
     await expect(
-      page.locator('.breadcrumb [aria-current="page"]'),
+      page.locator('nav > ol [aria-current="page"]'),
     ).toHaveAttribute("aria-current", "page");
   },
   button: async (page) => {
@@ -268,9 +296,9 @@ const contracts: Record<string, Contract> = {
   },
   "button-group": async (page) => {
     const copy = page.getByRole("button", { name: "Copy" });
-    const separators = page.locator(".button-group > hr.separator");
+    const separators = page.locator('[role="group"] > hr');
     const verticalSeparators = page.locator(
-      '.button-group > hr.separator[aria-orientation="vertical"]',
+      '[role="group"] > hr[aria-orientation="vertical"]',
     );
     await expect(slot(page, "button-group")).toHaveCount(6);
     await expect(separators).toHaveCount(3);
@@ -327,8 +355,10 @@ const contracts: Record<string, Contract> = {
   },
   checkbox: async (page) => {
     const checkbox = page.locator("#terms-checkbox");
-    await expect(checkbox).toHaveClass(/\bcheckbox\b/);
-    await expect(page.locator(".checkbox")).toHaveCount(4);
+    await expect(checkbox).toHaveAttribute("type", "checkbox");
+    await expect(
+      page.locator('input[type="checkbox"]:not([role="switch"])'),
+    ).toHaveCount(4);
     await checkbox.check();
     await expect(page.getByRole("status")).toContainText("Terms accepted");
     await expect(checkbox).toBeChecked();
@@ -366,7 +396,9 @@ const contracts: Record<string, Contract> = {
     await basicInput.press("ArrowDown");
     await basicInput.press("Enter");
     await expect(basicInput).toHaveValue("SvelteKit");
-    await expect(page.locator(".output")).toContainText("Basic: SvelteKit");
+    await expect(page.locator('output[aria-live="polite"]')).toContainText(
+      "Basic: SvelteKit",
+    );
 
     const automaticInput = automatic.getByRole("combobox");
     await automaticInput.focus();
@@ -390,7 +422,9 @@ const contracts: Record<string, Contract> = {
     );
     await expect(input).toHaveAttribute("aria-activedescendant", /.+/);
     await input.press("Enter");
-    await expect(page.locator(".output")).toContainText("Selected: Settings");
+    await expect(page.locator('output[aria-live="polite"]')).toContainText(
+      "Selected: Settings",
+    );
   },
   "context-menu": async (page) => {
     const root = page.locator("[ng-context-menu]");
@@ -542,7 +576,7 @@ const contracts: Record<string, Contract> = {
   },
   kbd: async (page) => {
     await expect(page.locator("kbd")).not.toHaveCount(0);
-    await expect(slot(page, "kbd").first()).toBeVisible();
+    await expect(page.locator("kbd").first()).toBeVisible();
   },
   label: async (page) => {
     await page.getByText("Email", { exact: true }).click();
@@ -612,7 +646,9 @@ const contracts: Record<string, Contract> = {
   },
   popover: async (page) => {
     const trigger = page.getByRole("button", { name: "Open popover" });
-    const content = page.locator(".popover > [popover]");
+    const content = page.locator(
+      "span:has(> [popovertarget] ~ [popover]) > [popover]",
+    );
     const contentId = await content.getAttribute("id");
     if (!contentId) throw new Error("Popover content requires an id");
     await expect(trigger).toHaveAttribute("popovertarget", contentId);
@@ -635,9 +671,13 @@ const contracts: Record<string, Contract> = {
   },
   "radio-group": async (page) => {
     const compact = page.locator("#density-compact");
-    await expect(slot(page, "radio-group")).toBeVisible();
+    await expect(
+      page.locator('fieldset:has(input[type="radio"]):not(.toggle-group)'),
+    ).toBeVisible();
     await compact.check();
-    await expect(page.locator(".output")).toContainText("compact");
+    await expect(page.locator('output[aria-live="polite"]')).toContainText(
+      "compact",
+    );
     await expect(compact).toBeChecked();
     expect(
       await compact.evaluate(
@@ -696,7 +736,7 @@ const contracts: Record<string, Contract> = {
       "aria-orientation",
     );
     await expect(
-      page.locator('.separator[aria-orientation="vertical"]'),
+      page.locator('hr[aria-orientation="vertical"]'),
     ).not.toHaveCount(0);
   },
   sheet: async (page) => {
@@ -777,13 +817,15 @@ const contracts: Record<string, Contract> = {
   switch: async (page) => {
     const control = page.locator("#airplane-mode");
     await control.check();
-    await expect(page.locator(".output")).toContainText("Mode enabled: true");
-    await expect(control).toHaveRole("checkbox");
+    await expect(page.locator('output[aria-live="polite"]')).toContainText(
+      "Mode enabled: true",
+    );
+    await expect(control).toHaveRole("switch");
   },
   table: async (page) => {
     await expect(page.getByRole("table")).toBeVisible();
     await expect(page.getByRole("row")).not.toHaveCount(0);
-    await expect(page.locator(".table caption")).toBeVisible();
+    await expect(page.locator("table caption")).toBeVisible();
   },
   tabs: async (page) => {
     const analytics = page.getByRole("tab", { name: "Analytics" });
@@ -844,7 +886,7 @@ const contracts: Record<string, Contract> = {
     await expect(trigger).toContainText("2026-09-12");
   },
   "description-list": async (page) => {
-    const list = page.locator("dl.description-list");
+    const list = page.locator("dl:has(> div > dt):has(> div > dd)");
     await expect(list.locator("dt")).toHaveCount(4);
     await expect(list.locator("dd")).toHaveCount(4);
   },
@@ -870,7 +912,7 @@ const contracts: Record<string, Contract> = {
   },
   "form-layout": async (page) => {
     await page.getByRole("button", { name: "Create customer" }).click();
-    await expect(page.locator(".validation-summary")).toBeVisible();
+    await expect(page.getByRole("alert")).toBeVisible();
     await page.getByLabel("Customer name").fill("Analytical Engines Ltd");
     await page.getByRole("button", { name: "Create customer" }).click();
     await expect(page.getByText("Customer is ready to save.")).toBeVisible();
@@ -886,7 +928,9 @@ const contracts: Record<string, Contract> = {
     ).toBeVisible();
   },
   stepper: async (page) => {
-    await expect(page.locator(".stepper li")).toHaveCount(4);
+    await expect(page.locator('nav:has([aria-current="step"]) li')).toHaveCount(
+      4,
+    );
     await expect(page.locator('[aria-current="step"]')).toHaveText("Contacts");
   },
   toolbar: async (page) => {
@@ -906,8 +950,7 @@ const contracts: Record<string, Contract> = {
     await expect(tree.locator('[data-value="fulfillment"]')).toBeFocused();
   },
   "validation-summary": async (page) => {
-    const summary = page.locator(".validation-summary");
-    await expect(summary).toHaveAttribute("aria-live", "assertive");
+    const summary = page.getByRole("alert");
     await expect(summary.locator("a")).toHaveCount(2);
     await summary.getByRole("link", { name: "Enter a customer name." }).click();
     await expect(page).toHaveURL(/#customer-name$/);

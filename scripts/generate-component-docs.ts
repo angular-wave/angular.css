@@ -187,7 +187,7 @@ const behaviorByComponent: Record<string, string> = {
   "hover-card":
     "The directive owns delayed pointer and focus disclosure, physical side placement, Escape closure, and synchronized open state. It is non-modal and does not trap focus. Applications own preview content and may control the concise authored `open` attribute.",
   input:
-    "Input is a styling-only native control selected by `.input`. AngularTS and the browser own value, events, model synchronization, validation, disabled and required state, and form submission. AngularCSS registers no input directive.",
+    "Input is a native control styled directly by element and type. AngularTS and the browser own value, events, model synchronization, validation, disabled and required state, and form submission. AngularCSS registers no input directive.",
   "input-otp":
     "Input OTP is one styling-only native `input`. The browser owns typing, editing, paste, password-manager autofill, `autocomplete=one-time-code`, input mode, length, pattern validation, and form submission; AngularTS `ng-model` owns application state. AngularCSS registers no input-otp directive.",
   menubar:
@@ -358,6 +358,7 @@ const composedStateSlotsByComponent: Record<string, string[]> = {
 };
 
 const readAttributesByComponent: Record<string, string[]> = {
+  calendar: ["dir"],
   carousel: [
     "align",
     "autoplay",
@@ -397,9 +398,11 @@ const readAttributesByComponent: Record<string, string[]> = {
     "side-offset",
   ],
   dialog: ["dir"],
+  "dropdown-menu": ["dir"],
   drawer: ["dir", "side"],
   sheet: ["dir", "side"],
   "hover-card": ["close-delay", "open-delay"],
+  menubar: ["dir"],
   "navigation-menu": ["align", "dir", "disabled"],
   pagination: ["aria-current", "aria-disabled", "dir"],
   popover: ["align", "side", "popover", "popovertarget"],
@@ -423,6 +426,8 @@ const readAttributesByComponent: Record<string, string[]> = {
     "orientation",
   ],
   select: ["aria-invalid", "dir", "disabled", "multiple", "name", "required"],
+  sidebar: ["aria-current"],
+  tabs: ["dir"],
   tooltip: ["side"],
   toolbar: ["aria-disabled", "dir", "disabled", "hidden", "orientation"],
   tree: [
@@ -437,40 +442,40 @@ const readAttributesByComponent: Record<string, string[]> = {
 };
 
 const writtenAttributesByComponent: Record<string, string[]> = {
-  sidebar: [
-    "aria-controls",
-    "aria-current",
-    "aria-expanded",
-    "aria-hidden",
-    "aria-labelledby",
-    "collapsible",
-    "collapsed",
-    "data-variant",
-    "dir",
-    "role",
-    "side",
-    "type",
-    "variant",
-  ],
+  sidebar: ["collapsible", "collapsed", "inert", "side", "variant"],
   toolbar: ["aria-disabled", "aria-orientation", "role", "tabindex"],
   tree: [
     "aria-disabled",
     "aria-expanded",
     "aria-labelledby",
     "aria-selected",
-    "id",
     "role",
     "tabindex",
   ],
 };
 
+const incidentalAttributesByComponent: Partial<
+  Record<(typeof catalogNames)[number], readonly string[]>
+> = {
+  combobox: ["type"],
+  sidebar: ["type"],
+};
+
+const isPublicAttribute = (
+  component: (typeof catalogNames)[number],
+  attribute: string,
+): boolean =>
+  !attribute.startsWith("ng-") &&
+  attribute !== "data-change" &&
+  !incidentalAttributesByComponent[component]?.includes(attribute);
+
 const slotGuidanceByComponent: Record<string, string> = {
   avatar:
-    "Apply `.avatar` to a wrapper containing either an image or authored fallback content. Badges are optional. Use `.avatar-group` for several avatars and `.avatar-group-count` for a remaining count.",
+    "Apply `.avatar` to a wrapper containing either an image or authored fallback content. Badges are optional. Place adjacent avatars and a native `output` for the remaining count in one `div` or `span`; AngularCSS recognizes that group from its structure.",
   "alert-dialog":
-    "Use `.alert-dialog` as a composition wrapper containing a native invoker button and `dialog`. Close controls use `command=close`; semantic headers, figures, and footers need no anatomy classes or nested AngularCSS attributes.",
+    'Use a native `dialog` with `role="alertdialog"` beside its invoker button. Close controls use `command=close`; semantic headers, figures, and footers need no anatomy classes or nested AngularCSS attributes.',
   accordion:
-    "Use `.accordion` around direct `details` children. Each item requires a direct `summary` followed by authored content. Apply the same `name` to sibling details for exclusive disclosure.",
+    "Use an accessibly named `section` around direct `details` children. Each item requires a direct `summary` followed by authored content. Apply the same `name` to sibling details for exclusive disclosure.",
   carousel:
     "The content viewport and its direct track child are required. Items must be direct track children. Navigation controls and dots are optional.",
   chart:
@@ -502,13 +507,15 @@ const slotGuidanceByComponent: Record<string, string> = {
   "navigation-menu":
     "Use a native `nav` containing one direct list. Each list item may contain either a native link or a native button trigger followed by a semantic section. The root directive needs no child directives or anatomy classes.",
   pagination:
-    "Use a native `nav` containing a `ul` or `ol` with direct `li` children. Page, previous, and next controls remain native links. Ellipsis is optional. Compose rows-per-page controls beside Pagination with existing native form components; Pagination does not own that model.",
+    "Apply `.pagination` to a native `nav` containing a `ul` or `ol` with direct `li` children. The class distinguishes Pagination from other navigation landmarks; page, previous, and next controls remain native links. Ellipsis is optional. Compose rows-per-page controls beside Pagination with existing native form components; Pagination does not own that model.",
   popover:
     "Connect a native button's `popovertarget` to one element with the matching `id` and `popover`. Header, title, and description selectors are optional styling hooks. Use native form controls inside the content; AngularTS owns their values and validation.",
   progress:
-    "Use a native `progress.progress` element. For a visible label and value, compose it with native `label` and `output` elements inside `.progress-group`.",
+    "Use a native `progress` element. For a visible label and value, place direct native `label`, `output`, and `progress` children in one `div`; AngularCSS recognizes that semantic structure without another class.",
   "radio-group":
-    'Use `fieldset.radio-group` with a native `legend`. Place labeled `input type="radio"` controls inside it and give related controls the same `name`.',
+    'Use a native `fieldset` with a `legend`. Place labeled `input type="radio"` controls inside it and give related controls the same `name`. AngularCSS styles the fieldset from that semantic structure.',
+  "input-otp":
+    'Use one native `input` with `autocomplete="one-time-code"`. The standard autocomplete purpose identifies the segmented one-time-code presentation; input mode, length, and pattern remain native attributes.',
   resizable:
     "Alternate direct `.resizable-panel` and `.resizable-handle` children inside each panel group. The root directive inspects those children; no child directives are required. Nested groups belong inside a panel.",
   select:
@@ -518,26 +525,26 @@ const slotGuidanceByComponent: Record<string, string> = {
   "application-shell":
     "Use one `.application-shell` containing a direct semantic header, an existing Sidebar, and a direct `main` landmark. Existing components keep their own root selectors; no shell part classes are required.",
   "data-table":
-    "Use `.data-table` on a section containing a semantic header, a `figure` with `table.table`, and an optional footer. Compose Filter Bar, Pagination, Checkbox, Button, Badge, Empty, Skeleton, and Progress without data-table part classes.",
+    "Use `.data-table` on a section containing a semantic header, a `figure` with a native `table`, and an optional footer. Compose Filter Bar, Pagination, Checkbox, Button, Badge, Empty, Skeleton, and Progress without data-table part classes.",
   "date-picker":
     "Use `.date-picker` around a visible label and the existing Popover and Calendar roots. The trigger may display an AngularTS-formatted value; no date-picker part classes are required.",
   "description-list":
-    "Apply `.description-list` to a native `dl`. Wrap each related `dt` and `dd` pair in a direct `div` so rows adapt without extra part classes.",
+    "Use a native `dl` and wrap each related `dt` and `dd` group in a direct `div` so rows adapt without any component or part classes.",
   "file-upload":
-    "Use `.file-upload` on a semantic section with a native file input inside its label. Optional direct `ul`, native `progress`, and `output` elements present application-owned queue and transfer state.",
+    "Use a semantic section with a direct label containing a native file input. Optional direct `ul`, native `progress`, and `output` elements present application-owned queue and transfer state without component or part classes.",
   "filter-bar":
-    "Apply `.filter-bar` to a native form. Put labeled controls in a direct fieldset and submit or reset actions in a direct menu; reuse existing control classes.",
+    'Use `role="search"` on a native form with a direct fieldset followed by a direct action menu. Put labeled controls in the fieldset and submit or reset actions in the menu.',
   "form-layout":
     "Apply `.form-layout` to a native form containing semantic headers, fieldsets, Field patterns, an optional Validation Summary, and a footer. No form-layout part classes are required.",
   "master-detail":
     "Apply `.master-detail` and `ng-resizable-panel-group` to the same root. Use two direct sections separated by a labeled `hr`; place semantic navigation in the first and record content in the second.",
   stepper:
-    "Apply `.stepper` to a native `nav` containing one direct ordered list. Each item contains a link or text span, and the current item uses `aria-current=step`.",
+    "Use a native `nav` containing one direct ordered list. Each item contains a link or text span, and `aria-current=step` on the current item identifies the Stepper without a class.",
   toolbar:
-    "Apply `ng-toolbar` to a semantic `menu` or container with an accessible name. Author direct native buttons or links and optional direct separators; no child directives or toolbar part classes are required.",
+    'Apply `ng-toolbar` to a semantic `menu` or container with an accessible name. Use `aria-orientation="vertical"` for a vertical toolbar. Author direct native buttons or links and optional direct separators; no child directives or toolbar part classes are required.',
   tree: "Apply `ng-tree` to a native `ul` or `ol`. Each direct or nested `li` contains one direct text `span` followed by an optional nested list; no child directives or tree part classes are required.",
   "validation-summary":
-    "Apply `.validation-summary` to a semantic `aside` containing a heading and a list of links to invalid controls. No part classes are required.",
+    'Use `role="alert"` on a semantic `aside` containing a direct header followed by a list of links to invalid controls. No classes or part markers are required.',
 };
 
 const attributeDescription = (
@@ -546,12 +553,33 @@ const attributeDescription = (
   stylingOnly = false,
 ): string => {
   const descriptions: Record<string, string> = {
+    "aria-activedescendant":
+      "ID of the active option while focus remains on the composite control.",
+    "aria-atomic":
+      "Whether an assistive technology announces the entire updated region.",
+    "aria-autocomplete": "How a text control presents completion suggestions.",
+    "aria-controls": "ID of the element controlled by a trigger.",
     "aria-current": "Current item or date state.",
     "aria-disabled": "Semantic disabled state.",
+    "aria-describedby":
+      "ID of the element that supplies the accessible description.",
     "aria-expanded": "Open or expanded state exposed to assistive technology.",
+    "aria-hidden":
+      "Whether generated or collapsed content is hidden from assistive technology.",
+    "aria-haspopup": "Type of popup controlled by the trigger.",
     "aria-invalid": "Validation state exposed to assistive technology and CSS.",
     "aria-label": "Accessible name when visible text is insufficient.",
+    "aria-labelledby": "ID of the element that supplies the accessible name.",
+    "aria-live": "Announcement priority for updates to a live region.",
+    "aria-multiselectable":
+      "Whether the composite allows multiple selected items.",
+    "aria-orientation": "Interaction axis exposed to assistive technology.",
+    "aria-pressed": "Pressed state of a toggle control.",
+    "aria-roledescription": "Human-readable description of the component role.",
     "aria-selected": "Selected item state.",
+    "aria-valuemax": "Maximum value exposed by an adjustable control.",
+    "aria-valuemin": "Minimum value exposed by an adjustable control.",
+    "aria-valuenow": "Current value exposed by an adjustable control.",
     align: "Cross-axis alignment: `start`, `center`, or `end`.",
     autoplay: "Enables the locally bundled Embla autoplay plugin.",
     "autoplay-delay": "Autoplay delay in milliseconds.",
@@ -563,13 +591,32 @@ const attributeDescription = (
     "contain-scroll": "Embla scroll containment mode.",
     "data-value-format":
       "Set to `custom` to preserve application-authored value text.",
+    "data-booked": "Whether a generated calendar day is booked.",
+    "data-calendar-generated":
+      "Enables generated month markup inside the authored Calendar shell.",
+    "data-columns":
+      "Number of columns used for calendar grid keyboard movement; defaults to `7`.",
+    "data-highlighted": "Current option highlighted for keyboard selection.",
+    "data-months": "Number of month grids currently rendered.",
+    "data-outside": "Whether a day belongs to an adjacent month.",
+    "data-range-end": "Marks the final day in the selected range.",
+    "data-range-end-value": "Selected range end as an ISO date.",
+    "data-range-invalid":
+      "Whether the pending range violates the minimum-night constraint.",
+    "data-range-middle": "Marks a day between the selected range boundaries.",
+    "data-range-start": "Marks the first day in the selected range.",
+    "data-range-start-value": "Selected range start as an ISO date.",
+    "data-resizing": "Present while a pointer resize operation is active.",
     dir: "Text and interaction direction: `ltr` or `rtl`.",
     disabled: "Disables native or component interaction.",
     "drag-free": "Allows free dragging between snap points.",
     draggable: "Set to `false` to disable pointer dragging.",
     for: "ID of the native form control associated with a label.",
+    hidden: "Native visibility state observed when finding available items.",
     icon: "Icon placement or icon-only styling hook.",
     indicator: "Authored chart indicator presentation.",
+    inert: "Prevents interaction while the component is hidden.",
+    lang: "Language used for generated labels and localized text.",
     loop: "Allows navigation to wrap from the final item to the first.",
     max: "Maximum native or component value.",
     maxlength: "Maximum native text length.",
@@ -583,6 +630,7 @@ const attributeDescription = (
     required: "Marks a native form value as required.",
     role: "Explicit semantic role when native HTML does not provide one.",
     side: "Physical placement: `left`, `top`, `bottom`, or `right`.",
+    selected: "Selected value reflected by the component.",
     size: "Visual size token supported by the component stylesheet.",
     spacing: "Spacing token for grouped controls.",
     step: "Native numeric step interval.",
@@ -676,7 +724,7 @@ const referenceFor = (component: (typeof catalogNames)[number]): string => {
   if (
     stylingOnly &&
     referenceApi?.rootSelector &&
-    !styles.includes(rootSelector)
+    !styles.replace(/\s+/g, "").includes(rootSelector.replace(/\s+/g, ""))
   ) {
     throw new Error(
       `${component}: documented root selector ${rootSelector} is absent from its stylesheet`,
@@ -702,7 +750,7 @@ const referenceFor = (component: (typeof catalogNames)[number]): string => {
     ...matches(source, /(?:getAttribute|hasAttribute)\(["']([^"']+)["']\)/g),
     ...(readAttributesByComponent[component] || []),
     ...(referenceApi?.attributes || []),
-  ]);
+  ]).filter((attribute) => isPublicAttribute(component, attribute));
   const writtenAttributes = unique([
     ...matches(
       source,
@@ -710,7 +758,7 @@ const referenceFor = (component: (typeof catalogNames)[number]): string => {
     ),
     ...matches(source, /setAttributeIfChanged\(\s*[^,]+,\s*["']([^"']+)["']/g),
     ...(writtenAttributesByComponent[component] || []),
-  ]);
+  ]).filter((attribute) => isPublicAttribute(component, attribute));
   const cssVariables = unique([
     ...matches(source, /["'](--[a-z][a-z0-9-]+)["']/g).filter(
       (variable) => !variable.startsWith("--tw-"),

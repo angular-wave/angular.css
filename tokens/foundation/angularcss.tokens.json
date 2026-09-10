@@ -908,6 +908,16 @@
       "$value": "{palette.slate.8}",
       "$description": "Keyboard focus indicator."
     },
+    "overlay": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [0, 0, 0],
+        "alpha": 0.1,
+        "hex": "#000000"
+      },
+      "$description": "Modal backdrop color."
+    },
     "chart": {
       "1": {
         "$type": "color",
@@ -1457,6 +1467,13 @@
       },
       "$description": "Default radius retained as --radius for compatibility."
     },
+    "xs": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.125,
+        "unit": "rem"
+      }
+    },
     "sm": {
       "$type": "dimension",
       "$value": {
@@ -1482,6 +1499,13 @@
       "$type": "dimension",
       "$value": {
         "value": 0.875,
+        "unit": "rem"
+      }
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.25,
         "unit": "rem"
       }
     },

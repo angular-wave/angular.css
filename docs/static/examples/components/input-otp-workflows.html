@@ -22,11 +22,10 @@
         <label for="otp-alphanumeric">Access code</label>
         <input
           id="otp-alphanumeric"
-          class="input-otp"
-          autocomplete="one-time-code"
           maxlength="6"
           size="6"
           value="A1B2C3"
+          autocomplete="one-time-code"
         />
       </section>
 
@@ -35,13 +34,12 @@
         <label for="otp-controlled">Verification code</label>
         <input
           id="otp-controlled"
-          class="input-otp"
           inputmode="numeric"
-          autocomplete="one-time-code"
           pattern="[0-9]{6}"
           maxlength="6"
           size="6"
           ng-model="controlled"
+          autocomplete="one-time-code"
         />
         <output class="input-otp-message">Code: {{ controlled }}</output>
       </section>
@@ -51,11 +49,11 @@
         <label for="otp-disabled">Disabled code</label>
         <input
           id="otp-disabled"
-          class="input-otp"
           maxlength="6"
           size="6"
           value="123456"
           disabled
+          autocomplete="one-time-code"
         />
       </section>
 
@@ -64,12 +62,12 @@
         <label for="otp-four">PIN</label>
         <input
           id="otp-four"
-          class="input-otp"
           inputmode="numeric"
           pattern="[0-9]{4}"
           minlength="4"
           maxlength="4"
           size="4"
+          autocomplete="one-time-code"
         />
       </section>
 
@@ -78,12 +76,12 @@
         <label for="otp-invalid">Invalid code</label>
         <input
           id="otp-invalid"
-          class="input-otp"
           value="000000"
           maxlength="6"
           size="6"
           aria-invalid="true"
           aria-describedby="otp-invalid-error"
+          autocomplete="one-time-code"
         />
         <p id="otp-invalid-error" class="field-error">Code expired.</p>
       </section>
@@ -93,13 +91,13 @@
         <label for="otp-pattern">Security code</label>
         <input
           id="otp-pattern"
-          class="input-otp"
           inputmode="numeric"
           pattern="[0-9]{6}"
           minlength="6"
           maxlength="6"
           size="6"
           required
+          autocomplete="one-time-code"
         />
       </section>
 
@@ -108,15 +106,14 @@
         <label for="otp-rtl">رمز التحقق</label>
         <input
           id="otp-rtl"
-          class="input-otp"
           inputmode="numeric"
           maxlength="6"
           size="6"
+          autocomplete="one-time-code"
         />
         <button
           type="button"
           variant="outline"
-          class="button"
           ng-click="direction = direction === 'rtl' ? 'ltr' : 'rtl'"
         >
           Change direction
@@ -128,9 +125,10 @@
         <label for="otp-grouped">Recovery code</label>
         <input
           id="otp-grouped"
-          class="input-otp input-otp-grouped"
+          group="3"
           maxlength="6"
           size="6"
+          autocomplete="one-time-code"
         />
       </section>
     </main>

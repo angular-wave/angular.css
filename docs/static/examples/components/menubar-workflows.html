@@ -23,7 +23,7 @@
           <nav ng-menubar aria-label="View preferences">
             <section>
               <button type="button">View</button>
-              <menu class="menubar-wide-content">
+              <menu style="--menu-width: 16rem">
                 <button
                   type="button"
                   aria-checked="{{ menubarWorkflow.fullUrls }}"
@@ -209,7 +209,6 @@
             type="button"
             variant="outline"
             ng-click="menubarWorkflow.showMenu=true"
-            class="button"
           >
             Add View menu
           </button>
@@ -217,7 +216,6 @@
             type="button"
             variant="outline"
             ng-click="menubarWorkflow.showItem=true"
-            class="button"
           >
             Add Zoom item
           </button>

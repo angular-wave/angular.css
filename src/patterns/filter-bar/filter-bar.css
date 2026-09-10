@@ -1,4 +1,4 @@
-@scope (form.filter-bar) to (.filter-bar) {
+@scope (form[role="search"]:has(> fieldset + menu)) to (form[role="search"]) {
   :scope {
     display: flex;
     flex-wrap: wrap;

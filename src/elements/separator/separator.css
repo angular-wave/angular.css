@@ -1,15 +1,15 @@
-.separator {
+hr {
   flex-shrink: 0;
   border: 0;
   background: var(--border);
 }
 
-.separator:not([aria-orientation="vertical"]) {
+hr:not([aria-orientation="vertical"]) {
   width: 100%;
   height: var(--border-width-default);
 }
 
-.separator[aria-orientation="vertical"] {
+hr[aria-orientation="vertical"] {
   align-self: stretch;
   width: var(--border-width-default);
   min-height: 1rem;

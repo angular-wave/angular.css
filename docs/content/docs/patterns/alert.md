@@ -1,32 +1,32 @@
 ---
 title: alert
-category: 'feedback'
+category: "feedback"
 description: >
   Compact feedback blocks for status and context.
 ---
 
-Use `section.alert` for important feedback blocks. The default presentation is
-neutral; add `variant="destructive"` for destructive feedback or apply Tailwind
-classes and design tokens for application-specific colors.
+Use `section[role="alert"]` for important feedback blocks. The default presentation is
+neutral; add `variant="destructive"` for destructive feedback or override the
+AngularCSS color tokens for application-specific colors.
 
 ```html
-<section class="alert">
+<section role="alert">
   <svg aria-hidden="true"><!-- optional icon --></svg>
   <h2>Saved!</h2>
   <p>Your profile was updated.</p>
   <div>
-    <button ng-click="dismiss()" class="button">Dismiss</button>
+    <button ng-click="dismiss()">Dismiss</button>
   </div>
 </section>
 ```
 
 ## Example
 
-{{< example src="examples/components/alert.html" title="Alert examples" height="300" >}}
+{{< example src="examples/components/alert.html" title="Alert examples" height="300">}}
 
 ## Variants And Composition
 
-{{< example src="examples/components/alert-workflows.html" title="Alert variants and composition" height="792" >}}
+{{< example src="examples/components/alert-workflows.html" title="Alert variants and composition" height="792">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -40,7 +40,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.alert`
+- `[role="alert"]`
 
 ### Semantic structure
 
@@ -52,7 +52,10 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `aria-atomic` | Authored | Whether an assistive technology announces the entire updated region. |
+| `aria-live` | Authored | Announcement priority for updates to a live region. |
+| `role` | Authored | Explicit semantic role when native HTML does not provide one. |
+| `variant` | Authored | Status presentation: `info`, `success`, `warning`, or `destructive`; omit for the default presentation. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "elements",
   directive: "ngRadioGroup",
   name: "radio-group",
-  selector: ".radio-group",
+  selector: 'fieldset:has(input[type="radio"]):not(.toggle-group)',
 });

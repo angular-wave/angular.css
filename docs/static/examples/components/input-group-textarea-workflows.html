@@ -14,7 +14,7 @@
     ng-app="angular.css"
     ng-cloak
     ng-init="comment=''; commentCount=0; code=''; codeColumn=1; customText=''; customCount=0; textareaStatus='Ready'"
-    class="input-group-workflow-body"
+    data-example="input-group-textarea-workflows"
   >
     <svg class="example-icon-definitions" aria-hidden="true">
       <defs>
@@ -53,11 +53,7 @@
         <div class="field">
           <label for="igt-start-input">Input</label>
           <div class="input-group">
-            <input
-              id="igt-start-input"
-              placeholder="Enter your name"
-              class="input"
-            />
+            <input id="igt-start-input" placeholder="Enter your name" />
             <div align="block-start">
               <span>Full name</span>
             </div>
@@ -70,14 +66,13 @@
             <textarea
               id="igt-start-textarea"
               placeholder="console.log('Hello, world!');"
-              class="textarea"
             ></textarea>
             <div align="block-start" border="true">
               <svg aria-hidden="true"><use href="#igt-code-icon"></use></svg>
               <span class="input-group-mono">script.js</span>
               <button
                 size="icon-xs"
-                class="input-group-push-end button"
+                class="input-group-push-end"
                 variant="ghost"
                 type="button"
                 aria-label="Copy code"
@@ -103,7 +98,6 @@
               id="igt-amount"
               inputmode="decimal"
               placeholder="Enter amount"
-              class="input"
             />
             <div align="block-end">
               <span>USD</span>
@@ -120,13 +114,12 @@
               data-change="commentCount=comment.length"
               maxlength="280"
               placeholder="Write a comment..."
-              class="textarea"
             ></textarea>
             <div align="block-end">
               <span>{{ commentCount }}/280</span>
               <button
                 size="sm"
-                class="input-group-push-end button"
+                class="input-group-push-end"
                 type="button"
                 ng-click="textareaStatus='Posted comment'"
               >
@@ -151,7 +144,6 @@
             data-change="codeColumn=code.length+1"
             placeholder="console.log('Hello, world!');"
             aria-label="JavaScript code"
-            class="textarea"
           ></textarea>
           <div align="block-start" border="true">
             <span class="input-group-mono"
@@ -160,7 +152,7 @@
             >
             <button
               size="icon-xs"
-              class="input-group-push-end button"
+              class="input-group-push-end"
               variant="ghost"
               type="button"
               aria-label="Refresh code"
@@ -174,7 +166,6 @@
               type="button"
               aria-label="Copy code"
               ng-click="textareaStatus='Copied code'"
-              class="button"
             >
               <svg aria-hidden="true"><use href="#igt-copy"></use></svg>
             </button>
@@ -183,7 +174,7 @@
             <span>Line 1, Column {{ codeColumn }}</span>
             <button
               size="sm"
-              class="input-group-push-end button"
+              class="input-group-push-end"
               type="button"
               ng-click="textareaStatus='Ran code'"
             >
@@ -206,7 +197,6 @@
             <textarea
               id="igt-default-textarea"
               placeholder="Enter your text here..."
-              class="textarea"
             ></textarea>
           </div>
           <div class="field">
@@ -216,7 +206,6 @@
                 id="igt-invalid-textarea"
                 aria-invalid="true"
                 placeholder="Enter your text here..."
-                class="textarea"
               ></textarea>
             </div>
           </div>
@@ -227,14 +216,13 @@
                 id="igt-disabled-textarea"
                 disabled
                 placeholder="Enter your text here..."
-                class="textarea"
               ></textarea>
             </div>
           </div>
           <div class="field">
             <label for="igt-prompt">Addon (block start)</label>
             <div class="input-group">
-              <textarea id="igt-prompt" class="textarea"></textarea>
+              <textarea id="igt-prompt"></textarea>
               <div align="block-start">
                 <span>Ask, search or chat...</span
                 ><svg class="input-group-push-end" aria-hidden="true">
@@ -251,13 +239,12 @@
                 ng-model="comment"
                 data-change="commentCount=comment.length"
                 placeholder="Enter your text here..."
-                class="textarea"
               ></textarea>
               <div align="block-end">
                 <span>{{ commentCount }}/280 characters</span
                 ><button
                   size="icon-xs"
-                  class="input-group-push-end input-group-round-button button"
+                  class="input-group-push-end input-group-round-button"
                   type="button"
                   aria-label="Send"
                   ng-click="textareaStatus='Sent message'"
@@ -273,12 +260,11 @@
               <textarea
                 id="igt-actions"
                 placeholder="Share your thoughts..."
-                class="textarea"
               ></textarea>
               <div align="block-end">
                 <button
                   size="sm"
-                  class="input-group-push-end button"
+                  class="input-group-push-end"
                   variant="ghost"
                   type="button"
                   ng-click="textareaStatus='Cancelled comment'"
@@ -288,7 +274,6 @@
                   size="sm"
                   type="button"
                   ng-click="textareaStatus='Posted comment'"
-                  class="button"
                 >
                   Post comment
                 </button>
@@ -316,7 +301,7 @@
             <span>{{ customCount }} characters</span
             ><button
               size="sm"
-              class="input-group-push-end button"
+              class="input-group-push-end"
               type="button"
               ng-click="textareaStatus='Submitted custom text'"
             >

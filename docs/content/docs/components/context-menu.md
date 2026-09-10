@@ -1,6 +1,6 @@
 ---
 title: context-menu
-category: 'menu'
+category: "menu"
 description: >
   Context menu surface and items
 ---
@@ -31,25 +31,25 @@ Context Menu key open this component.
 
 ## Example
 
-{{< example src="examples/components/context-menu.html" title="Context menu example" height="420" >}}
+{{< example src="examples/components/context-menu.html" title="Context menu example" height="420">}}
 
 ## Content And State
 
 Icons, destructive actions, groups, shortcuts, checkbox values, and radio values
 are functional packaged scenarios.
 
-{{< example src="examples/components/context-menu-workflows.html" title="Context menu content and state workflows" height="800" >}}
+{{< example src="examples/components/context-menu-workflows.html" title="Context menu content and state workflows" height="800">}}
 
 ## Placement
 
 The six physical and logical side options anchor to the invocation point and
 remain constrained to the viewport.
 
-{{< example src="examples/components/context-menu-sides.html" title="Context menu side placement" height="650" >}}
+{{< example src="examples/components/context-menu-sides.html" title="Context menu side placement" height="650">}}
 
 ## Right To Left
 
-{{< example src="examples/components/context-menu-rtl.html" title="Right-to-left context menu" height="420" >}}
+{{< example src="examples/components/context-menu-rtl.html" title="Right-to-left context menu" height="420">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -78,11 +78,11 @@ A context menu root requires one focusable trigger and one `menu`. The root dire
 | `align` | Input/output | Cross-axis alignment: `start`, `center`, or `end`. |
 | `align-offset` | Input | Additional alignment offset in CSS pixels. |
 | `aria-checked` | Input/output | ARIA relationship or state. |
-| `aria-controls` | Output | ARIA relationship or state. |
+| `aria-controls` | Output | ID of the element controlled by a trigger. |
 | `aria-disabled` | Input/output | Semantic disabled state. |
 | `aria-expanded` | Output | Open or expanded state exposed to assistive technology. |
-| `aria-haspopup` | Output | ARIA relationship or state. |
-| `aria-hidden` | Output | ARIA relationship or state. |
+| `aria-haspopup` | Output | Type of popup controlled by the trigger. |
+| `aria-hidden` | Output | Whether generated or collapsed content is hidden from assistive technology. |
 | `dir` | Input | Text and interaction direction: `ltr` or `rtl`. |
 | `disabled` | Input | Disables native or component interaction. |
 | `open` | Input | Initial or controlled open state. |

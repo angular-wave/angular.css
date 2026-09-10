@@ -1,4 +1,4 @@
-:where(body, div, section):has(> :is(.sidebar, [ng-sidebar])) {
+:where(body, div, section):has(> [ng-sidebar]) {
   display: flex;
   width: 100%;
   min-height: 100vh;
@@ -7,7 +7,6 @@
   color: var(--sidebar-foreground);
 }
 
-.sidebar,
 [ng-sidebar] {
   display: flex;
   width: var(--sidebar-width, 16rem);
@@ -24,31 +23,31 @@
     border-color var(--motion-duration-layout) var(--motion-easing-linear);
 }
 
-:is(.sidebar, [ng-sidebar]) > div {
+[ng-sidebar] > div {
   display: flex;
   min-height: 0;
   flex: 1 1 auto;
   flex-direction: column;
 }
 
-:is(.sidebar, [ng-sidebar])[side="right"] {
+[ng-sidebar][side="right"] {
   border-right: 0;
   border-left: var(--border-width-default) solid var(--sidebar-border);
 }
 
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="offcanvas"] {
+[ng-sidebar][collapsed][collapsible="offcanvas"] {
   width: 0;
   min-width: 0;
   overflow: hidden;
   border-color: transparent;
 }
 
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"] {
+[ng-sidebar][collapsed][collapsible="icon"] {
   width: var(--sidebar-width-icon, 3rem);
   min-width: var(--sidebar-width-icon, 3rem);
 }
 
-:is(.sidebar, [ng-sidebar])[variant="floating"] {
+[ng-sidebar][variant="floating"] {
   margin: calc(var(--spacing) * 2);
   min-height: calc(100vh - var(--spacing) * 4);
   min-height: calc(100svh - var(--spacing) * 4);
@@ -57,21 +56,21 @@
   box-shadow: var(--shadow-sm);
 }
 
-:is(.sidebar, [ng-sidebar]) + main,
-main:has(+ :is(.sidebar, [ng-sidebar])) {
+[ng-sidebar] + main,
+main:has(+ [ng-sidebar]) {
   min-width: 0;
   flex: 1 1 auto;
   background: var(--background);
   color: var(--foreground);
 }
 
-:is(.sidebar, [ng-sidebar]) :is(header, footer) {
+[ng-sidebar] :is(header, footer) {
   display: grid;
   gap: calc(var(--spacing) * 2);
   padding: calc(var(--spacing) * 2);
 }
 
-:is(.sidebar, [ng-sidebar]) header input {
+[ng-sidebar] header input {
   width: 100%;
   height: var(--size-control-md);
   border: var(--border-width-default) solid var(--sidebar-border);
@@ -83,21 +82,21 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   outline: none;
 }
 
-:is(.sidebar, [ng-sidebar]) header input:focus-visible {
+[ng-sidebar] header input:focus-visible {
   border-color: var(--ring);
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--ring) 20%, transparent);
 }
 
-:is(.sidebar, [ng-sidebar]) > hr,
-:is(.sidebar, [ng-sidebar]) > div > hr {
+[ng-sidebar] > hr,
+[ng-sidebar] > div > hr {
   height: var(--border-width-default);
   margin-inline: calc(var(--spacing) * 2);
   border: 0;
   background: var(--sidebar-border);
 }
 
-:is(.sidebar, [ng-sidebar]) nav {
+[ng-sidebar] nav {
   display: grid;
   align-content: start;
   gap: 0;
@@ -106,18 +105,18 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   scrollbar-width: none;
 }
 
-:is(.sidebar, [ng-sidebar]) nav::-webkit-scrollbar {
+[ng-sidebar] nav::-webkit-scrollbar {
   display: none;
 }
 
-:is(.sidebar, [ng-sidebar]) nav > section {
+[ng-sidebar] nav > section {
   position: relative;
   display: grid;
   gap: 0;
   padding: calc(var(--spacing) * 2);
 }
 
-:is(.sidebar, [ng-sidebar]) nav > section > :is(h1, h2, h3, h4, h5, h6) {
+[ng-sidebar] nav > section > :is(h1, h2, h3, h4, h5, h6) {
   display: flex;
   height: var(--size-control-sm);
   align-items: center;
@@ -130,7 +129,7 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   font-weight: var(--font-weight-medium);
 }
 
-:is(.sidebar, [ng-sidebar]) > button {
+[ng-sidebar] > button {
   display: inline-flex;
   width: calc(var(--spacing) * 1);
   align-items: center;
@@ -139,13 +138,14 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   background: var(--sidebar-border);
 }
 
-:is(.sidebar, [ng-sidebar]) nav > section > button {
+[ng-sidebar] nav > section > button {
   position: absolute;
   inset-block-start: calc(var(--spacing) * 3);
   inset-inline-end: calc(var(--spacing) * 2.5);
   display: inline-grid;
   width: var(--size-control-xs);
   height: var(--size-control-xs);
+  min-height: var(--size-control-xs);
   place-items: center;
   border: 0;
   border-radius: var(--radius-md);
@@ -154,7 +154,7 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   padding: 0;
 }
 
-:is(.sidebar, [ng-sidebar]) nav ul {
+[ng-sidebar] nav ul {
   display: grid;
   gap: 0;
   margin: 0;
@@ -162,17 +162,17 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   list-style: none;
 }
 
-:is(.sidebar, [ng-sidebar]) nav li {
+[ng-sidebar] nav li {
   position: relative;
   min-width: 0;
 }
 
-:is(.sidebar, [ng-sidebar]) nav li > [ng-dropdown-menu] {
+[ng-sidebar] nav li > [ng-dropdown-menu] {
   position: static;
   display: contents;
 }
 
-:is(.sidebar, [ng-sidebar]) nav li > :is(a, button, details) + button {
+[ng-sidebar] nav li > :is(a, button, details) + button {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-end: calc(var(--spacing) * 0.5);
@@ -186,10 +186,10 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   transform: translateY(-50%);
 }
 
-:is(.sidebar, [ng-sidebar]) :is(header, footer) > :is(a, button),
-:is(.sidebar, [ng-sidebar]) :is(header, footer) > [ng-dropdown-menu] > button,
-:is(.sidebar, [ng-sidebar]) nav li > :is(a, button),
-:is(.sidebar, [ng-sidebar]) nav li > details > summary {
+[ng-sidebar] :is(header, footer) > :is(a, button),
+[ng-sidebar] :is(header, footer) > [ng-dropdown-menu] > button,
+[ng-sidebar] nav li > :is(a, button),
+[ng-sidebar] nav li > details > summary {
   display: flex;
   width: 100%;
   height: var(--size-control-sm);
@@ -212,22 +212,22 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
     padding var(--motion-duration-layout) var(--motion-easing-linear);
 }
 
-:is(.sidebar, [ng-sidebar]) details > summary::-webkit-details-marker {
+[ng-sidebar] details > summary::-webkit-details-marker {
   display: none;
 }
 
-:is(.sidebar, [ng-sidebar]) :is(header, footer) > :is(a, button)[size="sm"],
-:is(.sidebar, [ng-sidebar]) nav li > :is(a, button)[size="sm"] {
+[ng-sidebar] :is(header, footer) > :is(a, button)[size="sm"],
+[ng-sidebar] nav li > :is(a, button)[size="sm"] {
   height: calc(var(--spacing) * 7);
   font-size: var(--text-xs);
 }
 
-:is(.sidebar, [ng-sidebar]) :is(header, footer) > :is(a, button)[size="lg"],
-:is(.sidebar, [ng-sidebar]) nav li > :is(a, button)[size="lg"] {
+[ng-sidebar] :is(header, footer) > :is(a, button)[size="lg"],
+[ng-sidebar] nav li > :is(a, button)[size="lg"] {
   height: calc(var(--spacing) * 12);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li > [ng-dropdown-menu] > button {
+[ng-sidebar] nav li > [ng-dropdown-menu] > button {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-end: calc(var(--spacing) * 0.5);
@@ -241,28 +241,25 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   transform: translateY(-50%);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li > [ng-dropdown-menu] > button::after {
+[ng-sidebar] nav li > [ng-dropdown-menu] > button::after {
   display: none;
 }
 
-:is(.sidebar, [ng-sidebar])
-  :is(header, footer, nav)
-  :is(a, button, summary)
-  > svg,
-:is(.sidebar, [ng-sidebar]) nav > section > :is(h1, h2, h3, h4, h5, h6) > svg {
+[ng-sidebar] :is(header, footer, nav) :is(a, button, summary) > svg,
+[ng-sidebar] nav > section > :is(h1, h2, h3, h4, h5, h6) > svg {
   width: calc(var(--spacing) * 4);
   height: calc(var(--spacing) * 4);
   flex-shrink: 0;
 }
 
-:is(.sidebar, [ng-sidebar])
+[ng-sidebar]
   :is(header, footer, nav)
   :is(a, button, summary):is(:hover, [aria-current="page"]) {
   background: var(--sidebar-accent);
   color: var(--sidebar-accent-foreground);
 }
 
-:is(.sidebar, [ng-sidebar])
+[ng-sidebar]
   :is(header, footer, nav)
   :is(a, button, summary)
   > span:not([aria-hidden="true"], .avatar) {
@@ -276,7 +273,7 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
     opacity var(--motion-duration-deliberate) var(--motion-easing-linear);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li > output {
+[ng-sidebar] nav li > output {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-end: calc(var(--spacing) * 1);
@@ -292,27 +289,27 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   transform: translateY(-50%);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li:has(> output) > a {
+[ng-sidebar] nav li:has(> output) > a {
   padding-inline-end: calc(var(--spacing) * 8);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li > ul,
-:is(.sidebar, [ng-sidebar]) nav li > details > ul {
+[ng-sidebar] nav li > ul,
+[ng-sidebar] nav li > details > ul {
   gap: calc(var(--spacing) * 1);
   margin-inline: calc(var(--spacing) * 3.5);
   border-inline-start: var(--border-width-default) solid var(--sidebar-border);
   padding-inline-start: calc(var(--spacing) * 3);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li > ul a,
-:is(.sidebar, [ng-sidebar]) nav li > details > ul a {
+[ng-sidebar] nav li > ul a,
+[ng-sidebar] nav li > details > ul a {
   min-height: calc(var(--spacing) * 7);
   height: auto;
   padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
   font-size: var(--text-sm);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li.skeleton {
+[ng-sidebar] nav li.skeleton {
   display: flex;
   min-height: var(--size-control-sm);
   align-items: center;
@@ -320,8 +317,8 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   padding: calc(var(--spacing) * 2);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li.skeleton::before,
-:is(.sidebar, [ng-sidebar]) nav li.skeleton::after {
+[ng-sidebar] nav li.skeleton::before,
+[ng-sidebar] nav li.skeleton::after {
   display: block;
   border-radius: var(--radius-md);
   background: var(--sidebar-accent);
@@ -329,12 +326,12 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   animation: angularcss-sidebar-skeleton 1.5s ease-in-out infinite;
 }
 
-:is(.sidebar, [ng-sidebar]) nav li.skeleton::before {
+[ng-sidebar] nav li.skeleton::before {
   width: calc(var(--spacing) * 4);
   height: calc(var(--spacing) * 4);
 }
 
-:is(.sidebar, [ng-sidebar]) nav li.skeleton::after {
+[ng-sidebar] nav li.skeleton::after {
   width: var(--skeleton-width, 65%);
   height: calc(var(--spacing) * 3);
 }
@@ -346,7 +343,6 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
 }
 
 @media (width < 48rem) {
-  .sidebar,
   [ng-sidebar] {
     position: fixed;
     z-index: 30;
@@ -356,27 +352,24 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
     box-shadow: var(--shadow-md);
   }
 
-  :is(.sidebar, [ng-sidebar])[side="right"] {
+  [ng-sidebar][side="right"] {
     inset-inline: auto 0;
   }
 
-  :is(.sidebar, [ng-sidebar]) + main,
-  main:has(+ :is(.sidebar, [ng-sidebar])) {
+  [ng-sidebar] + main,
+  main:has(+ [ng-sidebar]) {
     width: 100%;
   }
 }
 
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
+[ng-sidebar][collapsed][collapsible="icon"]
   nav
   > section
   > :is(h1, h2, h3, h4, h5, h6),
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
+[ng-sidebar][collapsed][collapsible="icon"]
   :is(header input, hr, nav li > ul, nav li > details > ul, nav li > output),
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
-  nav
-  > section
-  > button,
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
+[ng-sidebar][collapsed][collapsible="icon"] nav > section > button,
+[ng-sidebar][collapsed][collapsible="icon"]
   nav
   li
   > :is(a, button, details)
@@ -384,28 +377,21 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
   display: none;
 }
 
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
+[ng-sidebar][collapsed][collapsible="icon"]
   :is(header, footer)
   > :is(a, button),
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
+[ng-sidebar][collapsed][collapsible="icon"]
   :is(header, footer)
   > [ng-dropdown-menu]
   > button,
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
-  nav
-  li
-  > :is(a, button),
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
-  nav
-  li
-  > details
-  > summary {
+[ng-sidebar][collapsed][collapsible="icon"] nav li > :is(a, button),
+[ng-sidebar][collapsed][collapsible="icon"] nav li > details > summary {
   justify-content: center;
   gap: 0;
   padding-inline: 0;
 }
 
-:is(.sidebar, [ng-sidebar])[collapsed][collapsible="icon"]
+[ng-sidebar][collapsed][collapsible="icon"]
   :is(header, footer, nav)
   :is(a, button, summary)
   > span:not([aria-hidden="true"], .avatar) {
@@ -414,10 +400,9 @@ main:has(+ :is(.sidebar, [ng-sidebar])) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sidebar,
   [ng-sidebar],
-  :is(.sidebar, [ng-sidebar]) :is(header, footer, nav) :is(a, button, summary),
-  :is(.sidebar, [ng-sidebar])
+  [ng-sidebar] :is(header, footer, nav) :is(a, button, summary),
+  [ng-sidebar]
     :is(header, footer, nav)
     :is(a, button, summary)
     > span:not([aria-hidden="true"], .avatar) {

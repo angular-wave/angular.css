@@ -31,11 +31,11 @@ const assertGeometry = async (
     const viewportWidth = await page.evaluate(
       () => document.documentElement.clientWidth,
     );
-    const root = await page.locator(".aspect-ratio").boundingBox();
+    const root = await page.locator("figure[ratio]").boundingBox();
     expect(root).not.toBeNull();
     expect(root!.width).toBeCloseTo(Math.min(384, viewportWidth - 48), 0);
     expect(root!.width / root!.height).toBeCloseTo(16 / 9, 2);
-    await expect(page.locator(".aspect-ratio-image")).toBeVisible();
+    await expect(page.locator("figure[ratio] > img")).toBeVisible();
     return;
   }
 
@@ -43,9 +43,11 @@ const assertGeometry = async (
     const viewportWidth = await page.evaluate(
       () => document.documentElement.clientWidth,
     );
-    const root = await page.locator(".alert-demo").boundingBox();
-    const alerts = page.locator(".alert");
-    const icons = page.locator(".alert > svg");
+    const root = await page
+      .locator('body[data-example~="alert-demo"] > .visual-example')
+      .boundingBox();
+    const alerts = page.locator('[role="alert"]');
+    const icons = page.locator('[role="alert"] > svg');
     expect(root).not.toBeNull();
     expect(root!.width).toBeCloseTo(Math.min(448, viewportWidth - 48), 0);
     await expect(alerts).toHaveCount(2);
@@ -65,18 +67,21 @@ const assertGeometry = async (
   }
 
   if (component === "accordion") {
-    const root = await page.locator(".accordion").boundingBox();
-    const triggers = page.locator(".accordion > details > summary");
+    const root = await page
+      .locator("section[aria-label]:has(> details)")
+      .boundingBox();
+    const triggers = page.locator(
+      "section[aria-label]:has(> details) > details > summary",
+    );
     const viewportWidth = await page.evaluate(
       () => document.documentElement.clientWidth,
     );
     expect(root).not.toBeNull();
     expect(root!.width).toBeCloseTo(Math.min(512, viewportWidth - 48), 0);
     await expect(triggers).toHaveCount(3);
-    await expect(page.locator(".accordion > details").first()).toHaveAttribute(
-      "open",
-      "",
-    );
+    await expect(
+      page.locator("section[aria-label]:has(> details) > details").first(),
+    ).toHaveAttribute("open", "");
     return;
   }
 
@@ -110,7 +115,7 @@ const assertGeometry = async (
   }
 
   if (component === "button") {
-    const boxes = await page.locator(".button").evaluateAll((items) =>
+    const boxes = await page.locator("button").evaluateAll((items) =>
       items.map((item) => {
         const box = item.getBoundingClientRect();
         return { height: box.height, width: box.width };
@@ -123,7 +128,7 @@ const assertGeometry = async (
   }
 
   if (component === "button-group") {
-    const groups = page.locator(".button-group");
+    const groups = page.locator('[role="group"]');
     await expect(groups).toHaveCount(6);
     const sizeButtons = page
       .getByLabel("Button group sizes")
@@ -138,14 +143,9 @@ const assertGeometry = async (
     expect(verticalBox).not.toBeNull();
     expect(verticalBox!.width).toBeCloseTo(36, 0);
     expect(verticalBox!.height).toBeCloseTo(73, 0);
-    await expect(vertical.locator(":scope > hr.separator")).toHaveCSS(
-      "height",
-      "1px",
-    );
+    await expect(vertical.locator(":scope > hr")).toHaveCSS("height", "1px");
     await expect(
-      page
-        .locator('.button-group > hr.separator[aria-orientation="vertical"]')
-        .first(),
+      page.locator('[role="group"] > hr[aria-orientation="vertical"]').first(),
     ).toHaveCSS("width", "1px");
     return;
   }
@@ -213,7 +213,9 @@ const assertGeometry = async (
 
   if (component === "radio-group") {
     const boxes = await page
-      .locator('.radio-group input[type="radio"]')
+      .locator(
+        'fieldset:has(input[type="radio"]):not(.toggle-group) input[type="radio"]',
+      )
       .evaluateAll((items) =>
         items.map((item) => {
           const box = item.getBoundingClientRect();
@@ -290,8 +292,12 @@ const assertGeometry = async (
 
   if (component === "checkbox") {
     const viewportWidth = await page.evaluate(() => innerWidth);
-    const root = page.locator(".checkbox-demo");
-    const controls = page.locator(".checkbox");
+    const root = page.locator(
+      'body[data-example~="checkbox-demo"] > .visual-example',
+    );
+    const controls = page.locator(
+      'input[type="checkbox"]:not([role="switch"])',
+    );
     const rootBox = await root.boundingBox();
     expect(rootBox).not.toBeNull();
     expect(rootBox!.width).toBeCloseTo(Math.min(384, viewportWidth - 48), 0);
@@ -328,7 +334,7 @@ const assertGeometry = async (
   }
 
   if (component === "input-otp") {
-    const input = page.locator(".input-otp");
+    const input = page.locator('input[autocomplete="one-time-code"]');
     const box = await input.boundingBox();
     expect(box).not.toBeNull();
     expect(box!.height).toBeCloseTo(32, 0);

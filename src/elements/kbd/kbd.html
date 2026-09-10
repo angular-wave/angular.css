@@ -14,53 +14,36 @@
     ng-app="angular.css"
     ng-cloak
     ng-init="kbdAction='Ready'"
-    data-example="kbd-button kbd-demo kbd-group kbd-input-group kbd-rtl kbd-tooltip"
+    data-example="kbd-button kbd-demo kbd-input-group kbd-rtl kbd-tooltip"
   >
-    <main class="kbd-workflows visual-example">
+    <main class="visual-example">
       <section class="kbd-row">
         <span>Open command menu</span>
-        <span class="kbd-group"
-          ><kbd class="kbd">Ctrl</kbd><kbd class="kbd">K</kbd></span
-        >
+        <span><kbd>Ctrl</kbd><kbd>K</kbd></span>
         <span>or</span>
-        <kbd aria-label="Slash" class="kbd">/</kbd>
+        <kbd aria-label="Slash">/</kbd>
       </section>
 
-      <button
-        variant="outline"
-        type="button"
-        ng-click="kbdAction='Saved'"
-        class="button"
-      >
+      <button variant="outline" type="button" ng-click="kbdAction='Saved'">
         Save changes
-        <span class="kbd-group"
-          ><kbd class="kbd">Ctrl</kbd><kbd class="kbd">S</kbd></span
-        >
+        <span><kbd>Ctrl</kbd><kbd>S</kbd></span>
       </button>
 
       <div class="input-group">
-        <input
-          placeholder="Search..."
-          aria-label="Search with shortcut"
-          class="input"
-        />
+        <input placeholder="Search..." aria-label="Search with shortcut" />
         <div align="inline-end">
-          <kbd class="kbd">⌘K</kbd>
+          <kbd>⌘K</kbd>
         </div>
       </div>
 
       <span ng-tooltip>
-        <button variant="outline" type="button" class="button">
-          Keyboard help
-        </button>
-        <span side="top">Press <kbd class="kbd">?</kbd> to open help.</span>
+        <button variant="outline" type="button">Keyboard help</button>
+        <span side="top">Press <kbd>?</kbd> to open help.</span>
       </span>
 
       <section class="kbd-row" dir="rtl" lang="ar">
         <span>فتح قائمة الأوامر</span>
-        <span class="kbd-group"
-          ><kbd class="kbd">Ctrl</kbd><kbd class="kbd">K</kbd></span
-        >
+        <span><kbd>Ctrl</kbd><kbd>K</kbd></span>
       </section>
 
       <output class="kbd-output">{{ kbdAction }}</output>

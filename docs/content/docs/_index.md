@@ -2,8 +2,7 @@
 title: Documentation
 linkTitle: Docs
 menu: { main: { weight: 20 } }
-description:
-  Learn AngularCSS from installation through production component composition.
+description: Learn AngularCSS from installation through production component composition.
 ---
 
 AngularCSS is a library of semantic HTML contracts, TypeScript directives, and

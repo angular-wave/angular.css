@@ -3,23 +3,19 @@ fieldset.field-set {
   flex-direction: column;
   gap: calc(var(--spacing) * 4);
 
-  &:has(> :is(.checkbox-group, .radio-group)) {
+  &:has(> .checkbox-group) {
     gap: calc(var(--spacing) * 3);
   }
 }
 
-:is(fieldset.field-set, fieldset.radio-group) > legend {
+:is(fieldset.field-set, fieldset:has(input[type="radio"]):not(.toggle-group))
+  > legend {
   margin-bottom: calc(var(--spacing) * 1.5);
   font-weight: var(--font-weight-medium);
 
   &[variant="label"] {
     font-size: var(--text-sm);
     line-height: var(--leading-sm);
-  }
-
-  &[variant="legend"] {
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
   }
 }
 
@@ -83,7 +79,8 @@ fieldset.field-set {
 /* stylelint-disable no-descending-specificity -- Label rules target separate field orientations and selectable-card parents. */
 .field label,
 .field-group > label:has(> .field),
-.radio-group > label:not([class]):has(> .field) {
+fieldset:has(input[type="radio"]):not(.toggle-group)
+  > label:not([class]):has(> .field) {
   display: flex;
   width: fit-content;
   align-items: center;
@@ -94,7 +91,8 @@ fieldset.field-set {
 }
 
 .field-group > label:has(> .field),
-.radio-group > label:not([class]):has(> .field) {
+fieldset:has(input[type="radio"]):not(.toggle-group)
+  > label:not([class]):has(> .field) {
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
@@ -107,9 +105,10 @@ fieldset.field-set {
 }
 /* stylelint-enable no-descending-specificity */
 
-:is(.field-group > label, .radio-group > label:not([class])):has(
-  > .field :is(.checkbox, .switch, input[type="radio"]):checked
-) {
+:is(
+  .field-group > label,
+  fieldset:has(input[type="radio"]):not(.toggle-group) > label:not([class])
+):has(> .field :is(input[type="checkbox"], input[type="radio"]):checked) {
   border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
   background: color-mix(in srgb, var(--primary) 5%, transparent);
 }

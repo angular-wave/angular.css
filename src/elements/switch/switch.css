@@ -1,4 +1,4 @@
-input[type="checkbox"].switch {
+input[type="checkbox"][role="switch"] {
   appearance: none;
   position: relative;
   display: inline-flex;
@@ -35,7 +35,7 @@ input[type="checkbox"].switch {
   }
 }
 
-input[type="checkbox"].switch::after {
+input[type="checkbox"][role="switch"]::after {
   content: "";
   pointer-events: none;
   display: block;
@@ -48,19 +48,19 @@ input[type="checkbox"].switch::after {
     var(--motion-easing-standard);
 }
 
-input[type="checkbox"].switch:checked {
+input[type="checkbox"][role="switch"]:checked {
   background: var(--primary);
 }
 
-input[type="checkbox"].switch:checked::after {
+input[type="checkbox"][role="switch"]:checked::after {
   transform: translateX(14px);
 }
 
-input[type="checkbox"].switch:dir(rtl):checked::after {
+input[type="checkbox"][role="switch"]:dir(rtl):checked::after {
   transform: translateX(-14px);
 }
 
-input[type="checkbox"].switch[size="sm"] {
+input[type="checkbox"][role="switch"][size="sm"] {
   width: calc(var(--spacing) * 7);
   height: calc(var(--spacing) * 4);
 
@@ -70,8 +70,7 @@ input[type="checkbox"].switch[size="sm"] {
   }
 }
 
-.dark input[type="checkbox"].switch,
-.dark-theme input[type="checkbox"].switch {
+.dark input[type="checkbox"][role="switch"] {
   background: color-mix(in srgb, var(--input) 80%, transparent);
 
   &:checked {
@@ -85,8 +84,8 @@ input[type="checkbox"].switch[size="sm"] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  input[type="checkbox"].switch,
-  input[type="checkbox"].switch::after {
+  input[type="checkbox"][role="switch"],
+  input[type="checkbox"][role="switch"]::after {
     transition-duration: var(--motion-duration-instant);
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: stepper
-category: 'navigation'
+category: "navigation"
 description: >
   Ordered multi-step workflow navigation
 ---
@@ -25,11 +25,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `nav.stepper`
+- `nav:has([aria-current="step"])`
 
 ### Semantic structure
 
-Apply `.stepper` to a native `nav` containing one direct ordered list. Each item contains a link or text span, and the current item uses `aria-current=step`.
+Use a native `nav` containing one direct ordered list. Each item contains a link or text span, and `aria-current=step` on the current item identifies the Stepper without a class.
 
 ## API
 

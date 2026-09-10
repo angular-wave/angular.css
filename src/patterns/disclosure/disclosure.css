@@ -1,49 +1,26 @@
-details.disclosure > summary,
-.disclosure details > summary {
-  list-style: none;
-}
-
-details.disclosure > summary::-webkit-details-marker,
-.disclosure details > summary::-webkit-details-marker {
-  display: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  details.disclosure > summary svg {
-    transition: translate var(--motion-duration-fast) var(--motion-easing-out);
+@scope (details.disclosure) to (details.disclosure) {
+  :scope > summary {
+    list-style: none;
   }
 
-  details.disclosure > summary:active svg {
-    translate: 0 1px;
+  :scope > summary::-webkit-details-marker {
+    display: none;
   }
 
-  @supports selector(details::details-content) {
-    details.disclosure::details-content {
-      block-size: 0;
-      overflow: clip;
-      opacity: 0;
-      transition:
-        block-size var(--motion-duration-deliberate) var(--motion-easing-out),
-        content-visibility var(--motion-duration-deliberate) allow-discrete,
-        opacity var(--motion-duration-default) var(--motion-easing-out);
+  @media (prefers-reduced-motion: no-preference) {
+    :scope > summary svg {
+      transition: translate var(--motion-duration-fast) var(--motion-easing-out);
     }
 
-    details.disclosure:open::details-content {
-      block-size: auto;
-      opacity: 1;
+    :scope > summary:active svg {
+      translate: 0 1px;
     }
 
-    @supports (interpolate-size: allow-keywords) {
-      details.disclosure {
-        interpolate-size: allow-keywords;
+    @supports not selector(details::details-content) {
+      :scope:open > :last-child {
+        animation: disclosure-content-enter var(--motion-duration-deliberate)
+          var(--motion-easing-out);
       }
-    }
-  }
-
-  @supports not selector(details::details-content) {
-    details.disclosure:open > :last-child {
-      animation: disclosure-content-enter var(--motion-duration-deliberate)
-        var(--motion-easing-out);
     }
   }
 }

@@ -13,18 +13,16 @@
   <body
     ng-app="angular.css"
     ng-cloak
-    class="checkbox-example-body"
     ng-init="terms=false;termsDetails=true;wrappedNotifications=false"
     data-example="checkbox-demo"
   >
-    <div class="checkbox-demo visual-example field-group">
+    <div class="visual-example field-group">
       <div orientation="horizontal" class="field">
         <input
           id="terms-checkbox"
           name="terms-checkbox"
           type="checkbox"
           ng-model="terms"
-          class="checkbox"
         />
         <label for="terms-checkbox">Accept terms and conditions</label>
       </div>
@@ -35,7 +33,6 @@
           name="terms-checkbox-2"
           type="checkbox"
           ng-model="termsDetails"
-          class="checkbox"
         />
         <section>
           <label for="terms-checkbox-2">Accept terms and conditions</label>
@@ -49,7 +46,6 @@
           name="toggle-checkbox"
           type="checkbox"
           disabled
-          class="checkbox"
         />
         <label for="toggle-checkbox">Enable notifications</label>
       </div>
@@ -61,7 +57,6 @@
             name="toggle-checkbox-2"
             type="checkbox"
             ng-model="wrappedNotifications"
-            class="checkbox"
           />
           <section>
             <strong>Enable notifications</strong>

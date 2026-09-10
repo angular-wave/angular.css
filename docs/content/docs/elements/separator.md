@@ -1,21 +1,21 @@
 ---
 title: separator
-category: 'layout'
+category: "layout"
 description: >
   Visual and semantic content separator
 ---
 
-Use `hr.separator` for a horizontal separator. Use `span.separator` with
-`orientation="vertical"` only when a vertical visual divider is needed.
+Use a native `hr` for a horizontal separator. Add
+`aria-orientation="vertical"` only when it is presented as a vertical divider.
 
 ```html
-<hr class="separator" />
-<hr class="separator" aria-orientation="vertical" />
+<hr />
+<hr aria-orientation="vertical" />
 ```
 
 ## Example
 
-{{< example src="examples/components/separator.html" title="Separator example" height="190" >}}
+{{< example src="examples/components/separator.html" title="Separator example" height="190">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -29,7 +29,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.separator`
+- `hr`
 
 ### Semantic structure
 
@@ -41,7 +41,7 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `aria-orientation` | Authored | ARIA relationship or state. |
+| `aria-orientation` | Authored | Separator axis: `vertical`; omit for the native horizontal separator. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

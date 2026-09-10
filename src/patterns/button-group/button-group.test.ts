@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "patterns",
   directive: "ngButtonGroup",
   name: "button-group",
-  selector: ".button-group",
+  selector: '[role="group"]',
 });

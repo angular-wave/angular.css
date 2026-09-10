@@ -1,4 +1,16 @@
-input.input {
+:where(
+  input:not(
+    [type="button"],
+    [type="checkbox"],
+    [type="color"],
+    [type="hidden"],
+    [type="image"],
+    [type="radio"],
+    [type="range"],
+    [type="reset"],
+    [type="submit"]
+  )
+) {
   display: flex;
   width: 100%;
   min-width: 0;
@@ -50,30 +62,38 @@ input.input {
     font-size: var(--text-sm);
     font-weight: var(--font-weight-medium);
   }
-}
 
-.dark input.input[aria-invalid="true"],
-.dark-theme input.input[aria-invalid="true"] {
-  box-shadow: 0 0 0 var(--focus-ring-width)
-    color-mix(in srgb, var(--error) 40%, transparent);
-}
+  &[size] {
+    field-sizing: content;
+    width: auto;
+    max-width: 100%;
+    justify-self: start;
+  }
 
-input.input-fit {
-  field-sizing: content;
-  width: auto;
-  max-width: 100%;
-  justify-self: start;
-}
-
-@media (width >= 48rem) {
-  input.input {
+  @media (width >= 48rem) {
     font-size: var(--text-sm);
     line-height: var(--leading-sm);
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  input.input {
+  @media (prefers-reduced-motion: reduce) {
     transition-duration: var(--motion-duration-instant);
   }
+}
+
+.dark
+  :where(
+    input:not(
+      [type="button"],
+      [type="checkbox"],
+      [type="color"],
+      [type="hidden"],
+      [type="image"],
+      [type="radio"],
+      [type="range"],
+      [type="reset"],
+      [type="submit"]
+    )
+  )[aria-invalid="true"] {
+  box-shadow: 0 0 0 var(--focus-ring-width)
+    color-mix(in srgb, var(--error) 40%, transparent);
 }

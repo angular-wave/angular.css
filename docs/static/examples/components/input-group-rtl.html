@@ -14,7 +14,6 @@
     ng-app="angular.css"
     ng-cloak
     ng-init="rtlQuery=''; rtlComment=''; rtlCount=0; rtlStatus='جاهز'"
-    class="input-group-workflow-body"
     data-example="input-group-rtl"
   >
     <main
@@ -22,12 +21,7 @@
       aria-label="مجموعات إدخال من اليمين إلى اليسار"
     >
       <div class="input-group">
-        <input
-          ng-model="rtlQuery"
-          placeholder="بحث..."
-          aria-label="بحث"
-          class="input"
-        />
+        <input ng-model="rtlQuery" placeholder="بحث..." aria-label="بحث" />
         <div align="inline-start">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="8"></circle>
@@ -37,21 +31,13 @@
         <div align="inline-end">١٢ نتيجة</div>
       </div>
       <div class="input-group">
-        <input
-          placeholder="جاري البحث..."
-          aria-label="جاري البحث"
-          class="input"
-        />
+        <input placeholder="جاري البحث..." aria-label="جاري البحث" />
         <div align="inline-end">
           <output size="sm" aria-label="تحميل" class="spinner"></output>
         </div>
       </div>
       <div class="input-group">
-        <input
-          placeholder="جاري حفظ التغييرات..."
-          aria-label="جاري الحفظ"
-          class="input"
-        />
+        <input placeholder="جاري حفظ التغييرات..." aria-label="جاري الحفظ" />
         <div align="inline-end">
           <span>جاري الحفظ...</span
           ><output size="sm" aria-label="تحميل" class="spinner"></output>
@@ -66,13 +52,12 @@
             data-change="rtlCount=rtlComment.length"
             maxlength="280"
             placeholder="اكتب تعليقًا..."
-            class="textarea"
           ></textarea>
           <div align="block-end">
             <span>{{ rtlCount }}/٢٨٠</span>
             <button
               size="sm"
-              class="input-group-push-end button"
+              class="input-group-push-end"
               type="button"
               ng-click="rtlStatus='تم النشر'"
             >

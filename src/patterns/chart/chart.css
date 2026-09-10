@@ -15,7 +15,7 @@
 .chart > header :is(h1, h2, h3, h4, h5, h6) {
   font-size: var(--text-sm);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.2;
+  line-height: var(--leading-tight);
 }
 
 .chart > header p {
@@ -149,7 +149,7 @@
   color: var(--foreground);
   padding: calc(var(--spacing) * 2) calc(var(--spacing) * 2.5);
   font-size: var(--text-xs);
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--foreground) 12%, transparent);
+  box-shadow: var(--shadow-lg);
 }
 
 .chart output > strong {
@@ -175,7 +175,7 @@
   flex: 0 0 auto;
   border: var(--border-width-default) solid
     var(--chart-color, attr(data-color type(<color>), var(--chart-1)));
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   background: var(--chart-color, var(--chart-1));
   background: var(
     --chart-color,

@@ -16,11 +16,11 @@ functional baseline and presentation controls; the application owns its brand,
 visual language, and product-specific design.
 
 ```html
-<button class="button" variant="outline">Save changes</button>
+<button variant="outline">Save changes</button>
 ```
 
 No directive runs for this button. The browser owns activation and disabled
-state, AngularTS owns application commands, and CSS targets the `.button` class
+state, AngularTS owns application commands, and CSS targets the native element
 and authored variant directly.
 
 ## Three layers
@@ -46,7 +46,7 @@ Complex components are composed from named parts rather than hidden templates:
   <summary>Account settings</summary>
   <section>
     <label for="display-name">Display name</label>
-    <input id="display-name" class="input" ng-model="profile.name" />
+    <input id="display-name" ng-model="profile.name" />
   </section>
 </details>
 ```
@@ -65,5 +65,5 @@ Each catalog page documents the authored HTML and any runtime behavior it needs.
 
 ## Next step
 
-[Install AngularCSS]({{< relref "/docs/get-started/installation" >}}) and
+[Install AngularCSS]({{< relref "/docs/get-started/installation">}}) and
 connect the `angular.css` module to an AngularTS application.

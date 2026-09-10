@@ -17,7 +17,7 @@
     data-example="combobox-custom combobox-multiple combobox-rtl"
   >
     <main class="combobox-compositions visual-example">
-      <section class="combobox-composition combobox-custom-composition">
+      <section class="combobox-composition">
         <div
           id="custom-combobox"
           ng-combobox
@@ -230,7 +230,7 @@
         </div>
       </section>
 
-      <output class="output visually-hidden" aria-live="polite">
+      <output class="visually-hidden" aria-live="polite">
         Country: <span ng-bind="custom.selected || 'none'"></span>. Frameworks:
         <span ng-bind="multi.next ? 'Next.js' : 'none'"></span>. Categories:
         <span ng-bind="rtl.technology ? 'التكنولوجيا' : 'none'"></span>.

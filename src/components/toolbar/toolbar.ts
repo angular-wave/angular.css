@@ -41,12 +41,6 @@ export function toolbarDirective(): ng.Directive {
         }
 
         element.setAttribute("role", "toolbar");
-        element.setAttribute(
-          "aria-orientation",
-          element.getAttribute("orientation") === "vertical"
-            ? "vertical"
-            : "horizontal",
-        );
         items.forEach((item) => {
           item.tabIndex = item === next ? 0 : -1;
         });
@@ -81,7 +75,8 @@ export function toolbarDirective(): ng.Directive {
           : null;
         if (target?.parentElement !== element) return;
 
-        const vertical = element.getAttribute("orientation") === "vertical";
+        const vertical =
+          element.getAttribute("aria-orientation") === "vertical";
         const rtl = getComputedStyle(element).direction === "rtl";
         let delta: 1 | -1 | null = null;
 
@@ -113,7 +108,7 @@ export function toolbarDirective(): ng.Directive {
           "dir",
           "disabled",
           "hidden",
-          "orientation",
+          "aria-orientation",
         ],
         attributes: true,
         childList: true,

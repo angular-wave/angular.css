@@ -25,7 +25,6 @@
             variant="outline"
             ng-click="dropdownDemo.archive=true"
             ng-disabled="dropdownDemo.archive"
-            class="button"
           >
             {{ dropdownDemo.archive ? 'Archive added' : 'Add archive item' }}
           </button>
@@ -85,7 +84,7 @@
         <h2 id="dropdown-preferences-title">Preferences</h2>
         <div ng-dropdown-menu>
           <button type="button">Notifications</button>
-          <menu class="dropdown-menu-wide">
+          <menu style="--menu-width: 13rem">
             <section>
               <h3>Notification Preferences</h3>
               <button
@@ -128,7 +127,7 @@
         <h2 id="dropdown-actions-title">Actions and submenu</h2>
         <div ng-dropdown-menu>
           <button type="button">Actions</button>
-          <menu class="dropdown-menu-wide">
+          <menu style="--menu-width: 13rem">
             <section>
               <button>
                 Edit
@@ -163,11 +162,7 @@
         <div class="dropdown-workflow-heading">
           <h2 id="dropdown-rtl-title">اتجاه من اليمين إلى اليسار</h2>
           <label>
-            <input
-              type="checkbox"
-              ng-model="dropdownDemo.disabled"
-              class="checkbox"
-            />
+            <input type="checkbox" ng-model="dropdownDemo.disabled" />
             تعطيل القائمة
           </label>
         </div>

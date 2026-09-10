@@ -1,12 +1,12 @@
 ---
 title: avatar
-category: 'media'
+category: "media"
 description: >
   User avatar, fallback, badge, and group primitives.
 ---
 
 Use `.avatar` with a native image or authored fallback, plus an optional badge.
-Wrap multiple avatars with `.avatar-group`.
+Place adjacent avatars and a native `output` in one wrapper to form a group.
 
 ```html
 <span class="avatar" aria-label="Jane Doe">
@@ -14,7 +14,7 @@ Wrap multiple avatars with `.avatar-group`.
   <output></output>
 </span>
 
-<span class="avatar-group">
+<span>
   <span class="avatar"><img src="avatar.jpg" alt="Alex Brown" /></span>
   <output>+3</output>
 </span>
@@ -48,7 +48,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Semantic structure
 
-Apply `.avatar` to a wrapper containing either an image or authored fallback content. Badges are optional. Use `.avatar-group` for several avatars and `.avatar-group-count` for a remaining count.
+Apply `.avatar` to a wrapper containing either an image or authored fallback content. Badges are optional. Place adjacent avatars and a native `output` for the remaining count in one `div` or `span`; AngularCSS recognizes that group from its structure.
 
 ## API
 
@@ -56,8 +56,8 @@ Apply `.avatar` to a wrapper containing either an image or authored fallback con
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `size` | Authored | Avatar size: `sm` or `lg`; omit for the default size. |
+| `variant` | Authored | Optional direct `output` badge status: `success`; omit for the primary status color. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

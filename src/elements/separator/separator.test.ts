@@ -4,5 +4,5 @@ testStyleOnlyElement({
   category: "elements",
   directive: "ngSeparator",
   name: "separator",
-  selector: ".separator",
+  selector: "hr",
 });

@@ -1,6 +1,6 @@
 ---
 title: filter-bar
-category: 'form'
+category: "form"
 description: >
   Search and filter controls for data views
 ---
@@ -10,7 +10,7 @@ reset, AngularTS binding, and backend queries keep their existing ownership.
 
 ## Example
 
-{{< example src="examples/components/filter-bar.html" title="Order filters" height="300" >}}
+{{< example src="examples/components/filter-bar.html" title="Order filters" height="300">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -24,17 +24,19 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `form.filter-bar`
+- `form[role="search"]:has(> fieldset + menu)`
 
 ### Semantic structure
 
-Apply `.filter-bar` to a native form. Put labeled controls in a direct fieldset and submit or reset actions in a direct menu; reuse existing control classes.
+Use `role="search"` on a native form with a direct fieldset followed by a direct action menu. Put labeled controls in the fieldset and submit or reset actions in the menu.
 
 ## API
 
 ### Attributes and state
 
-This component has no directive-specific attributes beyond its semantic HTML.
+| Attribute | Access | Purpose |
+| --- | --- | --- |
+| `role` | Authored | Explicit semantic role when native HTML does not provide one. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

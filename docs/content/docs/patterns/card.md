@@ -1,6 +1,6 @@
 ---
 title: card
-category: 'layout'
+category: "layout"
 description: >
   Sectioned content container using semantic parts.
 ---

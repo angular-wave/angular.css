@@ -1,24 +1,25 @@
 ---
 title: toggle
-category: 'action'
+category: "action"
 description: >
   Pressed-state button primitive with `aria-pressed` state.
 ---
 
-Use a native button with `class="toggle"` and authored `aria-pressed` state.
+Use a native button with authored `aria-pressed` state. That state identifies
+the control as a toggle and supplies its styling hook.
 
 ```html
-<button aria-pressed="true" class="toggle">Bold</button>
-<button variant="outline" class="toggle">Italic</button>
+<button aria-pressed="true">Bold</button>
+<button variant="outline" aria-pressed="false">Italic</button>
 ```
 
 ## Example
 
-{{< example src="examples/components/toggle.html" title="Toggle example" height="360" >}}
+{{< example src="examples/components/toggle.html" title="Toggle example" height="360">}}
 
 ## Workflows
 
-{{< example src="examples/components/toggle-workflows.html" title="Toggle disabled and RTL workflows" height="300" >}}
+{{< example src="examples/components/toggle-workflows.html" title="Toggle disabled and RTL workflows" height="300">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -32,7 +33,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.toggle`
+- `button[aria-pressed]`
 
 ### Semantic structure
 
@@ -45,9 +46,9 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `aria-disabled` | Authored | Semantic disabled state. |
-| `aria-pressed` | Authored | ARIA relationship or state. |
-| `size` | Authored | Visual size token supported by the component stylesheet. |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `aria-pressed` | Authored | Pressed state of a toggle control. |
+| `size` | Authored | Toggle size: `sm` or `lg`; omit for the default size. |
+| `variant` | Authored | Toggle presentation: `outline`; omit for the default style. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

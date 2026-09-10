@@ -21,7 +21,6 @@
         <div id="scroll-dialog" class="dialog">
           <button
             variant="outline"
-            class="button"
             type="button"
             commandfor="scroll-dialog-content"
             command="show-modal"
@@ -70,7 +69,6 @@
             <button
               variant="ghost"
               size="icon-sm"
-              class="button"
               commandfor="scroll-dialog-content"
               command="close"
             >
@@ -84,7 +82,7 @@
                 <path d="M18 6 6 18"></path>
                 <path d="m6 6 12 12"></path>
               </svg>
-              <span class="example-sr-only">Close</span>
+              <span class="visually-hidden">Close</span>
             </button>
           </dialog>
         </div>
@@ -95,7 +93,6 @@
         <div id="sticky-dialog" class="dialog">
           <button
             variant="outline"
-            class="button"
             type="button"
             commandfor="sticky-dialog-content"
             command="show-modal"
@@ -143,17 +140,12 @@
             <footer>
               <button
                 variant="outline"
-                class="button"
                 commandfor="sticky-dialog-content"
                 command="close"
               >
                 Cancel
               </button>
-              <button
-                class="button"
-                commandfor="sticky-dialog-content"
-                command="close"
-              >
+              <button commandfor="sticky-dialog-content" command="close">
                 Confirm
               </button>
             </footer>

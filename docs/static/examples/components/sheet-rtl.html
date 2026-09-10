@@ -16,11 +16,10 @@
     ng-init="profile={name:'Pedro Duarte',username:'peduarte'}; savedName='Pedro Duarte'"
     data-example="sheet-rtl"
   >
-    <main class="sheet-demo visual-example">
+    <main class="visual-example">
       <section id="rtl-profile-sheet" side="left" class="sheet">
         <button
           variant="outline"
-          class="button"
           type="button"
           commandfor="rtl-profile-sheet-content"
           command="show-modal"
@@ -44,27 +43,17 @@
             <section>
               <label
                 ><span>الاسم</span>
-                <input
-                  id="sheet-rtl-name"
-                  ng-model="profile.name"
-                  autofocus
-                  class="input"
-                />
+                <input id="sheet-rtl-name" ng-model="profile.name" autofocus />
               </label>
               <label
                 ><span>اسم المستخدم</span>
-                <input
-                  id="sheet-rtl-username"
-                  ng-model="profile.username"
-                  class="input"
-                />
+                <input id="sheet-rtl-username" ng-model="profile.username" />
               </label>
             </section>
             <footer>
               <button
                 type="button"
                 ng-click="savedName=profile.name"
-                class="button"
                 commandfor="rtl-profile-sheet-content"
                 command="close"
               >
@@ -73,7 +62,6 @@
               <button
                 type="button"
                 variant="outline"
-                class="button"
                 commandfor="rtl-profile-sheet-content"
                 command="close"
               >
@@ -84,7 +72,6 @@
           <button
             variant="ghost"
             size="icon-sm"
-            class="button"
             commandfor="rtl-profile-sheet-content"
             command="close"
           >
@@ -98,7 +85,7 @@
               <path d="M18 6 6 18"></path>
               <path d="m6 6 12 12"></path>
             </svg>
-            <span class="example-sr-only">إغلاق اللوحة</span>
+            <span class="visually-hidden">إغلاق اللوحة</span>
           </button>
         </dialog>
       </section>

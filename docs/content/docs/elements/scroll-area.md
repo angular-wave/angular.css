@@ -1,6 +1,6 @@
 ---
 title: scroll-area
-category: 'layout'
+category: "layout"
 description: >
   A semantic native overflow region with styled scrollbars.
 ---
@@ -50,7 +50,7 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
 | `dir` | Authored | Text and interaction direction: `ltr` or `rtl`. |
-| `tabindex` | Authored | Keyboard focus order for composite descendants. |
+| `tabindex` | Authored | Use `0` when the overflow region itself must be reachable by keyboard. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

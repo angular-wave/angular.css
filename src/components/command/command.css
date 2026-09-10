@@ -1,30 +1,29 @@
-.command,
 [ng-command] {
   display: flex;
   width: min(100%, 24rem);
   max-height: 100%;
   flex-direction: column;
   overflow: hidden;
-  border-radius: calc(var(--radius) + 4px);
+  border-radius: var(--radius-xl);
   background: var(--popover);
   color: var(--popover-foreground);
   padding: calc(var(--spacing) * 1);
 }
 
-:is(.command, [ng-command])[variant="surface"] {
+[ng-command][variant="surface"] {
   border: var(--border-width-default) solid var(--border);
 }
 
-:is(.command, [ng-command]):dir(rtl) {
+[ng-command]:dir(rtl) {
   direction: rtl;
 }
 
-:is(.command, [ng-command]) > header {
+[ng-command] > header {
   padding: calc(var(--spacing) * 1);
   padding-block-end: 0;
 }
 
-:is(.command, [ng-command]) > header > label {
+[ng-command] > header > label {
   position: relative;
   display: flex;
   width: 100%;
@@ -38,13 +37,13 @@
   box-shadow: none;
 }
 
-:is(.command, [ng-command]) > header > label:focus-within {
+[ng-command] > header > label:focus-within {
   border-color: var(--ring);
   box-shadow: 0 0 0 var(--focus-ring-width)
     color-mix(in srgb, var(--ring) 35%, transparent);
 }
 
-:is(.command, [ng-command]) > header > label > span {
+[ng-command] > header > label > span {
   display: inline-flex;
   width: calc(var(--spacing) * 4);
   height: calc(var(--spacing) * 4);
@@ -54,12 +53,12 @@
   opacity: 0.5;
 }
 
-:is(.command, [ng-command]) > header > label > span > svg {
+[ng-command] > header > label > span > svg {
   width: 100%;
   height: 100%;
 }
 
-:is(.command, [ng-command]) > header input {
+[ng-command] > header [role="combobox"] {
   width: 100%;
   min-width: 0;
   height: 100%;
@@ -69,21 +68,21 @@
   padding-inline: calc(var(--spacing) * 2);
   font: inherit;
   font-size: var(--text-sm);
-  line-height: 1.25rem;
+  line-height: var(--leading-sm);
   outline: none;
   box-shadow: none;
 }
 
-:is(.command, [ng-command]) > header input::placeholder {
+[ng-command] > header [role="combobox"]::placeholder {
   color: var(--muted-foreground);
 }
 
-:is(.command, [ng-command]) > header input:disabled {
+[ng-command] > header [role="combobox"]:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-:is(.command, [ng-command]) > :last-child {
+[ng-command] > [role="listbox"] {
   display: block;
   max-height: calc(var(--spacing) * 72);
   overflow: hidden auto;
@@ -92,68 +91,54 @@
   scrollbar-width: none;
 }
 
-:is(.command, [ng-command]) > :last-child::-webkit-scrollbar {
+[ng-command] > [role="listbox"]::-webkit-scrollbar {
   display: none;
 }
 
-:is(.command, [ng-command]) > :last-child > section {
+[ng-command] > [role="listbox"] > [role="group"] {
   display: grid;
   overflow: hidden;
   padding: calc(var(--spacing) * 1);
 }
 
-:is(.command, [ng-command])
-  > :last-child
-  > section:not(:has(> :is(button, li))) {
+[ng-command] > [role="listbox"] > [role="group"]:not(:has(> [role="option"])) {
   display: none;
 }
 
-:is(.command, [ng-command])
-  > :last-child
-  > section
-  > :is(h1, h2, h3, h4, h5, h6) {
+[ng-command] > [role="listbox"] > [role="group"] > :is(h1, h2, h3, h4, h5, h6) {
   color: var(--muted-foreground);
   padding-block: calc(var(--spacing) * 1.5);
   padding-inline: calc(var(--spacing) * 2);
   font-size: var(--text-xs);
   font-weight: var(--font-weight-medium);
-  line-height: 1rem;
+  line-height: var(--leading-snug);
 }
 
-:is(.command, [ng-command]) > :last-child > hr {
+[ng-command] > [role="listbox"] > hr {
   height: var(--border-width-default);
   margin-inline: calc(var(--spacing) * -1);
   border: 0;
   background: var(--border);
 }
 
-:is(.command, [ng-command]) > :last-child > :is(button, li),
-:is(.command, [ng-command]) > :last-child > section > :is(button, li) {
-  position: relative;
-  display: flex;
-  width: 100%;
-  min-height: var(--size-control-sm);
-  align-items: center;
-  gap: calc(var(--spacing) * 2);
+[ng-command] > [role="listbox"] > [role="option"],
+[ng-command] > [role="listbox"] > [role="group"] > [role="option"] {
   border: 0;
-  border-radius: calc(var(--radius) - 6px);
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--foreground);
   padding-block: calc(var(--spacing) * 1.5);
   padding-inline: calc(var(--spacing) * 2);
   font: inherit;
   font-size: var(--text-sm);
-  line-height: 1.25rem;
+  line-height: var(--leading-sm);
   text-align: start;
   outline: none;
   cursor: default;
   user-select: none;
 }
 
-:is(.command, [ng-command])
-  > :last-child
-  :is(button, li)
-  > :is(svg, span:has(> svg)) {
+[ng-command] > [role="listbox"] [role="option"] > :is(svg, span:has(> svg)) {
   width: calc(var(--spacing) * 4);
   height: calc(var(--spacing) * 4);
   flex: 0 0 auto;
@@ -161,37 +146,28 @@
   pointer-events: none;
 }
 
-:is(.command, [ng-command])
-  > :last-child
-  :is(button, li)
-  > span:has(> svg)
-  > svg {
+[ng-command] > [role="listbox"] [role="option"] > span:has(> svg) > svg {
   width: 100%;
   height: 100%;
 }
 
-:is(.command, [ng-command])
-  > :last-child
-  :is(button, li)[aria-selected="true"] {
+[ng-command] > [role="listbox"] [role="option"][aria-selected="true"] {
   background: var(--muted);
   color: var(--foreground);
 }
 
-:is(.command, [ng-command])
-  > :last-child
-  :is(button, li)[aria-selected="true"]
-  > svg {
+[ng-command] > [role="listbox"] [role="option"][aria-selected="true"] > svg {
   color: var(--foreground);
 }
 
-:is(.command, [ng-command])
-  > :last-child
-  :is(button, li):is(:disabled, [aria-disabled="true"]) {
+[ng-command]
+  > [role="listbox"]
+  [role="option"]:is(:disabled, [aria-disabled="true"]) {
   pointer-events: none;
   opacity: 0.5;
 }
 
-:is(.command, [ng-command]) > :last-child :is(button, li) > kbd {
+[ng-command] > [role="listbox"] [role="option"] > kbd {
   margin-inline-start: auto;
   color: var(--muted-foreground);
   font-family: inherit;
@@ -199,32 +175,32 @@
   letter-spacing: 0;
 }
 
-:is(.command, [ng-command]) > :last-child > p {
+[ng-command] > [role="listbox"] > [role="status"] {
   color: var(--muted-foreground);
   padding-block: calc(var(--spacing) * 6);
   font-size: var(--text-sm);
   text-align: center;
 }
 
-:is(.command, [ng-command]) > :last-child > p[hidden] {
+[ng-command] > [role="listbox"] > [role="status"][hidden] {
   display: none;
 }
 
-.dialog > dialog:has(> :is(.command, [ng-command])) {
+.dialog > dialog:has(> [ng-command]) {
   inset-block-start: 33.333%;
   width: min(calc(100% - calc(var(--spacing) * 8)), 32rem);
   overflow: hidden;
-  border-radius: calc(var(--radius) + 4px);
+  border-radius: var(--radius-xl);
   padding: 0;
   transform: translate(-50%, 0);
 }
 
-.dialog > dialog > :is(.command, [ng-command]) {
+.dialog > dialog > [ng-command] {
   width: 100%;
   border: 0;
   border-radius: inherit;
 }
 
-.dialog > dialog > :is(.command, [ng-command]) > :last-child :is(button, li) {
+.dialog > dialog > [ng-command] > [role="listbox"] [role="option"] {
   border-radius: var(--radius);
 }

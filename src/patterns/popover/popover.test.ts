@@ -51,7 +51,7 @@ test("canonical popover uses native disclosure and light dismissal", async ({
 }) => {
   await page.goto(canonicalUrl);
   await expectBuiltArtifactRuntime(page);
-  const root = page.locator(".popover");
+  const root = page.locator("span:has(> [popovertarget] ~ [popover])");
   const trigger = root.locator(":scope > button:first-child");
   const content = root.locator(":scope > [popover]");
 
@@ -75,8 +75,12 @@ test("canonical popover uses native disclosure and light dismissal", async ({
 
 test("native trigger supports keyboard activation", async ({ page }) => {
   await page.goto(canonicalUrl);
-  const trigger = page.locator(".popover > button:first-child");
-  const content = page.locator(".popover > [popover]");
+  const trigger = page.locator(
+    "span:has(> [popovertarget] ~ [popover]) > button:first-child",
+  );
+  const content = page.locator(
+    "span:has(> [popovertarget] ~ [popover]) > [popover]",
+  );
 
   await trigger.focus();
   await trigger.press("Enter");
@@ -89,8 +93,12 @@ test("native trigger supports keyboard activation", async ({ page }) => {
 test("popover content keeps a narrow viewport inset", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 600 });
   await page.goto(canonicalUrl);
-  await page.locator(".popover > button:first-child").click();
-  const box = await page.locator(".popover > [popover]").boundingBox();
+  await page
+    .locator("span:has(> [popovertarget] ~ [popover]) > button:first-child")
+    .click();
+  const box = await page
+    .locator("span:has(> [popovertarget] ~ [popover]) > [popover]")
+    .boundingBox();
   expect(box).not.toBeNull();
   expect(box!.x).toBeGreaterThanOrEqual(8);
   expect(box!.x + box!.width).toBeLessThanOrEqual(312);

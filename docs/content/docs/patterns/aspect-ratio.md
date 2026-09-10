@@ -1,20 +1,17 @@
 ---
 title: aspect-ratio
-category: 'layout'
+category: "layout"
 description: >
   Fixed-ratio media wrapper
 ---
 
-Set `ratio` or `--ratio` on `figure.aspect-ratio`. Media positioning and
-cropping remain application-owned.
+Set `ratio` on a `figure` and optionally override `--ratio`. Direct images,
+videos, and iframes fill the figure with `object-fit: cover`; applications may
+override that fit when media should not crop.
 
 ```html
-<figure ratio="16 / 9" class="aspect-ratio">
-  <img
-    src="photo.jpg"
-    alt="Photo"
-    class="absolute inset-0 size-full object-cover"
-  />
+<figure ratio="16 / 9">
+  <img src="photo.jpg" alt="Photo" />
 </figure>
 ```
 
@@ -38,7 +35,7 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.aspect-ratio`
+- `figure[ratio]`
 
 ### Semantic structure
 

@@ -1,6 +1,6 @@
 ---
 title: application-shell
-category: 'layout'
+category: "layout"
 description: >
   Enterprise application header, navigation, and workspace
 ---

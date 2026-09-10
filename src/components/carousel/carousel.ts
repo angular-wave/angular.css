@@ -7,14 +7,16 @@ import EmblaCarousel, {
 import Autoplay from "embla-carousel-autoplay";
 
 import {
+  getDirection,
   isOwnedBy,
+  observeInheritedDirection,
   onDestroy,
   queryAll,
   queryOwnedAll,
   setAttributeIfChanged,
 } from "../../internal/dom";
 
-const ROOT_SELECTOR = ".carousel, [ng-carousel]";
+const ROOT_SELECTOR = "[ng-carousel]";
 
 export interface CarouselChangeDetail {
   api: EmblaCarouselType;
@@ -84,12 +86,6 @@ export function carouselDirective(): ng.Directive {
         element.getAttribute("orientation") === "vertical"
           ? "vertical"
           : "horizontal";
-      const getDirection = (): "ltr" | "rtl" => {
-        const direction =
-          element.getAttribute("dir") ??
-          element.closest<HTMLElement>("[dir]")?.getAttribute("dir");
-        return direction === "rtl" ? "rtl" : "ltr";
-      };
       const getOptions = (): EmblaOptionsType => {
         const align = element.getAttribute("align");
         const containScroll = element.getAttribute("contain-scroll");
@@ -106,7 +102,7 @@ export function carouselDirective(): ng.Directive {
               : containScroll === "keepSnaps"
                 ? "keepSnaps"
                 : "trimSnaps",
-          direction: getDirection(),
+          direction: getDirection(element),
           dragFree: hasEnabledAttribute(element, "drag-free"),
           loop: hasEnabledAttribute(element, "loop"),
           skipSnaps: hasEnabledAttribute(element, "skip-snaps"),
@@ -132,8 +128,6 @@ export function carouselDirective(): ng.Directive {
       const api = EmblaCarousel(viewport, getOptions(), getPlugins());
       let destroyed = false;
       let reinitializeQueued = false;
-      const directionOwner = element.closest<HTMLElement>("[dir]") ?? element;
-
       const syncStaticSemantics = () => {
         const items = getItems();
         const dots = getDots();
@@ -307,14 +301,10 @@ export function carouselDirective(): ng.Directive {
         childList: true,
         subtree: true,
       });
-      const directionObserver =
-        directionOwner === element
-          ? null
-          : new MutationObserver(queueReinitialize);
-      directionObserver?.observe(directionOwner, {
-        attributes: true,
-        attributeFilter: ["dir"],
-      });
+      const directionObserver = observeInheritedDirection(
+        element,
+        queueReinitialize,
+      );
 
       syncStaticSemantics();
       syncSelectedState();

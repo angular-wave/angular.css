@@ -1,6 +1,6 @@
 ---
 title: empty
-category: 'layout'
+category: "layout"
 description: >
   Empty state layout
 ---
@@ -49,7 +49,7 @@ Use semantic HTML with the root styling selector above. Native elements provide 
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `variant` | Authored | Visual variant token supported by the component stylesheet. |
+| `variant` | Authored | Optional direct figure presentation: `icon`; omit for the default media treatment. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

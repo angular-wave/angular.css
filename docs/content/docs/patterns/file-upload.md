@@ -1,6 +1,6 @@
 ---
 title: file-upload
-category: 'form'
+category: "form"
 description: >
   Native file selection and transfer status
 ---
@@ -25,11 +25,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.file-upload`
+- `section:has(> label > input[type="file"])`
 
 ### Semantic structure
 
-Use `.file-upload` on a semantic section with a native file input inside its label. Optional direct `ul`, native `progress`, and `output` elements present application-owned queue and transfer state.
+Use a semantic section with a direct label containing a native file input. Optional direct `ul`, native `progress`, and `output` elements present application-owned queue and transfer state without component or part classes.
 
 ## API
 
@@ -37,9 +37,9 @@ Use `.file-upload` on a semantic section with a native file input inside its lab
 
 | Attribute | Access | Purpose |
 | --- | --- | --- |
-| `accept` | Authored | Authored HTML attribute or styling hook. |
-| `dragging` | Authored | Authored HTML attribute or styling hook. |
-| `multiple` | Authored | Allows more than one item to remain selected or open. |
+| `accept` | Authored | Native accepted file types on the direct file input. |
+| `dragging` | Authored | Presentational drop-target state on the root section. |
+| `multiple` | Authored | Allows the direct native file input to accept several files. |
 
 Attributes remain authored HTML, native state, or AngularTS inputs. AngularCSS does not write element state.
 

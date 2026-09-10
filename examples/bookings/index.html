@@ -4,10 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AngularCSS Bookings</title>
-    <link
-      rel="stylesheet"
-      href="../../docs/static/css/preflight.css"
-    />
+    <link rel="stylesheet" href="../../docs/static/css/preflight.css" />
     <link rel="stylesheet" href="../../docs/static/css/angular.css" />
     <link rel="stylesheet" href="./bookings.css" />
     <script src="../../docs/static/js/angular-ts.umd.js"></script>
@@ -56,12 +53,7 @@
         <div>
           <header class="booking-sidebar-header">
             <strong>Bookings</strong>
-            <button
-              size="icon-sm"
-              variant="ghost"
-              aria-label="Add booking"
-              class="button"
-            >
+            <button size="icon-sm" variant="ghost" aria-label="Add booking">
               <span ng-icon="plus"></span>
             </button>
           </header>
@@ -109,7 +101,7 @@
         <header class="booking-toolbar">
           <div class="booking-title-row">
             <button
-              class="booking-mobile-menu button"
+              class="booking-mobile-menu"
               size="icon-sm"
               variant="outline"
               aria-controls="booking-sidebar"
@@ -130,7 +122,6 @@
               type="search"
               aria-label="Search bookings"
               placeholder="Search bookings"
-              class="input"
             />
             <span align="inline-end">
               <kbd>/</kbd>
@@ -139,7 +130,7 @@
         </header>
 
         <div class="booking-filterbar">
-          <nav variant="line" aria-label="Booking status" class="tabs">
+          <nav variant="line" aria-label="Booking status">
             <button
               type="button"
               aria-pressed="{{ bookings.status === 'All' }}"
@@ -204,8 +195,7 @@
                     ><span ng-bind="booking.vessel"></span
                   ></span>
                   <span
-                    variant="secondary"
-                    ng-class="bookings.statusClass(booking.status)"
+                    status="{{ booking.status }}"
                     ng-bind="booking.status"
                     class="badge"
                   ></span>
@@ -310,11 +300,10 @@
             commandfor="booking-detail-dialog-content"
             command="close"
             variant="outline"
-            class="button"
           >
             Close
           </button>
-          <button class="button">Open booking</button>
+          <button>Open booking</button>
         </footer>
       </dialog>
     </section>

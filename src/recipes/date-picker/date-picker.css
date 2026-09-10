@@ -11,16 +11,16 @@
     font-weight: var(--font-weight-medium);
   }
 
-  :scope > .popover,
-  :scope > .popover > button {
+  :scope > span:has(> [popovertarget] ~ [popover]),
+  :scope > span:has(> [popovertarget] ~ [popover]) > button {
     width: 100%;
   }
 
-  :scope > .popover > [popover] {
+  :scope > span:has(> [popovertarget] ~ [popover]) > [popover] {
     width: min(calc(100vw - var(--spacing) * 12), 20rem);
   }
 
-  :scope > .popover > button {
+  :scope > span:has(> [popovertarget] ~ [popover]) > button {
     justify-content: space-between;
   }
 
@@ -29,7 +29,9 @@
     font-size: var(--text-xs);
   }
 
-  :scope[aria-invalid="true"] > .popover > button {
+  :scope[aria-invalid="true"]
+    > span:has(> [popovertarget] ~ [popover])
+    > button {
     border-color: var(--error);
   }
 }

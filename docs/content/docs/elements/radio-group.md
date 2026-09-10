@@ -1,15 +1,15 @@
 ---
 title: radio-group
-category: 'form'
+category: "form"
 description: >
   Native radio input grouping with role and focus behavior.
 ---
 
-Use `fieldset.radio-group` with a native `legend` and radio inputs. The group
-styles its native radio descendants directly.
+Use a native `fieldset` with a `legend` and radio inputs. AngularCSS recognizes
+the semantic group and styles its native radio descendants directly.
 
 ```html
-<fieldset class="radio-group">
+<fieldset>
   <div class="field" orientation="horizontal">
     <input id="default" name="density" type="radio" value="default" />
     <label for="default">Default</label>
@@ -19,15 +19,15 @@ styles its native radio descendants directly.
 
 ## Example
 
-{{< example src="examples/components/radio-group.html" title="Radio group example" height="240" >}}
+{{< example src="examples/components/radio-group.html" title="Radio group example" height="240">}}
 
 ## Reference Workflows
 
-{{< example src="examples/components/radio-group-workflows.html" title="Radio group workflows" height="1320" >}}
+{{< example src="examples/components/radio-group-workflows.html" title="Radio group workflows" height="1320">}}
 
 ## Field Compositions
 
-{{< example src="examples/components/radio-fields.html" title="Radio fields" height="1180" >}}
+{{< example src="examples/components/radio-fields.html" title="Radio fields" height="1180">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
@@ -41,11 +41,11 @@ This entry uses native HTML and CSS. AngularCSS registers no runtime directive f
 
 ### Root styling selector
 
-- `.radio-group`
+- `fieldset:has(input[type="radio"]):not(.toggle-group)`
 
 ### Semantic structure
 
-Use `fieldset.radio-group` with a native `legend`. Place labeled `input type="radio"` controls inside it and give related controls the same `name`.
+Use a native `fieldset` with a `legend`. Place labeled `input type="radio"` controls inside it and give related controls the same `name`. AngularCSS styles the fieldset from that semantic structure.
 
 ## API
 

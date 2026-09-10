@@ -1,6 +1,6 @@
 ---
 title: label
-category: 'form'
+category: "form"
 description: >
   Label helper that mirrors required/disabled state from its associated control.
 ---
@@ -8,12 +8,12 @@ description: >
 Use a native `label` and connect it with `for`.
 
 ```html
-<label for="email">Email</label> <input id="email" required class="input" />
+<label for="email">Email</label> <input id="email" required />
 ```
 
 ## Example
 
-{{< example src="examples/components/label.html" title="Label examples" height="190" >}}
+{{< example src="examples/components/label.html" title="Label examples" height="190">}}
 
 <!-- angularcss-reference:start -->
 ## Installation
