@@ -144,7 +144,7 @@ test('published iframe interactions update component and AngularTS state', async
 
   frame = await openExample(page, 'switch');
   await frame.locator('#airplane-mode').check();
-  await expect(frame.locator('.output').first()).toContainText(
+  await expect(frame.locator('output[aria-live="polite"]')).toContainText(
     'Mode enabled: true',
   );
 

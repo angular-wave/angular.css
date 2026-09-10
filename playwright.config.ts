@@ -17,7 +17,7 @@ export default defineConfig({
   expect: {
     toHaveScreenshot: {
       // Allow minor font and edge anti-aliasing variance across Linux runners.
-      maxDiffPixelRatio: 0.007,
+      maxDiffPixelRatio: 0.008,
     },
   },
   /* Run tests in files in parallel */

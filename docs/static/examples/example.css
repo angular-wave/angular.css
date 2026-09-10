@@ -1989,6 +1989,12 @@ body[data-example~="popover-demo"] {
   gap: 24px;
 }
 
+@media (width <= 36rem) {
+  .workflow-stack {
+    gap: 16px;
+  }
+}
+
 body[data-example~="accordion-demo"] > section {
   width: min(100%, 32rem);
 }

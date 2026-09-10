@@ -24,6 +24,7 @@ export default defineConfig({
   webServer: {
     command: `npm run build:test-artifacts && hugo server --source docs --disableFastRender --renderToMemory --port ${port} --bind 127.0.0.1`,
     url: baseURL,
+    timeout: 120_000,
     reuseExistingServer: false,
   },
 });

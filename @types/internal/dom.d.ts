@@ -1,4 +1,7 @@
 type ElementConstructor<T extends Element> = abstract new (...args: never[]) => T;
+type TextDirection = "ltr" | "rtl";
+export declare function getDirection(element: Element): TextDirection;
+export declare function observeInheritedDirection(element: HTMLElement, callback: MutationCallback): MutationObserver | null;
 export declare function query(root: ParentNode, selector: string): Element | null;
 export declare function query<T extends Element>(root: ParentNode, selector: string, constructor: ElementConstructor<T>): T | null;
 export declare function queryAll<T extends Element>(root: ParentNode, selector: string): T[];
