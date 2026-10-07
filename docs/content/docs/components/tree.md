@@ -43,7 +43,7 @@ Apply `ng-tree` to a native `ul` or `ol`. Each direct or nested `li` contains on
 | `aria-labelledby` | Output | ID of the element that supplies the accessible name. |
 | `aria-multiselectable` | Input | Set to `true` to allow Ctrl or Command click selection of several items. |
 | `aria-selected` | Input/output | Selected item state. |
-| `data-value` | Input | Application value included in `angularcss:tree-select`. |
+| `data-value` | Input | Application value included in `ng:tree-select`. |
 | `disabled` | Input | Disables native or component interaction. |
 | `hidden` | Input | Native visibility state observed when finding available items. |
 | `role` | Output | Explicit semantic role when native HTML does not provide one. |
@@ -57,7 +57,7 @@ This directive does not write component-specific CSS custom properties.
 
 ### DOM events
 
-- `angularcss:tree-select`
+- `ng:tree-select`
 
 Native DOM events continue to work normally. AngularTS event directives such as
 `ng-click` and `ng-keydown`, plus the `data-change` model callback, remain application-owned.

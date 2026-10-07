@@ -397,9 +397,9 @@
         "--calendar-cell-size"
       ],
       "events": [
-        "angularcss:calendar-month-change",
-        "angularcss:calendar-range-invalid",
-        "angularcss:calendar-select"
+        "ng:calendar-month-change",
+        "ng:calendar-range-invalid",
+        "ng:calendar-select"
       ],
       "runtime": true,
       "selectors": [
@@ -447,8 +447,8 @@
         "--carousel-item-size"
       ],
       "events": [
-        "angularcss:carousel-change",
-        "angularcss:carousel-ready"
+        "ng:carousel-change",
+        "ng:carousel-ready"
       ],
       "runtime": true,
       "selectors": [
@@ -520,10 +520,10 @@
         "--combobox-content-top"
       ],
       "events": [
-        "angularcss:combobox-clear",
-        "angularcss:combobox-open-change",
-        "angularcss:combobox-remove-last",
-        "angularcss:combobox-select"
+        "ng:combobox-clear",
+        "ng:combobox-open-change",
+        "ng:combobox-remove-last",
+        "ng:combobox-select"
       ],
       "runtime": true,
       "selectors": [
@@ -580,7 +580,7 @@
         "--context-menu-top"
       ],
       "events": [
-        "angularcss:context-menu-select"
+        "ng:context-menu-select"
       ],
       "runtime": true,
       "selectors": [
@@ -1335,7 +1335,7 @@
       "category": "components",
       "cssCustomProperties": [],
       "events": [
-        "angularcss:tree-select"
+        "ng:tree-select"
       ],
       "runtime": true,
       "selectors": [

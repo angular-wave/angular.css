@@ -31,7 +31,7 @@ Use `orientation="vertical"` for vertical movement and `dir="rtl"` for RTL.
 checked-in reference. The root mirrors snap index, snap count, item count, and
 boundary state.
 
-`angularcss:carousel-ready` and `angularcss:carousel-change` expose the Embla
+`ng:carousel-ready` and `ng:carousel-change` expose the Embla
 API, zero-based snap index, snap count, selected item index, selected item, and
 total item count. Bind those events with AngularTS when the application needs a
 counter; AngularCSS does not create or replace an AngularTS model.
@@ -108,8 +108,8 @@ The content viewport and its direct track child are required. Items must be dire
 
 ### DOM events
 
-- `angularcss:carousel-change`
-- `angularcss:carousel-ready`
+- `ng:carousel-change`
+- `ng:carousel-ready`
 
 Native DOM events continue to work normally. AngularTS event directives such as
 `ng-click` and `ng-keydown`, plus the `data-change` model callback, remain application-owned.

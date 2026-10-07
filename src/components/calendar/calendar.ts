@@ -463,7 +463,7 @@ export function calendarDirective(): ng.Directive {
             if (differenceInCalendarDays(selectedDate, startDate) < minNights) {
               setAttributeIfChanged(element, "data-range-invalid", "true");
               element.dispatchEvent(
-                new CustomEvent("angularcss:calendar-range-invalid", {
+                new CustomEvent("ng:calendar-range-invalid", {
                   bubbles: true,
                   detail: {
                     minNights,
@@ -493,7 +493,7 @@ export function calendarDirective(): ng.Directive {
         setAttributeIfChanged(element, "data-value", selectedValue);
         if (emit) {
           element.dispatchEvent(
-            new CustomEvent("angularcss:calendar-select", {
+            new CustomEvent("ng:calendar-select", {
               bubbles: true,
               detail: {
                 day: selectedDay,
@@ -646,7 +646,7 @@ export function calendarDirective(): ng.Directive {
         syncCalendar();
 
         element.dispatchEvent(
-          new CustomEvent("angularcss:calendar-month-change", {
+          new CustomEvent("ng:calendar-month-change", {
             bubbles: true,
             detail: { month: monthValue },
           }),

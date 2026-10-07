@@ -36,34 +36,34 @@ export interface TreeSelectDetail {
     value: string;
 }
 export interface AngularCssEventDetailMap {
-    "angularcss:calendar-month-change": CalendarMonthChangeDetail;
-    "angularcss:calendar-range-invalid": CalendarRangeInvalidDetail;
-    "angularcss:calendar-select": CalendarSelectDetail;
-    "angularcss:carousel-change": CarouselChangeDetail;
-    "angularcss:carousel-ready": CarouselChangeDetail;
-    "angularcss:combobox-clear": null;
-    "angularcss:combobox-open-change": ComboboxOpenChangeDetail;
-    "angularcss:combobox-remove-last": null;
-    "angularcss:combobox-select": ComboboxSelectDetail;
-    "angularcss:context-menu-select": ContextMenuSelectDetail;
-    "angularcss:tree-select": TreeSelectDetail;
+    "ng:calendar-month-change": CalendarMonthChangeDetail;
+    "ng:calendar-range-invalid": CalendarRangeInvalidDetail;
+    "ng:calendar-select": CalendarSelectDetail;
+    "ng:carousel-change": CarouselChangeDetail;
+    "ng:carousel-ready": CarouselChangeDetail;
+    "ng:combobox-clear": null;
+    "ng:combobox-open-change": ComboboxOpenChangeDetail;
+    "ng:combobox-remove-last": null;
+    "ng:combobox-select": ComboboxSelectDetail;
+    "ng:context-menu-select": ContextMenuSelectDetail;
+    "ng:tree-select": TreeSelectDetail;
 }
 export type AngularCssEventName = keyof AngularCssEventDetailMap;
 export type AngularCssCustomEvent<Name extends AngularCssEventName> = CustomEvent<AngularCssEventDetailMap[Name]>;
 export type { CarouselChangeDetail };
 declare global {
     interface HTMLElementEventMap {
-        "angularcss:calendar-month-change": AngularCssCustomEvent<"angularcss:calendar-month-change">;
-        "angularcss:calendar-range-invalid": AngularCssCustomEvent<"angularcss:calendar-range-invalid">;
-        "angularcss:calendar-select": AngularCssCustomEvent<"angularcss:calendar-select">;
-        "angularcss:carousel-change": AngularCssCustomEvent<"angularcss:carousel-change">;
-        "angularcss:carousel-ready": AngularCssCustomEvent<"angularcss:carousel-ready">;
-        "angularcss:combobox-clear": AngularCssCustomEvent<"angularcss:combobox-clear">;
-        "angularcss:combobox-open-change": AngularCssCustomEvent<"angularcss:combobox-open-change">;
-        "angularcss:combobox-remove-last": AngularCssCustomEvent<"angularcss:combobox-remove-last">;
-        "angularcss:combobox-select": AngularCssCustomEvent<"angularcss:combobox-select">;
-        "angularcss:context-menu-select": AngularCssCustomEvent<"angularcss:context-menu-select">;
-        "angularcss:tree-select": AngularCssCustomEvent<"angularcss:tree-select">;
+        "ng:calendar-month-change": AngularCssCustomEvent<"ng:calendar-month-change">;
+        "ng:calendar-range-invalid": AngularCssCustomEvent<"ng:calendar-range-invalid">;
+        "ng:calendar-select": AngularCssCustomEvent<"ng:calendar-select">;
+        "ng:carousel-change": AngularCssCustomEvent<"ng:carousel-change">;
+        "ng:carousel-ready": AngularCssCustomEvent<"ng:carousel-ready">;
+        "ng:combobox-clear": AngularCssCustomEvent<"ng:combobox-clear">;
+        "ng:combobox-open-change": AngularCssCustomEvent<"ng:combobox-open-change">;
+        "ng:combobox-remove-last": AngularCssCustomEvent<"ng:combobox-remove-last">;
+        "ng:combobox-select": AngularCssCustomEvent<"ng:combobox-select">;
+        "ng:context-menu-select": AngularCssCustomEvent<"ng:context-menu-select">;
+        "ng:tree-select": AngularCssCustomEvent<"ng:tree-select">;
     }
 }
 export declare const angularCssModuleName = "angular.css";

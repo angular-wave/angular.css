@@ -358,7 +358,7 @@ export function contextMenuDirective(): ng.Directive {
           return;
         if (item.matches(subTriggerSelector)) return;
         element.dispatchEvent(
-          new CustomEvent("angularcss:context-menu-select", {
+          new CustomEvent("ng:context-menu-select", {
             bubbles: true,
             detail: { item },
           }),

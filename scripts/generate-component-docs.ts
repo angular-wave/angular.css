@@ -765,7 +765,7 @@ const referenceFor = (component: (typeof catalogNames)[number]): string => {
     ),
     ...Object.keys(referenceApi?.cssVariables || {}),
   ]);
-  const events = matches(source, /["'](angularcss:[a-z0-9-]+)["']/g);
+  const events = matches(source, /["'](ng:[a-z0-9-]+)["']/g);
   const category = categoryByComponent.get(component) ?? "layout";
   const behavior =
     behaviorByComponent[component] ??

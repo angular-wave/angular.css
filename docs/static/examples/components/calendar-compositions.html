@@ -29,7 +29,7 @@
               data-selection-mode="range"
               data-range-start-value="{{ custom.start }}"
               data-range-end-value="{{ custom.end }}"
-              ng-on-angularcss:calendar-select="custom.start=$event.detail.range.start; custom.end=$event.detail.range.end"
+              ng-on-ng:calendar-select="custom.start=$event.detail.range.start; custom.end=$event.detail.range.end"
               class="calendar-custom-days"
             >
               <header>
@@ -65,7 +65,7 @@
               data-calendar-generated
               data-month="2026-09"
               data-value="{{ presetDate }}"
-              ng-on-angularcss:calendar-select="presetDate=$event.detail.value"
+              ng-on-ng:calendar-select="presetDate=$event.detail.value"
               class="calendar-flush calendar-preset-grid"
             >
               <header>
@@ -163,7 +163,7 @@
               data-calendar-generated
               data-month="2026-09"
               data-value="{{ time.date }}"
-              ng-on-angularcss:calendar-select="time.date=$event.detail.value"
+              ng-on-ng:calendar-select="time.date=$event.detail.value"
               class="calendar-flush"
             >
               <header>
@@ -265,7 +265,7 @@
           data-caption-layout="dropdown"
           data-start-year="2024"
           data-end-year="2028"
-          ng-on-angularcss:calendar-select="rtlDate=$event.detail.value"
+          ng-on-ng:calendar-select="rtlDate=$event.detail.value"
           class="calendar-demo calendar-rtl-grid"
         >
           <header>
@@ -320,7 +320,7 @@
         <section
           ng-calendar
           data-value="{{ hijriDate }}"
-          ng-on-angularcss:calendar-select="hijriDate=$event.detail.value"
+          ng-on-ng:calendar-select="hijriDate=$event.detail.value"
           class="calendar-demo calendar-hijri-grid"
           aria-label="خرداد ۱۴۰۴"
         >

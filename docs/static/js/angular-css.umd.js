@@ -1580,7 +1580,7 @@
                             const minNights = Math.max(0, Number(element.getAttribute("data-min-nights") ?? 0));
                             if (differenceInCalendarDays(selectedDate, startDate) < minNights) {
                                 setAttributeIfChanged(element, "data-range-invalid", "true");
-                                element.dispatchEvent(new CustomEvent("angularcss:calendar-range-invalid", {
+                                element.dispatchEvent(new CustomEvent("ng:calendar-range-invalid", {
                                     bubbles: true,
                                     detail: {
                                         minNights,
@@ -1601,7 +1601,7 @@
                     syncSelectionState(selectionMode, values, rangeStart, rangeEnd, selectedDay);
                     setAttributeIfChanged(element, "data-value", selectedValue);
                     if (emit) {
-                        element.dispatchEvent(new CustomEvent("angularcss:calendar-select", {
+                        element.dispatchEvent(new CustomEvent("ng:calendar-select", {
                             bubbles: true,
                             detail: {
                                 day: selectedDay,
@@ -1720,7 +1720,7 @@
                     renderedMonth = "";
                     renderGeneratedMonth();
                     syncCalendar();
-                    element.dispatchEvent(new CustomEvent("angularcss:calendar-month-change", {
+                    element.dispatchEvent(new CustomEvent("ng:calendar-month-change", {
                         bubbles: true,
                         detail: { month: monthValue },
                     }));
@@ -3860,7 +3860,7 @@
                 };
                 const handleSelect = () => {
                     syncSelectedState();
-                    dispatchState("angularcss:carousel-change");
+                    dispatchState("ng:carousel-change");
                 };
                 const handleReInit = () => {
                     syncStaticSemantics();
@@ -3938,7 +3938,7 @@
                 syncSelectedState();
                 requestAnimationFrame(() => {
                     if (!destroyed)
-                        dispatchState("angularcss:carousel-ready");
+                        dispatchState("ng:carousel-ready");
                 });
                 onDestroy(scope, () => {
                     destroyed = true;
@@ -4028,7 +4028,7 @@
                     content.style.setProperty("--combobox-anchor-width", `${String(Math.round(anchorBox.width))}px`);
                 };
                 const notifyOpenChange = () => {
-                    element.dispatchEvent(new CustomEvent("angularcss:combobox-open-change", {
+                    element.dispatchEvent(new CustomEvent("ng:combobox-open-change", {
                         bubbles: true,
                         detail: { open },
                     }));
@@ -4094,7 +4094,7 @@
                         return;
                     const multiple = isMultiple();
                     const value = item.getAttribute("data-value") ?? item.textContent.trim();
-                    element.dispatchEvent(new CustomEvent("angularcss:combobox-select", {
+                    element.dispatchEvent(new CustomEvent("ng:combobox-select", {
                         bubbles: true,
                         detail: { item, multiple, value },
                     }));
@@ -4152,7 +4152,7 @@
                     }
                     setAttributeIfChanged(control, "aria-label", control.getAttribute("aria-label") ?? "Clear selection");
                     const handleClick = () => {
-                        element.dispatchEvent(new CustomEvent("angularcss:combobox-clear", { bubbles: true }));
+                        element.dispatchEvent(new CustomEvent("ng:combobox-clear", { bubbles: true }));
                         input.focus({ preventScroll: true });
                     };
                     control.addEventListener("click", handleClick);
@@ -4262,7 +4262,7 @@
                         isMultiple() &&
                         input.value.length === 0 &&
                         queryOwnedAll(element, rootSelector$2, chipSelector).length) {
-                        element.dispatchEvent(new CustomEvent("angularcss:combobox-remove-last", {
+                        element.dispatchEvent(new CustomEvent("ng:combobox-remove-last", {
                             bubbles: true,
                         }));
                     }
@@ -4814,7 +4814,7 @@
                         return;
                     if (item.matches(subTriggerSelector))
                         return;
-                    element.dispatchEvent(new CustomEvent("angularcss:context-menu-select", {
+                    element.dispatchEvent(new CustomEvent("ng:context-menu-select", {
                         bubbles: true,
                         detail: { item },
                     }));
@@ -6973,7 +6973,7 @@
                     else {
                         item.setAttribute("aria-selected", String(selected));
                     }
-                    element.dispatchEvent(new CustomEvent("angularcss:tree-select", {
+                    element.dispatchEvent(new CustomEvent("ng:tree-select", {
                         bubbles: true,
                         detail: {
                             id: item.id,

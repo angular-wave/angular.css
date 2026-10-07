@@ -83,7 +83,7 @@ export function treeDirective(): ng.Directive {
           item.setAttribute("aria-selected", String(selected));
         }
         element.dispatchEvent(
-          new CustomEvent("angularcss:tree-select", {
+          new CustomEvent("ng:tree-select", {
             bubbles: true,
             detail: {
               id: item.id,

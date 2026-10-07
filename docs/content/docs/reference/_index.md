@@ -73,7 +73,7 @@ It also augments `HTMLElementEventMap`, so TypeScript infers event details from
 ordinary DOM listeners:
 
 ```ts
-calendar.addEventListener("angularcss:calendar-select", (event) => {
+calendar.addEventListener("ng:calendar-select", (event) => {
   console.log(event.detail.value, event.detail.selectionMode);
 });
 ```

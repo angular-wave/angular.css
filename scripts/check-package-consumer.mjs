@@ -57,7 +57,7 @@ try {
   type AngularCssCustomEvent,
 } from "@angular-wave/angular.css";
 
-const event: AngularCssCustomEvent<"angularcss:combobox-select"> | undefined =
+const event: AngularCssCustomEvent<"ng:combobox-select"> | undefined =
   undefined;
 void [angularCssModuleName, registerAngularCss, event];
 `,

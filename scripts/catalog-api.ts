@@ -439,7 +439,7 @@ export const catalogReferenceApi: Record<
     attributeDescriptions: {
       "aria-multiselectable":
         "Set to `true` to allow Ctrl or Command click selection of several items.",
-      "data-value": "Application value included in `angularcss:tree-select`.",
+      "data-value": "Application value included in `ng:tree-select`.",
     },
   },
   "application-shell": {},

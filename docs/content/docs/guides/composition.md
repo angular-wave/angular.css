@@ -30,7 +30,7 @@ field styles the authored label, helper, and error text around the control.
 ## Date picker
 
 A date picker combines a field, text or date input, popover, and calendar. The
-calendar emits `angularcss:calendar-select`; application code converts the day
+calendar emits `ng:calendar-select`; application code converts the day
 into the required date model and updates the input.
 
 Do not introduce a second hidden date model inside the calendar directive.

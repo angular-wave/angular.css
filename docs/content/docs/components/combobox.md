@@ -14,7 +14,7 @@ handling, collision placement, and visual state.
 ```html
 <div
   ng-combobox
-  ng-on-angularcss:combobox-select="selected=$event.detail.value; query=selected"
+  ng-on-ng:combobox-select="selected=$event.detail.value; query=selected"
 >
   <header>
     <input
@@ -43,12 +43,12 @@ handling, collision placement, and visual state.
 
 Add `auto-highlight` when opening or filtering should highlight the first
 enabled result. Without it, the popup opens without an active option until the
-user presses an arrow key. Bind `angularcss:combobox-open-change` when the root
+user presses an arrow key. Bind `ng:combobox-open-change` when the root
 uses controlled `open="{{ state.open }}"` state.
 
 For multiple selection, add `multiple`, render chips from AngularTS state, and
 bind each option's `aria-selected` value. Selection events include
-`multiple: true`; `angularcss:combobox-remove-last` only signals Backspace on an
+`multiple: true`; `ng:combobox-remove-last` only signals Backspace on an
 empty chip input. AngularCSS never replaces the application's collection.
 
 ## Example
@@ -139,10 +139,10 @@ A combobox root requires one input and one options surface. The root directive i
 
 ### DOM events
 
-- `angularcss:combobox-clear`
-- `angularcss:combobox-open-change`
-- `angularcss:combobox-remove-last`
-- `angularcss:combobox-select`
+- `ng:combobox-clear`
+- `ng:combobox-open-change`
+- `ng:combobox-remove-last`
+- `ng:combobox-select`
 
 Native DOM events continue to work normally. AngularTS event directives such as
 `ng-click` and `ng-keydown`, plus the `data-change` model callback, remain application-owned.

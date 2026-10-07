@@ -8,7 +8,7 @@ description: >
 Use `data-calendar-generated` with `data-month="YYYY-MM"` to render a complete
 month, including outside days. Previous and next controls update the visible
 month, while selecting a date updates `data-value` and emits
-`angularcss:calendar-select`. Bind that event with AngularTS `ng-on-*` so
+`ng:calendar-select`. Bind that event with AngularTS `ng-on-*` so
 application state remains responsible for the selected value.
 
 ```html
@@ -17,7 +17,7 @@ application state remains responsible for the selected value.
   data-calendar-generated
   data-month="2026-05"
   data-value="{{ selectedDate }}"
-  ng-on-angularcss:calendar-select="selectedDate = $event.detail.value"
+  ng-on-ng:calendar-select="selectedDate = $event.detail.value"
 >
   <header>
     <button type="button">Previous</button>
@@ -32,7 +32,7 @@ Use `data-week-start="0"` through `"6"` to choose the first weekday and
 `data-show-outside-days="false"` to hide outside dates. Set
 `--calendar-cell-size` in CSS to resize cells. Day cells support
 arrow keys, Home, End, Page Up, and Page Down. Month changes emit
-`angularcss:calendar-month-change`.
+`ng:calendar-month-change`.
 
 Omit `data-calendar-generated` to author every weekday and day cell yourself.
 This mode supports selected, today, outside-month, disabled, booked, range, and
@@ -167,9 +167,9 @@ Use native elements for authored structure. Component classes are optional visua
 
 ### DOM events
 
-- `angularcss:calendar-month-change`
-- `angularcss:calendar-range-invalid`
-- `angularcss:calendar-select`
+- `ng:calendar-month-change`
+- `ng:calendar-range-invalid`
+- `ng:calendar-select`
 
 Native DOM events continue to work normally. AngularTS event directives such as
 `ng-click` and `ng-keydown`, plus the `data-change` model callback, remain application-owned.

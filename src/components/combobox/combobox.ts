@@ -131,7 +131,7 @@ export function comboboxDirective(): ng.Directive {
 
       const notifyOpenChange = () => {
         element.dispatchEvent(
-          new CustomEvent("angularcss:combobox-open-change", {
+          new CustomEvent("ng:combobox-open-change", {
             bubbles: true,
             detail: { open },
           }),
@@ -213,7 +213,7 @@ export function comboboxDirective(): ng.Directive {
         const value =
           item.getAttribute("data-value") ?? item.textContent.trim();
         element.dispatchEvent(
-          new CustomEvent("angularcss:combobox-select", {
+          new CustomEvent("ng:combobox-select", {
             bubbles: true,
             detail: { item, multiple, value },
           }),
@@ -286,7 +286,7 @@ export function comboboxDirective(): ng.Directive {
         );
         const handleClick = () => {
           element.dispatchEvent(
-            new CustomEvent("angularcss:combobox-clear", { bubbles: true }),
+            new CustomEvent("ng:combobox-clear", { bubbles: true }),
           );
           input.focus({ preventScroll: true });
         };
@@ -425,7 +425,7 @@ export function comboboxDirective(): ng.Directive {
           queryOwnedAll<HTMLElement>(element, rootSelector, chipSelector).length
         ) {
           element.dispatchEvent(
-            new CustomEvent("angularcss:combobox-remove-last", {
+            new CustomEvent("ng:combobox-remove-last", {
               bubbles: true,
             }),
           );

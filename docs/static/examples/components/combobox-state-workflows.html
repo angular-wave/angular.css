@@ -38,8 +38,8 @@
         ng-combobox
         auto-highlight
         open="{{ state.open }}"
-        ng-on-angularcss:combobox-open-change="state.open=$event.detail.open"
-        ng-on-angularcss:combobox-select="state.selected=$event.detail.value; state.query=$event.detail.value; state.open=false"
+        ng-on-ng:combobox-open-change="state.open=$event.detail.open"
+        ng-on-ng:combobox-select="state.selected=$event.detail.value; state.query=$event.detail.value; state.open=false"
       >
         <header>
           <input

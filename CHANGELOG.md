@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [0.0.2] - 2026-09-07
+## [0.0.2] - 2026-10-08
 
 ### Added
 
@@ -26,8 +26,11 @@
   focus, density, contrast, and print behavior across the catalog.
 - Updated every catalog example for consistent proportions, narrow viewports,
   semantic HTML, keyboard behavior, and focused AngularTS ownership.
+- Simplified component custom events from the `angularcss:*` namespace to the
+  AngularTS-aligned `ng:*` namespace across the API, examples, and documentation.
 - Declared AngularTS through the npm `latest` tag and added daily testing against
-  the registry's current release.
+  the registry's current release, with the bundled compatibility runtime updated
+  to AngularTS `0.37.0`.
 
 ### Fixed
 

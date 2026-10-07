@@ -103,7 +103,7 @@ A context menu root requires one focusable trigger and one `menu`. The root dire
 
 ### DOM events
 
-- `angularcss:context-menu-select`
+- `ng:context-menu-select`
 
 Native DOM events continue to work normally. AngularTS event directives such as
 `ng-click` and `ng-keydown`, plus the `data-change` model callback, remain application-owned.

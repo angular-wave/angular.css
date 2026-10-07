@@ -234,7 +234,7 @@ export function carouselDirective(): ng.Directive {
       };
       const handleSelect = () => {
         syncSelectedState();
-        dispatchState("angularcss:carousel-change");
+        dispatchState("ng:carousel-change");
       };
       const handleReInit = () => {
         syncStaticSemantics();
@@ -309,7 +309,7 @@ export function carouselDirective(): ng.Directive {
       syncStaticSemantics();
       syncSelectedState();
       requestAnimationFrame(() => {
-        if (!destroyed) dispatchState("angularcss:carousel-ready");
+        if (!destroyed) dispatchState("ng:carousel-ready");
       });
 
       onDestroy(scope, () => {

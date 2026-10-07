@@ -21,8 +21,8 @@
         <div
           id="clear-combobox"
           ng-combobox
-          ng-on-angularcss:combobox-select="clearState.selected=$event.detail.value; clearState.query=$event.detail.value"
-          ng-on-angularcss:combobox-clear="clearState.selected=''; clearState.query=''"
+          ng-on-ng:combobox-select="clearState.selected=$event.detail.value; clearState.query=$event.detail.value"
+          ng-on-ng:combobox-clear="clearState.selected=''; clearState.query=''"
         >
           <header>
             <input
@@ -83,7 +83,7 @@
         <div
           id="groups-combobox"
           ng-combobox
-          ng-on-angularcss:combobox-select="grouped.selected=$event.detail.value; grouped.query=$event.detail.value"
+          ng-on-ng:combobox-select="grouped.selected=$event.detail.value; grouped.query=$event.detail.value"
         >
           <header>
             <input
@@ -125,7 +125,7 @@
         <div
           id="input-group-combobox"
           ng-combobox
-          ng-on-angularcss:combobox-select="inputGroupState.selected=$event.detail.value; inputGroupState.query=$event.detail.value"
+          ng-on-ng:combobox-select="inputGroupState.selected=$event.detail.value; inputGroupState.query=$event.detail.value"
         >
           <header>
             <span class="combobox-globe" aria-hidden="true"></span>
@@ -169,7 +169,7 @@
         <div
           id="invalid-combobox"
           ng-combobox
-          ng-on-angularcss:combobox-select="invalidState.selected=$event.detail.value; invalidState.query=$event.detail.value"
+          ng-on-ng:combobox-select="invalidState.selected=$event.detail.value; invalidState.query=$event.detail.value"
         >
           <header>
             <input
@@ -204,7 +204,7 @@
         <div
           id="popup-combobox"
           ng-combobox
-          ng-on-angularcss:combobox-select="popup.selected=$event.detail.value; popup.query=''"
+          ng-on-ng:combobox-select="popup.selected=$event.detail.value; popup.query=''"
         >
           <button
             type="button"

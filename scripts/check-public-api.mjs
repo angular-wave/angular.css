@@ -58,7 +58,7 @@ const entries = Object.fromEntries(
     ).filter((value) => value.startsWith("--"));
     const events = code(
       section(markdown, "### DOM events", "Native DOM events continue"),
-    ).filter((value) => value.startsWith("angularcss:"));
+    ).filter((value) => value.startsWith("ng:"));
 
     if (selectors.length === 0) {
       throw new Error(

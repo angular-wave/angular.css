@@ -21,7 +21,7 @@
         <div
           id="custom-combobox"
           ng-combobox
-          ng-on-angularcss:combobox-select="custom.selected=$event.detail.value; custom.query=$event.detail.value"
+          ng-on-ng:combobox-select="custom.selected=$event.detail.value; custom.query=$event.detail.value"
         >
           <header>
             <input
@@ -63,8 +63,8 @@
           ng-combobox
           multiple
           auto-highlight
-          ng-on-angularcss:combobox-select="$event.detail.value === 'Next.js' ? multi.next=!multi.next : $event.detail.value === 'SvelteKit' ? multi.svelte=!multi.svelte : $event.detail.value === 'Nuxt.js' ? multi.nuxt=!multi.nuxt : $event.detail.value === 'Remix' ? multi.remix=!multi.remix : multi.astro=!multi.astro"
-          ng-on-angularcss:combobox-remove-last="multi.astro ? multi.astro=false : multi.remix ? multi.remix=false : multi.nuxt ? multi.nuxt=false : multi.svelte ? multi.svelte=false : multi.next=false"
+          ng-on-ng:combobox-select="$event.detail.value === 'Next.js' ? multi.next=!multi.next : $event.detail.value === 'SvelteKit' ? multi.svelte=!multi.svelte : $event.detail.value === 'Nuxt.js' ? multi.nuxt=!multi.nuxt : $event.detail.value === 'Remix' ? multi.remix=!multi.remix : multi.astro=!multi.astro"
+          ng-on-ng:combobox-remove-last="multi.astro ? multi.astro=false : multi.remix ? multi.remix=false : multi.nuxt ? multi.nuxt=false : multi.svelte ? multi.svelte=false : multi.next=false"
         >
           <fieldset>
             <span ng-if="multi.next" animate>
@@ -147,8 +147,8 @@
             ng-combobox
             multiple
             auto-highlight
-            ng-on-angularcss:combobox-select="$event.detail.value === 'التكنولوجيا' ? rtl.technology=!rtl.technology : $event.detail.value === 'التصميم' ? rtl.design=!rtl.design : $event.detail.value === 'الأعمال' ? rtl.business=!rtl.business : $event.detail.value === 'التسويق' ? rtl.marketing=!rtl.marketing : $event.detail.value === 'التعليم' ? rtl.education=!rtl.education : rtl.health=!rtl.health"
-            ng-on-angularcss:combobox-remove-last="rtl.health ? rtl.health=false : rtl.education ? rtl.education=false : rtl.marketing ? rtl.marketing=false : rtl.business ? rtl.business=false : rtl.design ? rtl.design=false : rtl.technology=false"
+            ng-on-ng:combobox-select="$event.detail.value === 'التكنولوجيا' ? rtl.technology=!rtl.technology : $event.detail.value === 'التصميم' ? rtl.design=!rtl.design : $event.detail.value === 'الأعمال' ? rtl.business=!rtl.business : $event.detail.value === 'التسويق' ? rtl.marketing=!rtl.marketing : $event.detail.value === 'التعليم' ? rtl.education=!rtl.education : rtl.health=!rtl.health"
+            ng-on-ng:combobox-remove-last="rtl.health ? rtl.health=false : rtl.education ? rtl.education=false : rtl.marketing ? rtl.marketing=false : rtl.business ? rtl.business=false : rtl.design ? rtl.design=false : rtl.technology=false"
           >
             <fieldset>
               <span ng-if="rtl.technology" animate>
