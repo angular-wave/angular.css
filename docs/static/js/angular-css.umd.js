@@ -476,7 +476,6 @@
                         return;
                     }
                     event.preventDefault();
-                    event.stopPropagation();
                     close();
                 };
                 button.addEventListener("click", handleButtonClick);

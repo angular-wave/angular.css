@@ -294,7 +294,6 @@ export function dropdownMenuDirective(): ng.Directive {
         }
 
         event.preventDefault();
-        event.stopPropagation();
         close();
       };
 
